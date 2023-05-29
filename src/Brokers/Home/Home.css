@@ -1,0 +1,34 @@
+:root {
+ --cl-color: #1c2321;
+ --bg-color: #eef1ef;
+}
+.wrp-hm-brokers {
+ display: flex;
+ position: relative;
+
+ width: 100%;
+ height: 100vh;
+
+ justify-content: center;
+ align-items: center;
+
+ color: var(--cl-color);
+ background-color: var(--bg-color);
+}
+/* Small */
+.wrp-hm-brokers-sm {
+ display: flex;
+ position: relative;
+
+ width: 100%;
+ height: 100vh;
+
+ justify-content: center;
+ align-items: center;
+
+ color: var(--cl-color);
+ background-color: var(--bg-color);
+}
+.wrp-box-hm-brokers {
+ display: flex;
+}

@@ -1,0 +1,44 @@
+:root {
+ --bg-avatar-yellow: #d9d9d9;
+}
+
+.profil-pret-flex {
+ display: flex;
+ flex-direction: column;
+ margin-top: 20vh;
+ width: 100%;
+ justify-content: center;
+ align-items: center;
+}
+.profil-pret {
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ gap: 1em;
+ justify-content: center;
+ align-items: center;
+}
+.profil-pret img {
+ display: flex;
+ height: 9em;
+ width: 9em;
+ border-radius: 100%;
+ border: none;
+ background: var(--bg-avatar-yellow);
+ object-fit: cover;
+ padding: 0.1em;
+ border: 0.2em solid var(--bgcolor-btn);
+}
+.profil-pret-flex {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+
+.flex-badge-ima img {
+ height: 4em;
+ width: 4em;
+ object-fit: cover;
+ border: none;
+}

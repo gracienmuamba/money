@@ -1,0 +1,48 @@
+.wrp-iconshop-hm {
+ display: flex;
+ flex-direction: column;
+ position: absolute;
+
+ bottom: 5%;
+ right: 5%;
+ transform: translate(-50%, -50%);
+}
+.wrp-iconshop-hm p {
+ display: flex;
+ font-size: 1em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: 0px;
+}
+
+.wrp-pd-shop {
+ display: flex;
+ flex-direction: column;
+
+ justify-content: center;
+ align-items: center;
+ border-radius: 100%;
+
+ padding: 0.5em;
+ background-color: #bcc7c85b;
+}
+
+/* Small */
+.wrp-iconshop-hm-sm {
+ display: flex;
+ flex-direction: column;
+ position: absolute;
+
+ bottom: 5%;
+ right: 5%;
+ transform: translate(-50%, -50%);
+}
+.wrp-iconshop-hm-sm p {
+ display: flex;
+ font-size: 1em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: 0px;
+}

@@ -1,0 +1,36 @@
+.wrp-main-prix-dashed {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ align-items: center;
+ width: 100%;
+ color: #c44900;
+}
+.wrp-main-prix-dashed span {
+ display: flex;
+ font-size: 2em;
+ font-family: var(--text-family);
+ letter-spacing: var(-text-family-spacing);
+ font-weight: 300;
+ line-height: 1;
+ white-space: nowrap;
+}
+
+/* Small */
+.wrp-main-prix-dashed-sm {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ align-items: center;
+ width: 100%;
+ color: #c44900;
+}
+.wrp-main-prix-dashed-sm span {
+ display: flex;
+ font-size: 1.15em;
+ font-family: var(--text-family);
+ letter-spacing: var(-text-family-spacing);
+ font-weight: 300;
+ line-height: 1;
+ white-space: nowrap;
+}

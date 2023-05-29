@@ -1,0 +1,9 @@
+.devise-ima {
+ display: flex;
+}
+.devise-ima img {
+ height: 3em;
+ width: 3em;
+ object-fit: cover;
+ border-radius: 100%;
+}

@@ -1,0 +1,17 @@
+.flex-section4 {
+ display: flex;
+ width: 100%;
+ justify-content: center;
+ align-items: center;
+ margin: 15vh 0;
+}
+.flex-section4-sm {
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ justify-content: space-between;
+ align-items: center;
+ margin: 10vh 0;
+ padding: 0 0.5%;
+ gap: 4vh;
+}

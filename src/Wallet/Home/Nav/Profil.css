@@ -1,0 +1,15 @@
+.profil-wallet-nav div {
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ align-items: center;
+}
+.profil-wallet-nav img {
+ height: 3em;
+ width: 3em;
+ object-fit: cover;
+
+ padding: 0.2em;
+
+ border-radius: 100%;
+}

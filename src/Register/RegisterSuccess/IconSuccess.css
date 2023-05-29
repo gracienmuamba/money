@@ -1,0 +1,22 @@
+.wrp-icon-success {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ /* color: var(--color-base); */
+ position: absolute;
+ top: 75%;
+ left: 50%;
+
+ transform: translate(-50%, -50%);
+ color: #38b000;
+}
+.wrp-icon-success p {
+ display: flex;
+ font-size: 1em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ white-space: nowrap;
+ line-height: 1;
+ letter-spacing: 0px;
+}

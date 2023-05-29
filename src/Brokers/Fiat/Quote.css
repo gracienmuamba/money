@@ -1,0 +1,28 @@
+.fiat-add-brokers {
+ display: flex;
+}
+.fiat-add-brokers p {
+ display: flex;
+ font-size: 1em;
+ font-weight: 300;
+ line-height: 1.1;
+ font-family: var(--text-family);
+ text-align: center;
+ letter-spacing: 0px;
+}
+
+/* Small */
+.fiat-add-brokers-sm {
+ display: flex;
+ width: 100%;
+ max-width: 95vw;
+}
+.fiat-add-brokers-sm p {
+ display: flex;
+ font-size: 1em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ line-height: 1.1;
+ text-align: center;
+ letter-spacing: 0.5px;
+}

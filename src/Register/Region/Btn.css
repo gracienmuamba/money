@@ -1,0 +1,14 @@
+.wrp-regions-btn {
+ display: flex;
+ width: 100%;
+ max-width: 17em;
+ margin-top: 8vh;
+}
+.wrp-regions-btn-sm {
+ display: flex;
+ flex-direction: column;
+
+ margin-top: 30vh;
+ padding: 0.3em;
+ width: 100%;
+}

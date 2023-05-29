@@ -1,0 +1,48 @@
+.wrp-push-invited-icon-tontine {
+ display: flex;
+ flex-direction: row;
+
+ justify-content: center;
+ align-items: center;
+
+ cursor: pointer;
+ border-radius: 10em;
+ margin-top: 1ch;
+ margin-bottom: 4ch;
+ border: 1px solid grey;
+}
+.wrp-push-invited-icon-tontine p {
+ display: flex;
+ font-size: 1em;
+ font-weight: 300;
+ font-family: var(--text-family);
+
+ margin-right: 3em;
+ margin-left: 0.6em;
+
+ padding-top: 1.8vh;
+ padding-bottom: -2vh;
+ color: #343a40;
+
+ line-height: 0;
+ letter-spacing: 0px;
+}
+.list-box-flex-input-tontine {
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ justify-content: center;
+ align-items: center;
+}
+.list-box-flex-input-tontine h1 {
+ display: flex;
+ font-size: 1.188em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: 0px;
+}
+
+.form-child-bottom-input form button {
+ margin-top: 10vh;
+}

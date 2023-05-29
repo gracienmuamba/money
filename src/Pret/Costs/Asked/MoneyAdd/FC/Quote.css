@@ -1,0 +1,27 @@
+.asked-quote {
+ display: flex;
+ padding: 1em;
+}
+.asked-quote p {
+ display: flex;
+ font-size: 1.174em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ text-align: center;
+ line-height: 1.1;
+ letter-spacing: 0px;
+}
+
+.asked-quote-sm {
+ display: flex;
+ width: 50%;
+}
+.asked-quote-sm p {
+ display: flex;
+ font-size: 1.174em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ text-align: center;
+ line-height: 1.1;
+ letter-spacing: 0px;
+}

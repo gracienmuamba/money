@@ -1,0 +1,4 @@
+.dash-pret {
+ display: flex;
+ flex-direction: column;
+}

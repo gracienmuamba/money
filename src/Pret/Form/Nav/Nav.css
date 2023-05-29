@@ -1,0 +1,10 @@
+/* View nav wallet */
+.form-sign-nav-pret-method {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ width: 100%;
+ padding: 2vh 3%;
+ color: white;
+ z-index: 10;
+}

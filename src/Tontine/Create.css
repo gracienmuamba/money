@@ -1,0 +1,17 @@
+.create-link-tontine {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+
+.create-link-tontine p {
+ display: flex;
+ font-size: 1.145em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ cursor: pointer;
+ letter-spacing: 0px;
+ color: #00a8e8;
+}

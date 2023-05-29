@@ -1,0 +1,21 @@
+.wrp-hm-brokers-unite {
+ display: flex;
+ position: relative;
+
+ width: 100%;
+ height: 100vh;
+
+ color: var(--cl-color);
+ background-color: var(--bg-color);
+}
+/* Small */
+.wrp-hm-brokers-unite-sm {
+ display: flex;
+ position: relative;
+
+ width: 100%;
+ height: 100vh;
+
+ color: var(--cl-color);
+ background-color: var(--bg-color);
+}

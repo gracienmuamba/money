@@ -1,0 +1,8 @@
+.wrp-money-send {
+ display: flex;
+ flex-direction: column;
+ position: relative;
+ width: 100%;
+ margin-top: 15vh;
+ height: 100vh;
+}

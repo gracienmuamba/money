@@ -1,0 +1,8 @@
+.well-icon-tontine {
+ display: flex;
+}
+.well-icon-tontine img {
+ height: 5em;
+ width: 5em;
+ object-fit: cover;
+}

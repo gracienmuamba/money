@@ -1,0 +1,23 @@
+.profile-user-child-tontine .wrp-box-flex-child-tontine {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+.profile-user-child-tontine img {
+ height: 6.5em;
+ width: 6.5em;
+ object-fit: cover;
+
+ padding: 0.2em;
+
+ border-radius: 100%;
+}
+.profile-user-child-tontine h3 {
+ display: flex;
+ font-size: 1.092em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: 0px;
+}

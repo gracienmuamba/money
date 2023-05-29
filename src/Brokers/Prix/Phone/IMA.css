@@ -1,0 +1,7 @@
+.wrp-ima-brokers-prix img {
+ display: flex;
+ height: 1.5em;
+ width: 1.5em;
+ border-radius: 50%;
+ object-fit: cover;
+}

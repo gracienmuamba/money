@@ -1,0 +1,39 @@
+.wrp-input-stock {
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ padding: 0.3em;
+}
+.wrp-input-stock-box-prix {
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ justify-content: space-between;
+ align-items: center;
+ padding: 0.5em;
+}
+.wrp-input-stock-subbox-prix {
+ display: flex;
+ flex-direction: row;
+ width: 100%;
+ justify-content: space-between;
+ align-items: center;
+ margin-top: 3vh;
+}
+.wrp-input-stock-subbox-prix h3 {
+ display: flex;
+ font-size: 1.5em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ list-style: none;
+ color: #2ecc2e;
+ letter-spacing: 0px;
+}
+.wrp-devise-switch {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.wrp-input-stock form button {
+ margin-top: 3vh;
+}

@@ -1,0 +1,24 @@
+.icon-purchase-dashed {
+ display: flex;
+}
+.icon-purchase-dashed img {
+ height: 3.2em;
+ width: 3.2em;
+ object-fit: cover;
+}
+.icon-purchase-dashed-md {
+ display: flex;
+}
+.icon-purchase-dashed-md img {
+ height: 3.2em;
+ width: 3.2em;
+ object-fit: cover;
+}
+.icon-purchase-dashed-sm {
+ display: flex;
+}
+.icon-purchase-dashed-sm img {
+ height: 2.2em;
+ width: 2.2em;
+ object-fit: cover;
+}

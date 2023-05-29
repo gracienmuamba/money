@@ -1,0 +1,86 @@
+.section2-quote {
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ justify-content: start;
+ align-items: start;
+ line-height: 3;
+ margin-right: 3em;
+}
+.section2-quote h2 {
+ display: flex;
+ font-size: 2.8em;
+ font-weight: 600;
+ font-family: var(--font-inter);
+ line-height: 1;
+ letter-spacing: -0.5px;
+}
+.section2-quote p {
+ display: flex;
+ font-size: 1.1em;
+ font-weight: 400;
+ font-family: var(--font-inter);
+ line-height: 1;
+ text-align: start;
+ letter-spacing: 0px;
+ margin-top: 2vh;
+ color: #6c6c6c;
+}
+
+.section2-quote-md {
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ justify-content: start;
+ align-items: start;
+ line-height: 3;
+ margin-right: 3em;
+}
+.section2-quote-md h2 {
+ display: flex;
+ font-size: 7vw;
+ font-weight: 600;
+ font-family: var(--font-inter);
+ line-height: 1;
+ letter-spacing: -0.5px;
+}
+.section2-quote-md p {
+ display: flex;
+ font-size: 1.1em;
+ font-weight: 400;
+ font-family: var(--font-inter);
+ line-height: 1;
+ text-align: start;
+ letter-spacing: 0px;
+ margin-top: 2vh;
+ color: #6c6c6c;
+}
+
+.section2-quote-sm {
+ display: flex;
+ flex-direction: column;
+ margin: 5vh 0;
+ width: 100%;
+ justify-content: center;
+ align-items: center;
+}
+.section2-quote-sm h2 {
+ display: flex;
+ font-size: 1.3em;
+ font-weight: 500;
+ font-family: var(--font-inter);
+ line-height: 1;
+ text-align: center;
+ letter-spacing: 0px;
+}
+.section2-quote-sm p {
+ display: flex;
+ font-size: 0.8em;
+ font-weight: 400;
+ font-family: var(--font-inter);
+ text-align: center;
+ line-height: 1;
+ letter-spacing: 0px;
+ margin-top: 1vh;
+ color: #6c6c6c;
+}

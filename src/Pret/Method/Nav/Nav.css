@@ -1,0 +1,11 @@
+/* View nav wallet */
+.wrp-nav-pret-method {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ width: 100%;
+ padding: 0 3%;
+ height: 5ch;
+ color: white;
+ z-index: 10;
+}

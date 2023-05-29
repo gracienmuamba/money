@@ -1,0 +1,12 @@
+.devise-pret {
+ display: flex;
+ flex-direction: column;
+
+ justify-content: center;
+ align-items: center;
+}
+.devise-pret img {
+ height: 5em;
+ width: 5em;
+ object-fit: cover;
+}

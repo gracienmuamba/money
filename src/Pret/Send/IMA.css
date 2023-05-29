@@ -1,0 +1,22 @@
+.ima-send-pret {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+}
+.ima-send-pret img {
+ height: 8em;
+ width: 8em;
+ object-fit: cover;
+ animation-name: drive;
+ animation-direction: 4s;
+}
+
+@keyframes drive {
+ to {
+  transform: translate(0px);
+ }
+ from {
+  transform: translate(700px);
+ }
+}

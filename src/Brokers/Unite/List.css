@@ -1,0 +1,14 @@
+.list-unite nav ul {
+ display: flex;
+ flex-direction: row;
+ list-style: none;
+ width: 100%;
+ justify-content: space-between;
+ align-items: center;
+
+ margin-bottom: 10vh;
+}
+.list-unite nav ul li {
+ display: flex;
+ margin: 0 3vw;
+}

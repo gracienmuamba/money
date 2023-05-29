@@ -1,0 +1,12 @@
+.wrp-list-footer {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ align-items: start;
+}
+.wrp-list-footer-sm {
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ align-items: start;
+}

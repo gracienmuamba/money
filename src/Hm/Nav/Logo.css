@@ -1,0 +1,9 @@
+.logo-hm {
+ display: flex;
+}
+
+.logo-hm img {
+ height: 3.5em;
+ width: 3.5em;
+ object-fit: cover;
+}

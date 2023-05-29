@@ -1,0 +1,110 @@
+.wrp-main-swap-dashed {
+ display: flex;
+ margin: 0;
+ padding: 0;
+ flex-wrap: wrap;
+ list-style: none;
+ justify-content: space-between;
+ align-items: center;
+ width: 100%;
+ gap: 2vw;
+}
+.wrp-main-swap-dashed span {
+ display: flex;
+ font-size: 1.02em;
+ font-family: var(--text-family);
+ letter-spacing: var(-text-family-spacing);
+ font-weight: 300;
+ line-height: 1;
+ white-space: nowrap;
+ color: #6c757d;
+}
+.wrp-main-swap-dashed .box-swap-title {
+ display: flex;
+ flex-direction: column;
+ justify-content: start;
+ align-items: start;
+}
+.wrp-main-swap-dashed .box-swap-title h2 {
+ display: flex;
+ font-size: 1.189em;
+ font-family: var(--text-family);
+ letter-spacing: var(-text-family-spacing);
+ font-weight: 300;
+ line-height: 1;
+ white-space: nowrap;
+}
+
+/* Medium  */
+.wrp-main-swap-dashed-md {
+ display: flex;
+ margin: 0;
+ padding: 0;
+ flex-wrap: wrap;
+ list-style: none;
+ justify-content: space-between;
+ align-items: center;
+ width: 100%;
+ gap: 2vw;
+}
+.wrp-main-swap-dashed-md span {
+ display: flex;
+ font-size: 1em;
+ font-family: var(--text-family);
+ letter-spacing: var(-text-family-spacing);
+ font-weight: 300;
+ line-height: 1;
+ white-space: nowrap;
+ color: #6c757d;
+}
+.wrp-main-swap-dashed-md .box-swap-title {
+ display: flex;
+ flex-direction: column;
+ justify-content: start;
+ align-items: start;
+}
+.wrp-main-swap-dashed-md .box-swap-title h2 {
+ display: flex;
+ font-size: 1.1em;
+ font-family: var(--text-family);
+ letter-spacing: var(-text-family-spacing);
+ font-weight: 300;
+ line-height: 1;
+ white-space: nowrap;
+}
+
+/* Small */
+.wrp-main-swap-dashed-sm {
+ display: flex;
+ flex-direction: column;
+ justify-content: start;
+ align-items: start;
+ width: 100%;
+}
+.wrp-main-swap-dashed-sm span {
+ display: flex;
+ font-size: 1.1em;
+ font-family: var(--text-family);
+ letter-spacing: var(-text-family-spacing);
+ font-weight: 300;
+ line-height: 1;
+ white-space: nowrap;
+ color: #6c757d;
+}
+
+.wrp-main-swap-dashed-sm .box-swap-title {
+ display: flex;
+ flex-direction: column;
+ justify-content: start;
+ align-items: start;
+ margin-top: 4vh;
+}
+.wrp-main-swap-dashed-sm .box-swap-title h2 {
+ display: flex;
+ font-size: 1.1em;
+ font-family: var(--text-family);
+ letter-spacing: var(-text-family-spacing);
+ font-weight: 300;
+ line-height: 1;
+ white-space: nowrap;
+}

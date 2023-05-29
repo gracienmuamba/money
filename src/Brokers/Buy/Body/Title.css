@@ -1,0 +1,27 @@
+.title-stock-input {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ width: 100%;
+ margin-top: 5vh;
+}
+
+.title-stock-input h1 {
+ /* display: flex; */
+ font-size: 1em;
+ font-weight: 300;
+ line-height: 1;
+ width: 100%;
+ text-align: center;
+
+ padding: 1em;
+ justify-content: end;
+ align-items: end;
+ white-space: nowrap;
+
+ font-family: var(--text-family);
+ letter-spacing: 0px;
+ border-left: 0.1em solid white;
+ background: #59a5d8;
+ color: white;
+}

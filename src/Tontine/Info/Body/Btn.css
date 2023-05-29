@@ -1,0 +1,12 @@
+.btn-info-tontine-go-pin {
+ display: flex;
+ width: 65%;
+ padding: 1em;
+ margin-top: 15vh;
+}
+
+.btn-info-tontine-go-pin-sm {
+ display: flex;
+ width: 93%;
+ margin-top: 15vh;
+}

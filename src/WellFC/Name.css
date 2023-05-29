@@ -1,0 +1,26 @@
+.wrp-success-withdraw-name {
+ display: flex;
+}
+.wrp-success-withdraw-name h2 {
+ display: flex;
+ font-size: 1.2em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ white-space: nowrap;
+ letter-spacing: 1px;
+}
+
+/* Small Screen */
+.wrp-success-withdraw-name-sm {
+ display: flex;
+}
+.wrp-success-withdraw-name-sm h2 {
+ display: flex;
+ font-size: 1.5em;
+ font-weight: 300;
+ white-space: nowrap;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: 0.1px;
+}

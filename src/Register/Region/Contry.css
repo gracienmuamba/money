@@ -1,0 +1,13 @@
+.wrp-contry-region {
+ display: flex;
+ flex-direction: column;
+ margin: 2vh 0;
+}
+.wrp-contry-region h4 {
+ display: flex;
+ font-size: 0.8em;
+ font-family: var(--text-family);
+ font-weight: 500;
+ white-space: nowrap;
+ color: var(--bgcolor-btn);
+}

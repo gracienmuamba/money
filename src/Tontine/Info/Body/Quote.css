@@ -1,0 +1,23 @@
+.qt-info-tontine {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+}
+.title-qt-info-tontine {
+ display: flex;
+ flex-direction: row;
+ width: 100%;
+ max-width: 20em;
+ justify-content: space-between;
+ align-items: center;
+}
+.title-qt-info-tontine p {
+ display: flex;
+ font-size: 1.298em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: -1px;
+}

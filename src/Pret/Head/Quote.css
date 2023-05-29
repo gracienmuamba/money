@@ -1,0 +1,39 @@
+.quote-view-pret {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+}
+.quote-view-pret p {
+ display: flex;
+ font-size: 1.153em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ line-height: 1.2;
+ letter-spacing: 0.5px;
+ text-align: center;
+ max-width: 30em;
+ color: black;
+}
+
+/* Small */
+.quote-view-pret-sm {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ padding: 0.5em;
+ width: 100%;
+}
+.quote-view-pret-sm p {
+ display: flex;
+ font-size: 1.198em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: 0.5px;
+ text-align: center;
+ max-width: 30em;
+ color: black;
+}

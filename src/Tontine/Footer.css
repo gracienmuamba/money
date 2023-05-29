@@ -1,0 +1,13 @@
+.tontine-footer-qt {
+ display: flex;
+ padding: 1em;
+}
+.tontine-footer-qt span {
+ display: flex;
+ font-size: 1em;
+ text-align: center;
+ font-weight: 300;
+ line-height: 1;
+ font-family: var(--text-family);
+ letter-spacing: 0px;
+}

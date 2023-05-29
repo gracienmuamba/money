@@ -1,0 +1,28 @@
+.wrp-qtform-send-money {
+ display: flex;
+}
+.wrp-qtform-send-money p {
+ display: flex;
+ font-size: 1.2em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: 0px;
+ text-align: start;
+ width: 100%;
+}
+
+/* small */
+.wrp-qtform-send-money-sm {
+ display: flex;
+}
+.wrp-qtform-send-money-sm p {
+ display: flex;
+ font-size: 1.2em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: 0px;
+ text-align: center;
+ width: 100%;
+}

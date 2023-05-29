@@ -1,0 +1,12 @@
+.box-withdraw-money {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+.box-withdraw-money-sm {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}

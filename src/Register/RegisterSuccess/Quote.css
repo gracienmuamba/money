@@ -1,0 +1,43 @@
+.wrp-quote-success {
+ display: flex;
+ flex-direction: row;
+
+ position: absolute;
+ top: 50%;
+ left: 50%;
+
+ transform: translate(-50%, -50%);
+}
+.wrp-quote-success p {
+ display: flex;
+ font-size: 1em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ text-align: center;
+ line-height: 1;
+ width: 100%;
+ max-width: 30em;
+}
+
+/* small */
+.wrp-quote-success-sm {
+ display: flex;
+ flex-direction: row;
+ width: 100%;
+ max-width: 95vw;
+
+ width: 100%;
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+}
+.wrp-quote-success-sm p {
+ display: flex;
+ font-size: 1em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ line-height: 1;
+ text-align: start;
+ text-align: center;
+}

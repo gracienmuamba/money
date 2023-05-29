@@ -1,0 +1,12 @@
+.wrp-social-footer {
+ display: flex;
+ gap: 1em;
+}
+
+.wrp-social-footer-sm {
+ display: flex;
+ margin-top: 1em;
+ width: 100%;
+ padding: 0 10%;
+ justify-content: space-between;
+}

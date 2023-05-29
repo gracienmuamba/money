@@ -1,0 +1,40 @@
+.wrp-valide-exh {
+ display: flex;
+ width: 100%;
+ max-width: 30em;
+
+ margin: 3ch 0;
+ justify-content: center;
+ align-items: center;
+}
+.wrp-valide-exh button {
+ margin: 0 1em;
+}
+
+.wrp-valide-exh button span {
+ display: flex;
+ font-size: 1em;
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: 0px;
+}
+.wrp-valide-exh-sm {
+ display: flex;
+ flex-direction: column;
+ position: absolute;
+
+ top: 91%;
+ left: 50%;
+
+ width: 100%;
+ max-width: 96vw;
+ transform: translate(-50%, -50%);
+}
+.wrp-valide-exh-sm button span {
+ display: flex;
+ font-size: 1em;
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: 1px;
+ margin: 0.3em;
+}

@@ -1,0 +1,8 @@
+.tontine-invite-user {
+ display: flex;
+}
+.tontine-invite-user img {
+ height: 1.899em;
+ width: 1.899em;
+ object-fit: cover;
+}

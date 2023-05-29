@@ -1,0 +1,15 @@
+.qte-broker-unite {
+ display: flex;
+ margin: 8vh 0;
+ width: 100%;
+ max-width: 30em;
+}
+.qte-broker-unite p {
+ display: flex;
+ font-size: 1.26em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ line-height: 1.2;
+ letter-spacing: 0.5px;
+ text-align: center;
+}

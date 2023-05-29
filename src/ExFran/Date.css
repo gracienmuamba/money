@@ -1,0 +1,67 @@
+:root {
+ --color-time: #01579b;
+}
+
+.wrp-time-exchange {
+ display: flex;
+ flex-direction: column;
+
+ justify-content: center;
+ align-items: center;
+
+ width: 100%;
+}
+.wrp-time-exchange h2 {
+ display: flex;
+ font-size: 1em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ line-height: 1;
+ text-align: center;
+ letter-spacing: 1px;
+}
+.wrp-time-exchange p {
+ display: flex;
+ font-size: 1em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1.4;
+ text-align: center;
+ letter-spacing: 1px;
+ color: var(--color-time);
+}
+
+.wrp-time-exchange-sm {
+ display: flex;
+ flex-direction: column;
+
+ justify-content: center;
+ align-items: center;
+
+ position: absolute;
+ top: 75%;
+ left: 50%;
+
+ width: 100%;
+
+ transform: translate(-50%, -50%);
+}
+.wrp-time-exchange-sm p {
+ display: flex;
+ font-size: 1em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1.4;
+ text-align: center;
+ letter-spacing: 1px;
+ color: var(--color-time);
+}
+.wrp-time-exchange-sm h2 {
+ display: flex;
+ font-size: 1em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ line-height: 1.4;
+ text-align: center;
+ letter-spacing: 1px;
+}

@@ -1,0 +1,125 @@
+/* .flex-head-list-cmd {
+ display: flex;
+}
+.flex-head-list-cmd header {
+ position: fixed;
+ top: 0;
+ height: 8vh;
+ width: 100%;
+ background-color: #264653;
+}
+.flex-head-list-cmd header li {
+ list-style: none;
+}
+.flex-head-list-cmd header .container {
+ width: 100%;
+ margin: auto;
+}
+.flex-head-list-cmd header .navbar {
+ display: flex;
+ width: 100%;
+ margin-top: 2vh;
+
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+}
+.flex-head-list-cmd header .navbar span {
+ display: flex;
+ font-size: 1.2em;
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: 0px;
+ font-family: var(--text-family);
+ color: whitesmoke;
+}
+.flex-head-list-cmd section {
+ display: flex;
+ flex-direction: column;
+ margin-top: 10vh;
+ width: 100%;
+ padding: 1em;
+}
+.flex-head-list-cmd section ul {
+ list-style: none;
+ margin: 0;
+ padding: 0;
+ width: 100%;
+}
+.flex-head-list-cmd section li {
+ margin-top: 3vh;
+ width: 100%;
+ margin: 6vh 0;
+ border-bottom: 0.01em solid #cfd2cd;
+}
+
+.flex-head-list-cmd .box-data-cmd-list {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ width: 100%;
+}
+.flex-head-list-cmd .box-data-cmd-list h2 {
+ display: flex;
+ font-size: 0.8em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ color: #219ebc;
+ line-height: 1;
+ letter-spacing: 0px;
+}
+
+.flex-head-list-cmd .box-data-cmd-operator {
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+}
+.flex-head-list-cmd .cmd-operator-title {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ align-items: flex-start;
+ width: 100%;
+}
+.flex-head-list-cmd .cmd-operator-title h3 {
+ display: flex;
+ font-size: 0.8em;
+ font-weight: 300;
+ color: #264653;
+
+ line-height: 1;
+ font-family: var(--text-family);
+ letter-spacing: 0px;
+}
+
+.flex-head-list-cmd .cmd-operator-title .cmd-operator-sub-title {
+ display: flex;
+ flex-direction: column;
+ justify-content: start;
+ align-items: start;
+}
+.flex-head-list-cmd .cmd-operator-title .cmd-operator-sub-title p {
+ display: flex;
+ font-size: 0.8em;
+ font-weight: 300;
+ line-height: 0;
+ font-family: var(--text-family);
+ letter-spacing: 0px;
+ color: #4361ee;
+}
+
+.flex-head-list-cmd .cmd-operator-title .cmd-operator-sub-title .flex-row-cmd {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ align-items: center;
+ width: 6em;
+}
+
+.flex-head-list-cmd .cmd-operator-title .cmd-operator-sub-title .flex-row-other-cmd {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ align-items: center;
+ width: 1em;
+} */

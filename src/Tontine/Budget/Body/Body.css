@@ -1,0 +1,18 @@
+.wrp-body-form-tontine {
+ display: flex;
+ flex-direction: column;
+
+ justify-content: center;
+ align-items: center;
+
+ width: 100%;
+}
+.wrp-body-form-tontine-sm {
+ display: flex;
+ flex-direction: column;
+
+ justify-content: center;
+ align-items: center;
+
+ width: 100%;
+}

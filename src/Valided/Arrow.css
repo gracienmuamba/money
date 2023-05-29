@@ -1,0 +1,24 @@
+.wrp-arrow-valided {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ cursor: pointer;
+
+ position: absolute;
+ top: 5%;
+ left: 5%;
+ transform: translate(-50%, -50%);
+ color: rgba(116, 116, 116, 0.995);
+}
+.wrp-arrow-valided-sm {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ cursor: pointer;
+
+ position: absolute;
+ top: 5%;
+ left: 5%;
+ transform: translate(-50%, -50%);
+ color: rgba(116, 116, 116, 0.995);
+}

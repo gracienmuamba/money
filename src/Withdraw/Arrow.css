@@ -1,0 +1,19 @@
+.wrp-arrow-profil {
+ display: flex;
+ cursor: pointer;
+
+ position: absolute;
+ top: 5%;
+ left: 8%;
+
+ transform: translate(-50%, -50%);
+}
+.wrp-arrow-profil-sm {
+ display: flex;
+
+ display: flex;
+ position: absolute;
+ top: 5%;
+ left: 17%;
+ transform: translate(-50%, -50%);
+}

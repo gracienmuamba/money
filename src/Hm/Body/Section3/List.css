@@ -1,0 +1,41 @@
+.wrp-list-section-3 {
+ display: flex;
+}
+.wrp-list-section-3 nav ul {
+ display: flex;
+ margin: 0;
+ padding: 0;
+ flex-wrap: wrap;
+ list-style: none;
+ width: 100%;
+}
+.wrp-list-section-3 nav ul li {
+ display: flex;
+ font-size: 1em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ padding: 0 2vw;
+ letter-spacing: 0px;
+}
+
+/* Small */
+.wrp-list-section-3-sm {
+ display: flex;
+}
+.wrp-list-section-3-sm nav ul {
+ display: flex;
+ margin: 0;
+ padding: 0;
+ flex-wrap: wrap;
+ list-style: none;
+ width: 100%;
+}
+.wrp-list-section-3-sm nav ul li {
+ display: flex;
+ font-size: 1em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: 0px;
+}

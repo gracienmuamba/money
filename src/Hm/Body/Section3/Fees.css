@@ -1,0 +1,30 @@
+.flex-fees {
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ align-items: center;
+
+ width: 100%;
+ max-width: 22em;
+ height: 10em;
+}
+.flex-fees h3 {
+ display: flex;
+ font-size: 1em;
+ font-weight: 500;
+ font-family: var(--font-inter);
+ text-align: center;
+ line-height: 1;
+ letter-spacing: 0px;
+ margin-top: 1vh;
+}
+.flex-fees p {
+ display: flex;
+ font-size: 0.9em;
+ font-weight: 400;
+ font-family: var(--font-inter);
+ line-height: 1;
+ letter-spacing: 0px;
+ text-align: center;
+ color: #7c7c7c;
+}

@@ -1,0 +1,33 @@
+.ima-section-2 {
+ display: flex;
+}
+.ima-section-2 img {
+ width: 70ch;
+ height: 95vh;
+ object-fit: cover;
+ object-position: 70%;
+ border-radius: 2em;
+}
+
+.ima-section-2-md {
+ display: flex;
+}
+.ima-section-2-md img {
+ width: 55vw;
+ height: 60vw;
+ object-fit: cover;
+ object-position: 70%;
+ border-radius: 2em;
+}
+
+.ima-section-2-sm {
+ display: flex;
+ padding: 0.1em;
+}
+.ima-section-2-sm img {
+ width: 100%;
+ height: 85vh;
+ object-fit: cover;
+ border-radius: 2em;
+ object-position: 70%;
+}

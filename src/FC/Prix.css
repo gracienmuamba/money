@@ -1,0 +1,28 @@
+.wrp-prix-withdraw {
+ display: flex;
+ flex-direction: column;
+ margin-top: 4vh;
+}
+.wrp-prix-withdraw span {
+ display: flex;
+ font-size: 5em;
+ font-weight: 500;
+ white-space: nowrap;
+ font-family: var(--text-family);
+ letter-spacing: -5.5px;
+}
+
+/* Small  */
+.wrp-prix-withdraw-sm {
+ display: flex;
+ flex-direction: column;
+ margin-top: 4vh;
+}
+.wrp-prix-withdraw-sm span {
+ display: flex;
+ font-size: 2.8em;
+ font-weight: 500;
+ white-space: nowrap;
+ font-family: var(--text-family);
+ letter-spacing: -4.5px;
+}

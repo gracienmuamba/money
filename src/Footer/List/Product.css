@@ -1,0 +1,36 @@
+.wrp-product-list {
+ display: flex;
+ flex-direction: column;
+ justify-content: start;
+ align-items: start;
+ width: 100%;
+ margin-top: 1em;
+}
+.wrp-product-list ul .title-list {
+ display: flex;
+ font-size: 1em;
+ font-family: "Louis";
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: 0.1px;
+ margin-bottom: 1em;
+
+ color: rgb(201, 200, 200);
+}
+.wrp-product-list ul {
+ list-style: none;
+ justify-content: start;
+ align-items: flex-start;
+ margin: 0;
+ padding: 0;
+}
+.wrp-product-list ul li {
+ display: flex;
+ font-size: 0.3em;
+ font-weight: 300;
+ margin: 0 1vw;
+ white-space: nowrap;
+ line-height: 1.5;
+ font-family: "Loius";
+ letter-spacing: 0.1px;
+}

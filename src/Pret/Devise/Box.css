@@ -1,0 +1,4 @@
+.box-devise-pret {
+ display: flex;
+ flex-direction: column;
+}

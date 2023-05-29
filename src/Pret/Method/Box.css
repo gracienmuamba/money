@@ -1,0 +1,7 @@
+.wrp-box-pret-method {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ width: 100%;
+ max-width: 15em;
+}

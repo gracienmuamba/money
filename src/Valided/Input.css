@@ -1,0 +1,67 @@
+.wrp-input-valided {
+ display: flex;
+}
+.wrp-input-valided form {
+ display: flex;
+ flex-direction: column;
+ max-width: 30vw;
+ width: 100%;
+ gap: 1.5em;
+
+ position: absolute;
+ top: 80%;
+ left: 50%;
+
+ transform: translate(-50%, -50%);
+}
+.wrp-input-valided form input {
+ display: flex;
+ font-size: 1.4em;
+ outline: none;
+ border: none;
+ border-radius: 0.123em;
+ text-align: center;
+ background: rgba(157, 161, 164, 0.351);
+}
+.wrp-input-valided form label {
+ display: flex;
+ font-size: 0.9em;
+ font-weight: 300;
+ line-height: 0.1;
+ letter-spacing: 0.7px;
+}
+
+/* small input */
+.wrp-input-valided-sm {
+ display: flex;
+ flex-direction: column;
+
+ position: absolute;
+ top: 80%;
+ left: 50%;
+
+ width: 100%;
+ max-width: 95vw;
+ transform: translate(-50%, -50%);
+}
+.wrp-input-valided-sm form {
+ display: flex;
+ flex-direction: column;
+ gap: 1.5em;
+}
+.wrp-input-valided-sm form label {
+ display: flex;
+ font-size: 0.9em;
+ font-weight: 300;
+ line-height: 0.1;
+ letter-spacing: 1px;
+}
+.wrp-input-valided-sm form input {
+ display: flex;
+ font-size: 1.4em;
+ outline: none;
+ border: none;
+ border-radius: 0.1em;
+ text-align: center;
+ background: rgba(153, 175, 189, 0.351);
+}

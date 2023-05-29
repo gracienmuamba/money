@@ -1,0 +1,66 @@
+/* Title Brokers */
+.wrp-title-hm-broker {
+ display: flex;
+ flex-direction: column;
+
+ justify-content: start;
+ align-items: start;
+
+ position: absolute;
+
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+
+ width: 100%;
+ max-width: 30em;
+}
+.wrp-title-hm-broker h1 {
+ display: flex;
+ font-size: 2em;
+ font-weight: 300;
+ line-height: 1;
+ font-family: var(--text-family);
+ letter-spacing: 0px;
+}
+.wrp-title-hm-broker p {
+ display: flex;
+ font-size: var(--para-small);
+ font-weight: 300;
+ line-height: 1.1;
+ font-family: var(--text-family);
+ letter-spacing: 0px;
+}
+/* Title Brokers Small*/
+.wrp-title-hm-broker-sm {
+ display: flex;
+ flex-direction: column;
+
+ justify-content: start;
+ align-items: start;
+
+ position: absolute;
+
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+
+ width: 100%;
+ max-width: 90vw;
+}
+.wrp-title-hm-broker-sm h1 {
+ display: flex;
+ font-size: 2em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: 0px;
+}
+.wrp-title-hm-broker-sm p {
+ display: flex;
+ font-size: var(--para-small);
+ font-family: var(--text-family);
+ font-weight: 300;
+ line-height: 1.2;
+ letter-spacing: 0px;
+}

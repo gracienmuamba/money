@@ -1,0 +1,20 @@
+.wrp-logout {
+ display: flex;
+ flex-direction: column;
+
+ justify-content: start;
+ align-items: flex-start;
+
+ width: 100%;
+ padding: 5vh 2em;
+}
+.wrp-logout-sm {
+ display: flex;
+ flex-direction: column;
+
+ justify-content: start;
+ align-items: flex-start;
+
+ width: 100%;
+ padding: 5vh .5em;
+}

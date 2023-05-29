@@ -1,0 +1,14 @@
+.section-2-flex {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ width: 100%;
+}
+
+.section-2-flex-sm {
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ align-items: center;
+ width: 100%;
+}

@@ -1,0 +1,9 @@
+.view-nav-pret {
+ display: flex;
+}
+.view-nav-pret img {
+ height: 3em;
+ width: 3em;
+ cursor: pointer;
+ object-fit: cover;
+}

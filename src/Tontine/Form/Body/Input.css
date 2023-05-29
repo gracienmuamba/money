@@ -1,0 +1,10 @@
+.anima-txted {
+ display: flex;
+ font-size: 1em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: 0px;
+ margin-top: 1ch;
+ color: #ffb703;
+}

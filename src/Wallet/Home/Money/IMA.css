@@ -1,0 +1,9 @@
+.other-ima-wallet {
+ display: flex;
+ margin-right: 0.3em;
+}
+.other-ima-wallet img {
+ height: 1.5em;
+ width: 1.5em;
+ object-fit: cover;
+}

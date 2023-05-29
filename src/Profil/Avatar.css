@@ -1,0 +1,86 @@
+:root {
+ --color-avatar: #000;
+}
+
+.wrp-avatar-profil {
+ display: flex;
+ flex-direction: column;
+
+ width: 100%;
+ margin-bottom: 5vh;
+
+ justify-content: center;
+ align-items: center;
+}
+.avatar-circle-profil {
+ display: flex;
+ position: relative;
+ color: var(--color-avatar);
+}
+
+.wrp-profil-avatar-user {
+ display: flex;
+ flex-direction: column;
+
+ justify-content: center;
+ align-items: center;
+
+ width: 100%;
+}
+.wrp-profil-avatar-user .profile-user {
+ display: flex;
+ position: relative;
+
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+ background-color: transparent;
+}
+.wrp-profil-avatar-user .profile-user img {
+ display: flex;
+ height: 4em;
+ width: 4em;
+ border-radius: 100%;
+ border: none;
+ background: var(--bg-avatar-yellow);
+ object-fit: cover;
+}
+
+.wrp-profil-avatar-user button {
+ display: flex;
+
+ justify-content: center;
+ align-items: center;
+
+ gap: 0.5em;
+ border: none;
+ outline: none;
+ border-radius: 1em;
+ padding: 0.4em 1.3em;
+ color: #cca43b;
+ background-color: #fff8e1;
+}
+
+.wrp-profil-avatar-user button span {
+ font-size: 0.9em;
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: 0px;
+ font-family: var(--text-family);
+}
+
+.wrp-profil-avatar-user .profile-user .icon-camera-profil {
+ position: absolute;
+ z-index: 1;
+}
+
+/* small view */
+.wrp-avatar-profil-sm {
+ display: flex;
+ margin-bottom: 5vh;
+}
+.avatar-circle-profil-sm {
+ display: flex;
+ position: relative;
+ color: var(--color-avatar);
+}

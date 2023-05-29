@@ -1,0 +1,42 @@
+.wrp-quote-signin {
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ align-items: center;
+
+ position: absolute;
+ top: 20%;
+ left: 50%;
+
+ transform: translate(-50%, -50%);
+}
+.wrp-quote-signin p {
+ display: flex;
+ font-weight: 300;
+ text-align: start;
+ font-family: var(--text-family);
+ width: 100%;
+ max-width: 25vw;
+ color: rgb(172, 172, 172);
+}
+
+/* small */
+.wrp-quote-signin-sm {
+ display: flex;
+ flex-direction: row;
+ width: 100%;
+ max-width: 95vw;
+
+ position: absolute;
+ top: 15%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+}
+.wrp-quote-signin-sm p {
+ display: flex;
+ font-size: 1em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ text-align: start;
+ color: rgb(172, 172, 172);
+}

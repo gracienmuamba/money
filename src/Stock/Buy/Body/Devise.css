@@ -1,0 +1,10 @@
+.devise-ima-switch {
+ display: flex;
+}
+.devise-ima-switch img {
+ display: flex;
+ height: 2.7em;
+ width: 2.7em;
+ border-radius: 100%;
+ object-fit: cover;
+}

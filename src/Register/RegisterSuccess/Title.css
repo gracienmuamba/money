@@ -1,0 +1,19 @@
+.wrp-title-form-success {
+ display: flex;
+ flex-direction: column;
+
+ position: absolute;
+ top: 5%;
+ left: 50%;
+
+ transform: translate(-50%, -50%);
+}
+.wrp-title-form-success h1 {
+ display: flex;
+ font-size: 1em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ text-align: center;
+ line-height: 1;
+ letter-spacing: 0.1px;
+}

@@ -1,0 +1,32 @@
+.wrp-link-withdraw {
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ max-width: 20em;
+
+ position: absolute;
+ top: 80%;
+ left: 50%;
+
+ transform: translate(-50%, -50%);
+}
+.wrp-link-withdraw .margin-link-button {
+ margin-top: 1.6vh;
+}
+
+.wrp-link-withdraw-sm {
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ max-width: 96vw;
+
+ position: absolute;
+ top: 80%;
+ left: 50%;
+
+ transform: translate(-50%, -50%);
+}
+
+.wrp-link-withdraw-sm .margin-link-button {
+ margin-top: 1.3vh;
+}

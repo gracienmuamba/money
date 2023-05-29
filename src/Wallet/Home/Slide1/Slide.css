@@ -1,0 +1,24 @@
+/* .bg-image-wallet {
+ display: flex;
+ min-height: 100vh;
+ position: absolute;
+}
+
+.bg-image-wallet::before {
+ content: "";
+ display: flex;
+ flex-direction: column;
+ background-image: url(/src/images/abstract.jpg);
+ background-size: cover;
+ background-repeat: no-repeat;
+
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+
+ background-color: black;
+
+ opacity: 0.5;
+} */

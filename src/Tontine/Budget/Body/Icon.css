@@ -1,0 +1,9 @@
+.icon-budget-tontine-bd {
+ display: flex;
+}
+
+.icon-budget-tontine-bd img {
+ height: 4em;
+ width: 4em;
+ object-fit: cover;
+}

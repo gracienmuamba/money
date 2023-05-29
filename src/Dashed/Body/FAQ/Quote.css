@@ -1,0 +1,12 @@
+.wrp-faq-quote {
+ display: flex;
+ color: #d62839;
+}
+.wrp-faq-quote p {
+ display: flex;
+ font-size: 1.1em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: 0.5px;
+}

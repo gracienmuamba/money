@@ -1,0 +1,42 @@
+.wrp-form-input-update-code {
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+}
+.wrp-form-input-update-code input {
+ display: flex;
+ flex-direction: column;
+ font-size: 0.8em;
+ font-weight: 400;
+ padding: 0.8em;
+ font-family: "AntipastoPro";
+ line-height: 1.5;
+ letter-spacing: 5px;
+ width: 27em;
+ text-align: center;
+ border: none;
+ margin-bottom: 2vh;
+ color: black;
+ background: rgba(201, 201, 201, 0.413);
+}
+
+.wrp-form-input-update-code-sm {
+ display: flex;
+ flex-direction: row;
+ width: 100%;
+}
+.wrp-form-input-update-code-sm input {
+ display: flex;
+ flex-direction: column;
+ font-size: 0.8em;
+ font-weight: 400;
+ font-family: "AntipastoPro";
+ line-height: 3;
+ text-align: center;
+ letter-spacing: 5px;
+ width: 100%;
+ border: none;
+ margin-bottom: 2vh;
+ color: black;
+ background: rgba(201, 201, 201, 0.413);
+}

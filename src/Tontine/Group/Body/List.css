@@ -1,0 +1,26 @@
+.list-group-item-bd-tontine {
+ display: flex;
+ font-size: 1.199em;
+ font-weight: 300;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: 0px;
+ color: #8b939a;
+}
+
+.list-group-item-bd-title {
+ display: flex;
+ font-size: 1.299em;
+ font-weight: 300;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: 0px;
+ color: #00a6fb;
+
+ padding-left: 3%;
+
+ margin-top: 5vh;
+ margin-bottom: 3vh;
+}

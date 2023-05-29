@@ -1,0 +1,29 @@
+.wrp-qt-buy-brokers {
+ display: flex;
+ width: 100%;
+ max-width: 26em;
+ margin-bottom: 2vh;
+}
+.wrp-qt-buy-brokers p {
+ display: flex;
+ font-size: 1.198em;
+ font-weight: 300;
+ line-height: 1.2;
+ text-align: start;
+ letter-spacing: 0px;
+}
+
+/* Small */
+.wrp-qt-buy-brokers-sm {
+ display: flex;
+ width: 100%;
+ padding: 1em;
+}
+.wrp-qt-buy-brokers-sm p {
+ display: flex;
+ font-size: 1.175em;
+ font-weight: 300;
+ line-height: 1.1;
+ text-align: start;
+ letter-spacing: 0.5px;
+}

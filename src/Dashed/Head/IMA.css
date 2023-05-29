@@ -1,0 +1,13 @@
+.head-img-dashed {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+
+ cursor: pointer;
+}
+.head-img-dashed img {
+ display: flex;
+ width: 3.5em;
+ height: 3.5em;
+ object-fit: cover;
+}

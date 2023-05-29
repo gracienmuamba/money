@@ -1,0 +1,30 @@
+.slide-money-small {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ align-items: center;
+ width: 100%;
+ padding: 0 3%;
+}
+.slide-money-small p {
+ display: flex;
+ font-size: 2em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: -1px;
+}
+
+.slide-money-small div {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.slide-money-small img {
+ height: 1.1em;
+ width: 1.1em;
+ object-fit: cover;
+ border-radius: 100%;
+ margin-right: 0.3em;
+}

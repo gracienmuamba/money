@@ -1,0 +1,23 @@
+:root {
+ --bg-avatar-yellow: transparent;
+}
+
+.profil-caise {
+ display: flex;
+}
+.profil-caise img {
+ display: flex;
+ height: 3em;
+ width: 3em;
+ border-radius: 100%;
+ border: none;
+ background: var(--bg-avatar-yellow);
+ object-fit: cover;
+ border: 0.1em solid white;
+}
+.profil-caise-flex {
+ display: flex;
+ gap: 0.5em;
+ justify-content: center;
+ align-items: center;
+}

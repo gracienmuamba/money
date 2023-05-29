@@ -1,0 +1,8 @@
+.section-4-ima {
+ display: flex;
+}
+.section-4-ima img {
+ height: 20vw;
+ width: 20vw;
+ object-fit: cover;
+}

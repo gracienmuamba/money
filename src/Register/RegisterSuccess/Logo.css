@@ -1,0 +1,29 @@
+.wrp-logo-region {
+ display: flex;
+ position: absolute;
+ top: 20%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+}
+.wrp-logo-region img {
+ display: flex;
+ width: 4em;
+ height: 4em;
+ object-fit: cover;
+}
+
+/* small region */
+.wrp-logo-region-sm {
+ display: flex;
+ position: absolute;
+
+ top: 30%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+}
+.wrp-logo-region-sm img {
+ display: flex;
+ width: 4em;
+ height: 4em;
+ object-fit: cover;
+}

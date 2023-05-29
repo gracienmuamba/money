@@ -1,0 +1,30 @@
+.btn-pret-asked {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+ max-width: 20em;
+ padding: 0 3%;
+ margin-top: 10vh;
+ padding-bottom: 5vh;
+}
+.btn-pret-asked button {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+
+ border-radius: 0.7em;
+ font-size: 1em;
+ letter-spacing: 1px;
+ white-space: nowrap;
+ width: 100%;
+
+ gap: 0.1em;
+ outline-style: none;
+ font-family: var(--text-family);
+
+ padding: 0.5em;
+ border: 0.1px solid var(--bgcolor-btn);
+ color: white;
+ background: var(--bgcolor-btn);
+}

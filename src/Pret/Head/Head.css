@@ -1,0 +1,9 @@
+:root {
+ --color-black-pret: #01161e;
+}
+
+.head-wallet {
+ display: flex;
+ flex-direction: column;
+ min-height: 100%;
+}

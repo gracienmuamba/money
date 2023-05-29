@@ -1,0 +1,24 @@
+.wrp-box-list-overview-bd-tontine {
+ display: flex;
+ flex-direction: column;
+ margin-top: 5ch;
+}
+.wrp-list-overview-bd-tontine {
+ display: flex;
+ flex-direction: row;
+
+ justify-content: space-between;
+ align-items: center;
+ width: 100%;
+}
+.wrp-list-overview-bd-tontine h4 {
+ display: flex;
+ font-size: 1.2405em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ /* margin: -2vh 0; */
+ letter-spacing: 0px;
+
+ color: #979dac;
+}

@@ -1,0 +1,12 @@
+.wrp-Btn-Register {
+ display: flex;
+ width: 100%;
+ max-width: 20em;
+ margin: 20vh 0;
+}
+.wrp-Btn-Register-sm {
+ display: flex;
+ margin: 20vh 0;
+ width: 100%;
+ max-width: 95vw;
+}

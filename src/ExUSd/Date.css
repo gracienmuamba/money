@@ -1,0 +1,46 @@
+/* .wrp-date-exchange {
+ display: flex;
+ flex-direction: column;
+
+ justify-content: center;
+ align-items: center;
+
+ position: absolute;
+ top: 55%;
+ left: 50%;
+ width: 100%;
+ max-width: 25vw;
+
+ transform: translate(-50%, -50%);
+}
+.wrp-date-exchange p {
+ display: flex;
+ font-size: 0.6em;
+ font-weight: 300;
+ line-height: 1.4;
+ text-align: center;
+ letter-spacing: 1px;
+}
+.wrp-date-exchange-sm {
+ display: flex;
+ flex-direction: column;
+
+ justify-content: center;
+ align-items: center;
+
+ position: absolute;
+ top: 55%;
+ left: 50%;
+ width: 100%;
+ max-width: 75vw;
+
+ transform: translate(-50%, -50%);
+}
+.wrp-date-exchange-sm p {
+ display: flex;
+ font-size: 0.6em;
+ font-weight: 300;
+ line-height: 1.4;
+ text-align: center;
+ letter-spacing: 1px;
+} */

@@ -1,0 +1,13 @@
+.title-devise-pret {
+ display: flex;
+ margin-top: 2vh;
+}
+
+.title-devise-pret h1 {
+ display: flex;
+ font-size: 1.2em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: 0px;
+}

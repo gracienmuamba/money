@@ -1,0 +1,116 @@
+:root {
+ --color-text-pret: black;
+}
+
+.wrp-main-prix-pret {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+ color: var(--color-text-pret);
+}
+.wrp-main-prix-pret span {
+ display: flex;
+ font-size: 4em;
+ font-family: var(--text-family);
+ letter-spacing: var(-text-family-spacing);
+ font-weight: 400;
+ line-height: 1;
+ white-space: nowrap;
+}
+.wrp-main-prix-pret .wrp-pret-row-percentage {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ width: 10em;
+}
+.wrp-main-prix-pret p {
+ display: flex;
+ margin-top: 3vh;
+ flex-direction: row;
+ width: 100%;
+
+ justify-content: start;
+ align-items: center;
+}
+.wrp-main-prix-pret p i {
+ display: flex;
+ font-size: 1em;
+ font-weight: 300;
+ line-height: 1;
+ font-family: var(--text-family);
+ letter-spacing: 0px;
+ margin-right: 0.3em;
+}
+.margin-pret-right {
+ margin-right: 2em;
+}
+
+.wrp-main-prix-pret .wrp-graph-head-pret {
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ justify-content: center;
+ align-items: center;
+}
+.wrp-main-prix-pret-sm .wrp-graph-head-pret {
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ justify-content: center;
+ align-items: center;
+}
+
+/* Small */
+.wrp-main-prix-pret-sm {
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ align-items: center;
+
+ color: var(--color-text-pret);
+}
+.wrp-main-prix-pret-sm span {
+ display: flex;
+ font-size: 2.5em;
+ font-family: var(--text-family);
+ letter-spacing: var(-text-family-spacing);
+ font-weight: 400;
+ line-height: 1;
+ white-space: nowrap;
+ margin-top: 2vh;
+}
+.wrp-main-prix-pret-sm .wrp-pret-row-percentage {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ width: 10em;
+}
+.wrp-main-prix-pret-sm p {
+ display: flex;
+ margin-top: 3vh;
+ flex-direction: row;
+ width: 100%;
+
+ justify-content: start;
+ align-items: center;
+}
+.wrp-main-prix-pret-sm p i {
+ display: flex;
+ font-size: 1em;
+ font-weight: 300;
+ line-height: 1;
+ font-family: var(--text-family);
+ letter-spacing: 0px;
+ margin-right: 0.3em;
+}
+
+.devise-pret-prix-dash {
+ display: flex;
+ font-size: 1.5em;
+ font-weight: 300;
+ line-height: 1;
+ font-family: var(--text-family);
+ letter-spacing: 1px;
+}

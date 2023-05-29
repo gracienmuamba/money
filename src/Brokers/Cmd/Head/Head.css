@@ -1,0 +1,132 @@
+.flex-head-list-cmds {
+ display: flex;
+}
+.flex-head-list-cmds header {
+ position: fixed;
+ top: 0;
+ z-index: 9999;
+ height: 6ch;
+ width: 100%;
+ background-color: var(--nav-cmd-bg);
+}
+.flex-head-list-cmds header li {
+ list-style: none;
+}
+.flex-head-list-cmds header .container {
+ width: 100%;
+ margin: auto;
+}
+.flex-head-list-cmds header .navbar {
+ display: flex;
+ width: 100%;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+}
+.flex-head-list-cmds header .navbar span {
+ display: flex;
+ font-size: 1.2em;
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: 0px;
+ font-family: var(--text-family);
+ color: whitesmoke;
+}
+.flex-head-list-cmds section {
+ display: flex;
+ flex-direction: column;
+ margin-top: 10vh;
+ width: 100%;
+ padding: 1em;
+}
+.flex-head-list-cmds section ul {
+ list-style: none;
+ margin: 0;
+ padding: 0;
+ width: 100%;
+}
+.flex-head-list-cmds section li {
+ margin-top: 3vh;
+ width: 100%;
+ border-bottom: 0.01em solid #cfd2cd;
+}
+
+.flex-head-list-cmds section input {
+ display: flex;
+ font-size: 1.2em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: 0px;
+}
+
+.flex-head-list-cmds .box-data-cmd-list {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ width: 100%;
+}
+.flex-head-list-cmds .box-data-cmd-list h2 {
+ display: flex;
+ font-size: 0.8em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ color: #219ebc;
+ line-height: 1;
+ letter-spacing: 0px;
+}
+
+.flex-head-list-cmds .box-data-cmd-operator {
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+}
+.flex-head-list-cmds .cmd-operator-title {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ align-items: flex-start;
+ width: 100%;
+}
+.flex-head-list-cmds .cmd-operator-title h3 {
+ display: flex;
+ font-size: 0.8em;
+ font-weight: 300;
+ color: #264653;
+
+ line-height: 1;
+ font-family: var(--text-family);
+ letter-spacing: 0px;
+}
+
+.flex-head-list-cmds .cmd-operator-title .cmd-operator-sub-title {
+ display: flex;
+ flex-direction: column;
+ justify-content: start;
+ align-items: start;
+}
+.flex-head-list-cmds .cmd-operator-title .cmd-operator-sub-title p {
+ display: flex;
+ font-size: 0.8em;
+ font-weight: 300;
+ line-height: 0;
+ font-family: var(--text-family);
+ letter-spacing: 0px;
+ color: #4361ee;
+}
+
+.flex-head-list-cmds .cmd-operator-title .cmd-operator-sub-title .flex-row-cmd {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ align-items: center;
+ width: 6em;
+}
+
+.flex-head-list-cmds .cmd-operator-title .cmd-operator-sub-title .flex-row-other-cmd {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ align-items: center;
+ width: 1em;
+}

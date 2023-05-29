@@ -1,0 +1,10 @@
+.wrp-ima-send {
+ display: flex;
+ margin: 3vh 0;
+}
+.wrp-ima-send img {
+ width: 4em;
+ height: 4em;
+ object-fit: cover;
+ border-radius: 50%;
+}

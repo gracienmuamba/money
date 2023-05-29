@@ -1,0 +1,16 @@
+.profil-dashed {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+.profil-dashed img {
+ height: 9em;
+ width: 9em;
+ object-fit: cover;
+ border: 0.2em solid #fff;
+
+ padding: 0.2em;
+
+ border-radius: 100%;
+}

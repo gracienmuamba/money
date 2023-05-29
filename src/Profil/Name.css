@@ -1,0 +1,49 @@
+:root {
+ --color-yellow: #9d4edd;
+}
+
+.wrp-name-profil {
+ display: flex;
+ width: 100%;
+ justify-content: center;
+ align-items: center;
+}
+.wrp-name-profil .wrp-boxname-profil {
+ display: flex;
+ flex-direction: row;
+ align-items: start;
+ justify-content: space-between;
+}
+.wrp-name-profil .wrp-boxname-profil h1 {
+ display: flex;
+ font-size: 1em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ line-height: 0.9;
+ letter-spacing: 0.1px;
+}
+.wrp-name-profil .wrp-boxname-profil h2 {
+ display: flex;
+ font-size: 1em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: 0.1px;
+ color: var(--color-yellow);
+}
+.wrp-name-profil .wrp-boxname-profil p {
+ display: flex;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1.1;
+ letter-spacing: 0.1px;
+ color: grey;
+}
+.profil-name-identity {
+ display: flex;
+ flex-direction: column;
+ margin-left: 1.2em;
+}
+.cursor-pin {
+ cursor: pointer;
+}

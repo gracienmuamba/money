@@ -1,0 +1,12 @@
+.profil-prix-pret-dash div {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+.profil-prix-pret-dash img {
+ height: 30ch;
+ width: 80%;
+ object-fit: cover;
+ padding: 0.2em;
+}

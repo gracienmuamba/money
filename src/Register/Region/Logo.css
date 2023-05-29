@@ -1,0 +1,21 @@
+.wrp-logo-regio {
+ display: flex;
+}
+.wrp-logo-regio img {
+ display: flex;
+ width: 4em;
+ height: 4em;
+ object-fit: cover;
+}
+
+/* small regio */
+.wrp-logo-regio-sm {
+ display: flex;
+ margin-top: 20vh;
+}
+.wrp-logo-regio-sm img {
+ display: flex;
+ width: 4em;
+ height: 4em;
+ object-fit: cover;
+}

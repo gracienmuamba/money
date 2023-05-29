@@ -1,0 +1,19 @@
+.wrp-buy-brokers-thank {
+ display: flex;
+ position: relative;
+ flex-direction: column;
+
+ width: 100%;
+ height: 100vh;
+
+ color: var(--cl-color);
+ background-color: var(--bg-color);
+}
+.wrp-buy-brokers-thank-sub {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+ height: 100%;
+}

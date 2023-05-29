@@ -1,0 +1,11 @@
+:root {
+ --purple: #022b3a;
+}
+.icon-pin {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ font-family: var(--text-family);
+ align-items: center;
+ color: var(--purple);
+}

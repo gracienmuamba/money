@@ -1,0 +1,35 @@
+.wrp-title-exchange-fc {
+ display: flex;
+
+ position: absolute;
+ top: 2%;
+ left: 50%;
+
+ transform: translate(-50%, 50%);
+}
+.wrp-title-exchange-fc h2 {
+ display: flex;
+ font-size: 1em;
+ font-weight: 300;
+ line-height: 1;
+ font-family: var(--text-family);
+ letter-spacing: 0.1px;
+}
+
+.wrp-title-exchange-fc-sm {
+ display: flex;
+
+ position: absolute;
+ top: 1.5%;
+ left: 50%;
+
+ transform: translate(-50%, 50%);
+}
+.wrp-title-exchange-fc-sm h2 {
+ display: flex;
+ font-size: 1em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: 0.1px;
+}

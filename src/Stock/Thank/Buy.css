@@ -1,0 +1,13 @@
+.wrp-buy-stock-thank {
+ display: flex;
+ position: relative;
+
+ width: 100%;
+ height: 100vh;
+
+ justify-content: center;
+ align-items: center;
+
+ color: var(--cl-color);
+ background-color: var(--bg-color);
+}

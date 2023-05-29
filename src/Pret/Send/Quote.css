@@ -1,0 +1,16 @@
+.quote-send-pret {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+ max-width: 25em;
+}
+.quote-send-pret p {
+ display: flex;
+ font-size: 1.2em;
+ font-family: var(--text-family);
+ text-align: center;
+ font-weight: 300;
+ line-height: 1.2;
+ letter-spacing: 0px;
+}

@@ -1,0 +1,5 @@
+/* Wallet css  */
+.wrp-wallet {
+ display: flex;
+ flex-direction: column;
+}

@@ -1,0 +1,37 @@
+.wrp-pret-btn-next {
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ padding: 0 30%;
+ margin-top: 30vh;
+}
+.wrp-pret-btn-next span {
+ display: flex;
+ font-size: 1em;
+ padding: 0.2em;
+
+ font-weight: 300;
+ text-align: center;
+ line-height: 1.2;
+ letter-spacing: 0px;
+}
+.wrp-pret-btn-next-sm {
+ display: flex;
+ flex-direction: column;
+
+ width: 100%;
+ margin-top: 25vh;
+ padding: 0.5em;
+ justify-content: center;
+ align-items: center;
+}
+.wrp-pret-btn-next-sm span {
+ display: flex;
+ flex-direction: column;
+ font-size: var(--para-small);
+ text-align: center;
+ padding: 0.4em;
+ cursor: pointer;
+ line-height: 1;
+ letter-spacing: 0px;
+}

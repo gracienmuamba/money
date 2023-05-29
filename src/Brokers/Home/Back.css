@@ -1,0 +1,45 @@
+.wrp-back-brokers {
+ display: flex;
+}
+.wrp-back-box-brokers {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+ cursor: pointer;
+}
+
+.wrp-back-box-brokers .color-box-icons-edit {
+ color: crimson;
+}
+
+.wrp-back-brokers .wrp-back-box-brokers span {
+ display: flex;
+ font-size: 1.2em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: 0px;
+ margin-left: -0.3em;
+ white-space: nowrap;
+}
+
+.wrp-back-long-brokers {
+ display: flex;
+}
+.wrp-back-long-box-brokers {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+ cursor: pointer;
+}
+.wrp-back-long-brokers .wrp-back-box-brokers span {
+ display: flex;
+ font-size: 1.2em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: 0px;
+ white-space: nowrap;
+}

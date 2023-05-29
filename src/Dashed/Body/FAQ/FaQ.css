@@ -1,0 +1,16 @@
+.wrp-faq {
+ display: flex;
+ justify-content: start;
+ align-items: flex-start;
+
+ width: 100%;
+ padding: 0 2em;
+}
+.wrp-faq-sm {
+ display: flex;
+ justify-content: start;
+ align-items: flex-start;
+
+ width: 100%;
+ padding: 0 0.5em;
+}

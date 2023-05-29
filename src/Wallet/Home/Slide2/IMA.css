@@ -1,0 +1,8 @@
+.ima-wallet-devise-slide {
+ display: flex;
+}
+.ima-wallet-devise-slide img {
+ height: 1.5em;
+ width: 1.5em;
+ object-fit: cover;
+}

@@ -1,0 +1,14 @@
+.wrp-search-stock {
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ padding: 0 3%;
+}
+.wrp-search-stock input {
+ display: flex;
+ font-size: 1em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: 0px;
+}

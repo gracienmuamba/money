@@ -1,0 +1,26 @@
+.wrp-logo-register {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ margin: 30vh 0;
+}
+.wrp-logo-register img {
+ display: flex;
+ width: 4em;
+ height: 4em;
+ object-fit: cover;
+}
+
+/* small register */
+.wrp-logo-register-sm {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ margin: 30vh 0;
+}
+.wrp-logo-register-sm img {
+ display: flex;
+ width: 4em;
+ height: 4em;
+ object-fit: cover;
+}

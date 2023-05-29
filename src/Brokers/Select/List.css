@@ -1,0 +1,12 @@
+.list-unite-select {
+ display: flex;
+ width: 100%;
+ justify-content: center;
+ align-items: center;
+}
+.list-unite-select nav ul {
+ display: flex;
+ flex-direction: column;
+ gap: 0.5em;
+ list-style: none;
+}

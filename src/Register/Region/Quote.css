@@ -1,0 +1,32 @@
+.wrp-quote-region {
+ display: flex;
+ flex-direction: row;
+
+ width: 100%;
+ max-width: 25em;
+}
+.wrp-quote-region p {
+ display: flex;
+ font-size: 1em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ line-height: 1;
+ text-align: center;
+}
+
+/* small */
+.wrp-quote-region-sm {
+ display: flex;
+ flex-direction: row;
+ width: 100%;
+ max-width: 75vw;
+}
+.wrp-quote-region-sm p {
+ display: flex;
+ font-size: 1em;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: 0px;
+ font-weight: 300;
+ text-align: center;
+}

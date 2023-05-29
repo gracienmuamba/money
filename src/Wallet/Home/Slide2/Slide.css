@@ -1,0 +1,8 @@
+.bg-image-wallet {
+ display: flex;
+ flex-direction: column;
+ background-image: url(/src/images/abstract.jpg);
+ height: 100vh;
+ background-size: cover;
+ background-repeat: no-repeat;
+}

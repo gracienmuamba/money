@@ -1,0 +1,19 @@
+.navbar-top-broker {
+ display: flex;
+ justify-content: start;
+ align-items: start;
+ width: 100%;
+}
+.navbar-top-broker nav {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ width: 100%;
+ padding: 1.5vh 0.5em;
+}
+.navbar-top-broker nav img {
+ height: 3em;
+ width: 3em;
+ object-fit: cover;
+ cursor: pointer;
+}

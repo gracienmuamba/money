@@ -1,0 +1,14 @@
+.back-icon-text {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.back-icon-text p {
+ display: flex;
+ font-size: 1em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: 0px;
+}

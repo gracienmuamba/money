@@ -1,0 +1,46 @@
+.input-withdraw {
+ display: flex;
+ flex-direction: column;
+
+ justify-content: center;
+ align-items: center;
+
+ height: 100%;
+ width: 100%;
+ max-width: 21em;
+}
+.input-withdraw form {
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ /* margin-top: 2vh; */
+}
+.input-withdraw input {
+ display: flex;
+ outline: none;
+ border: none;
+ font-family: var(--text-family);
+ padding: 0.2vh 0;
+ font-size: 3.3em;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+
+ font-weight: 100;
+ text-align: center;
+ letter-spacing: 1px;
+ border-radius: 0.3em;
+}
+.input-withdraw h2 {
+ display: flex;
+ font-size: 1.2em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: 0px;
+}
+
+.input-withdraw button {
+ margin-top: 2vh;
+ /* margin-bottom: 5vh; */
+}

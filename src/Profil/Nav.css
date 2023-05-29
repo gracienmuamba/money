@@ -1,0 +1,8 @@
+.wrp-nav-profil {
+ display: flex;
+ width: 100%;
+ justify-content: space-between;
+ align-items: center;
+ height: 10vh;
+ padding: 0 5%;
+}

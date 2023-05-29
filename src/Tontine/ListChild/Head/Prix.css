@@ -1,0 +1,13 @@
+.profil-tontine-navs-prix {
+ display: flex;
+}
+
+.profil-tontine-navs-prix h4 {
+ display: flex;
+ font-size: 1.11em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: 0px;
+ color: grey;
+}

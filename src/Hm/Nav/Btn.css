@@ -1,0 +1,21 @@
+.Btn-Connect button{
+  display: flex;
+ justify-content: center;
+ align-items: center;
+
+ border-radius: 0.7em;
+ font-size: 1em;
+ letter-spacing: 1px;
+ white-space: nowrap;
+
+ gap: 0.1em;
+ outline-style: none;
+ font-family: var(--text-family);
+
+ padding: 0.5em;
+ width: 100%;
+
+ color: var(--color-btn);
+ border: 0.1px solid var(--bgcolor-btn);
+ background: var(--bgcolor-btn);
+}

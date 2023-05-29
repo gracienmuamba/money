@@ -1,0 +1,44 @@
+.view-name-caise {
+ display: flex;
+ flex-direction: column;
+}
+.view-name-caise h2 {
+ display: flex;
+ font-size: 1.2em;
+ font-family: var(--text-family);
+ font-weight: 900;
+ line-height: 1;
+ letter-spacing: 0.1px;
+ text-align: center;
+
+ white-space: nowrap;
+}
+.view-name-caise span {
+ display: flex;
+ font-size: 1.2em;
+ font-family: var(--text-family);
+ font-weight: 900;
+ line-height: 1;
+ letter-spacing: 0.1px;
+ white-space: nowrap;
+}
+
+/* small */
+.view-name-caise-sm {
+ display: flex;
+ flex-direction: column;
+
+ position: absolute;
+ top: 30%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+}
+.view-name-caise-sm h2 {
+ display: flex;
+ font-size: 1.3em;
+ font-weight: 900;
+ white-space: nowrap;
+ line-height: 1;
+ font-family: var(--text-family);
+ letter-spacing: 0.1px;
+}

@@ -1,0 +1,21 @@
+.wrp-logo-footer-money {
+ display: flex;
+}
+.wrp-logo-footer-money img {
+ width: 3em;
+ height: 3em;
+ object-fit: cover;
+}
+
+/* small footer-money */
+.wrp-logo-footer-money-sm {
+ display: flex;
+ justify-content: start;
+ align-items: start;
+}
+.wrp-logo-footer-sm img {
+ display: flex;
+ width: 2em;
+ height: 2em;
+ object-fit: cover;
+}

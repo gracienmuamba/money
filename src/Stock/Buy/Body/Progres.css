@@ -1,0 +1,26 @@
+.progressbar-stock {
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ justify-content: center;
+ align-items: center;
+ margin-top: 3vh;
+}
+.progressbar {
+ position: relative;
+ overflow: hidden;
+ width: 18em;
+ height: 20px;
+ border-radius: 20px;
+ background-color: #abb;
+}
+.progressPercent {
+ font-size: 1em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ position: absolute;
+ left: 50%;
+ top: 50%;
+ transform: translate(-50%, -50%);
+ color: #fff;
+}

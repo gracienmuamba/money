@@ -1,0 +1,10 @@
+.wrp-pret-ima-method {
+ display: flex;
+ margin-bottom: 4vh;
+}
+
+.wrp-pret-ima-method img {
+ height: 5em;
+ width: 5em;
+ object-fit: cover;
+}

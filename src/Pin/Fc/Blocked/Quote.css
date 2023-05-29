@@ -1,0 +1,40 @@
+/* .wrp-quote-send-money {
+ display: flex;
+ flex-direction: row;
+ justify-content: start;
+ align-items: start;
+
+ position: absolute;
+ top: 50%;
+ left: 50%;
+
+ transform: translate(-50%, -50%);
+}
+.wrp-quote-send-money p {
+ display: flex;
+ font-weight: 300;
+ text-align: center;
+ width: 100%;
+ max-width: 340px;
+}
+
+small
+.wrp-quote-send-money-sm {
+ display: flex;
+ flex-direction: row;
+ width: 100%;
+ max-width: 95vw;
+
+ justify-content: center;
+ align-items: center;
+
+ position: absolute;
+ top: 45%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+}
+.wrp-quote-send-money-sm p {
+ display: flex;
+ font-weight: 300;
+ text-align: start;
+} */

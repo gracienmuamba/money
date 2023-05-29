@@ -1,0 +1,30 @@
+.wrp-input-broker {
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ padding: 1em;
+}
+.wrp-input-broker form {
+ display: flex;
+ flex-direction: column;
+}
+.wrp-input-broker form input {
+ display: flex;
+ flex-direction: column;
+ font-size: 2em;
+ font-weight: 400;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: 1px;
+ width: 100%;
+ border: none;
+
+ margin-top: 1vh;
+
+ border-bottom: 1px solid #30343f;
+ color: #1c2321;
+}
+
+.wrp-input-broker form button {
+ margin-top: 2vh;
+}

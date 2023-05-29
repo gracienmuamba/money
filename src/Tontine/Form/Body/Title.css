@@ -1,0 +1,20 @@
+/* .title-bd-tontine {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ margin-bottom: 20vh;
+}
+.title-bd-tontine h1 {
+ display: flex;
+ font-size: 1.4399em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: 0px;
+}
+.title-bd-tontine img {
+ height: 5em;
+ width: 5em;
+ object-fit: cover;
+} */

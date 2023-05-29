@@ -1,0 +1,15 @@
+.stock-select {
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ justify-content: center;
+ align-items: center;
+}
+
+.stock-select form {
+ margin-top: 13vh;
+}
+
+.stock-select button {
+ margin-top: 2vh;
+}

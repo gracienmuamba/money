@@ -1,0 +1,14 @@
+.wrp-ima-send-valide {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+.wrp-ima-send-valide p {
+ display: flex;
+ font-size: 0.7em;
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: 0px;
+ font-family: var(--text-family);
+}

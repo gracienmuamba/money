@@ -1,0 +1,82 @@
+/* :root {
+ --color-name-yellow: #bfa40b;
+}
+
+.wrp-name-phone {
+ display: flex;
+}
+.wrp-name-phone .wrp-boxname-phone {
+ display: flex;
+ flex-direction: row;
+ align-items: start;
+ justify-content: space-between;
+ gap: 1em;
+}
+.wrp-name-phone .wrp-boxname-phone h1 {
+ display: flex;
+ font-size: 1em;
+ font-weight: 300;
+ line-height: 0.9;
+ letter-spacing: 0.1px;
+}
+.wrp-name-phone .wrp-boxname-phone h2 {
+ display: flex;
+ font-size: 1em;
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: 0.1px;
+ color: var(--color-name-yellow);
+}
+.wrp-name-phone .wrp-boxname-phone p {
+ display: flex;
+ font-weight: 300;
+ line-height: 1.1;
+ width: 100%;
+ letter-spacing: 0.1px;
+ color: grey;
+}
+.phone-name-identity {
+ display: flex;
+ flex-direction: column;
+ margin-left: 1.2em;
+}
+
+small
+.wrp-name-phone-sm {
+ display: flex;
+}
+.wrp-name-phone-sm .wrp-boxname-phone-sm {
+ display: flex;
+ flex-direction: row;
+ align-items: start;
+ justify-content: space-between;
+ gap: 1em;
+}
+.wrp-name-phone-sm .wrp-boxname-phone-sm h1 {
+ display: flex;
+ font-size: 1em;
+ font-weight: 300;
+ line-height: 0.9;
+ letter-spacing: 0.1px;
+}
+.wrp-name-phone-sm .wrp-boxname-phone-sm h2 {
+ display: flex;
+ font-size: 1em;
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: 0.1px;
+ color: var(--color-name-yellow);
+}
+.wrp-name-phone-sm .wrp-boxname-phone-sm p {
+ display: flex;
+ font-weight: 300;
+ line-height: 1.1;
+ width: 100%;
+ color: grey;
+ letter-spacing: 0.1px;
+}
+.phone-name-identity-sm {
+ display: flex;
+ flex-direction: column;
+ margin-left: 1.2em;
+} */

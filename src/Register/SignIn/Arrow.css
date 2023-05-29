@@ -1,0 +1,10 @@
+.wrp-arrw {
+ display: flex;
+ cursor: pointer;
+}
+.wrp-arrw-sm {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ cursor: pointer;
+}

@@ -1,0 +1,43 @@
+import React from 'react';
+import Media from 'react-media';
+import { prixHash } from '../Pin/Usd/Blocked/Input';
+import ReturnIMAFlags from './Flags';
+
+// Name withdraw sign
+export default function ReturnSolde() {
+ return (
+  <Media
+   queries={{
+    small: '(max-width: 599px)',
+    medium: '(min-width: 600px) and (max-width:1199px)',
+    large: '(min-width: 1200px)',
+   }}>
+   {matches => (
+    <>
+     {matches.small && <ScreenSmall />}
+     {matches.medium && <ScreenLarge />}
+     {matches.large && <ScreenLarge />}
+    </>
+   )}
+  </Media>
+ )
+};
+
+export const ScreenLarge = () => (
+ <div className='wrp-success-withd-prix'>
+  <ViewLogo />
+ </div>
+);
+export const ScreenSmall = () => (
+ <div className='wrp-success-withd-prix-sm'>
+  <ViewLogo />
+ </div>
+);
+export const ViewLogo = () => {
+ return (
+  <>
+   <ReturnIMAFlags IMA={'/img/dollars.png'} />
+   <h2>{prixHash.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&, ')}</h2>
+  </>
+ );
+};

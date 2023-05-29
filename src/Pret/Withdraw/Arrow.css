@@ -1,0 +1,22 @@
+.wrp-arrow-pret-profil {
+ display: flex;
+ cursor: pointer;
+
+ position: absolute;
+ top: 5%;
+ left: 8%;
+
+ transform: translate(-50%, -50%);
+ /* color: rgba(116, 116, 116, 0.995); */
+}
+.wrp-arrow-pret-profil-sm {
+ display: flex;
+
+ display: flex;
+ position: absolute;
+ top: 5%;
+ left: 5%;
+ transform: translate(-50%, -50%);
+
+ /* color: rgba(116, 116, 116, 0.995); */
+}

@@ -1,0 +1,74 @@
+.wrp-form-input-sign {
+ display: flex;
+ flex-direction: column;
+
+ justify-content: center;
+ align-items: center;
+
+ width: 100%;
+ max-width: 25em;
+}
+.wrp-form-input-sign form {
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+}
+.wrp-form-input-sign form h1 {
+ display: flex;
+ font-size: 1.2em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: 0px;
+}
+.wrp-form-input-sign form p {
+ display: flex;
+ font-size: 1em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: 0px;
+ margin-top: 2vh;
+}
+.color-red-msg {
+ display: flex;
+ color: red;
+}
+
+.wrp-form-input-sign input {
+ display: flex;
+ font-size: 1.5em;
+ font-family: var(--text-family);
+ font-weight: 400;
+ line-height: 1;
+ padding-top: 1ch;
+ padding-bottom: 0.5ch;
+ border: none;
+ color: #343a40;
+}
+.wrp-form-input-sign form button {
+ margin-top: 2vh;
+}
+
+.wrp-form-input-sign .border-bottom-sgin {
+ display: flex;
+ font-size: 1.5em;
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: 0px;
+ padding-bottom: 0.3em;
+ border-bottom: 0.5px solid #202020;
+}
+.wrp-form-input-sign .text-input-size {
+ font-size: 1.5em;
+ letter-spacing: -0.5px;
+ text-align: center;
+}
+.class-input-label {
+ display: flex;
+ font-size: 1em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: 0px;
+}

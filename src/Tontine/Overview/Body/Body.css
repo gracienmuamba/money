@@ -1,0 +1,12 @@
+.bd-overview-list-child {
+ display: flex;
+ flex-direction: column;
+
+ justify-content: space-between;
+ align-items: baseline;
+
+ height: 100%;
+ padding: 0 5%;
+
+ min-height: 90vh;
+}

@@ -1,0 +1,54 @@
+:root {
+ --bg-green-btn-tontine: #09ad01;
+}
+
+.tontine-btn-next-budget {
+ display: flex;
+}
+.tontine-btn-next-budget button {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+
+ border-radius: 0.9em;
+ font-size: 1em;
+ letter-spacing: 1px;
+ cursor: pointer;
+ white-space: nowrap;
+
+ outline-style: none;
+ font-family: var(--text-family);
+
+ padding: 1ch 1.3em;
+ width: 100%;
+
+ color: var(--color-btn);
+ border: 0.1px solid var(--bg-green-btn-tontine);
+ background: var(--bg-green-btn-tontine);
+}
+
+/* Small */
+.tontine-btn-next-budget-sm {
+ display: flex;
+}
+.tontine-btn-next-budget-sm button {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+
+ border-radius: 0.9em;
+ font-size: 1em;
+ letter-spacing: 1px;
+ cursor: pointer;
+ white-space: nowrap;
+
+ outline-style: none;
+ font-family: var(--text-family);
+
+ padding: 1ch 1.3em;
+ width: 100%;
+
+ color: var(--color-btn);
+ border: 0.1px solid var(--bg-green-btn-tontine);
+ background: var(--bg-green-btn-tontine);
+}

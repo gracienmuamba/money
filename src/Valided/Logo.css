@@ -1,0 +1,15 @@
+.wrp-logo-valid {
+ display: flex;
+
+ position: absolute;
+ top: 15%;
+ left: 50%;
+
+ transform: translate(-50%, -50%);
+}
+.wrp-logo-valid img {
+ display: flex;
+ width: 5em;
+ height: 5em;
+ object-fit: cover;
+}

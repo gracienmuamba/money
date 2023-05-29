@@ -1,0 +1,11 @@
+.wrp-arrow {
+ display: flex;
+ flex-direction: column;
+ cursor: pointer;
+ color: rgba(116, 116, 116, 0.995);
+}
+.wrp-arrow-sm {
+ display: flex;
+ cursor: pointer;
+ color: rgba(116, 116, 116, 0.995);
+}

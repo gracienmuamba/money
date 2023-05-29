@@ -1,0 +1,16 @@
+.child-title-user {
+ display: flex;
+ margin-top: 20ch;
+ margin-bottom: 5ch;
+}
+.child-title-user h1 {
+ display: flex;
+ font-size: 1.1799em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+
+ color: #0077b6;
+
+ letter-spacing: 0px;
+}

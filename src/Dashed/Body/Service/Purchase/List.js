@@ -1,0 +1,354 @@
+import React from 'react';
+import './List.css';
+import { useNavigate } from 'react-router-dom';
+import ReturnICOn from './Icon';
+import Media from 'react-media';
+
+import { collection, getDocs, doc, onSnapshot } from 'firebase/firestore';
+import { db } from '../../../../firebase';
+
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContentText from '@mui/material/DialogContentText';
+
+
+// Purchase List Component 
+export default function ReturnListPurchAse() {
+ return (
+  <Media
+   queries={{
+    small: '(max-width: 599px)',
+    medium: '(min-width: 600px) and (max-width:1199px)',
+    large: '(min-width: 1200px)',
+   }}>
+   {matches => (
+    <>
+     {matches.small && <ScreenSmall />}
+     {matches.medium && <ScreenMedium />}
+     {matches.large && <ScreenLarge />}
+    </>
+   )}
+  </Media>
+ );
+};
+
+export const ScreenLarge = () => (
+ <div className='wrp-list-purchase-dashed'>
+  <View />
+
+ </div>
+);
+export const ScreenMedium = () => (
+ <div className='wrp-list-purchase-dashed-md'>
+  <View />
+
+ </div>
+);
+export const ScreenSmall = () => (
+ <div className='wrp-list-purchase-dashed-sm'>
+  <View />
+
+ </div>
+);
+export const View = () => {
+
+ let pushDocs = new Array();
+ const navigation = useNavigate();
+
+ const [Open, setOpen] = React.useState(false);
+ const [pretOpen, setPretOpen] = React.useState(false);
+ const [status, setStatus] = React.useState(null);
+ const [team, setTeam] = React.useState('simple');
+
+ const [pret, setPret] = React.useState(null);
+ const [pretregister, setPretregister] = React.useState(null);
+ const [pretactive, setPretactive] = React.useState(null);
+
+ const [fullWidth, setFullWidth] = React.useState(true);
+ const [maxWidth, setMaxWidth] = React.useState('sm');
+
+
+ const handleClose = () => {
+  setOpen(false);
+ };
+ const handlePretClose = () => {
+  setPretOpen(false);
+ };
+
+
+ React.useEffect(async () => {
+
+  const querySnapshot = await getDocs(collection(db, "client"));
+  querySnapshot.forEach((doc) => {
+   pushDocs.push(doc.id);
+  });
+
+  const verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
+  const unsub = onSnapshot(doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   setStatus(doc.data().state);
+   setTeam(doc.data().team);
+   setPret(doc.data().pret);
+   setPretregister(doc.data().pretregister);
+   setPretregister(doc.data().pretregister);
+   setPretactive(doc.data().pretactive);
+  });
+
+
+ }, []);
+
+ const handlepathregister = (event) => {
+
+  event.preventDefault();
+  if (status === 'agent') {
+   navigation('/register');
+  } else {
+   setPretOpen(true);
+  }
+
+ };
+ const handlepathfiat = (event) => {
+
+  event.preventDefault();
+  if (team === 'mere') {
+   navigation('/brokers/sign/fiat');
+  } else {
+   setPretOpen(true);
+  }
+
+ };
+ const handlepathstock = (event) => {
+
+  event.preventDefault();
+  if (team === 'mere') {
+   navigation('/stock/fiat');
+  } else {
+   setPretOpen(true);
+  }
+
+ };
+ const handlepathinvalid = (event) => {
+  event.preventDefault();
+  setOpen(true);
+
+ };
+ const handlepathcommand = (event) => {
+
+  event.preventDefault();
+  if (status === 'client') {
+   navigation('/brokers/caise');
+  } else if (status === 'agent' && team === 'mere') {
+
+   navigation('/command/agent');
+
+  } else {
+   window.console.log('thank');
+  }
+
+ };
+ const handlepathpret = (event) => {
+
+  event.preventDefault();
+  window.localStorage.setItem('%%pret-*%', JSON.stringify(0.6));
+
+  if (pret === true && pretregister === true && pretactive === true) {
+   navigation('/pret/dash');
+   window.localStorage.setItem('^^snack->', JSON.stringify(false));
+
+  } else if (pret === true && pretregister === true) {
+   navigation('/pret/send');
+  } else if (pret === true) {
+   navigation('/pret');
+  } else {
+   navigation('/pret');
+  }
+
+ };
+ const handlepathtontine = (event) => {
+  event.preventDefault();
+  navigation('/tontine');
+ }
+
+ return (
+  <nav className='Anima'>
+   <ul>
+
+    <li onClick={() => navigation('/valid-fc')}>
+     <div className='wrp-list-abs'>
+      <ReturnICOn IMA={'/img/money.png'} />
+      <span>
+       Envoi Monnaies
+       </span>
+     </div>
+    </li>
+
+    {(status === 'agent' && team === 'simple') &&
+     <li onClick={() => navigation('/brokers/unite')}>
+      <div className='wrp-list-abs'>
+       <ReturnICOn IMA={'/img/stock.png'} />
+       <span>
+        Unité stock
+     </span>
+      </div>
+     </li>
+
+    }
+
+    {((status === 'agent' && team === 'mere') || status === 'client') &&
+     <li onClick={() => navigation('/brokers/unite')}>
+      <div className='wrp-list-abs'>
+       <ReturnICOn IMA={'/img/mobile-phones.png'} />
+       <span>
+        Unité
+     </span>
+      </div>
+
+     </li>
+
+    }
+
+    {(status === 'agent' && team === 'mere') &&
+     <li onClick={handlepathstock}>
+      <div className='wrp-list-abs'>
+       <ReturnICOn IMA={'/img/Stock.png'} />
+       <span>
+        Unité stock
+        </span>
+      </div>
+     </li>
+    }
+
+    <li onClick={handlepathinvalid}>
+     <div className='wrp-list-abs'>
+      <ReturnICOn IMA={'/img/electricity.png'} />
+      <span>
+       Muungano Énergie
+        </span>
+     </div>
+    </li>
+
+    <li onClick={handlepathinvalid}>
+     <div className='wrp-list-abs'>
+      <ReturnICOn IMA={'/img/television.png'} />
+      <span>
+       TV
+     </span>
+     </div>
+    </li>
+
+    {(status === 'agent' && team === 'mere') &&
+     <li onClick={handlepathfiat}>
+      <div className='wrp-list-abs'>
+       <ReturnICOn IMA={'/img/add-fiat.png'} />
+       <span>
+        Enregistré Fiat
+       </span>
+      </div>
+     </li>
+
+    }
+    <li onClick={() => navigation('/wallet')}>
+     <div className='wrp-list-abs'>
+      <ReturnICOn IMA={'/img/donate.png'} />
+      <span>
+       Coffres
+       </span>
+     </div>
+    </li>
+
+
+    {status === 'client' &&
+     <li onClick={handlepathpret}>
+      <div className='wrp-list-abs'>
+       <span>
+        <ReturnICOn IMA={'/img/pret.png'} />
+       </span>
+       <span>
+        Prêt
+       </span>
+      </div>
+     </li>
+    }
+
+    {(status === 'agent') &&
+     <li onClick={handlepathregister}>
+      <div className='wrp-list-abs'>
+       <ReturnICOn IMA={'/img/enroll.png'} />
+       <span>
+        Enregistré Client
+       </span>
+      </div>
+     </li>
+    }
+
+    {status === 'client' &&
+     <li onClick={handlepathtontine}>
+      <div className='wrp-list-abs'>
+       <ReturnICOn IMA={'/img/friends.png'} />
+       <span>
+        Tontine
+       </span>
+      </div>
+     </li>
+    }
+
+    {(status === 'agent' && team === 'mere') &&
+     <li onClick={handlepathcommand}>
+      <div className='wrp-list-abs'>
+       <ReturnICOn IMA={'/img/caise.png'} />
+       <span>
+        Commande
+           </span>
+      </div>
+     </li>
+
+    }
+   </ul>
+
+   <Dialog
+    fullWidth={fullWidth}
+    maxWidth={maxWidth}
+    open={pretOpen}
+    onClose={handlePretClose}>
+
+    <DialogTitle><span className='pop-up'>MuunganoMoney</span></DialogTitle>
+    <DialogContent>
+
+     <DialogContentText>
+      <p className='pop-up'>
+       Désolé, vous n'êtes pas autorisé à utiliser ce service
+            </p>
+     </DialogContentText>
+
+    </DialogContent>
+    <DialogActions>
+     <Button onClick={handlePretClose}><span className='pop-up'>Fermer</span></Button>
+    </DialogActions>
+   </Dialog>
+
+   <Dialog
+    fullWidth={fullWidth}
+    maxWidth={maxWidth}
+    open={Open}
+    onClose={handleClose}>
+
+    <DialogTitle><span className='pop-up'>MuunganoMoney</span></DialogTitle>
+    <DialogContent>
+
+     <DialogContentText>
+      <p className='pop-up'>
+       Ce service est actuellement indisponible
+            </p>
+     </DialogContentText>
+
+    </DialogContent>
+    <DialogActions>
+     <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
+    </DialogActions>
+   </Dialog>
+
+  </nav>
+ );
+};

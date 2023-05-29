@@ -1,0 +1,40 @@
+.wrp-success-btn {
+ display: flex;
+ flex-direction: column;
+ color: #55a630;
+}
+.wrp-success-btn span {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ border-radius: 100%;
+}
+.wrp-success-btn p {
+ display: flex;
+ font-size: 1em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: 0.1px;
+}
+
+/* Small */
+.wrp-success-btn-sm {
+ display: flex;
+ flex-direction: column;
+ color: #55a630;
+}
+.wrp-success-btn-sm span {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ border-radius: 100%;
+}
+.wrp-success-btn-sm p {
+ display: flex;
+ font-size: 1.2em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: 0.1px;
+}

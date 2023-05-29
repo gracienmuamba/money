@@ -1,0 +1,20 @@
+.wrp-img-valide {
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ align-items: center;
+ margin-bottom: 1ch;
+}
+.wrp-img-valide img {
+ height: 3em;
+ width: 3em;
+ border-radius: 50%;
+ object-fit: cover;
+}
+.wrp-img-valide p {
+ display: flex;
+ font-size: 1.3em;
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: 0px;
+}

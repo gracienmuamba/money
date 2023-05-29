@@ -1,0 +1,12 @@
+/* View nav wallet */
+.wrp-nav-wallet-slide {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ width: 100%;
+ padding: 0 3%;
+ color: white;
+
+ height: 6ch;
+ z-index: 10;
+}

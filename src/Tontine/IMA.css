@@ -1,0 +1,25 @@
+.wrp-tontine-images {
+ display: flex;
+}
+.wrp-tontine-images img {
+ width: 30vw;
+ height: 30vw;
+ object-fit: cover;
+}
+.wrp-tontine-images-md {
+ display: flex;
+}
+.wrp-tontine-images-md img {
+ height: 45vw;
+ width: 45vw;
+ object-fit: cover;
+}
+.wrp-tontine-images-sm {
+ display: flex;
+}
+.wrp-tontine-images-sm img {
+ height: 70vw;
+ width: 70vw;
+ object-fit: cover;
+ border-radius: 100%;
+}

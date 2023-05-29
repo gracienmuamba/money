@@ -1,0 +1,15 @@
+.form-signin-pret-title {
+ display: flex;
+ flex-direction: column;
+
+ justify-content: start;
+ align-items: flex-start;
+}
+.form-signin-pret-title h1 {
+ display: flex;
+ font-size: 1.6em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: 0px;
+}

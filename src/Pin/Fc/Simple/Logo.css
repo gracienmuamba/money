@@ -1,0 +1,30 @@
+.wrp-logo-send {
+ display: flex;
+
+ position: absolute;
+ top: 25%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+}
+.wrp-logo-send img {
+ display: flex;
+ width: 4em;
+ height: 4em;
+ object-fit: cover;
+}
+
+.wrp-logo-send-sm {
+ display: flex;
+
+ position: absolute;
+ top: 20%;
+ left: 50%;
+
+ transform: translate(-50%, -50%);
+}
+.wrp-logo-send-sm img {
+ display: flex;
+ width: 4em;
+ height: 4em;
+ object-fit: cover;
+}

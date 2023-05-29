@@ -1,0 +1,22 @@
+.wrp-sign-up {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ place-items: center;
+ width: 100%;
+ position: relative;
+
+ height: 100vh;
+}
+.wrp-sign-up-sm {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ place-items: center;
+ width: 100%;
+ position: relative;
+
+ height: 100vh;
+}

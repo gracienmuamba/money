@@ -1,0 +1,71 @@
+/* .wrp-input-send-money {
+ display: flex;
+ flex-direction: column;
+
+ width: 100%;
+ max-width: 20em;
+
+ position: absolute;
+ top: 60%;
+ left: 50%;
+
+ transform: translate(-50%, -50%);
+}
+.wrp-input-send-money form {
+ display: flex;
+ flex-direction: column;
+ gap: 1em;
+ justify-content: center;
+ align-items: center;
+}
+.wrp-input-send-money form input {
+ display: flex;
+ flex-direction: column;
+ font-size: 0.92em;
+ font-weight: 400;
+ line-height: 1;
+ letter-spacing: 1px;
+ width: 100%;
+ padding: 0.7em;
+ font-family: "AntipastoPro";
+ border: none;
+ border-radius: 0.2em;
+ color: black;
+ background: rgba(201, 201, 201, 0.413);
+}
+
+small view input
+.wrp-input-send-money-sm {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+
+ width: 100%;
+
+ position: absolute;
+ top: 90%;
+ left: 50%;
+
+ transform: translate(-50%, -50%);
+}
+.wrp-input-send-money-sm form {
+ display: flex;
+ flex-direction: column;
+ gap: 1em;
+}
+.wrp-input-send-money-sm form input {
+ display: flex;
+ flex-direction: column;
+ font-size: 0.8em;
+ font-weight: 400;
+ padding: 0.8em;
+ font-family: "AntipastoPro";
+ line-height: 1;
+ letter-spacing: 1px;
+ width: 95vw;
+ border: none;
+
+ color: black;
+ background: rgba(201, 201, 201, 0.413);
+} */

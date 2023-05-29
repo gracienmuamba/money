@@ -1,0 +1,14 @@
+.wrp-buy-brokers-prix {
+ display: flex;
+ position: relative;
+
+ width: 100%;
+ height: 100%;
+
+ justify-content: center;
+ align-items: center;
+
+ padding: 7vh 0;
+ color: var(--cl-color);
+ background-color: var(--bg-color);
+}

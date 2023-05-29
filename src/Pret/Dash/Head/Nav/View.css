@@ -1,0 +1,11 @@
+/* View Component  */
+.view-pret-icon-cmd {
+ display: flex;
+ cursor: pointer;
+}
+
+.view-pret-icon-cmd img {
+ height: 3em;
+ width: 3em;
+ object-fit: cover;
+}

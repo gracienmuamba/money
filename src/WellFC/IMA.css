@@ -1,0 +1,16 @@
+:root {
+ --bg-avatar-yellow: #d9d9d9;
+}
+
+.avatar-circle-flags {
+ display: flex;
+}
+.avatar-circle-flags img {
+ display: flex;
+ height: 6em;
+ width: 6em;
+ border-radius: 100%;
+ border: none;
+ background: var(--bg-avatar-yellow);
+ object-fit: cover;
+}

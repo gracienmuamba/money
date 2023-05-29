@@ -1,0 +1,129 @@
+:root {
+ --para-small: 1em;
+ --para-medium: 1.1em;
+ --para-large: 1.08em;
+
+ --para-width-small: 95vw;
+ --para-width-medium: 20em;
+ --para-width-large: 30em;
+
+ --para-heigthline-small: 1;
+ --para-heigthline-medium: 1;
+ --para-heigthline-large: 1.2;
+
+ --subject-small: 1em;
+ --subject-medium: 1.178em;
+ --subject-large: 1.3983em;
+}
+
+.App-loading {
+ display: flex;
+ position: absolute;
+
+ left: 0;
+ right: 0;
+ top: 0;
+ z-index: 99999999999;
+
+ height: 205%;
+ opacity: 0.5;
+ background: #000;
+}
+.dash-loading-large {
+ display: flex;
+ position: absolute;
+
+ left: 0;
+ right: 0;
+ top: 0;
+ z-index: 99999999999;
+
+ height: 187%;
+ opacity: 0.5;
+ background: #000;
+}
+.dash-loading-small {
+ display: flex;
+ position: absolute;
+
+ left: 0;
+ right: 0;
+ top: 0;
+ z-index: 99999999999;
+
+ height: 223%;
+ opacity: 0.5;
+ background: #000;
+}
+
+.App-loading-Current {
+ display: flex;
+ position: absolute;
+
+ left: 0;
+ right: 0;
+ top: 0;
+ z-index: 99999999999;
+
+ height: 100%;
+ opacity: 0.5;
+ background: #000;
+}
+.App-loading-profil {
+ display: flex;
+ position: absolute;
+
+ left: 0;
+ right: 0;
+ top: 0;
+ z-index: 99999999999;
+
+ height: 100%;
+ opacity: 0.5;
+ background: #000;
+}
+
+.App-loading-blank {
+ display: flex;
+ position: absolute;
+
+ left: 0;
+ right: 0;
+ top: 0;
+ z-index: 99999999999;
+
+ height: 100%;
+ min-height: 120%;
+ background: white;
+}
+.App-Icon {
+ display: flex;
+ position: absolute;
+
+ justify-content: center;
+ align-items: center;
+
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+
+ z-index: 999999999999999;
+}
+
+.Loading-Hm {
+ display: flex;
+ position: absolute;
+
+ justify-content: center;
+ align-items: center;
+
+ height: 100%;
+ width: 100%;
+
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ background-color: #ffffff;
+
+ z-index: 999999999999999;
+}

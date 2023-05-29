@@ -1,0 +1,14 @@
+.wrp-quote-budget-tontine {
+ display: flex;
+ margin: 5ch 0;
+}
+
+.wrp-quote-budget-tontine p {
+ display: flex;
+ font-size: 1.313em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: 0px;
+ color: #01baef;
+}

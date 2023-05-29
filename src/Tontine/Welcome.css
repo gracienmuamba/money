@@ -1,0 +1,17 @@
+.welcome-tontine-quote {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ padding: 1em;
+ width: 100%;
+}
+.welcome-tontine-quote p {
+ display: flex;
+ font-size: 1.282em;
+ font-family: var(--text-family);
+ font-weight: 300;
+ line-height: 1;
+ text-align: center;
+ letter-spacing: 0px;
+}

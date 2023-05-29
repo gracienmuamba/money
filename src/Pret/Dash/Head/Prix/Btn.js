@@ -1,0 +1,206 @@
+import React from 'react';
+import './Btn.css';
+import { doc, onSnapshot, updateDoc } from "firebase/firestore";
+import { db } from '../../../../firebase';
+
+import moment from 'moment';
+import { useNavigate } from 'react-router-dom';
+
+
+// Btn Component view 
+export default function ReturnBTn() {
+
+ const navigation = useNavigate();
+
+ const [cdf, setCdf] = React.useState(0.00);
+ const [usd, setUsd] = React.useState(0.00);
+ const [time, setTime] = React.useState(null);
+
+ const [walletusd, setWalletusd] = React.useState(0.00);
+ const [walletcdf, setWalletcdf] = React.useState(0.00);
+
+
+ const [soldecdf, setSoldecdf] = React.useState(0);
+ const [soldeusd, setSoldeusd] = React.useState(0);
+
+ React.useEffect(async () => {
+
+  try {
+   await onSnapshot(doc(db, "pret", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+
+    setSoldecdf(doc.data().cdf);
+    setSoldeusd(doc.data().usd);
+
+   });
+  } catch {
+   window.console.log(`Erreur`);
+  }
+
+ }, []);
+
+
+ let moneycdf = new Intl.NumberFormat('en-US').format(soldecdf);
+ let moneyusd = new Intl.NumberFormat('en-US').format(soldeusd);
+
+ let commacdf = moneycdf.split('.');
+ let commausd = moneyusd.split('.');
+
+ let franComma = commacdf[1] == undefined ? 0 : commacdf[1];
+ let DollarComma = commausd[1] == undefined ? 0 : commausd[1];
+ let Comma = Number(franComma) + Number(DollarComma);
+
+ let solde = Number(parseInt(soldecdf)) + Number(parseInt(soldeusd));
+
+ React.useEffect(async () => {
+
+  try {
+   await onSnapshot(doc(db, "pret", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+
+    setCdf(doc.data().pretcdf);
+    setUsd(doc.data().pretusd);
+    setTime(doc.data().date);
+   });
+  } catch {
+   window.console.log(`Erreur`);
+  }
+
+ }, []);
+
+ React.useEffect(async () => {
+
+  try {
+   await onSnapshot(doc(db, "client", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+    setWalletusd(doc.data().usd);
+    setWalletcdf(doc.data().cdf);
+   });
+  } catch {
+   window.console.log(`Erreur`);
+  }
+
+ }, []);
+
+
+ var now = moment(); //todays date
+
+ let year = moment(time).get('year');
+ let months = moment(time).get('month');
+ let days = moment(time).get('date');
+ var end = moment([year, months, days]); // another date
+
+ var duration = moment.duration(now.diff(end));
+ var day = duration.asDays();
+
+ let pretCdf = cdf;
+ let modulecdf = 0;
+ let pourcentage = JSON.parse(window.localStorage.getItem('%%pret-*%'));
+
+ for (let index = 0; index <= parseInt(day); index++) {
+  if (index === 0) {
+   continue;
+
+  } else {
+
+   modulecdf = (pretCdf * pourcentage / 100);
+   pretCdf += modulecdf;
+  }
+
+ };
+
+ let yearusd = moment(time).get('year');
+ let monthsusd = moment(time).get('month');
+ let daysusd = moment(time).get('date');
+ var end = moment([yearusd, monthsusd, daysusd]); // another date
+
+ var duration = moment.duration(now.diff(end));
+ var dayusd = duration.asDays();
+
+ let pretUsd = usd;
+ let moduleusd = 0;
+
+ for (let index = 0; index <= parseInt(dayusd); index++) {
+  if (index === 0) {
+   continue;
+
+  } else {
+   moduleusd = (pretUsd * pourcentage / 100);
+   pretUsd += moduleusd;
+
+  }
+ };
+
+ const handlepathcdf = (event) => {
+  event.preventDefault();
+  window.localStorage.setItem('&&money::pret__', JSON.stringify(pretCdf));
+
+  window.localStorage.setItem('&&money::wallet__', JSON.stringify(walletcdf));
+  window.localStorage.setItem('&&money::unite__', JSON.stringify('cdf'));
+  window.localStorage.setItem('^^pret->', JSON.stringify(true));
+
+  if (solde <= 0 && Comma <= 10) {
+   window.localStorage.setItem('^^pret->ok', JSON.stringify(true));
+   asKedpret();
+  } else {
+   window.console.log('continue');
+  }
+
+  // navigation('/pret/costs/asked/cdf');
+  window.localStorage.setItem('solde&&%%¢pret', JSON.stringify('/pret/costs/asked/cdf'));
+  navigation('/pret/method');
+
+ }
+
+
+ const handlepathusd = (event) => {
+
+  event.preventDefault();
+  window.localStorage.setItem('&&money::pret__', JSON.stringify(pretUsd));
+  window.localStorage.setItem('&&money::wallet__', JSON.stringify(walletusd));
+  window.localStorage.setItem('&&money::unite__', JSON.stringify('usd'));
+
+  window.localStorage.setItem('^^pret->', JSON.stringify(true))
+
+  if (solde <= 0 && Comma <= 10) {
+   window.localStorage.setItem('^^pret->ok', JSON.stringify(true));
+   asKedpret();
+  } else {
+   window.console.log('continue');
+
+  }
+
+  // navigation('/pret/costs/asked/usd');
+  window.localStorage.setItem('solde&&%%¢pret', JSON.stringify('/pret/costs/asked/usd'));
+  navigation('/pret/method');
+
+ }
+
+ return (
+  <>
+   {
+    usd > 0 &&
+    <div className='btn-pret-asked'>
+     <button onClick={handlepathusd}>Remboursé</button>
+    </div>
+   }
+
+   {
+    cdf > 0 &&
+    <div className='btn-pret-asked'>
+     <button onClick={handlepathcdf}>Remboursé</button>
+    </div>
+   }
+  </>
+ );
+};
+
+// add pret for client
+export async function asKedpret() {
+ const washingtonRef = doc(db, "client", JSON.parse(window.localStorage.getItem('USER')));
+ // Set the "capital" field of the city 'DC'
+ await updateDoc(washingtonRef, {
+  pret: false,
+  pretactive: false,
+  pretregister: false
+ });
+
+};
+

@@ -1,0 +1,31 @@
+/* .prix-withdraw-pret-asked {
+ display: flex;
+ flex-direction: column;
+ margin-top: 4vh;
+ margin-bottom: 3vh;
+}
+.prix-withdraw-pret-asked p {
+ display: flex;
+ font-size: 4em;
+ font-family: var(--text-family);
+ font-weight: 500;
+ white-space: nowrap;
+ letter-spacing: 0px;
+}
+
+.prix-withdraw-pret-asked-sm {
+ display: flex;
+ flex-direction: column;
+ margin-top: 4vh;
+ margin-bottom: 3vh;
+}
+.prix-withdraw-pret-asked-sm p {
+ display: flex;
+ flex-direction: row;
+ font-size: 2.6em;
+
+ font-family: var(--text-family);
+ font-weight: 100;
+ letter-spacing: -2px;
+ gap: 0.0928em;
+} */

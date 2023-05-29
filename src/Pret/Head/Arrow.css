@@ -1,0 +1,22 @@
+.wrp-back-pret-asked {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ cursor: pointer;
+
+ position: absolute;
+ top: 5%;
+ left: 75px;
+ transform: translate(-50%, -50%);
+}
+.wrp-back-pret-asked-sm {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ cursor: pointer;
+
+ position: absolute;
+ top: 5%;
+ left: 65px;
+ transform: translate(-50%, -50%);
+}

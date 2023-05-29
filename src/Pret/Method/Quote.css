@@ -1,0 +1,16 @@
+.qt-pret-method {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ margin-bottom: 20vh;
+}
+.qt-pret-method p {
+ display: flex;
+ font-size: 1.289em;
+ font-weight: 300;
+ line-height: 1;
+ text-align: center;
+ font-family: var(--text-family);
+ letter-spacing: 0px;
+}

@@ -1,0 +1,45 @@
+.section-hm-quote {
+ display: flex;
+ flex-direction: column;
+ margin: 12vw 0;
+ width: 100%;
+ justify-content: center;
+ align-items: center;
+}
+.section-hm-quote p {
+ display: flex;
+ font-size: 2.8em;
+ font-weight: 600;
+ font-family: var(--font-inter);
+ line-height: 1.1;
+ letter-spacing: -0.5px;
+}
+
+.section-hm-quote-sm {
+ display: flex;
+ flex-direction: column;
+ margin: 19vh 0;
+ width: 100%;
+ justify-content: center;
+ align-items: center;
+}
+.section-hm-quote-sm p {
+ display: flex;
+ font-size: 1.5em;
+ font-weight: 600;
+ font-family: var(--font-inter);
+ line-height: 1.1;
+ letter-spacing: -0.5px;
+}
+.Essentiels-section-1 {
+ display: flex;
+
+ font-size: 1.2em;
+ font-weight: 400;
+ font-family: var(--font-inter);
+ line-height: 1;
+ text-align: center;
+ letter-spacing: -0.3px;
+ margin-top: 8vh;
+ color: #1e96fc;
+}

@@ -1,0 +1,43 @@
+.view-name-pret {
+ display: flex;
+ flex-direction: column;
+
+ justify-content: center;
+ align-items: center;
+ margin: 2vh 0;
+ width: 100%;
+ color: white;
+}
+.view-name-pret h2 {
+ display: flex;
+ font-size: 1.2em;
+ font-family: var(--text-family);
+ font-weight: 900;
+ line-height: 1;
+ letter-spacing: 0.1px;
+ text-align: center;
+ color: black;
+
+ white-space: nowrap;
+}
+
+/* small */
+.view-name-pret-sm {
+ display: flex;
+ flex-direction: column;
+
+ position: absolute;
+ top: 30%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+}
+.view-name-pret-sm h2 {
+ display: flex;
+ font-size: 1.3em;
+ font-weight: 900;
+ white-space: nowrap;
+ line-height: 1;
+ font-family: var(--text-family);
+ letter-spacing: 0.1px;
+ color: black;
+}
