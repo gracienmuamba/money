@@ -10,12 +10,20 @@ import Divider from '@mui/material/Divider';
 import { collection, getDocs, doc, onSnapshot } from "firebase/firestore";
 import { db } from '../../../../firebase';
 
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+
+
+
 
 let Acces = true;
 let listPush = new Array();
 let listRising = new Array();
 
+
 function DrawerAppBar() {
+
+ const [load, setLoad] = React.useState(false);
 
  const pushDocs = JSON.parse(window.localStorage.getItem('&&view$$list£¢ton…'));
  const pushOther = JSON.parse(window.localStorage.getItem('&&view$$list£¢toncol§§-…'));
@@ -32,9 +40,7 @@ function DrawerAppBar() {
    });
 
   })
-
   window.console.log(listRising);
-
  }, []);
 
  if (Array.isArray(pushDocs) && pushDocs.length) {
@@ -43,71 +49,82 @@ function DrawerAppBar() {
   Acces = false;
  };
 
+
  return (
-  <div className='flex-head-list-tontine'>
+  <>
+   <div className='zindex-theme'>
+    <Backdrop
+     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+     open={load}>
 
-   <header>
-    <div className='container'>
-     <nav className='navbar'>
-      <ReturnProfil />
+     <CircularProgress color="inherit" />
+    </Backdrop>
+   </div>
 
-     </nav>
-    </div>
-   </header>
+   <div className='flex-head-list-tontine'>
+    <header>
+     <div className='container'>
+      <nav className='navbar'>
+       <ReturnProfil />
 
-   <section>
-    {
-     Acces ?
-      <ul>
-       {
-        [...Array(pushDocs.length).keys()].map(index => {
-         return (
+      </nav>
+     </div>
+    </header>
 
-          <div onClick={async () => {
+    <section>
+     {
+      Acces ?
+       <ul>
+        {
+         [...Array(pushDocs.length).keys()].map(index => {
+          return (
+           <div onClick={async () => {
 
-           window.localStorage.setItem('¥¥˙´¸list˘˘22˚˚fil', JSON.stringify(pushOther[index]));
-           const querySnapshot = await getDocs(collection(db, pushOther[index]));
-           querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            listPush.push(doc.id);
-           });
+            setLoad(true);
+            window.localStorage.setItem('¥¥˙´¸list˘˘22˚˚fil', JSON.stringify(pushOther[index]));
+            const querySnapshot = await getDocs(collection(db, pushOther[index]));
+            querySnapshot.forEach((doc) => {
+             // doc.data() is never undefined for query doc snapshots
+             listPush.push(doc.id);
+            });
 
-           window.localStorage.setItem('¥¥˙´¸list˘˘˚˚', JSON.stringify(listPush));
-           window.setTimeout(() => {
-            window.location.href = "/tontine/list/group/child";
-           }, 800);
+            window.localStorage.setItem('¥¥˙´¸list˘˘˚˚', JSON.stringify(listPush));
+            window.setTimeout(() => {
+             window.location.href = "/tontine/list/group/child";
+            }, 5800);
 
-          }}>
+           }}>
 
-           <List>
-            <ListItem disablePadding>
-             <ListItemButton>
+            <List>
+             <ListItem disablePadding>
+              <ListItemButton>
 
-              <li key={index}>
-               <div className='cmd-operator-title'>
-                <div className='cmd-operator-sub-title'>
+               <li key={index}>
+                <div className='cmd-operator-title'>
+                 <div className='cmd-operator-sub-title'>
 
-                 <div className='flex-row-cmd'>
-                  <p>{pushDocs[index].charAt(0).toUpperCase() + pushDocs[index].slice(1)}</p>
+                  <div className='flex-row-cmd'>
+                   <p>{pushDocs[index].charAt(0).toUpperCase() + pushDocs[index].slice(1)}</p>
+                  </div>
                  </div>
+
                 </div>
 
-               </div>
+               </li>
 
-              </li>
-
-             </ListItemButton>
-            </ListItem>
-           </List>
-           <Divider />
-          </div>
-         )
-        })}
-      </ul>
-      : <div></div>
-    }
-   </section>
-  </div >
+              </ListItemButton>
+             </ListItem>
+            </List>
+            <Divider />
+           </div>
+          )
+         })}
+       </ul>
+       : <div></div>
+     }
+    </section>
+   </div>
+  </>
  );
 }
 

@@ -54,7 +54,6 @@ export function View() {
 	const [maxWidth, setMaxWidth] = React.useState('sm');
 	const [active, setActive] = React.useState(false);
 
-
 	const [values, setValues] = React.useState({
 		textmask: '(100) 000-0000',
 		numberformat: '1320',
@@ -70,18 +69,25 @@ export function View() {
 	};
 
 	let colTon = JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil'));
+	let counTton = JSON.parse(window.localStorage.getItem('>>pos;;{}$$**++==count...'));
+	let tonActive = JSON.parse(window.localStorage.getItem('>>pos;;{}$$++==act...'));
+
+	let listNumber = JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘˚˚'));
+	let numPosition = JSON.parse(window.localStorage.getItem('>>pos;;{}$$++=='));
+
+
 	React.useEffect(async () => {
 		const unsub = onSnapshot(doc(db, colTon, JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
 			setActive(doc.data().soldeactive);
 		});
 
 	}, []);
-
 	const handlepath = (event) => {
 
 		event.preventDefault();
+		window.localStorage.setItem('^^$%list++::act::', JSON.stringify(counTton === tonActive + 1 ? true : false));
+		window.localStorage.setItem('^^$%tour++::&&$$::', JSON.stringify(listNumber[numPosition]));
 		navigation('/tontine/list/group/child/budget/pin');
-
 	};
 
 	return (

@@ -14,6 +14,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContentText from '@mui/material/DialogContentText';
 
+
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
@@ -29,55 +30,55 @@ import { NumericFormat } from 'react-number-format';
 // let operator = ['081', '082', '083', '084', '085', '089', '099', '097', '091', '090'];
 
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
- const { onChange, ...other } = props;
- return (
-  <IMaskInput
-   {...other}
-   mask="(#00) 000-0000"
-   definitions={{
-    '#': /[0-9]/,
-   }}
-   inputmode="tel"
-   pattern="[0-9]*"
+  const { onChange, ...other } = props;
+  return (
+    <IMaskInput
+      {...other}
+      mask="(#00) 000-0000"
+      definitions={{
+        '#': /[0-9]/,
+      }}
+      inputmode="tel"
+      pattern="[0-9]*"
 
-   inputRef={ref}
-   onAccept={(value) => onChange({ target: { name: props.name, value } })}
-   overwrite
-  />
- );
+      inputRef={ref}
+      onAccept={(value) => onChange({ target: { name: props.name, value } })}
+      overwrite
+    />
+  );
 });
 TextMaskCustom.propTypes = {
- name: PropTypes.string.isRequired,
- onChange: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 const NumericFormatCustom = React.forwardRef(function NumericFormatCustom(
- props,
- ref,
+  props,
+  ref,
 ) {
- const { onChange, ...other } = props;
+  const { onChange, ...other } = props;
 
- return (
-  <NumericFormat
-   {...other}
-   getInputRef={ref}
-   onValueChange={(values) => {
-    onChange({
-     target: {
-      name: props.name,
-      value: values.value,
-     },
-    });
-   }}
-   thousandSeparator
-   inputmode="tel"
-   valueIsNumericString
-   prefix=""
-  />
- );
+  return (
+    <NumericFormat
+      {...other}
+      getInputRef={ref}
+      onValueChange={(values) => {
+        onChange({
+          target: {
+            name: props.name,
+            value: values.value,
+          },
+        });
+      }}
+      thousandSeparator
+      inputmode="tel"
+      valueIsNumericString
+      prefix=""
+    />
+  );
 });
 NumericFormatCustom.propTypes = {
- name: PropTypes.string.isRequired,
- onChange: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 
@@ -86,219 +87,219 @@ export let phoneX = '';
 
 // Input Field Component 
 export default function ReturnInput() {
- return (
-  <Media
-   queries={{
-    small: '(max-width: 599px)',
-    medium: '(min-width: 600px) and (max-width:1199px)',
-    large: '(min-width: 1200px)',
-   }}>
-   {matches => (
-    <>
-     {matches.small && <ScreenSmall />}
-     {matches.medium && <SreenLarge />}
-     {matches.large && <SreenLarge />}
-    </>
-   )}
-  </Media>
- );
+  return (
+    <Media
+      queries={{
+        small: '(max-width: 599px)',
+        medium: '(min-width: 600px) and (max-width:1199px)',
+        large: '(min-width: 1200px)',
+      }}>
+      {matches => (
+        <>
+          {matches.small && <ScreenSmall />}
+          {matches.medium && <SreenLarge />}
+          {matches.large && <SreenLarge />}
+        </>
+      )}
+    </Media>
+  );
 };
 export const SreenLarge = () => (
- <div className='wrp-form-input-sign'>
-  <FormInput />
- </div>
+  <div className='wrp-form-input-sign'>
+    <FormInput />
+  </div>
 );
 export const ScreenSmall = () => (
- <div className='wrp-form-input-sign'>
-  <FormInput />
- </div>
+  <div className='wrp-form-input-sign'>
+    <FormInput />
+  </div>
 );
 export const FormInput = () => {
 
- let clientDocs = new Array();
- let agentDocs = new Array();
- const [load, setLoad] = React.useState(false);
+  let clientDocs = new Array();
+  let agentDocs = new Array();
+  const [load, setLoad] = React.useState(false);
 
- const navigation = useNavigate();
- const { handleSubmit, reset, control } = useForm({});
+  const navigation = useNavigate();
+  const { handleSubmit, reset, control } = useForm({});
 
 
- const inputRef = React.useRef();
- const [searchTerm, setSearchTerm] = React.useState('');
+  const inputRef = React.useRef();
+  const [searchTerm, setSearchTerm] = React.useState('');
 
- const [open, setOpen] = React.useState(false);
- const [error, setError] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+  const [error, setError] = React.useState(false);
 
- const [fullWidth, setFullWidth] = React.useState(true);
- const [maxWidth, setMaxWidth] = React.useState('sm');
+  const [fullWidth, setFullWidth] = React.useState(true);
+  const [maxWidth, setMaxWidth] = React.useState('sm');
 
- const [values, setValues] = React.useState({
-  textmask: '(100) 000-0000',
-  numberformat: '1320',
- });
- const handleChange = (event) => {
-  setValues({
-   ...values,
-   [event.target.name]: event.target.value,
+  const [values, setValues] = React.useState({
+    textmask: '(100) 000-0000',
+    numberformat: '1320',
   });
- };
-
- const handleClose = () => {
-  setOpen(false);
- };
-
- const handleError = () => {
-  setError(false);
- };
-
- const onSubmit = async (data) => {
-
-  setLoad(true);
-
-  if (data.phone === undefined) {
-   setError(true);
-   setLoad(false);
-   reset();
-
-  } else {
-
-   let num = (data.phone).match(/\d+/g);
-   let numPhone = '';
-   num.map(index => {
-    numPhone += index;
-
-   })
-
-   if (numPhone.length != 10 || numPhone.charAt(0) != 0) {
-    setError(true);
-    setLoad(false);
-    reset();
-
-   } else {
-
-    const clientSnapshot = await getDocs(collection(db, "client"));
-    clientSnapshot.forEach((doc) => {
-     clientDocs.push(doc.id);
+  const handleChange = (event) => {
+    setValues({
+      ...values,
+      [event.target.name]: event.target.value,
     });
+  };
 
-    const agentSnapshot = await getDocs(collection(db, "agent"));
-    agentSnapshot.forEach((doc) => {
-     agentDocs.push(doc.id);
-    });
+  const handleClose = () => {
+    setOpen(false);
+  };
 
-    const checkedNumPhoneClient = clientDocs.some(value => value == numPhone);
-    const checkedNumPhoneAgent = agentDocs.some(value => value == numPhone);
+  const handleError = () => {
+    setError(false);
+  };
 
-    if (checkedNumPhoneClient || checkedNumPhoneAgent) {
-     setOpen(true);
-     setLoad(false);
-     reset();
+  const onSubmit = async (data) => {
+
+    setLoad(true);
+
+    if (data.phone === undefined) {
+      setError(true);
+      setLoad(false);
+      reset();
+
     } else {
 
-     phoneX = numPhone;
-     window.localStorage.setItem('--#%¢res¸˘˘', JSON.stringify(numPhone));
-     window.localStorage.setItem('--client#%¢res¸˘˘', JSON.stringify(true));
-     navigation('/register/signin');
+      let num = (data.phone).match(/\d+/g);
+      let numPhone = '';
+      num.map(index => {
+        numPhone += index;
+
+      })
+
+      if (numPhone.length != 10 || numPhone.charAt(0) != 0) {
+        setError(true);
+        setLoad(false);
+        reset();
+
+      } else {
+
+        const clientSnapshot = await getDocs(collection(db, "client"));
+        clientSnapshot.forEach((doc) => {
+          clientDocs.push(doc.id);
+        });
+
+        const agentSnapshot = await getDocs(collection(db, "agent"));
+        agentSnapshot.forEach((doc) => {
+          agentDocs.push(doc.id);
+        });
+
+        const checkedNumPhoneClient = clientDocs.some(value => value == numPhone);
+        const checkedNumPhoneAgent = agentDocs.some(value => value == numPhone);
+
+        if (checkedNumPhoneClient || checkedNumPhoneAgent) {
+          setOpen(true);
+          setLoad(false);
+          reset();
+        } else {
+
+          phoneX = numPhone;
+          window.localStorage.setItem('--#%¢res¸˘˘', JSON.stringify(numPhone));
+          window.localStorage.setItem('--client#%¢res¸˘˘', JSON.stringify(true));
+          navigation('/register/signin');
+        }
+
+      };
+
     }
 
-   };
 
-  }
+  };
 
+  return (
+    <>
+      <div className='zindex-theme'>
+        <Backdrop
+          sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={load}>
 
- };
+          <CircularProgress color="inherit" />
+        </Backdrop>
+      </div>
 
- return (
-  <>
-   <div className='zindex-theme'>
-    <Backdrop
-     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-     open={load}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <FormControl sx={{ width: '100%' }} variant="standard">
+          <InputLabel htmlFor="formatted-text-mask-input"><h1 className='pop-up'>Téléphone</h1></InputLabel>
 
-     <CircularProgress color="inherit" />
-    </Backdrop>
-   </div>
+          <Controller
+            name="phone"
+            control={control}
+            render={({ field }) =>
 
-   <form onSubmit={handleSubmit(onSubmit)}>
-    <FormControl sx={{ width: '100%' }} variant="standard">
-     <InputLabel htmlFor="formatted-text-mask-input"><h1 className='pop-up'>Téléphone</h1></InputLabel>
+              <Input
+                // autoFocus
+                value={values.textmask}
+                onChange={handleChange}
+                inputRef={inputRef}
+                onChange={(e) => setSearchTerm(e.target.value)}
 
-     <Controller
-      name="phone"
-      control={control}
-      render={({ field }) =>
+                inputProps={{
+                  autoComplete: "off", inputMode: 'tel'
+                }}
 
-       <Input
-        // autoFocus
-        value={values.textmask}
-        onChange={handleChange}
-        inputRef={inputRef}
-        onChange={(e) => setSearchTerm(e.target.value)}
+                InputProps={{
+                  inputComponent: NumericFormatCustom,
+                }}
 
-        inputProps={{
-         autoComplete: "off", inputMode: 'tel'
-        }}
+                inputmode="tel"
+                name="textmask"
+                id="formatted-text-mask-input"
+                inputComponent={TextMaskCustom}
+                {...field}
 
-        InputProps={{
-         inputComponent: NumericFormatCustom,
-        }}
+              />
 
-        inputmode="tel"
-        name="textmask"
-        id="formatted-text-mask-input"
-        inputComponent={TextMaskCustom}
-        {...field}
+            }
+          />
+        </FormControl>
 
-       />
+        <Dialog
+          fullWidth={fullWidth}
+          maxWidth={maxWidth}
+          open={error}
+          onClose={handleError}
+        >
+          <DialogTitle><p className='pop-up'>MuunganoMoney</p></DialogTitle>
+          <DialogContent>
 
-      }
-     />
-    </FormControl>
-
-    <Dialog
-     fullWidth={fullWidth}
-     maxWidth={maxWidth}
-     open={error}
-     onClose={handleError}
-    >
-     <DialogTitle><p className='pop-up'>MuunganoMoney</p></DialogTitle>
-     <DialogContent>
-
-      <DialogContentText>
-       <p className='pop-up'>
-        Le numéro de téléphone est invalide
+            <DialogContentText>
+              <p className='pop-up'>
+                Le numéro de téléphone est invalide
       </p>
-      </DialogContentText>
+            </DialogContentText>
 
-     </DialogContent>
-     <DialogActions>
-      <Button onClick={handleError}><span className='pop-up'>Fermer</span></Button>
-     </DialogActions>
-    </Dialog>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleError}><span className='pop-up'>Fermer</span></Button>
+          </DialogActions>
+        </Dialog>
 
-    <Dialog
-     fullWidth={fullWidth}
-     maxWidth={maxWidth}
-     open={open}
-     onClose={handleClose}
-    >
-     <DialogTitle><p className='pop-up'>MuunganoMoney</p></DialogTitle>
-     <DialogContent>
+        <Dialog
+          fullWidth={fullWidth}
+          maxWidth={maxWidth}
+          open={open}
+          onClose={handleClose}
+        >
+          <DialogTitle><p className='pop-up'>MuunganoMoney</p></DialogTitle>
+          <DialogContent>
 
-      <DialogContentText>
-       <p className='pop-up'>
-        Numero de télèphone est déja enregistre chez Muunganomoney
+            <DialogContentText>
+              <p className='pop-up'>
+                Numero de télèphone est déja enregistre chez Muunganomoney
        </p>
-      </DialogContentText>
+            </DialogContentText>
 
-     </DialogContent>
-     <DialogActions>
-      <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
-     </DialogActions>
-    </Dialog>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
+          </DialogActions>
+        </Dialog>
 
-    <button className='Btn'>Suivant</button>
-   </form>
-  </>
- );
+        <button className='Btn'>Suivant</button>
+      </form>
+    </>
+  );
 };

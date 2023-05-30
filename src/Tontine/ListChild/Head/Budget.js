@@ -22,10 +22,8 @@ export default function ReturnBudgeT() {
  }, []);
 
  var euro = value => currency(value, { separator: ' ', decimal: '.', symbol: '' });
-
  return (
   <div className='wrp-tontine-budget'>
-
    <h2>
     {devise === 'usd' ? '$ ' : 'F '}
     {euro(money).format()}
@@ -33,7 +31,6 @@ export default function ReturnBudgeT() {
 
    <p>Ensemble de tout le dépôt</p>
    <img src={'/img/money-bag.png'} />
-
   </div>
  );
 };
