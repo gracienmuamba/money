@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /Users/USER/.yarn/bin/yarn.js add @fluentui/react-components
+  /usr/local/bin/node /Users/USER/.yarn/bin/yarn.js add office-ui-fabric-react
 
 PATH: 
   /opt/local/bin:/opt/local/sbin:/Users/USER/.yarn/bin:/Users/USER/.config/yarn/global/node_modules/.bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
@@ -8,22 +8,22 @@ Yarn version:
   1.17.3
 
 Node version: 
-  12.14.1
+  12.21.0
 
 Platform: 
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@mui/icons-material/-/icons-material-5.11.9.tgz: ESOCKETTIMEDOUT
+  Error: https://registry.npmjs.org/@fluentui/react/-/react-8.46.0.tgz: ESOCKETTIMEDOUT
       at ClientRequest.<anonymous> (/Users/USER/.yarn/lib/cli.js:141091:19)
-      at Object.onceWrapper (events.js:312:28)
-      at ClientRequest.emit (events.js:223:5)
-      at TLSSocket.emitRequestTimeout (_http_client.js:690:9)
-      at Object.onceWrapper (events.js:312:28)
-      at TLSSocket.emit (events.js:223:5)
-      at TLSSocket.Socket._onTimeout (net.js:474:8)
-      at listOnTimeout (internal/timers.js:531:17)
-      at processTimers (internal/timers.js:475:7)
+      at Object.onceWrapper (events.js:420:28)
+      at ClientRequest.emit (events.js:314:20)
+      at TLSSocket.emitRequestTimeout (_http_client.js:715:9)
+      at Object.onceWrapper (events.js:420:28)
+      at TLSSocket.emit (events.js:326:22)
+      at TLSSocket.Socket._onTimeout (net.js:483:8)
+      at listOnTimeout (internal/timers.js:554:17)
+      at processTimers (internal/timers.js:497:7)
 
 npm manifest: 
   {
@@ -31,57 +31,15 @@ npm manifest:
     "version": "0.1.0",
     "private": true,
     "dependencies": {
-      "@date-io/date-fns": "^1.3.13",
-      "@date-io/dayjs": "^1.3.13",
-      "@date-io/jalaali": "^2.14.0",
-      "@date-io/luxon": "^1.3.13",
-      "@date-io/moment": "^1.3.13",
-      "@emailjs/browser": "^3.10.0",
-      "@emotion/react": "^11.9.3",
-      "@emotion/styled": "^11.9.3",
       "@fluentui/react": "^8.46.0",
-      "@hookform/error-message": "^2.0.0",
-      "@material-ui/core": "^4.12.4",
-      "@material-ui/pickers": "^3.3.10",
-      "@mui/icons-material": "^5.8.4",
-      "@mui/lab": "^5.0.0-alpha.114",
-      "@mui/material": "^5.9.2",
-      "@mui/x-date-pickers": "^5.0.0-beta.2",
-      "@react-three/fiber": "^8.11.0",
       "@testing-library/jest-dom": "^5.11.4",
       "@testing-library/react": "^11.1.0",
       "@testing-library/user-event": "^12.1.10",
-      "bootstrap": "^5.2.0",
-      "bootstrap-icons": "^1.9.1",
-      "date-fns": "^2.29.3",
-      "dayjs": "^1.11.7",
-      "firebase": "^9.9.0",
-      "formik": "^2.2.9",
-      "framer-motion": "^6.2.4",
-      "gsap": "^3.10.4",
-      "luxon": "^3.1.1",
-      "moment": "^2.29.4",
-      "moment-jalaali": "^0.9.6",
-      "node": "^18.5.0",
-      "npm": "^8.14.0",
+      "firebase": "^9.5.0",
       "react": "^17.0.2",
-      "react-3d-icons": "^1.0.2",
-      "react-animated-numbers": "^0.14.0",
-      "react-bootstrap": "^2.4.0",
-      "react-copy-to-clipboard": "^5.1.0",
-      "react-datepicker": "^4.8.0",
       "react-dom": "^17.0.2",
-      "react-hook-form": "^7.33.1",
-      "react-icons": "^4.4.0",
-      "react-media": "^1.10.0",
       "react-router-dom": "^6.0.2",
       "react-scripts": "4.0.3",
-      "react-spinners": "^0.13.6",
-      "react-swipeable-views": "^0.14.0",
-      "react-to-print": "^2.14.10",
-      "react-webcam": "^7.0.1",
-      "rmwc": "^8.0.0",
-      "three": "^0.149.0",
       "web-vitals": "^1.0.1"
     },
     "scripts": {
@@ -107,11 +65,6 @@ npm manifest:
         "last 1 firefox version",
         "last 1 safari version"
       ]
-    },
-    "devDependencies": {
-      "autoprefixer": "^10.4.8",
-      "postcss": "^8.4.16",
-      "tailwindcss": "^3.1.8"
     }
   }
 
@@ -1335,18 +1288,6 @@ Lockfile:
     "integrity" "sha512-ij4wRiunFfaJxjB0BdrYHIH8FxBJpOwNPhhAcunlmPdXudL1WQV1qoP9un6JsEBAgQH+7UXyyjh0g7jTxXK6tg=="
     "resolved" "https://registry.npmjs.org/@csstools/normalize.css/-/normalize.css-10.1.0.tgz"
     "version" "10.1.0"
-  
-  "@emotion/is-prop-valid@^0.8.2":
-    "integrity" "sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA=="
-    "resolved" "https://registry.npmjs.org/@emotion/is-prop-valid/-/is-prop-valid-0.8.8.tgz"
-    "version" "0.8.8"
-    dependencies:
-      "@emotion/memoize" "0.7.4"
-  
-  "@emotion/memoize@0.7.4":
-    "integrity" "sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw=="
-    "resolved" "https://registry.npmjs.org/@emotion/memoize/-/memoize-0.7.4.tgz"
-    "version" "0.7.4"
   
   "@eslint/eslintrc@^0.3.0":
     "integrity" "sha512-1JTKgrOKAHVivSvOYw+sJOunkBjUOvjqWk1DPja7ZFhIS2mX/4EgTT8M7eTK9jrKhL/FvXXEbQwIs3pg1xp3dg=="
@@ -6054,26 +5995,6 @@ Lockfile:
     dependencies:
       "map-cache" "^0.2.2"
   
-  "framer-motion@^6.2.4":
-    "integrity" "sha512-1UfnSG4c4CefKft6QMYGx8AWt3TtaFoR/Ax4dkuDDD5BDDeIuUm7gesmJrF8GzxeX/i6fMm8+MEdPngUyPVdLA=="
-    "resolved" "https://registry.npmjs.org/framer-motion/-/framer-motion-6.2.4.tgz"
-    "version" "6.2.4"
-    dependencies:
-      "framesync" "6.0.1"
-      "hey-listen" "^1.0.8"
-      "popmotion" "11.0.3"
-      "style-value-types" "5.0.0"
-      "tslib" "^2.1.0"
-    optionalDependencies:
-      "@emotion/is-prop-valid" "^0.8.2"
-  
-  "framesync@6.0.1":
-    "integrity" "sha512-fUY88kXvGiIItgNC7wcTOl0SNRCVXMKSWW2Yzfmn7EKNc+MpCzcz9DhdHcdjbrtN3c6R4H5dTY2jiCpPdysEjA=="
-    "resolved" "https://registry.npmjs.org/framesync/-/framesync-6.0.1.tgz"
-    "version" "6.0.1"
-    dependencies:
-      "tslib" "^2.1.0"
-  
   "fresh@0.5.2":
     "integrity" "sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac="
     "resolved" "https://registry.npmjs.org/fresh/-/fresh-0.5.2.tgz"
@@ -6425,11 +6346,6 @@ Lockfile:
     "integrity" "sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ=="
     "resolved" "https://registry.npmjs.org/hex-color-regex/-/hex-color-regex-1.1.0.tgz"
     "version" "1.1.0"
-  
-  "hey-listen@^1.0.8":
-    "integrity" "sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q=="
-    "resolved" "https://registry.npmjs.org/hey-listen/-/hey-listen-1.0.8.tgz"
-    "version" "1.0.8"
   
   "history@^5.1.0":
     "integrity" "sha512-zPuQgPacm2vH2xdORvGGz1wQMuHSIB56yNAy5FnLuwOwgSYyPKptJtcMm6Ev+hRGeS+GzhbmRacHzvlESbFwDg=="
@@ -9162,16 +9078,6 @@ Lockfile:
     dependencies:
       "ts-pnp" "^1.1.6"
   
-  "popmotion@11.0.3":
-    "integrity" "sha512-Y55FLdj3UxkR7Vl3s7Qr4e9m0onSnP8W7d/xQLsoJM40vs6UKHFdygs6SWryasTZYqugMjm3BepCF4CWXDiHgA=="
-    "resolved" "https://registry.npmjs.org/popmotion/-/popmotion-11.0.3.tgz"
-    "version" "11.0.3"
-    dependencies:
-      "framesync" "6.0.1"
-      "hey-listen" "^1.0.8"
-      "style-value-types" "5.0.0"
-      "tslib" "^2.1.0"
-  
   "portfinder@^1.0.26":
     "integrity" "sha512-Se+2isanIcEqf2XMHjyUKskczxbPH7dQnlMjXX6+dybayyHvAf/TCgyMRlzf/B6QDhAEFOGes0pzRo3by4AbMA=="
     "resolved" "https://registry.npmjs.org/portfinder/-/portfinder-1.0.28.tgz"
@@ -10185,7 +10091,7 @@ Lockfile:
       "strip-ansi" "6.0.0"
       "text-table" "0.2.0"
   
-  "react-dom@*", "react-dom@^17.0.2", "react-dom@>=16.8", "react-dom@>=16.8 || ^17.0.0", "react-dom@>=16.8.0 <18.0.0":
+  "react-dom@*", "react-dom@^17.0.2", "react-dom@>=16.8", "react-dom@>=16.8.0 <18.0.0":
     "integrity" "sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA=="
     "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-17.0.2.tgz"
     "version" "17.0.2"
@@ -10295,7 +10201,7 @@ Lockfile:
     optionalDependencies:
       "fsevents" "^2.1.3"
   
-  "react@*", "react@^17.0.2", "react@>= 16", "react@>=16.8", "react@>=16.8 || ^17.0.0", "react@>=16.8.0 <18.0.0", "react@17.0.2":
+  "react@*", "react@^17.0.2", "react@>= 16", "react@>=16.8", "react@>=16.8.0 <18.0.0", "react@17.0.2":
     "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
     "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
     "version" "17.0.2"
@@ -11585,14 +11491,6 @@ Lockfile:
     dependencies:
       "loader-utils" "^2.0.0"
       "schema-utils" "^2.7.0"
-  
-  "style-value-types@5.0.0":
-    "integrity" "sha512-08yq36Ikn4kx4YU6RD7jWEv27v4V+PUsOGa4n/as8Et3CuODMJQ00ENeAVXAeydX4Z2j1XHZF1K2sX4mGl18fA=="
-    "resolved" "https://registry.npmjs.org/style-value-types/-/style-value-types-5.0.0.tgz"
-    "version" "5.0.0"
-    dependencies:
-      "hey-listen" "^1.0.8"
-      "tslib" "^2.1.0"
   
   "stylehacks@^4.0.0":
     "integrity" "sha512-7GlLk9JwlElY4Y6a/rmbH2MhVlTyVmiJd1PfTCqFaIBEGMYNsrO/v3SeGTdhBThLg4Z+NbOk/qFMwCa+J+3p/g=="

@@ -1,5 +1,4 @@
 import React from 'react';
-import './Profil.css';
 import Media from 'react-media';
 import { collection, getDocs, doc, onSnapshot } from "firebase/firestore";
 import { db } from '../../../firebase';
