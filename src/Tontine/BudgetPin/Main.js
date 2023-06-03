@@ -16,15 +16,19 @@ export default function BudGeTPin() {
  const navigation = useNavigate();
  const [open, setOpen] = React.useState(true);
 
+
  React.useEffect(() => {
 
+
   JSON.parse(window.localStorage.getItem('ACTIVE_M_USER')) !== true && navigation('/sign');
+  JSON.parse(window.localStorage.getItem('***#$$view..<<valid++')) !== true && navigation('/tontine');
+
+
   window.setTimeout(() => {
    gsap.to('.App-loading-blank', 0, { delay: .1, x: '-1000%', opacity: 0, ease: Expo.easeIn })
   }, 50);
 
  }, []);
-
 
  React.useEffect(() => {
 

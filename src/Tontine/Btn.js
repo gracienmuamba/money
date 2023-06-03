@@ -100,9 +100,9 @@ export function View() {
    window.localStorage.setItem('&&view$$list£¢ton…', JSON.stringify(list));
    window.localStorage.setItem('&&view$$list£¢toncol§§-…', JSON.stringify(other));
 
-   window.setTimeout(() => {
-    navigation('/tontine/list/group');
-   }, 500);
+   // window.setTimeout(() => {
+   //   navigation('/tontine/list/group');
+   // }, 500);
   }
 
  };

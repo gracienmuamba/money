@@ -332,7 +332,6 @@ export const FormInput = () => {
 
       <FormControl
         sx={{ width: '100%' }}
-
         variant="standard">
         <InputLabel htmlFor="standard-adornment-password"><div className='pop-up'>Pin actuel</div></InputLabel>
 
@@ -418,6 +417,8 @@ export const FormInput = () => {
   )
 };
 
+
+
 async function swapInWithDocsAgent(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayAgentMoney, upgrade, adminFrais) {
 
   let time = moment().format('LLL');
@@ -481,7 +482,7 @@ async function swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUse
   let get = { date: time, solde: `${prix} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu' }
 
 
-  let comm = prix * 0.3 / 100;
+  let comm = prix * 0.1 / 100;
 
   const sendRef = doc(db, "agent", sendPhone);
   await updateDoc(sendRef, {
@@ -529,8 +530,8 @@ async function isSwapInWithClientToAgent(sendPhone, getPhone, sendUser, getUser,
   let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu' }
 
 
-  let fraisAdmin = frais * 70 / 100;
-  let fraisAgent = frais * 30 / 100;
+  let fraisAdmin = frais;
+  let fraisAgent = frais * 2.7 / 100;
 
 
   const sendRef = doc(db, "client", sendPhone);

@@ -14,12 +14,8 @@ import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
 
-
-
 let Acces = true;
-let listPush = new Array();
 let listRising = new Array();
-
 
 function DrawerAppBar() {
 
@@ -29,7 +25,6 @@ function DrawerAppBar() {
  const pushOther = JSON.parse(window.localStorage.getItem('&&view$$list£¢toncol§§-…'));
 
  React.useEffect(async () => {
-
   [...pushOther].map((item) => {
 
    const unsub = onSnapshot(doc(db, "tontine", item), (doc) => {
@@ -40,7 +35,6 @@ function DrawerAppBar() {
    });
 
   })
-  window.console.log(listRising);
  }, []);
 
  if (Array.isArray(pushDocs) && pushDocs.length) {
@@ -82,13 +76,10 @@ function DrawerAppBar() {
 
             setLoad(true);
             window.localStorage.setItem('¥¥˙´¸list˘˘22˚˚fil', JSON.stringify(pushOther[index]));
-            const querySnapshot = await getDocs(collection(db, pushOther[index]));
-            querySnapshot.forEach((doc) => {
-             // doc.data() is never undefined for query doc snapshots
-             listPush.push(doc.id);
+            const unsub = onSnapshot(doc(db, "tontine", pushOther[index]), (doc) => {
+             window.localStorage.setItem('¥¥˙´¸list˘˘˚˚', JSON.stringify((doc.data().table)));
             });
 
-            window.localStorage.setItem('¥¥˙´¸list˘˘˚˚', JSON.stringify(listPush));
             window.setTimeout(() => {
              window.location.href = "/tontine/list/group/child";
             }, 5800);

@@ -29,281 +29,280 @@ import { NumericFormat } from 'react-number-format';
 
 
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
-  const { onChange, ...other } = props;
-  return (
-    <IMaskInput
-      {...other}
-      mask="(#00) 000-0000"
-      definitions={{
-        '#': /[0-9]/,
-      }}
-      inputmode="tel"
-      pattern="[0-9]*"
+ const { onChange, ...other } = props;
+ return (
+  <IMaskInput
+   {...other}
+   mask="(#00) 000-0000"
+   definitions={{
+    '#': /[0-9]/,
+   }}
+   inputmode="tel"
+   pattern="[0-9]*"
 
-      inputRef={ref}
-      onAccept={(value) => onChange({ target: { name: props.name, value } })}
-      overwrite
-    />
-  );
+   inputRef={ref}
+   onAccept={(value) => onChange({ target: { name: props.name, value } })}
+   overwrite
+  />
+ );
 });
 TextMaskCustom.propTypes = {
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+ name: PropTypes.string.isRequired,
+ onChange: PropTypes.func.isRequired,
 };
 const NumericFormatCustom = React.forwardRef(function NumericFormatCustom(
-  props,
-  ref,
+ props,
+ ref,
 ) {
-  const { onChange, ...other } = props;
+ const { onChange, ...other } = props;
 
-  return (
-    <NumericFormat
-      {...other}
-      getInputRef={ref}
-      onValueChange={(values) => {
-        onChange({
-          target: {
-            name: props.name,
-            value: values.value,
-          },
-        });
-      }}
-      thousandSeparator
-      inputmode="tel"
-      valueIsNumericString
-      prefix=""
-    />
-  );
+ return (
+  <NumericFormat
+   {...other}
+   getInputRef={ref}
+   onValueChange={(values) => {
+    onChange({
+     target: {
+      name: props.name,
+      value: values.value,
+     },
+    });
+   }}
+   thousandSeparator
+   inputmode="tel"
+   valueIsNumericString
+   prefix=""
+  />
+ );
 });
 NumericFormatCustom.propTypes = {
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+ name: PropTypes.string.isRequired,
+ onChange: PropTypes.func.isRequired,
 };
-
 
 
 export let sendPhone = '';
 
+
 // Input Field form
 export default function REturnInPutCode() {
-  return (
-    <Media
-      queries={{
-        small: '(max-width: 599px)',
-        medium: '(min-width: 600px) and (max-width:1199px)',
-        large: '(min-width: 1200px)',
-      }}>
-      {matches => (
-        <>
-          {matches.small && <ScreenSmall />}
-          {matches.medium && <ScreenLarge />}
-          {matches.large && <ScreenLarge />}
-        </>
-      )}
-    </Media>
-  );
+ return (
+  <Media
+   queries={{
+    small: '(max-width: 599px)',
+    medium: '(min-width: 600px) and (max-width:1199px)',
+    large: '(min-width: 1200px)',
+   }}>
+   {matches => (
+    <>
+     {matches.small && <ScreenSmall />}
+     {matches.medium && <ScreenLarge />}
+     {matches.large && <ScreenLarge />}
+    </>
+   )}
+  </Media>
+ );
 };
 
 export const ScreenLarge = () => (
-  <div className='wrp-form-input-sign'>
-    <FormDataInput />
-  </div>
+ <div className='wrp-form-input-sign'>
+  <FormDataInput />
+ </div>
 );
 export const ScreenSmall = () => (
-  <div className='wrp-form-input-sign'>
-    <FormDataInput />
-  </div>
+ <div className='wrp-form-input-sign'>
+  <FormDataInput />
+ </div>
 );
 
 export const FormDataInput = () => {
 
-  let pushClient = new Array();
-  let pushAgent = new Array();
-  const [load, setLoad] = React.useState(false);
+ let pushClient = new Array();
+ let pushAgent = new Array();
+ const [load, setLoad] = React.useState(false);
 
-  const navigation = useNavigate();
-  const { register, handleSubmit, reset, control } = useForm({});
+ const navigation = useNavigate();
+ const { register, handleSubmit, reset, control } = useForm({});
 
-  const [open, setOpen] = React.useState(false);
-  const [some, setSome] = React.useState(false);
+ const [open, setOpen] = React.useState(false);
+ const [some, setSome] = React.useState(false);
 
-  const [fullWidth, setFullWidth] = React.useState(true);
-  const [maxWidth, setMaxWidth] = React.useState('sm');
+ const [fullWidth, setFullWidth] = React.useState(true);
+ const [maxWidth, setMaxWidth] = React.useState('sm');
 
-  const [values, setValues] = React.useState({
-    textmask: '(100) 000-0000',
-    numberformat: '1320',
+ const [values, setValues] = React.useState({
+  textmask: '(100) 000-0000',
+  numberformat: '1320',
+ });
+
+ const handleChange = (event) => {
+  setValues({
+   ...values,
+   [event.target.name]: event.target.value,
   });
+ };
 
-  const handleChange = (event) => {
-    setValues({
-      ...values,
-      [event.target.name]: event.target.value,
+ const handleClose = () => {
+  setOpen(false);
+ };
+ const handleSome = () => {
+  setSome(false);
+ };
+
+ const onSubmit = async (data) => {
+
+  setLoad(true);
+
+  if (data.phone === undefined) {
+
+   setOpen(true);
+   setLoad(false);
+   reset();
+
+  } else {
+
+   let num = (data.phone).match(/\d+/g);
+   let numPhone = '';
+   num.map(index => {
+    numPhone += index;
+   });
+
+
+   if (numPhone.length != 10 || numPhone.charAt(0) != 0) {
+    setOpen(true);
+    setLoad(false);
+    reset();
+   } else {
+
+    const clientSnapshot = await getDocs(collection(db, "client"));
+    clientSnapshot.forEach((doc) => {
+     pushClient.push(doc.id);
     });
-  };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-  const handleSome = () => {
-    setSome(false);
-  };
 
-  const onSubmit = async (data) => {
+    const agentSnapshot = await getDocs(collection(db, "agent"));
+    agentSnapshot.forEach((doc) => {
+     pushAgent.push(doc.id);
+    });
 
-    setLoad(true);
+    const verifierClient = pushClient.some(value => value == numPhone);
+    const verifierAgent = pushAgent.some(value => value == numPhone);
 
-    if (data.phone === undefined) {
+    if (verifierClient || verifierAgent) {
 
-      setOpen(true);
+     if (JSON.parse(window.localStorage.getItem('USER')) !== numPhone) {
+
+      sendPhone = numPhone;
+      window.localStorage.setItem('A@@ph$$&-@#', JSON.stringify(numPhone));
+      window.setTimeout(() => {
+       navigation('/send-money');
+       // navigation('/fran');
+      }, 2100);
+
+     } else {
+
       setLoad(false);
+      setSome(true);
       reset();
 
+     }
     } else {
 
-      let num = (data.phone).match(/\d+/g);
-      let numPhone = '';
-      num.map(index => {
-        numPhone += index;
-      });
+     setLoad(false);
+     setOpen(true);
+     reset();
+
+    };
+
+   };
 
 
-      if (numPhone.length != 10 || numPhone.charAt(0) != 0) {
-        setOpen(true);
-        setLoad(false);
-        reset();
-      } else {
-
-        const clientSnapshot = await getDocs(collection(db, "client"));
-        clientSnapshot.forEach((doc) => {
-          pushClient.push(doc.id);
-        });
+  }
 
 
-        const agentSnapshot = await getDocs(collection(db, "agent"));
-        agentSnapshot.forEach((doc) => {
-          pushAgent.push(doc.id);
-        });
+ };
 
-        const verifierClient = pushClient.some(value => value == numPhone);
-        const verifierAgent = pushAgent.some(value => value == numPhone);
+ return (
+  <>
+   <div className='zindex-theme'>
+    <Backdrop
+     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+     open={load}>
 
-        if (verifierClient || verifierAgent) {
+     <CircularProgress color="inherit" />
+    </Backdrop>
+   </div>
 
-          if (JSON.parse(window.localStorage.getItem('USER')) !== numPhone) {
+   <form onSubmit={handleSubmit(onSubmit)}>
 
-            sendPhone = numPhone;
-            window.localStorage.setItem('A@@ph$$&-@#', JSON.stringify(numPhone));
-            window.setTimeout(() => {
-              navigation('/send-money');
-              // navigation('/fran');
-            }, 2100);
+    <FormControl sx={{ width: '100%' }} variant="standard">
+     <InputLabel htmlFor="formatted-text-mask-input"><h1 className='pop-up'>Numéro</h1></InputLabel>
 
-          } else {
+     <Controller
+      name="phone"
+      control={control}
+      render={({ field }) =>
 
-            setLoad(false);
-            setSome(true);
-            reset();
+       <Input
+        autoFocus
+        value={values.textmask}
+        onChange={handleChange}
+        inputProps={{
+         autoComplete: "off", inputMode: 'tel'
+        }}
+        name="textmask"
+        id="formatted-text-mask-input"
+        inputComponent={TextMaskCustom}
+        {...field}
+       />
 
-          }
-        } else {
+      }
+     />
+    </FormControl>
 
-          setLoad(false);
-          setOpen(true);
-          reset();
+    <Dialog
+     fullWidth={fullWidth}
+     maxWidth={maxWidth}
+     open={open}
+     onClose={handleClose}
+    >
+     <DialogTitle><p className='pop-up'>MuunganoMoney</p></DialogTitle>
+     <DialogContent>
 
-        };
-
-      };
-
-
-    }
-
-
-  };
-
-  return (
-    <>
-      <div className='zindex-theme'>
-        <Backdrop
-          sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-          open={load}>
-
-          <CircularProgress color="inherit" />
-        </Backdrop>
-      </div>
-
-      <form onSubmit={handleSubmit(onSubmit)}>
-
-        <FormControl sx={{ width: '100%' }} variant="standard">
-          <InputLabel htmlFor="formatted-text-mask-input"><h1 className='pop-up'>Numéro</h1></InputLabel>
-
-          <Controller
-            name="phone"
-            control={control}
-            render={({ field }) =>
-
-              <Input
-                autoFocus
-                value={values.textmask}
-                onChange={handleChange}
-                inputProps={{
-                  autoComplete: "off", inputMode: 'tel'
-                }}
-                name="textmask"
-                id="formatted-text-mask-input"
-                inputComponent={TextMaskCustom}
-                {...field}
-              />
-
-            }
-          />
-        </FormControl>
-
-
-        <Dialog
-          fullWidth={fullWidth}
-          maxWidth={maxWidth}
-          open={open}
-          onClose={handleClose}
-        >
-          <DialogTitle><p className='pop-up'>MuunganoMoney</p></DialogTitle>
-          <DialogContent>
-
-            <DialogContentText>
-              <p className='pop-up'>
-                Le numéro de téléphone n'est pas reconnu par MuunganoMoney.
+      <DialogContentText>
+       <p className='pop-up'>
+        Le numéro de téléphone n'est pas reconnu par MuunganoMoney.
       </p>
-            </DialogContentText>
+      </DialogContentText>
 
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
-          </DialogActions>
-        </Dialog>
+     </DialogContent>
+     <DialogActions>
+      <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
+     </DialogActions>
+    </Dialog>
 
-        <Dialog
-          fullWidth={fullWidth}
-          maxWidth={maxWidth}
-          open={some}
-          onClose={handleSome}>
-          <DialogTitle><p className='pop-up'>MuunganoMoney</p></DialogTitle>
-          <DialogContent>
+    <Dialog
+     fullWidth={fullWidth}
+     maxWidth={maxWidth}
+     open={some}
+     onClose={handleSome}>
+     <DialogTitle><p className='pop-up'>MuunganoMoney</p></DialogTitle>
+     <DialogContent>
 
-            <DialogContentText>
-              <p className='pop-up'>
-                Ce numéro ne peut pas être utilisé
+      <DialogContentText>
+       <p className='pop-up'>
+        Ce numéro ne peut pas être utilisé
        </p>
-            </DialogContentText>
+      </DialogContentText>
 
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleSome}><span className='pop-up'>Fermer</span></Button>
-          </DialogActions>
-        </Dialog>
+     </DialogContent>
+     <DialogActions>
+      <Button onClick={handleSome}><span className='pop-up'>Fermer</span></Button>
+     </DialogActions>
+    </Dialog>
 
-        <button className='Btn'>Suivant</button>
-      </form>
-    </>
-  );
+    <button className='Btn'>Suivant</button>
+   </form>
+  </>
+ );
 };

@@ -3,7 +3,6 @@ import { doc, onSnapshot } from "firebase/firestore";
 import { db } from '../../../firebase';
 import './LastName.css';
 
-
 const ReturnLasTName = (props) => {
 
  let docTon = JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil'));
@@ -15,7 +14,6 @@ const ReturnLasTName = (props) => {
   await onSnapshot(doc(db, 'client', props.docName), (doc) => {
    setName(doc.data().lastname);
   });
-
   const unsub = onSnapshot(doc(db, docTon, props.docName), (doc) => {
    setActive(doc.data().soldeactive);
   });

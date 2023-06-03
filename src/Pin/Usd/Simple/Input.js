@@ -24,8 +24,12 @@ import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
+
+
 export let nowField = moment().date();
 export let now = moment().date();
+
+
 
 export let prixHash = 0;
 export let hashTrue = true;
@@ -446,8 +450,7 @@ async function swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUse
   let get = { date: time, solde: `${prix} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu' }
 
 
-  let comm = prix * 0.3 / 100;
-
+  let comm = prix * 0.1 / 100;
 
   const sendRef = doc(db, "agent", sendPhone);
   await updateDoc(sendRef, {
@@ -495,8 +498,8 @@ async function isSwapInWithClientToAgent(sendPhone, getPhone, sendUser, getUser,
   let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu' }
 
 
-  let fraisAdmin = frais * 70 / 100;
-  let fraisAgent = frais * 30 / 100;
+  let fraisAdmin = frais;
+  let fraisAgent = frais * 2.7 / 100;
 
 
   const sendRef = doc(db, "client", sendPhone);

@@ -66,20 +66,6 @@ export const View = () => {
     <img src={profil} className='user-avater-child-tontine' />
     <h3>{capitalized}</h3>
    </div>
-
-
-   {/* <>
-    {pushed &&
-     <div onClick={handlepush} className='wrp-push-invited-icon-tontine'>
-      <p>Invité Amie</p>
-      <HiPlusSm color={'#929222'} size={'2em'} />
-     </div>
-    }
-   </>
- */}
-
-
-
   </>
  );
 };

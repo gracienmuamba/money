@@ -3,7 +3,7 @@ import Media from 'react-media';
 import { useNavigate } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 
-import { doc, onSnapshot, updateDoc, increment, arrayUnion } from 'firebase/firestore';
+import { doc, onSnapshot, updateDoc, increment, arrayUnion, waitForPendingWrites } from 'firebase/firestore';
 import { db } from '../../firebase';
 
 import Button from '@mui/material/Button';
@@ -24,8 +24,7 @@ import moment from 'moment';
 
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-
-
+import { parse } from 'postcss';
 
 
 // View Form Update view
@@ -49,12 +48,16 @@ export default function ReturnFormUpdate() {
 };
 
 
-let userActive = JSON.parse(window.localStorage.getItem('^^$%list++::act::'));
+
+// let userActive = JSON.parse(window.localStorage.getItem('^^$%list++::act::'));
+
 let userDevise = JSON.parse(window.localStorage.getItem('##!!devi&&*>>'));
 
-let docTonAsked = JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil'));
-let docTonAskedPhone = JSON.parse(window.localStorage.getItem('##!!devi --phone&&*>>'));
-let listPush = JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘˚˚'));
+// let listPush = JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘˚˚'));
+// let uptPosition = JSON.parse(window.localStorage.getItem('***#$$pso..<<add++'));
+// let numPosition = JSON.parse(window.localStorage.getItem('^^$%tour++::&&$$::'));
+// let askedPos = JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'));
+
 
 export const ScreenLarge = () => (
  <div className='wrp-form-input-nows'>
@@ -66,6 +69,9 @@ export const ScreenSmall = () => (
   <FormInputField />
  </div>
 );
+
+
+
 export const FormInputField = () => {
 
  let regular = /[a-z]+/;
@@ -127,7 +133,6 @@ export const FormInputField = () => {
 
  }, []);
 
-
  const onSubmit = async (data) => {
 
   setLoad(true);
@@ -145,127 +150,53 @@ export const FormInputField = () => {
     reset();
 
    } else {
-
     if (pin != data.code) {
      setOpen(true);
      setLoad(false);
      reset();
     } else {
 
-     if (userActive) {
-      if (userDevise === 'usd') {
 
-       if (Number(parseInt(usd)) + 1 >= rising) {
+     if (userDevise === 'usd') {
 
-        decrementMoneyClientDollar(rising);
-        updateBasket(rising);
-        accretionChildTon(rising);
-        accretionChildTonAsked(asked);
+      if (Number(parseInt(usd)) + 1 >= Number(rising)) {
 
-        [...listPush].map(async (item) => {
+       decrementMoneyClientDollar(Number(rising));
+       addBasket(Number(rising));
+       accretionChildUpdate(Number(rising));
 
-         const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), item);
-         // Set the "capital" field of the city 'DC'
-         if (item === JSON.parse(window.localStorage.getItem('USER'))) {
-          console.log('your number');
-         } else {
-
-          window.setTimeout(async () => {
-           await updateDoc(washingtonRef, {
-            solde: 0
-           });
-          }, 500);
-
-
-         }
-
-        });
-
-        window.setTimeout(() => {
-         navigation('/tontine');
-        }, 4650);
-
-       } else {
-        setLoad(false);
-        setNothing(true);
-       }
+       window.setTimeout(() => {
+        window.localStorage.setItem('***#$$view..<<valid++', JSON.stringify(false));
+        navigation('/tontine');
+       }, 4394);
 
 
       } else {
-
-       if (Number(parseInt(cdf)) + 2000 >= rising) {
-
-        decrementMoneyClientFran(rising);
-        updateBasket(rising);
-        accretionChildTon(rising);
-        accretionChildTonAsked(asked);
-
-        [...listPush].map(async (item) => {
-
-         const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), item);
-         // Set the "capital" field of the city 'DC'
-         if (item === JSON.parse(window.localStorage.getItem('USER'))) {
-          console.log('your number');
-         } else {
-
-          window.setTimeout(async () => {
-           await updateDoc(washingtonRef, {
-            solde: 0
-           });
-          }, 500);
-
-
-         }
-
-        });
-
-        window.setTimeout(() => {
-         navigation('/tontine');
-        }, 4650);
-
-       } else {
-        setLoad(false);
-        setNothing(true);
-       }
-
+       setNothing(true);
       }
 
      } else {
 
+      if (Number(parseInt(cdf)) + 2000 >= Number(rising)) {
 
-      if (userDevise === 'usd') {
+       decrementMoneyClientFran(Number(rising));
+       addBasket(Number(rising));
+       accretionChildUpdate(Number(rising));
 
-       if (Number(parseInt(usd)) + 1 >= Number(rising)) {
-
-        decrementMoneyClientDollar(Number(rising));
-        addBasket(Number(rising));
-        accretionChildTon(Number(rising));
-
-       } else {
-        setNothing(true);
-       }
-
+       window.setTimeout(() => {
+        window.localStorage.setItem('***#$$view..<<valid++', JSON.stringify(false));
+        navigation('/tontine');
+       }, 4394);
       } else {
-
-       if (Number(parseInt(cdf)) + 2000 >= Number(rising)) {
-        decrementMoneyClientFran(Number(rising));
-        addBasket(Number(rising));
-        accretionChildTon(Number(rising));
-
-        window.setTimeout(() => {
-         navigation('/tontine');
-        }, 1000);
-
-
-       } else {
-        setNothing(true);
-       }
-
+       setNothing(true);
+       setLoad(false);
       }
 
-
-
      }
+
+
+
+
     }
    };
 
@@ -366,7 +297,7 @@ export const FormInputField = () => {
      </DialogActions>
     </Dialog>
 
-    <button className='Btn-Broker'>Créer</button>
+    <button className='Btn-Broker'>Ajouter au panier</button>
    </form>
 
   </>
@@ -395,12 +326,14 @@ export async function decrementMoneyClientFran(money) {
 
 };
 
+
 export async function addBasket(money) {
 
  const washingtonRef = doc(db, "tontine", JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')));
  // Set the "capital" field of the city 'DC'
  await updateDoc(washingtonRef, {
-  asked: increment(money)
+  asked: increment(money),
+  position: increment(1)
  });
 
 };
@@ -410,43 +343,50 @@ export async function updateBasket(money) {
 
  // Set the "capital" field of the city 'DC'
  await updateDoc(washingtonRef, {
-  asked: (money)
+  asked: money,
+  askedposition: increment(1),
+  position: 1
  });
 
 };
 
-export async function accretionChildTon(rising) {
+export async function accretionChildTon(numDocs) {
+
+ const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), numDocs);
+ // Set the "capital" field of the city 'DC'
+ await updateDoc(washingtonRef, {
+  solde: Number(0),
+  soldeactive: false,
+ });
+
+};
+
+export async function accretionChildUpdate(rising) {
 
  const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('USER')));
  let obj = { asked: 0, date: moment().format(), solde: rising }
  // Set the "capital" field of the city 'DC'
  await updateDoc(washingtonRef, {
-  activity: arrayUnion(obj),
   date: moment().format(),
   solde: Number(rising),
   soldeactive: true,
+  activity: arrayUnion(obj)
  });
 
 };
-export async function IncreasewalletTon(rising) {
 
- const washingtonRef = doc(db, 'tontine', JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')));
+export async function accretionAskedTontine(rising, asked) {
 
+ const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('##!!devi --phone&&*>>')));
+ let obj = { asked: 0, date: moment().format(), solde: rising }
  // Set the "capital" field of the city 'DC'
  await updateDoc(washingtonRef, {
-  asked: increment(rising)
+  date: moment().format(),
+  solde: 0,
+  soldeactive: false,
+  activity: arrayUnion(obj),
+  asked: asked
  });
 
 };
-export async function accretionChildTonAsked(rising) {
-
- const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('^^$%tour++::&&$$::')));
- // Set the "capital" field of the city 'DC'
-
- await updateDoc(washingtonRef, {
-  asked: increment(Number(rising)),
- });
-
-};
-
 

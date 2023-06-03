@@ -12,6 +12,7 @@
 }
 .profil-tontine-navs h4 {
  display: flex;
+ margin-left: 0.7em;
  font-size: 1.11em;
  font-weight: 300;
  font-family: var(--text-family);

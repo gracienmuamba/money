@@ -19,18 +19,19 @@
 /* Small */
 .wrp-main-prix-dashed-sm {
  display: flex;
- flex-direction: row;
- justify-content: space-between;
- align-items: center;
+ flex-direction: column;
+ justify-content: start;
+ align-items: flex-start;
  width: 100%;
  color: #c44900;
 }
 .wrp-main-prix-dashed-sm span {
  display: flex;
- font-size: 1.15em;
+ font-size: 1.455em;
  font-family: var(--text-family);
  letter-spacing: var(-text-family-spacing);
  font-weight: 300;
+ margin: 0.5ch 0;
  line-height: 1;
  white-space: nowrap;
 }

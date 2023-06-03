@@ -26,12 +26,9 @@ function DrawerAppBar() {
 
  let listPush = JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘˚˚'));
  let colTonPush = JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil'));
- let countTon = JSON.parse(window.localStorage.getItem('**count$%%@?||**__+'));
 
  const [currency, setCurrency] = React.useState('');
  const [load, setLoad] = React.useState(false);
- const [count, setCount] = React.useState(0);
- const [position, setPosition] = React.useState(0);
  const [active, setActive] = React.useState(0);
 
  let index = 0;
@@ -48,17 +45,14 @@ function DrawerAppBar() {
    });
   });
 
-
  }, []);
-
  React.useEffect(async () => {
   const unsub = onSnapshot(doc(db, "tontine", colTonPush), (doc) => {
    setCurrency(doc.data().currency);
-   setCount(doc.data().count);
-   setPosition(doc.data().position);
   });
 
  }, []);
+
 
  return (
   <>
@@ -93,15 +87,9 @@ function DrawerAppBar() {
             () => {
              if (listPush[index] === JSON.parse(window.localStorage.getItem('USER'))) {
 
-              window.localStorage.setItem('##!!devi&&*>>', JSON.stringify(currency));
-              window.localStorage.setItem('>>pos;;{}$$++==', JSON.stringify(position));
-
-              window.localStorage.setItem('>>pos;;{}$$++==act...', JSON.stringify(active));
-              window.localStorage.setItem('>>pos;;{}$$**++==count...', JSON.stringify(count));
-
-              window.localStorage.setItem('##!!devi --phone&&*>>', JSON.stringify(listPush[index]));
               setLoad(true);
-
+              window.localStorage.setItem('##!!devi&&*>>', JSON.stringify(currency));
+              window.localStorage.setItem('>>pos;;{}$$++==act...', JSON.stringify(active));
               window.setTimeout(() => {
                navigation('/tontine/list/group/child/budget');
               }, 450);
@@ -120,7 +108,7 @@ function DrawerAppBar() {
                 <div className='cmd-operator-sub-title'>
 
                  <div className='flex-row-cmd'>
-                  <ReturnIMA docProfil={listPush[index]} />
+                  <ReturnIMA docProfil={listPush[index]} docAsked={listPush[index]} />
                   <ReturnLasTName docName={listPush[index]} />
 
                  </div>

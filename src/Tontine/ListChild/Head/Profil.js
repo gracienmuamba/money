@@ -40,7 +40,7 @@ export const ScreenSmall = () => (
 export const View = () => {
 
  let arrayClient = new Array();
- const [profil, setProfil] = React.useState(null);
+ const [profil, setProfil] = React.useState('/img/logo.png');
 
  React.useEffect(async () => {
 
@@ -52,7 +52,7 @@ export const View = () => {
   const collections = arrayClient.some(value => value == JSON.parse(window.localStorage.getItem('USER')));
 
   const unsub = onSnapshot(doc(db, collections ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
-   setProfil(doc.data().profile);
+   setProfil(doc.data().profile === undefined ? '/img/logo.png' : doc.data().profile);
   });
 
  }, []);

@@ -54,6 +54,10 @@ export function View() {
 	const [maxWidth, setMaxWidth] = React.useState('sm');
 	const [active, setActive] = React.useState(false);
 
+	const [position, setPosition] = React.useState(0);
+	const [count, setCount] = React.useState(0);
+	const [askedPosition, setAskedPosition] = React.useState(0);
+
 	const [values, setValues] = React.useState({
 		textmask: '(100) 000-0000',
 		numberformat: '1320',
@@ -68,12 +72,9 @@ export function View() {
 		setOpen(false);
 	};
 
-	let colTon = JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil'));
-	let counTton = JSON.parse(window.localStorage.getItem('>>pos;;{}$$**++==count...'));
-	let tonActive = JSON.parse(window.localStorage.getItem('>>pos;;{}$$++==act...'));
 
+	let colTon = JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil'));
 	let listNumber = JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘˚˚'));
-	let numPosition = JSON.parse(window.localStorage.getItem('>>pos;;{}$$++=='));
 
 
 	React.useEffect(async () => {
@@ -82,12 +83,37 @@ export function View() {
 		});
 
 	}, []);
+	React.useEffect(async () => {
+		const unsub = onSnapshot(doc(db, 'tontine', colTon), (doc) => {
+			setPosition(doc.data().position);
+			setCount(doc.data().count);
+			setAskedPosition(doc.data().askedposition);
+		});
+
+	}, []);
+
+	window.console.log(Number(count) === Number(position) + 1);
+	window.console.log(listNumber[askedPosition]);
+
 	const handlepath = (event) => {
 
 		event.preventDefault();
-		window.localStorage.setItem('^^$%list++::act::', JSON.stringify(counTton === tonActive + 1 ? true : false));
-		window.localStorage.setItem('^^$%tour++::&&$$::', JSON.stringify(listNumber[numPosition]));
-		navigation('/tontine/list/group/child/budget/pin');
+
+		window.localStorage.setItem('^^$%list++::act::', JSON.stringify((count) === (Number(position) + 1) ? true : false));
+		window.localStorage.setItem('***#$$view..<<valid++', JSON.stringify(true));
+		window.localStorage.setItem('***#$$pso..<<add++', JSON.stringify(position));
+		window.localStorage.setItem('***#$$pso..<<askedpos**++', JSON.stringify(listNumber[askedPosition]));
+
+		window.setTimeout(() => {
+
+			if (Number(count) === Number(position) + 1) {
+				navigation('/tontine/list/group/child/budget/pin/all');
+			} else {
+				navigation('/tontine/list/group/child/budget/pin');
+			}
+
+		}, 550);
+
 	};
 
 	return (

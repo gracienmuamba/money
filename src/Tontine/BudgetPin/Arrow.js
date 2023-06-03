@@ -3,8 +3,6 @@ import { HiArrowLeft } from 'react-icons/hi';
 import Media from 'react-media';
 import { useNavigate } from 'react-router-dom';
 
-
-
 // REturn Arrow component 
 export default function REturnArroW() {
  return (

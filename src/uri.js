@@ -6,8 +6,10 @@ import Region from './Register/Region/Main';
 import RegisterPhone from './Register/Phone/Main';
 import SignInRegister from './Register/SignIn/Main';
 
+
 import RegisterSuccess from './Register/RegisterSuccess/Main';
 import SAve from './Register/Save/Main';
+
 
 import RegisteR from './Register/Main';
 import DashEd from './Dashed/Main';
@@ -20,6 +22,8 @@ import ReturnUsd from './USD/Main';
 import ValidExchAnge from './ValidExFran/Main';
 import ExchAnge from './ExFran/Main';
 import RetuRnExUSd from './ExUSd/Main';
+
+
 
 import WithdrawSuccessCDF from './WellFC/Main';
 import WithdrawSuccessUSD from './WellUSD/Main';
@@ -96,6 +100,7 @@ import ChildGroup from './Tontine/Child/Main';
 import ChildOverView from './Tontine/Overview/Main';
 import BudGeT from './Tontine/Budget/Main';
 import BudGeTPin from './Tontine/BudgetPin/Main';
+import BudGeTPinAll from './Tontine/BudgetAllPin/Main';
 
 import StocKCMD from './Command/Main';
 import ListcmdStocK from './Command/List/Main';
@@ -204,6 +209,7 @@ export default function ReturRnURI() {
    <Route path='/tontine/list/group/child' element={<LisTChild />} />
    <Route path='/tontine/list/group/child/budget' element={<BudGeT />} />
    <Route path='/tontine/list/group/child/budget/pin' element={<BudGeTPin />} />
+   <Route path='/tontine/list/group/child/budget/pin/all' element={<BudGeTPinAll />} />
 
    <Route path='/command/agent' element={<StocKCMD />} />
    <Route path='/command/agent/list' element={<ListcmdStocK />} />
