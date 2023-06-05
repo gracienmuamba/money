@@ -31,7 +31,7 @@ const ReturnPrix = (props) => {
   <div className='profil-tontine-navs-prix'>
    <h4 style={{ color: active && '#38b000' }}>
     {active && true ? euro(rising).format() : euro(0).format()}
-    {devise === 'usd' ? ' USD' : ' CDF'}
+    {devise === 'USD' ? ' USD' : ' CDF'}
    </h4>
   </div>
  );

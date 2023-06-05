@@ -18,7 +18,6 @@ export default function TonTinePin() {
 
  React.useEffect(() => {
 
-
   JSON.parse(window.localStorage.getItem('ACTIVE_M_USER')) !== true && navigation('/sign');
   JSON.parse(window.localStorage.getItem('??next^^**$$')) !== true && navigation('/tontine');
 
@@ -27,7 +26,6 @@ export default function TonTinePin() {
   }, 50);
 
  }, []);
-
 
  React.useEffect(() => {
 

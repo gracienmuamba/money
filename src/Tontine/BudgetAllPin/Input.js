@@ -150,7 +150,7 @@ export const FormInputField = () => {
      reset();
     } else {
 
-     if (userDevise === 'usd') {
+     if (userDevise === 'USD') {
       if (Number(parseInt(usd)) < Number(rising)) {
 
        setNothing(true);
@@ -170,7 +170,6 @@ export const FormInputField = () => {
        if (JSON.parse(window.localStorage.getItem('USER')) === JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'))) {
         accretionAddUpdate(Number(rising));
        }
-
 
        [...listPush].map(item => {
 

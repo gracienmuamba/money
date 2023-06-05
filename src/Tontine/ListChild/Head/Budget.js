@@ -25,7 +25,7 @@ export default function ReturnBudgeT() {
  return (
   <div className='wrp-tontine-budget'>
    <h2>
-    {devise === 'usd' ? '$ ' : 'F '}
+    {devise === 'USD' ? '$ ' : 'F '}
     {euro(money).format()}
    </h2>
 

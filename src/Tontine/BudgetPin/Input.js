@@ -133,9 +133,6 @@ export const FormInputField = () => {
  }, []);
 
 
- window.console.log(cdf < rising);
-
-
  const onSubmit = async (data) => {
 
   setLoad(true);
@@ -159,7 +156,7 @@ export const FormInputField = () => {
      reset();
     } else {
 
-     if (userDevise === 'usd') {
+     if (userDevise === 'USD') {
       if (Number(parseInt(usd)) < Number(rising)) {
 
        setNothing(true);
@@ -170,6 +167,8 @@ export const FormInputField = () => {
        decrementMoneyClientDollar(Number(rising));
        addBasket(Number(rising));
        accretionChildUpdate(Number(rising));
+
+
        window.setTimeout(() => {
         window.localStorage.setItem('***#$$view..<<valid++', JSON.stringify(false));
         navigation('/tontine');

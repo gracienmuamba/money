@@ -84,7 +84,8 @@ import PinStocK from './Stock/Pin/Now/Main';
 import StocKThanK from './Stock/Thank/Main';
 
 import TonTine from './Tontine/Main';
-
+import LisTgrOupGet from './Tontine/Get/Main';
+import LisTgrOupWithdrAw from './Tontine/Get/Withdraw/Main';
 
 import FormTontine from './Tontine/Form/Main';
 import DeviseTontine from './Tontine/Devise/Main';
@@ -194,6 +195,8 @@ export default function ReturRnURI() {
 
 
    <Route path='/tontine' element={<TonTine />} />
+   <Route path='/tontine/get' element={<LisTgrOupGet />} />
+   <Route path='/tontine/get/widthdraw' element={<LisTgrOupWithdrAw />} />
    <Route path='/tontine/form' element={<FormTontine />} />
    <Route path='/tontine/form/currency' element={<DeviseTontine />} />
    <Route path='/tontine/form/currency/usd' element={<CuRRencyUsd />} />

@@ -7,11 +7,14 @@ import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 
+import { useNavigate } from 'react-router-dom';
+
 // view invite component
 export default function ReturnInvited() {
 
  const [list, setList] = React.useState([0]);
  const [aswer, setAswer] = React.useState(false);
+ const navigation = useNavigate();
 
  const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
@@ -52,8 +55,13 @@ export default function ReturnInvited() {
 
  }
 
+ const handlepath = (event) => {
+  event.preventDefault();
+  // navigation('/tontine/get');
+ }
+
  return (
-  <div className='tontine-send-invited'>
+  <div onClick={handlepath} className='tontine-send-invited'>
    <IconButton aria-label="cart">
     <StyledBadge badgeContent={size} color="secondary">
      <img src={'/img/invitation.png'} />

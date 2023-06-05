@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import { GrFormPrevious } from 'react-icons/gr';
+import { HiArrowLeft } from 'react-icons/hi';
 import './Back.css';
 
 // Back 
@@ -14,8 +14,7 @@ export default function ReturnBacK() {
 
  return (
   <div onClick={handlepath} className='tontine-back'>
-   <GrFormPrevious size={'2em'} color={'black'} />
-   <span style={{ color: 'black' }}>Aperçu</span>
+   <HiArrowLeft size={'1.8em'} color={'grey'} />
   </div>
  );
 };
