@@ -46,9 +46,24 @@
  width: 100%;
 }
 .flex-head-list-tontine section li {
+ display: flex;
+ flex-direction: row;
+
  margin-top: 3vh;
  width: 100%;
+ justify-content: space-between;
+ align-items: center;
  cursor: pointer;
+}
+
+.flex-head-list-tontine p {
+ display: flex;
+ font-size: 1.333em;
+ font-weight: 300;
+ line-height: 0;
+ font-family: var(--text-family);
+ letter-spacing: 0px;
+ color: #6c757d;
 }
 
 .flex-head-list-tontine .cmd-operator-title .cmd-operator-sub-title {
@@ -66,7 +81,7 @@
  letter-spacing: 0px;
  color: #6c757d;
 }
-.flex-head-list-tontine .cmd-operator-title .cmd-operator-sub-title .flex-row-cmd {
+.flex-head-list-tontine .cmd-operator-title .cmd-operator-sub-title .flex-row-cmd-group {
  display: flex;
  flex-direction: row;
  justify-content: space-between;

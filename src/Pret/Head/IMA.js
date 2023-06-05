@@ -44,6 +44,7 @@ export const ScreenSmall = () => (
   <FirstLetteR />
  </div>
 );
+
 export const FirstLetteR = () => {
 
  const [profil, setProfil] = React.useState(null);

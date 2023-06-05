@@ -532,7 +532,7 @@ export const InputCodeRecaptcha = (props) => {
      </DialogActions>
     </Dialog>
 
-    <button className='Btn'>Suivant</button>
+    <button className='Btn'>Connexion</button>
    </form>
 
   </>

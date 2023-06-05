@@ -37,6 +37,7 @@ export const ScreenSmall = () => (
 );
 export const Arrow = () => {
  const navigation = useNavigate();
+
  const handlepath = (event) => {
   event.preventDefault();
   navigation(-1);

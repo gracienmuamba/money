@@ -3,7 +3,7 @@ import Media from 'react-media';
 import { useNavigate } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 
-import { doc, onSnapshot, updateDoc, increment, arrayUnion, waitForPendingWrites } from 'firebase/firestore';
+import { doc, onSnapshot, updateDoc, increment, arrayUnion, setDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 
 import Button from '@mui/material/Button';
@@ -48,14 +48,9 @@ export default function ReturnFormUpdate() {
 };
 
 
-let userActive = JSON.parse(window.localStorage.getItem('^^$%list++::act::'));
 let userDevise = JSON.parse(window.localStorage.getItem('##!!devi&&*>>'));
-
-
-// let listPush = JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘˚˚'));
-// let uptPosition = JSON.parse(window.localStorage.getItem('***#$$pso..<<add++'));
-// let numPosition = JSON.parse(window.localStorage.getItem('^^$%tour++::&&$$::'));
-// let askedPos = JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'));
+let listPush = JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘˚˚'));
+let lastChild = JSON.parse(window.localStorage.getItem('&&**++<///last{}'));
 
 
 export const ScreenLarge = () => (
@@ -68,7 +63,6 @@ export const ScreenSmall = () => (
   <FormInputField />
  </div>
 );
-
 
 
 export const FormInputField = () => {
@@ -132,10 +126,10 @@ export const FormInputField = () => {
 
  }, []);
 
+
  const onSubmit = async (data) => {
 
   setLoad(true);
-
   if (data.code === undefined) {
    setOpen(true);
    setLoad(false);
@@ -156,50 +150,94 @@ export const FormInputField = () => {
      reset();
     } else {
 
-
      if (userDevise === 'usd') {
+      if (Number(parseInt(usd)) < Number(rising)) {
 
-      if (Number(parseInt(usd)) + 1 >= Number(rising)) {
+       setNothing(true);
+       setLoad(false);
+      } else {
 
        decrementMoneyClientDollar(Number(rising));
-       updateBasket(Number(asked));
+       updateBasket(Number(rising));
        accretionChildUpdate(Number(rising));
-       accretionAskedTontine(Number(asked));
 
+       if (lastChild) {
+        accretionAskedTontine(Number(asked) + Number(rising));
+       } else {
+        accretionAskedTontine(Number(asked));
+       };
+
+       if (JSON.parse(window.localStorage.getItem('USER')) === JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'))) {
+        accretionAddUpdate(Number(rising));
+       }
+
+
+       [...listPush].map(item => {
+
+        window.setTimeout(() => {
+         if (item === JSON.parse(window.localStorage.getItem('USER')) || item === JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'))) {
+          window.console.log('nothing');
+         } else {
+          const cityRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), item);
+          setDoc(cityRef, { solde: 0, soldeactive: false }, { merge: true });
+         }
+
+        }, 2000);
+
+       });
        window.setTimeout(() => {
         window.localStorage.setItem('***#$$view..<<valid++', JSON.stringify(false));
         navigation('/tontine');
-       }, 4394);
-
-
-      } else {
-       setNothing(true);
+       }, 9394);
       }
 
      } else {
 
-      if (Number(parseInt(cdf)) + 2000 >= Number(rising)) {
+      if (Number(parseInt(cdf)) < Number(rising)) {
+
+       setNothing(true);
+       setLoad(false);
+
+      } else {
 
        decrementMoneyClientFran(Number(rising));
-       updateBasket(Number(asked));
+       updateBasket(Number(rising));
        accretionChildUpdate(Number(rising));
-       accretionAskedTontine(Number(asked));
 
+       if (lastChild) {
+        accretionAskedTontine(Number(asked) + Number(rising));
+       } else {
+        accretionAskedTontine(Number(asked));
+       };
+
+       if (JSON.parse(window.localStorage.getItem('USER')) === JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'))) {
+        accretionAddUpdate(Number(rising));
+       }
+
+       [...listPush].map(item => {
+
+        window.setTimeout(() => {
+         if (item === JSON.parse(window.localStorage.getItem('USER')) || item === JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'))) {
+          window.console.log('nothing');
+         } else {
+          const cityRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), item);
+          setDoc(cityRef, { solde: 0, soldeactive: false }, { merge: true });
+         }
+
+        }, 2000);
+
+       });
        window.setTimeout(() => {
         window.localStorage.setItem('***#$$view..<<valid++', JSON.stringify(false));
         navigation('/tontine');
-       }, 4394);
+       }, 9394);
 
-
-      } else {
-       setNothing(true);
-       setLoad(false);
       }
+
      }
 
     }
    };
-
   }
 
  };
@@ -299,7 +337,6 @@ export const FormInputField = () => {
 
     <button className='Btn-Broker'>Ajouter au panier</button>
    </form>
-
   </>
  );
 };
@@ -326,17 +363,6 @@ export async function decrementMoneyClientFran(money) {
 
 };
 
-
-export async function addBasket(money) {
-
- const washingtonRef = doc(db, "tontine", JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')));
- // Set the "capital" field of the city 'DC'
- await updateDoc(washingtonRef, {
-  asked: increment(money),
-  position: increment(1)
- });
-
-};
 export async function updateBasket(money) {
 
  const washingtonRef = doc(db, "tontine", JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')));
@@ -349,18 +375,30 @@ export async function updateBasket(money) {
  });
 
 };
+export async function accretionChildUpdate(rising) {
 
-export async function accretionChildTon(numDocs) {
-
- const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), numDocs);
+ const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++')));
+ let obj = { asked: 0, date: moment().format(), solde: rising }
  // Set the "capital" field of the city 'DC'
  await updateDoc(washingtonRef, {
-  solde: Number(0),
-  soldeactive: false,
+  date: moment().format(),
+  solde: Number(rising),
+  soldeactive: true,
+  activity: arrayUnion(obj)
  });
 
 };
-export async function accretionChildUpdate(rising) {
+export async function accretionAskedTontine(asked) {
+
+ const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++')));
+ // Set the "capital" field of the city 'DC'
+ await updateDoc(washingtonRef, {
+  date: moment().format(),
+  asked: asked
+ });
+
+};
+export async function accretionAddUpdate(rising) {
 
  const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('USER')));
  let obj = { asked: 0, date: moment().format(), solde: rising }
@@ -373,17 +411,3 @@ export async function accretionChildUpdate(rising) {
  });
 
 };
-
-export async function accretionAskedTontine(asked) {
-
- const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('##!!devi --phone&&*>>')));
- // Set the "capital" field of the city 'DC'
- await updateDoc(washingtonRef, {
-  date: moment().format(),
-  solde: 0,
-  soldeactive: false,
-  asked: asked
- });
-
-};
-

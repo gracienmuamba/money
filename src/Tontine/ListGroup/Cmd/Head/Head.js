@@ -7,7 +7,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import Divider from '@mui/material/Divider';
 
-import { collection, getDocs, doc, onSnapshot } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 import { db } from '../../../../firebase';
 
 import Backdrop from '@mui/material/Backdrop';
@@ -20,6 +20,8 @@ let listRising = new Array();
 function DrawerAppBar() {
 
  const [load, setLoad] = React.useState(false);
+ const [money, setMoney] = React.useState(['']);
+ const [devise, setDevise] = React.useState(['']);
 
  const pushDocs = JSON.parse(window.localStorage.getItem('&&view$$list£¢ton…'));
  const pushOther = JSON.parse(window.localStorage.getItem('&&view$$list£¢toncol§§-…'));
@@ -29,7 +31,7 @@ function DrawerAppBar() {
 
    const unsub = onSnapshot(doc(db, "tontine", item), (doc) => {
     window.setTimeout(() => {
-     listRising.push(doc.data().rising);
+     listRising.push(doc.data().rising === undefined ? 0 : doc.data().rising);
     }, 500);
 
    });
@@ -37,12 +39,22 @@ function DrawerAppBar() {
   })
  }, []);
 
+ React.useEffect(async () => {
+  const unsub = onSnapshot(doc(db, "client", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+
+   setMoney(doc.data().grouptontinemoney === undefined ? [''] : doc.data().grouptontinemoney);
+   setDevise(doc.data().grouptontinedevise === undefined ? [''] : doc.data().grouptontinedevise);
+
+  });
+
+ }, []);
+
+
  if (Array.isArray(pushDocs) && pushDocs.length) {
   Acces = true;
  } else {
   Acces = false;
  };
-
 
  return (
   <>
@@ -92,15 +104,16 @@ function DrawerAppBar() {
 
                <li key={index}>
                 <div className='cmd-operator-title'>
-                 <div className='cmd-operator-sub-title'>
 
-                  <div className='flex-row-cmd'>
+                 <div className='cmd-operator-sub-title'>
+                  <div className='flex-row-cmd-group'>
                    <p>{pushDocs[index].charAt(0).toUpperCase() + pushDocs[index].slice(1)}</p>
                   </div>
                  </div>
 
                 </div>
 
+                <p>{money[index]} {devise[index]}</p>
                </li>
 
               </ListItemButton>

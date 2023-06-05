@@ -72,10 +72,8 @@ export function View() {
 		setOpen(false);
 	};
 
-
 	let colTon = JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil'));
 	let listNumber = JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘˚˚'));
-
 
 	React.useEffect(async () => {
 		const unsub = onSnapshot(doc(db, colTon, JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
@@ -92,8 +90,8 @@ export function View() {
 
 	}, []);
 
-	window.console.log(Number(count) === Number(position) + 1);
-	window.console.log(listNumber[askedPosition]);
+	window.console.log(Number(count));
+	window.console.log(Number(askedPosition));
 
 	const handlepath = (event) => {
 
@@ -104,11 +102,15 @@ export function View() {
 		window.localStorage.setItem('***#$$pso..<<add++', JSON.stringify(position));
 		window.localStorage.setItem('***#$$pso..<<askedpos**++', JSON.stringify(listNumber[askedPosition]));
 
+		window.localStorage.setItem('&&**++<///last{}', JSON.stringify(Number(askedPosition) + 1 === Number(count)));
+
 		window.setTimeout(() => {
 
 			if (Number(count) === Number(position) + 1) {
+				window.console.log('all');
 				navigation('/tontine/list/group/child/budget/pin/all');
 			} else {
+				window.console.log('not all')
 				navigation('/tontine/list/group/child/budget/pin');
 			}
 
@@ -118,7 +120,7 @@ export function View() {
 
 	return (
 		<>
-			{active ? <div></div> : <button onClick={handlepath}>Accumuler</button>}
+			{active || Number(askedPosition) === Number(count) ? <div></div> : <button onClick={handlepath}>Accumuler</button>}
 			<Dialog
 				fullWidth={fullWidth}
 				maxWidth={maxWidth}
@@ -142,4 +144,4 @@ export function View() {
 
 		</>
 	)
-}
+};

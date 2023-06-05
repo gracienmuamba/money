@@ -12,7 +12,7 @@ export default function ReturnDollArs() {
   window.localStorage.setItem('**tont>>currency??', JSON.stringify('usd'));
   navigation('/tontine/form/currency/usd');
 
- }
+ };
 
  React.useEffect(() => {
   TweenMax.from('.Anima', 1.2, { delay: 1, opacity: 0, x: -20, ease: Expo.easeInOut })
@@ -21,7 +21,7 @@ export default function ReturnDollArs() {
  return (
   <div onClick={handlepath} className='devise-pret-money Anima'>
    <img src={'/img/dollars.png'} />
-   <p>Dollar Américain</p>
+   <p>USD</p>
   </div>
  );
 };

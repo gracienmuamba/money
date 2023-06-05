@@ -44,7 +44,6 @@ export const ScreenSmall = () => (
   <View />
  </div>
 );
-
 export function View() {
 
  const navigation = useNavigate();
@@ -89,7 +88,6 @@ export function View() {
 
 
  }, []);
-
  const handlepath = (event) => {
 
   event.preventDefault();
@@ -100,9 +98,9 @@ export function View() {
    window.localStorage.setItem('&&view$$list£¢ton…', JSON.stringify(list));
    window.localStorage.setItem('&&view$$list£¢toncol§§-…', JSON.stringify(other));
 
-   // window.setTimeout(() => {
-   //   navigation('/tontine/list/group');
-   // }, 500);
+   window.setTimeout(() => {
+    navigation('/tontine/list/group');
+   }, 500);
   }
 
  };
@@ -110,6 +108,7 @@ export function View() {
  return (
   <>
    <button onClick={handlepath}>Continue sur Tontine</button>
+
    <Dialog
     fullWidth={fullWidth}
     maxWidth={maxWidth}
@@ -133,4 +132,4 @@ export function View() {
 
   </>
  )
-}
+};

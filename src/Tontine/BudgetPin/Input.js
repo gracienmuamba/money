@@ -125,13 +125,16 @@ export const FormInputField = () => {
   try {
    await onSnapshot(doc(db, "tontine", JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil'))), (doc) => {
     setRising(doc.data().rising);
-    setAsked(doc.data().asked);
    });
   } catch {
    window.console.log(`Erreur`);
   }
 
  }, []);
+
+
+ window.console.log(cdf < rising);
+
 
  const onSubmit = async (data) => {
 
@@ -156,47 +159,44 @@ export const FormInputField = () => {
      reset();
     } else {
 
-
      if (userDevise === 'usd') {
+      if (Number(parseInt(usd)) < Number(rising)) {
 
-      if (Number(parseInt(usd)) + 1 >= Number(rising)) {
+       setNothing(true);
+       setLoad(false);
+
+      } else {
 
        decrementMoneyClientDollar(Number(rising));
        addBasket(Number(rising));
        accretionChildUpdate(Number(rising));
-
        window.setTimeout(() => {
         window.localStorage.setItem('***#$$view..<<valid++', JSON.stringify(false));
         navigation('/tontine');
        }, 4394);
 
-
-      } else {
-       setNothing(true);
       }
 
      } else {
 
-      if (Number(parseInt(cdf)) + 2000 >= Number(rising)) {
+      if (Number(parseInt(cdf)) < Number(rising)) {
+       setNothing(true);
+       setLoad(false);
+
+      } else {
 
        decrementMoneyClientFran(Number(rising));
        addBasket(Number(rising));
        accretionChildUpdate(Number(rising));
-
        window.setTimeout(() => {
         window.localStorage.setItem('***#$$view..<<valid++', JSON.stringify(false));
         navigation('/tontine');
        }, 4394);
-      } else {
-       setNothing(true);
-       setLoad(false);
+
+
       }
 
      }
-
-
-
-
     }
    };
 
@@ -349,7 +349,6 @@ export async function updateBasket(money) {
  });
 
 };
-
 export async function accretionChildTon(numDocs) {
 
  const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), numDocs);
@@ -360,7 +359,6 @@ export async function accretionChildTon(numDocs) {
  });
 
 };
-
 export async function accretionChildUpdate(rising) {
 
  const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('USER')));
@@ -374,7 +372,6 @@ export async function accretionChildUpdate(rising) {
  });
 
 };
-
 export async function accretionAskedTontine(rising, asked) {
 
  const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('##!!devi --phone&&*>>')));

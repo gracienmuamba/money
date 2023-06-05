@@ -5,7 +5,7 @@ import { db } from '../../../../firebase';
 import { doc, onSnapshot } from "firebase/firestore";
 import { TweenMax, Expo } from 'gsap';
 import moment from 'moment';
-import ReturnIMA from './Devise';
+import currency from 'currency.js';
 
 
 // Prix HeAd 
@@ -117,26 +117,26 @@ export const View = () => {
   }
 
  };
-
  window.setTimeout(() => {
   setOpen(true);
  }, 3000);
 
- // window.console.log(moment(moment().subtract(17, 'days')).format())
+
+ var euro = value => currency(value, { separator: ' ', decimal: '.', symbol: '' });
 
  return (
   <>
    {usd > 0 &&
     <div className='wrp-graph-head-pret'>
-     <ReturnIMA IMA={'/img/dollars.png'} />
-     <span>{(pretUsd).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&, ')}</span>
+     {/* <span>{(pretUsd).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&, ')} USD</span> */}
+     <span>{euro(pretUsd).format()} USD</span>
     </div>
    }
 
    {cdf > 0 &&
     <div className='wrp-graph-head-pret'>
-     <ReturnIMA IMA={'/img/franc.png'} />
-     <span>{(pretCdf).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&, ')}</span>
+     {/* <span>{(pretCdf).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&, ')} CDF</span> */}
+     <span>{euro(pretCdf).format()} CDF</span>
     </div>
    }
   </>

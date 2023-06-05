@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GrFormPrevious } from 'react-icons/gr';
-
+import { HiArrowLeft } from 'react-icons/hi';
 
 export function BacK() {
 
@@ -10,7 +9,7 @@ export function BacK() {
  return (
   <div className='wrp-back-brokers'>
    <div onClick={() => navigation(-1)} className='wrp-back-box-brokers'>
-    <GrFormPrevious size={'2em'} />
+    <HiArrowLeft size={'2em'} color={'grey'} />
     <span>Numéro</span>
    </div>
   </div>

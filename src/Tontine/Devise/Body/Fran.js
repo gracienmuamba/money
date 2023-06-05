@@ -22,7 +22,7 @@ export default function ReturnFrAn() {
  return (
   <div onClick={handlepath} className='devise-pret-money AnimFran'>
    <img src={'/img/franc.png'} />
-   <p>Franc Congolais</p>
+   <p>CDF</p>
   </div>
  );
 };

@@ -44,7 +44,7 @@ export const View = () => {
 
  let pushDocs = new Array();
 
- const [use, setUse] = React.useState(' ');
+ const [use, setUse] = React.useState('');
  const [monnais, setMonnais] = React.useState(0);
 
  const [unity, setUnity] = React.useState('');
@@ -55,7 +55,6 @@ export const View = () => {
  const [comm, setComm] = React.useState(0);
 
  const [status, setStatus] = React.useState(null);
-
 
  React.useEffect(async () => {
 
@@ -89,16 +88,16 @@ export const View = () => {
  return (
   <>
    <div className='box-swap-title'>
+    <h2>Transféré</h2>
+    <span>{str2} {(monnais).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&, ')} {unity}</span>
+   </div>
+
+   <div className='box-swap-title'>
     <h2>Identiter</h2>
     <span>{use.toLowerCase()}</span>
    </div>
 
-   <div className='box-swap-title'>
-    <h2>Monnaie</h2>
-    <span>{str2} {(monnais).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&, ')} {unity}</span>
-   </div>
 
-   {/* {status === 'client' || status === 'agent' &&} */}
    <div className='box-swap-title'>
     <h2>Frais</h2>
     <span>{(numfrAis).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&, ')} {unity}</span>
@@ -108,10 +107,8 @@ export const View = () => {
     <div className='box-swap-title'>
      <h2>Commission</h2>
      <span>{(comm.toFixed(2))} {unity}</span>
-     {/* <span>{((comm) * 30 / 100).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&, ')} {unity}</span> */}
     </div>
    }
-
    <div className='box-swap-title'>
     <h2>Date</h2>
     <span>{moment(delay).locale('fr').format('LLL')}</span>

@@ -2,9 +2,10 @@
  display: flex;
  cursor: pointer;
 
- justify-content: start;
+ justify-content: space-between;
  align-items: start;
  border-radius: 2em;
+ width: 100%;
 
  margin: 1ch 0;
  border: 1px solid grey;
@@ -23,9 +24,8 @@
  margin-left: 1em;
 
  margin-top: 0.8ch;
-
- padding-right: 0.5em;
- text-align: start;
+ margin-left: 5em;
+ margin-right: 1em;
 
  font-family: var(--text-family);
  font-weight: 300;

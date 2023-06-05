@@ -3,8 +3,6 @@ import ReturnBalance from './Balance';
 import Media from 'react-media';
 import ReturnBTn from './Btn';
 import ReturnProfil from './Profil';
-import moment from 'moment';
-
 
 // / view prix balance 
 export default function ReturnPrix() {

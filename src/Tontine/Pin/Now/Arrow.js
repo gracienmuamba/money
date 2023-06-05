@@ -25,8 +25,6 @@ export default function REturnArroW() {
  );
 };
 
-
-
 export const ScreenLarge = () => (
  <div className='pin-arrow-broker'>
   <Arrow />

@@ -499,7 +499,7 @@ async function isSwapInWithClientToAgent(sendPhone, getPhone, sendUser, getUser,
 
 
  let fraisAdmin = frais;
- let fraisAgent = frais * 2.7 / 100;
+ let fraisAgent = money * 2.7 / 100;
 
 
  const sendRef = doc(db, "client", sendPhone);
