@@ -45,13 +45,19 @@ export const ScreenSmall = () => (
 		<View />
 	</div>
 );
+
 export function View() {
 
 	const navigation = useNavigate();
+	const [rising, setRising] = React.useState(0);
+	const [asked, setAsked] = React.useState(0);
 
 	const [open, setOpen] = React.useState(false);
+
 	const [fullWidth, setFullWidth] = React.useState(true);
 	const [maxWidth, setMaxWidth] = React.useState('sm');
+
+
 	const [active, setActive] = React.useState(false);
 
 	const [position, setPosition] = React.useState(0);
@@ -86,12 +92,12 @@ export function View() {
 			setPosition(doc.data().position);
 			setCount(doc.data().count);
 			setAskedPosition(doc.data().askedposition);
+			setAsked(doc.data().asked);
+			setRising(doc.data().rising);
 		});
 
 	}, []);
 
-	window.console.log(Number(count));
-	window.console.log(Number(askedPosition));
 
 	const handlepath = (event) => {
 
@@ -102,15 +108,23 @@ export function View() {
 		window.localStorage.setItem('***#$$pso..<<add++', JSON.stringify(position));
 		window.localStorage.setItem('***#$$pso..<<askedpos**++', JSON.stringify(listNumber[askedPosition]));
 
-		window.localStorage.setItem('&&**++<///last{}', JSON.stringify(Number(askedPosition) + 1 === Number(count)));
 
 		window.setTimeout(() => {
+			if (Number(count) === (Number(position) + 1)) {
 
-			if (Number(count) === Number(position) + 1) {
 				window.console.log('all');
+				if ((Number(askedPosition) + 1) === Number(count)) {
+					window.localStorage.setItem('&&**++<///last{}', JSON.stringify(true));
+					window.localStorage.setItem('!@@++baskte&&++', JSON.stringify(Number(asked) + Number(rising)));
+				} else {
+					window.localStorage.setItem('&&**++<///last{}', JSON.stringify(false));
+					window.localStorage.setItem('!@@++baskte&&++', JSON.stringify(Number(asked)));
+				}
 				navigation('/tontine/list/group/child/budget/pin/all');
+
 			} else {
 				window.console.log('not all')
+				window.localStorage.setItem('&&**++<///last{}', JSON.stringify(false));
 				navigation('/tontine/list/group/child/budget/pin');
 			}
 
@@ -120,7 +134,7 @@ export function View() {
 
 	return (
 		<>
-			{active || Number(askedPosition) === Number(count) ? <div></div> : <button onClick={handlepath}>Accumuler</button>}
+			{active || Number(askedPosition) === Number(count) ? <div></div> : <button onClick={handlepath}>Accumulation <img src={'/img/customer.png'} /></button>}
 			<Dialog
 				fullWidth={fullWidth}
 				maxWidth={maxWidth}

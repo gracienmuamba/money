@@ -9,17 +9,17 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../../firebase';
 import moment from 'moment';
 
-
 // Return Now Component 
 export default function TonTinePin() {
 
  const navigation = useNavigate();
  const [open, setOpen] = React.useState(true);
 
+
  React.useEffect(() => {
 
-  JSON.parse(window.localStorage.getItem('ACTIVE_M_USER')) !== true && navigation('/sign');
-  JSON.parse(window.localStorage.getItem('??next^^**$$')) !== true && navigation('/tontine');
+  JSON.parse(window.localStorage.getItem('??next^^**$$')) !== false && navigation('/tontine');
+  JSON.parse(window.localStorage.getItem('ACTIVE_M_USER')) != true && navigation('/sign');
 
   window.setTimeout(() => {
    gsap.to('.App-loading-blank', 0, { delay: .1, x: '-1000%', opacity: 0, ease: Expo.easeIn })

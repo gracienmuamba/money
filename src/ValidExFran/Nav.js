@@ -9,7 +9,7 @@ export function BacK() {
  return (
   <div className='wrp-back-brokers'>
    <div onClick={() => navigation(-1)} className='wrp-back-box-brokers'>
-    <HiArrowLeft size={'2em'} color={'grey'} />
+    <HiArrowLeft size={'1.6em'} color={'grey'} />
    </div>
   </div>
  );

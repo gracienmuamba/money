@@ -13,7 +13,7 @@ export default function ReturnBacK() {
 
  return (
   <div onClick={handlepath} className='tontine-back'>
-   <HiArrowLeft size={'1.8em'} color={'grey'} />
+   <HiArrowLeft size={'1.6em'} color={'grey'} />
   </div>
  );
 };

@@ -27,28 +27,42 @@ function DrawerAppBar() {
  const pushOther = JSON.parse(window.localStorage.getItem('&&view$$list£¢toncol§§-…'));
 
  React.useEffect(async () => {
-  [...pushOther].map((item) => {
 
-   const unsub = onSnapshot(doc(db, "tontine", item), (doc) => {
-    window.setTimeout(() => {
-     listRising.push(doc.data().rising === undefined ? 0 : doc.data().rising);
-    }, 500);
+  try {
+   [...pushOther].map((item) => {
 
-   });
+    const unsub = onSnapshot(doc(db, "tontine", item), (doc) => {
+     window.setTimeout(() => {
+      listRising.push(doc.data().rising === undefined ? 0 : doc.data().rising);
+     }, 500);
 
-  })
+    });
+
+
+
+   })
+  } catch (error) {
+   window.console.log(error);
+  }
+
+
  }, []);
 
  React.useEffect(async () => {
-  const unsub = onSnapshot(doc(db, "client", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
 
-   setMoney(doc.data().grouptontinemoney === undefined ? [''] : doc.data().grouptontinemoney);
-   setDevise(doc.data().grouptontinedevise === undefined ? [''] : doc.data().grouptontinedevise);
+  try {
 
-  });
+   const unsub = onSnapshot(doc(db, "client", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+    setMoney(doc.data().grouptontinemoney === undefined ? [''] : doc.data().grouptontinemoney);
+    setDevise(doc.data().grouptontinedevise === undefined ? [''] : doc.data().grouptontinedevise);
+   });
+
+  } catch (error) {
+   window.console.log(error);
+
+  }
 
  }, []);
-
 
  if (Array.isArray(pushDocs) && pushDocs.length) {
   Acces = true;

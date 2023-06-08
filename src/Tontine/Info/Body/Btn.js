@@ -36,14 +36,13 @@ export const ScreenSmall = () => (
 export const View = () => {
 
  const navigation = useNavigate();
+
  const handlepath = (event) => {
   event.preventDefault();
-  window.localStorage.setItem('??next^^**$$', JSON.stringify(true));
+  window.localStorage.setItem('??next^^**$$', JSON.stringify(false));
   window.localStorage.setItem('@@xi^^,view**++', JSON.stringify([JSON.parse(window.localStorage.getItem('USER'))]));
   navigation('/tontine/group/child');
-
  };
-
 
  return (
   <button onClick={handlepath} className='Btn'>Avancer</button>

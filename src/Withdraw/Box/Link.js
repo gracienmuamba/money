@@ -41,16 +41,7 @@ export const Fran = (props) => {
 
  const navigation = useNavigate();
  const handlepath = (event) => {
-  // window.localStorage.setItem('@cost##', JSON.stringify(false));
   event.preventDefault();
-
-  // window.localStorage.setItem('@money!#!', JSON.stringify(null))
-  // window.localStorage.setItem('@unite!#!', JSON.stringify(null))
-  // window.localStorage.setItem('@frais!#!', JSON.stringify(null))
-  // window.localStorage.setItem('@solde!#!', JSON.stringify(null))
-  // window.localStorage.setItem('@main!#!', JSON.stringify(null))
-  // window.localStorage.setItem('@EX##&Bº', JSON.stringify(null))
-
   navigation('/fran');
  };
 
@@ -65,15 +56,6 @@ export const Dollars = (props) => {
  const navigation = useNavigate();
  const handlepath = (event) => {
   event.preventDefault();
-
-  // window.localStorage.setItem('@cost##', JSON.stringify(false));
-  // window.localStorage.setItem('@money!#!', JSON.stringify(null))
-  // window.localStorage.setItem('@unite!#!', JSON.stringify(null))
-  // window.localStorage.setItem('@frais!#!', JSON.stringify(null))
-  // window.localStorage.setItem('@solde!#!', JSON.stringify(null))
-  // window.localStorage.setItem('@main!#!', JSON.stringify(null))
-  // window.localStorage.setItem('@EX##&Bº', JSON.stringify(null))
-
   navigation('/usd');
  };
 

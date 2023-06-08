@@ -15,8 +15,8 @@
 }
 .avatar-circle-profil-exh-dash img {
  display: flex;
- height: 8em;
- width: 8em;
+ height: 7em;
+ width: 7em;
  border-radius: 100%;
  border: none;
  background: var(--bg-avatar-yellow);
@@ -34,15 +34,15 @@
  align-items: center;
 
  position: absolute;
- top: 17%;
+ top: 20%;
  left: 50%;
  transform: translate(-50%, -50%);
 }
 .avatar-circle-profil-exh-dash-sm img {
  display: flex;
 
- height: 8em;
- width: 8em;
+ height: 6em;
+ width: 6em;
  background: var(--bg-avatar-yellow);
  border-radius: 100%;
 

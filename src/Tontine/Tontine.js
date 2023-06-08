@@ -6,6 +6,10 @@ import ReturnWelCome from './Welcome';
 import ReturnBtn from './Btn';
 import RetuRnCreAte from './Create';
 
+import ReturnSpinnerWalleT from './SpinnerWallet';
+import ReturnSpinnerGroup from './SpinnerGroup';
+import ReturnSpinnerAdd from './SpinnerAdd';
+
 // return view tontine
 export default function ReturnTontine() {
 
@@ -13,12 +17,20 @@ export default function ReturnTontine() {
  React.useEffect(() => { refContainer.current.scrollIntoView({ behavior: "smooth" }); });
 
  return (
-  <div ref={refContainer} className='wrp-tontine'>
-   <NavBar />
-   <ReturnIMA />
-   <ReturnWelCome />
-   <ReturnBtn />
-   <RetuRnCreAte />
-  </div>
+  <>
+
+   <ReturnSpinnerWalleT />
+   <ReturnSpinnerGroup />
+   <ReturnSpinnerAdd />
+
+   <div ref={refContainer} className='wrp-tontine'>
+    <NavBar />
+    <ReturnIMA />
+    <ReturnWelCome />
+    <ReturnBtn />
+    <RetuRnCreAte />
+   </div>
+
+  </>
  );
 };

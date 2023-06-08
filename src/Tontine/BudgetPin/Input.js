@@ -3,7 +3,7 @@ import Media from 'react-media';
 import { useNavigate } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 
-import { doc, onSnapshot, updateDoc, increment, arrayUnion, waitForPendingWrites } from 'firebase/firestore';
+import { doc, onSnapshot, updateDoc, increment, arrayUnion } from 'firebase/firestore';
 import { db } from '../../firebase';
 
 import Button from '@mui/material/Button';
@@ -24,7 +24,6 @@ import moment from 'moment';
 
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-import { parse } from 'postcss';
 
 
 // View Form Update view
@@ -48,16 +47,7 @@ export default function ReturnFormUpdate() {
 };
 
 
-
-// let userActive = JSON.parse(window.localStorage.getItem('^^$%list++::act::'));
-
 let userDevise = JSON.parse(window.localStorage.getItem('##!!devi&&*>>'));
-
-// let listPush = JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘˚˚'));
-// let uptPosition = JSON.parse(window.localStorage.getItem('***#$$pso..<<add++'));
-// let numPosition = JSON.parse(window.localStorage.getItem('^^$%tour++::&&$$::'));
-// let askedPos = JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'));
-
 
 export const ScreenLarge = () => (
  <div className='wrp-form-input-nows'>
@@ -69,7 +59,6 @@ export const ScreenSmall = () => (
   <FormInputField />
  </div>
 );
-
 
 
 export const FormInputField = () => {
@@ -161,14 +150,13 @@ export const FormInputField = () => {
 
        setNothing(true);
        setLoad(false);
-
       } else {
 
        decrementMoneyClientDollar(Number(rising));
        addBasket(Number(rising));
        accretionChildUpdate(Number(rising));
 
-
+       window.localStorage.setItem('^^add&&@!!**', JSON.parse(true));
        window.setTimeout(() => {
         window.localStorage.setItem('***#$$view..<<valid++', JSON.stringify(false));
         navigation('/tontine');
@@ -187,6 +175,8 @@ export const FormInputField = () => {
        decrementMoneyClientFran(Number(rising));
        addBasket(Number(rising));
        accretionChildUpdate(Number(rising));
+
+       window.localStorage.setItem('^^add&&@!!**', JSON.parse(true));
        window.setTimeout(() => {
         window.localStorage.setItem('***#$$view..<<valid++', JSON.stringify(false));
         navigation('/tontine');

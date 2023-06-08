@@ -19,12 +19,18 @@
  outline-style: none;
  font-family: var(--text-family);
 
- padding: 1ch 1.3em;
+ padding: 1ch 2em;
  width: 100%;
 
  color: var(--color-btn);
  border: 0.1px solid var(--bg-green-btn-tontine);
  background: var(--bg-green-btn-tontine);
+}
+.tontine-btn-next-budget button img {
+ height: 2em;
+ width: 2em;
+ object-fit: cover;
+ margin-left: 1em;
 }
 
 /* Small */
@@ -45,10 +51,17 @@
  outline-style: none;
  font-family: var(--text-family);
 
- padding: 1ch 1.3em;
+ padding: 1ch 2em;
  width: 100%;
 
  color: var(--color-btn);
  border: 0.1px solid var(--bg-green-btn-tontine);
  background: var(--bg-green-btn-tontine);
+}
+
+.tontine-btn-next-budget-sm button img {
+ height: 2em;
+ width: 2em;
+ object-fit: cover;
+ margin-left: 1em;
 }

@@ -197,6 +197,8 @@ export default function ReturRnURI() {
    <Route path='/tontine' element={<TonTine />} />
    <Route path='/tontine/get' element={<LisTgrOupGet />} />
    <Route path='/tontine/get/widthdraw' element={<LisTgrOupWithdrAw />} />
+
+
    <Route path='/tontine/form' element={<FormTontine />} />
    <Route path='/tontine/form/currency' element={<DeviseTontine />} />
    <Route path='/tontine/form/currency/usd' element={<CuRRencyUsd />} />
@@ -222,4 +224,3 @@ export default function ReturRnURI() {
   </Routes>
  );
 };
-

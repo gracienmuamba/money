@@ -24,7 +24,6 @@ import moment from 'moment';
 
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-import { parse } from 'postcss';
 
 
 // View Form Update view
@@ -63,8 +62,6 @@ export const ScreenSmall = () => (
   <FormInputField />
  </div>
 );
-
-
 export const FormInputField = () => {
 
  let regular = /[a-z]+/;
@@ -126,7 +123,6 @@ export const FormInputField = () => {
 
  }, []);
 
-
  const onSubmit = async (data) => {
 
   setLoad(true);
@@ -160,12 +156,17 @@ export const FormInputField = () => {
        decrementMoneyClientDollar(Number(rising));
        updateBasket(Number(rising));
        accretionChildUpdate(Number(rising));
+       window.localStorage.setItem('^^add&&@!!**', JSON.parse(true));
 
-       if (lastChild) {
-        accretionAskedTontine(Number(asked) + Number(rising));
+       if (lastChild === true) {
+        accretionAskedTontineAll();
+       } else if (lastChild === false) {
+        accretionAskedTontineAll();
+        // accretionAskedTontine(Number(asked));
        } else {
-        accretionAskedTontine(Number(asked));
+        window.console.log('nothing!');
        };
+
 
        if (JSON.parse(window.localStorage.getItem('USER')) === JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'))) {
         accretionAddUpdate(Number(rising));
@@ -202,11 +203,15 @@ export const FormInputField = () => {
        decrementMoneyClientFran(Number(rising));
        updateBasket(Number(rising));
        accretionChildUpdate(Number(rising));
+       window.localStorage.setItem('^^add&&@!!**', JSON.parse(true));
 
-       if (lastChild) {
-        accretionAskedTontine(Number(asked) + Number(rising));
+       if (lastChild === true) {
+        accretionAskedTontineAll();
+       } else if (lastChild === false) {
+        accretionAskedTontineAll();
+        // accretionAskedTontine(Number(asked));
        } else {
-        accretionAskedTontine(Number(asked));
+        window.console.log('nothing!');
        };
 
        if (JSON.parse(window.localStorage.getItem('USER')) === JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'))) {
@@ -226,6 +231,7 @@ export const FormInputField = () => {
         }, 2000);
 
        });
+
        window.setTimeout(() => {
         window.localStorage.setItem('***#$$view..<<valid++', JSON.stringify(false));
         navigation('/tontine');
@@ -234,7 +240,6 @@ export const FormInputField = () => {
       }
 
      }
-
     }
    };
   }
@@ -374,6 +379,7 @@ export async function updateBasket(money) {
  });
 
 };
+
 export async function accretionChildUpdate(rising) {
 
  const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++')));
@@ -393,10 +399,11 @@ export async function accretionAskedTontine(asked) {
  // Set the "capital" field of the city 'DC'
  await updateDoc(washingtonRef, {
   date: moment().format(),
-  asked: asked
+  asked: increment(asked)
  });
 
 };
+
 export async function accretionAddUpdate(rising) {
 
  const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('USER')));
@@ -407,6 +414,17 @@ export async function accretionAddUpdate(rising) {
   solde: Number(rising),
   soldeactive: true,
   activity: arrayUnion(obj)
+ });
+
+};
+
+export async function accretionAskedTontineAll() {
+
+ const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++')));
+ // Set the "capital" field of the city 'DC'
+ await updateDoc(washingtonRef, {
+  date: moment().format(),
+  asked: Number(JSON.parse(window.localStorage.getItem('!@@++baskte&&++')))
  });
 
 };

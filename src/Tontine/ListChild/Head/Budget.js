@@ -25,11 +25,11 @@ export default function ReturnBudgeT() {
  return (
   <div className='wrp-tontine-budget'>
    <h2>
-    {devise === 'USD' ? '$ ' : 'F '}
     {euro(money).format()}
+    {devise === 'USD' ? ' USD' : ' CDF'}
    </h2>
 
-   <p>Ensemble de tout le dépôt</p>
+   <p>Ensemble de tout le dépôt sur le panier</p>
    <img src={'/img/money-bag.png'} />
   </div>
  );

@@ -22,7 +22,7 @@ export default function LisTgrOupWithdrAw() {
   JSON.parse(window.localStorage.getItem('ACTIVE_M_USER')) !== true && navigation('/sign');
   window.setTimeout(() => {
    setOpen(false);
-  }, 3600);
+  }, 13600);
 
  }, []);
 

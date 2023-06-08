@@ -93,7 +93,7 @@ function DrawerAppBar() {
             });
 
             window.setTimeout(() => {
-             window.location.href = "/tontine/get/withdraw";
+             window.location.href = "/tontine/get/widthdraw";
             }, 5800);
 
            }}>

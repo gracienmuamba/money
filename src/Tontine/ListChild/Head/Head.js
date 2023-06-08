@@ -35,21 +35,36 @@ function DrawerAppBar() {
 
  React.useEffect(async () => {
 
-  [...listPush].map(async (item) => {
+  try {
 
-   await onSnapshot(doc(db, colTonPush, item), (doc) => {
-    window.setTimeout(() => {
-     setActive(index += Number(doc.data().soldeactive));
-    }, 1150);
+   [...listPush].map(async (item) => {
 
+    await onSnapshot(doc(db, colTonPush, item), (doc) => {
+     window.setTimeout(() => {
+      setActive(index += Number(doc.data().soldeactive));
+     }, 1150);
+
+    });
    });
-  });
+
+  } catch (error) {
+   window.console.log(error);
+  }
+
 
  }, []);
  React.useEffect(async () => {
-  const unsub = onSnapshot(doc(db, "tontine", colTonPush), (doc) => {
-   setCurrency(doc.data().currency);
-  });
+
+  try {
+
+   const unsub = onSnapshot(doc(db, "tontine", colTonPush), (doc) => {
+    setCurrency(doc.data().currency);
+   });
+
+  } catch (error) {
+   window.console.log(error);
+  }
+
 
  }, []);
 
