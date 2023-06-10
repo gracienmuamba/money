@@ -24,6 +24,9 @@ import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 export let nowField = moment().date();
 export let now = moment().date();
@@ -72,6 +75,8 @@ export const FormInput = () => {
  let verifierGet;
 
  const navigation = useNavigate();
+
+ const [load, setLoad] = React.useState(false);
  const { register, handleSubmit, reset, control } = useForm();
 
  //  order notebook
@@ -169,9 +174,12 @@ export const FormInput = () => {
 
  const onSubmit = async (data) => {
 
+  setLoad(true);
+
   // Checked if value code is length valid
   if (data.code.length != 6 || pin != data.code || soldeMain <= 1) {
    setOpen(true);
+   setLoad(false);
    reset();
   } else {
 
@@ -210,9 +218,11 @@ export const FormInput = () => {
     const main = JSON.parse(window.localStorage.getItem('@main!#!'));
 
     swapInWithDocsAgent(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayAgent, arrayUpgrade, arrayAdmin);
-    navigation('/send-success-blocked-usd');
 
 
+    window.setTimeout(() => {
+     navigation('/send-success-blocked-usd');
+    }, 3560);
 
    } else if (state == "client" && getstate == "client") {
 
@@ -245,7 +255,10 @@ export const FormInput = () => {
     const main = JSON.parse(window.localStorage.getItem('@main!#!'));
 
     isSwapInWithClientToClient(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayClient, arrayUpgrade, arrayAdmin);
-    navigation('/send-success-blocked-usd');
+
+    window.setTimeout(() => {
+     navigation('/send-success-blocked-usd');
+    }, 3560);
 
    } else {
 
@@ -274,7 +287,10 @@ export const FormInput = () => {
      const frais = JSON.parse(window.localStorage.getItem('@frais!#!'));
 
      swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUser, prix, frais, unite, arrayAgent, arrayUpgrade);
-     navigation('/send-success-blocked-usd');
+
+     window.setTimeout(() => {
+      navigation('/send-success-blocked-usd');
+     }, 3560);
 
     } else {
 
@@ -311,7 +327,10 @@ export const FormInput = () => {
      const main = JSON.parse(window.localStorage.getItem('@main!#!'));
 
      isSwapInWithClientToAgent(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayClient, arrayUpgrade, arrayAdmin, arrayAgent);
-     navigation('/send-success-blocked-usd');
+
+     window.setTimeout(() => {
+      navigation('/send-success-blocked-usd');
+     }, 3560);
 
 
     }

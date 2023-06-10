@@ -6,15 +6,12 @@ import Region from './Register/Region/Main';
 import RegisterPhone from './Register/Phone/Main';
 import SignInRegister from './Register/SignIn/Main';
 
-
 import RegisterSuccess from './Register/RegisterSuccess/Main';
 import SAve from './Register/Save/Main';
-
 
 import RegisteR from './Register/Main';
 import DashEd from './Dashed/Main';
 import ProFil from './Profil/Main';
-
 
 import WithdrAw from './Withdraw/Main';
 import FrAn from './FC/Main';
@@ -22,8 +19,6 @@ import ReturnUsd from './USD/Main';
 import ValidExchAnge from './ValidExFran/Main';
 import ExchAnge from './ExFran/Main';
 import RetuRnExUSd from './ExUSd/Main';
-
-
 
 import WithdrawSuccessCDF from './WellFC/Main';
 import WithdrawSuccessUSD from './WellUSD/Main';
@@ -107,6 +102,9 @@ import StocKCMD from './Command/Main';
 import ListcmdStocK from './Command/List/Main';
 
 
+import LastTransacTion from './Last/Main';
+
+
 // URI viewer component 
 export default function ReturRnURI() {
  return (
@@ -186,7 +184,6 @@ export default function ReturRnURI() {
    <Route path='/pret/method' element={<MeThod />} />
    <Route path='/pret/reimburse' element={<ReimBurse />} />
 
-
    <Route path='/stock/fiat' element={<StocK />} />
    <Route path='/stock/buy' element={<StocKBuy />} />
    <Route path='/stock/devise' element={<StocKDevise />} />
@@ -197,7 +194,6 @@ export default function ReturRnURI() {
    <Route path='/tontine' element={<TonTine />} />
    <Route path='/tontine/get' element={<LisTgrOupGet />} />
    <Route path='/tontine/get/widthdraw' element={<LisTgrOupWithdrAw />} />
-
 
    <Route path='/tontine/form' element={<FormTontine />} />
    <Route path='/tontine/form/currency' element={<DeviseTontine />} />
@@ -219,6 +215,7 @@ export default function ReturRnURI() {
    <Route path='/command/agent' element={<StocKCMD />} />
    <Route path='/command/agent/list' element={<ListcmdStocK />} />
 
+   <Route path='/last/transaction' element={<LastTransacTion />} />
 
    <Route path='*' element={<App />} />
   </Routes>

@@ -1,19 +1,12 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import Snackbar from '@mui/material/Snackbar';
 import ReturnWithdrAw from './Withdraw';
-import MuiAlert from '@mui/material/Alert';
 import { useNavigate } from 'react-router-dom';
 import { gsap, Expo } from 'gsap';
 
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase';
 import moment from 'moment';
-
-
-const Alert = React.forwardRef(function Alert(props, ref) {
- return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
 
 
 // Main Withdraw Sucess
@@ -138,24 +131,9 @@ export default function WithdrawSuccess() {
 
  return (
   <>
-
    <div className='App-loading-blank'></div>
    <ReturnWithdrAw />
    <div>
-
-
-    <Snackbar
-     anchorOrigin={{ vertical, horizontal }}
-     open={view}
-     onClose={handleClose}
-     key={vertical + horizontal}
-    >
-
-     <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-      Les frais sont pris en compte
-     </Alert>
-
-    </Snackbar>
    </div>
   </>
  );

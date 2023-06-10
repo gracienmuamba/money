@@ -148,8 +148,6 @@ export default function ReturnBTn() {
   navigation('/pret/method');
 
  }
-
-
  const handlepathusd = (event) => {
 
   event.preventDefault();

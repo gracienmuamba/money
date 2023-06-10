@@ -1,9 +1,5 @@
 import React from 'react';
-import './Name.css';
 import Media from 'react-media';
-import { collection, getDocs, doc, onSnapshot } from "firebase/firestore";
-import { db } from '../../../../firebase';
-
 
 //  Exchange View Name
 export default function ReturnName() {

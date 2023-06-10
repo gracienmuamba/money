@@ -4,6 +4,7 @@
 
 .avatar-circle-flags {
  display: flex;
+ margin-top: 10vh;
 }
 .avatar-circle-flags img {
  display: flex;

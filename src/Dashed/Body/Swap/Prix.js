@@ -2,6 +2,8 @@ import './Prix.css';
 import ReturnNaV from './Nav';
 import ReturnBalance from './Swap';
 import Media from 'react-media';
+import ReturnLasT from './Last';
+
 
 // / view prix balance 
 export default function ReturnPrix() {
@@ -38,5 +40,6 @@ export const View = () => (
  <>
   <ReturnNaV />
   <ReturnBalance />
+  <ReturnLasT />
  </>
 );

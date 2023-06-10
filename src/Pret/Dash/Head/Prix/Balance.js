@@ -121,21 +121,18 @@ export const View = () => {
   setOpen(true);
  }, 3000);
 
-
  var euro = value => currency(value, { separator: ' ', decimal: '.', symbol: '' });
 
  return (
   <>
    {usd > 0 &&
     <div className='wrp-graph-head-pret'>
-     {/* <span>{(pretUsd).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&, ')} USD</span> */}
      <span>{euro(pretUsd).format()} USD</span>
     </div>
    }
 
    {cdf > 0 &&
     <div className='wrp-graph-head-pret'>
-     {/* <span>{(pretCdf).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&, ')} CDF</span> */}
      <span>{euro(pretCdf).format()} CDF</span>
     </div>
    }

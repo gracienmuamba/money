@@ -2,15 +2,14 @@ import React from 'react';
 import './Arrow.css';
 import Media from 'react-media';
 import { useNavigate } from 'react-router-dom';
-import { FiChevronLeft } from "react-icons/fi";
-
+import { HiArrowLeft } from 'react-icons/hi';
 
 export function BacK() {
  const navigation = useNavigate();
  return (
   <div className='wrp-back-brokers'>
    <div onClick={() => navigation(-1)} className='wrp-back-box-brokers'>
-    <FiChevronLeft size={'2em'} color='#000' />
+    <HiArrowLeft size={'1.6em'} color={'grey'} />
     <span>Prêt</span>
    </div>
   </div>

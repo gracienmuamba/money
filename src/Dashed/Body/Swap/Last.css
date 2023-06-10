@@ -1,0 +1,30 @@
+.wrp-last-swap-ten {
+ display: flex;
+ flex-direction: column;
+ margin-top: 2vh;
+}
+.wrp-last-swap-ten h3 {
+ display: flex;
+ font-size: 1.132em;
+ font-weight: 300;
+ line-height: 1;
+ font-family: var(--text-family);
+ letter-spacing: 0px;
+}
+.wrp-last-swap-ten-row {
+ display: flex;
+ width: 100%;
+ justify-content: space-between;
+ align-items: center;
+}
+.wrp-last-swap-ten-row img {
+ height: 1.5em;
+ width: 1.5em;
+ margin: 0.3em;
+ object-fit: cover;
+}
+.img-printed {
+ height: 2em;
+ width: 2em;
+ object-fit: cover;
+}

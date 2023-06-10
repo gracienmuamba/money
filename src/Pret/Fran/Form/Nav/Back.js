@@ -1,6 +1,6 @@
 import './Back.css';
 import { useNavigate } from 'react-router';
-import { GrFormPrevious } from 'react-icons/gr';
+import { HiArrowLeft } from 'react-icons/hi';
 
 export function BacK() {
 
@@ -14,8 +14,7 @@ export function BacK() {
  return (
   <div className='wrp-back-brokers'>
    <div onClick={handlepath} className='wrp-back-box-brokers'>
-    <GrFormPrevious size={'2em'} color={'black'} />
-    <span style={{ color: 'black' }}>Devise</span>
+    <HiArrowLeft size={'1.6em'} color={'grey'} />
    </div>
   </div>
  );

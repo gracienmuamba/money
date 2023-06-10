@@ -2,7 +2,7 @@ import React from 'react';
 import './Profil.css';
 import Media from 'react-media';
 import ReturnName from './Name';
-
+import ReturnDuraTion from './Duration';
 
 // Avatar IMAGE VIew
 export default function ReturnProfil() {
@@ -40,8 +40,9 @@ export const View = () => {
 
  return (
   <div>
-   <img src={'/img/pret-home.png'} />
    <ReturnName />
+   <img src={'/img/pret-home.png'} />
+   <ReturnDuraTion />
   </div>
  );
 };

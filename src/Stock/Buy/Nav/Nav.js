@@ -5,7 +5,6 @@ import ReturnAvataR from './IMA';
 export default function ReturnNavigaTion() {
  return (
   <div className='wrp-nav-buy'>
-
    <div></div>
    <ReturnAvataR />
 

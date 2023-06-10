@@ -1,7 +1,5 @@
 import React from 'react';
 import Media from 'react-media';
-import { prixHash } from '../Pin/Usd/Simple/Input';
-
 import ReturnIMAFlags from './Flags';
 
 // Name withdraw sign
@@ -38,7 +36,7 @@ export const ViewLogo = () => {
  return (
   <>
    <ReturnIMAFlags IMA={'/img/dollars.png'} />
-   <h2>{prixHash.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&, ')}</h2>
+   <h2>{(JSON.parse(window.localStorage.getItem('@solde!#!'))).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&, ')}</h2>
   </>
  );
 };

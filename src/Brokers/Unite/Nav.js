@@ -6,7 +6,7 @@ import { db } from '../../firebase';
 import { collection, getDocs } from "firebase/firestore";
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-import { GrFormPrevious } from 'react-icons/gr';
+import { HiArrowLeft } from 'react-icons/hi';
 
 
 
@@ -30,8 +30,7 @@ export function BacK() {
  return (
   <div className='wrp-back-brokers'>
    <div onClick={() => navigation(-1)} className='wrp-back-box-brokers'>
-    <GrFormPrevious size={'2em'} />
-    <span>Portefeuille</span>
+    <HiArrowLeft size={'1.6em'} color={'grey'} />
    </div>
   </div>
  );

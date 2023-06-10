@@ -10,4 +10,4 @@ function App() {
 };
 
 // Export component Main
-export default App;
+export default App

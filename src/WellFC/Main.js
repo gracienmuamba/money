@@ -140,18 +140,6 @@ export default function WithdrawSuccess() {
    <div className='App-loading-blank'></div>
    <ReturnWithdrAw />
    <div>
-
-    <Snackbar
-     anchorOrigin={{ vertical, horizontal }}
-     open={open}
-     onClose={handleClose}
-     key={vertical + horizontal}>
-
-     <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-      Les frais sont pris en compte
-     </Alert>
-
-    </Snackbar>
    </div>
   </>
  );

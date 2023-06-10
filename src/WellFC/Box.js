@@ -5,12 +5,15 @@ import RetuRnDate from './Date';
 import ReturnSucsess from './Success';
 import ReturnAvataR from './IMA';
 
+import NavBar from './Nav/Main';
+
 // Box Component 
 export default function ReturnBoxWell() {
  return (
   <div className='wrp-box-well'>
-   <ReturnnAme />
+   <NavBar />
    <ReturnAvataR />
+   <ReturnnAme />
    <ReturnSolde />
    <RetuRnDate />
    <ReturnSucsess />

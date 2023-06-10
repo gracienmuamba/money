@@ -1,5 +1,5 @@
 import React from 'react';
-import { VscChevronLeft } from 'react-icons/vsc';
+import { HiArrowLeft } from 'react-icons/hi';
 import { useNavigate } from 'react-router-dom';
 
 // Back Component Home
@@ -10,8 +10,7 @@ export default function ReturnBAck() {
   <div className='wrp-back-brokers'>
 
    <div onClick={() => navigation('/dash')} className='wrp-back-box-brokers'>
-    <VscChevronLeft size={'1.5em'} />
-    <span>Dash</span>
+    <HiArrowLeft size={'1.6em'} color={'grey'} />
    </div>
 
   </div>

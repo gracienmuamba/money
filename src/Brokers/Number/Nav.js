@@ -1,21 +1,19 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GrFormPrevious } from 'react-icons/gr';
-
+import { HiArrowLeft } from 'react-icons/hi';
 
 export function BacK() {
 
  const navigation = useNavigate();
-
  return (
   <div className='wrp-back-brokers'>
    <div onClick={() => navigation(-1)} className='wrp-back-box-brokers'>
-    <GrFormPrevious size={'2em'} />
-    <span>Selection</span>
+    <HiArrowLeft size={'1.6em'} color={'grey'} />
    </div>
   </div>
  );
-}
+};
+
 // NavBar component view 
 export default function ReturnNavBaR() {
  return (

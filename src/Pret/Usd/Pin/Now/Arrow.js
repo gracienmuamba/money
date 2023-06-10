@@ -4,6 +4,7 @@ import { HiArrowLeft } from 'react-icons/hi';
 import Media from 'react-media';
 import { useNavigate } from 'react-router-dom';
 
+
 // REturn Arrow component 
 export default function REturnArroW() {
  return (
@@ -44,7 +45,7 @@ export const Arrow = () => {
 
  return (
   <div onClick={handlepath}>
-   <HiArrowLeft size={'1.8em'} />
+   <HiArrowLeft size={'1.6em'} />
   </div>
  );
 }

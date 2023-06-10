@@ -44,7 +44,7 @@ export const Arrow = () => {
 
  return (
   <div onClick={handlepath}>
-   <HiArrowLeft size={'1.8em'} />
+   <HiArrowLeft size={'1.6em'} color={'grey'} />
   </div>
  );
 }

@@ -1,0 +1,16 @@
+.tontine-back {
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ align-items: center;
+ cursor: pointer;
+}
+.tontine-back span {
+ display: flex;
+ font-size: 1.2em;
+ font-weight: 300;
+ margin-left: -0.3em;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: 0px;
+}

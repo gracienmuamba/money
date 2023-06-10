@@ -1,0 +1,9 @@
+.tontine-nav-invited {
+ display: flex;
+}
+
+.tontine-nav-invited img {
+ height: 2.7em;
+ width: 2.7em;
+ object-fit: cover;
+}

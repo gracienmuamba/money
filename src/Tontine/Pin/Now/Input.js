@@ -102,6 +102,7 @@ export const FormInputField = () => {
 
  const onSubmit = async (data) => {
   setLoad(true);
+
   if (data.code === undefined) {
    setOpen(true);
    reset();

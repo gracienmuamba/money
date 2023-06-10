@@ -73,7 +73,7 @@
 }
 .wrp-main-prix-pret-sm span {
  display: flex;
- font-size: 1.5em;
+ font-size: 2em;
  font-family: var(--text-family);
  letter-spacing: var(-text-family-spacing);
  font-weight: 400;

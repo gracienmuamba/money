@@ -31,7 +31,7 @@ export const ScreenLarge = () => (
  </div>
 );
 export const ScreenSmall = () => (
- <div className='wrp-success-withdraw-name-sm'>
+ <div className='wrp-success-withdraw-name'>
   <ViewText />
  </div>
 );

@@ -40,29 +40,6 @@ export const View = () => {
  const [fc, setFc] = React.useState(0);
  const [usd, setUsd] = React.useState(0);
 
- // React.useEffect(async () => {
-
- //  const querySnapshotClient = await getDocs(collection(db, "client"));
- //  querySnapshotClient.forEach((doc) => {
- //   pushDocs.push(doc.id);
- //  });
-
- //  var verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
-
- //  try {
- //   await onSnapshot(doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
- //    setFc(doc.data().cdf);
- //    setUsd(doc.data().usd);
- //   });
-
- //  } catch {
- //   window.console.log(`Erreur console cdf`);
- //  }
-
-
- // }, []);
-
-
  React.useEffect(async () => {
 
   const querySnapshotClient = await getDocs(collection(db, "client"));
@@ -86,6 +63,7 @@ export const View = () => {
   };
 
  }, []);
+
 
  return (
   <>

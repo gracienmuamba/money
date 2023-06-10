@@ -42,14 +42,6 @@ export const Arrow = () => {
  const handlepath = (event) => {
 
   event.preventDefault();
-
-  // window.localStorage.setItem('@money!#!', JSON.stringify(null))
-  // window.localStorage.setItem('@unite!#!', JSON.stringify(null))
-  // window.localStorage.setItem('@frais!#!', JSON.stringify(null))
-  // window.localStorage.setItem('@solde!#!', JSON.stringify(null))
-  // window.localStorage.setItem('@EX##&Bº', JSON.stringify(null))
-  // window.localStorage.setItem('A@@ph$$&-@#', JSON.stringify(null))
-
   navigation(-1);
 
  };

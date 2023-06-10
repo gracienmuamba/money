@@ -1,5 +1,6 @@
 .wrp-success-withdraw-name {
  display: flex;
+ margin-top: 1ch;
 }
 .wrp-success-withdraw-name h2 {
  display: flex;
@@ -14,6 +15,7 @@
 /* Small Screen */
 .wrp-success-withdraw-name-sm {
  display: flex;
+ margin-top: 1ch;
 }
 .wrp-success-withdraw-name-sm h2 {
  display: flex;
