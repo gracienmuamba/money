@@ -36,9 +36,10 @@ export const ScreenSmall = (props) => (
 export const WithdrawBalance = (props) => {
 
  let number = props.count;
- number = (number).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&, ');
+ // number = (number).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&, ')
+ window.console.log(number);
 
  return (
-  <span style={{ color: `${props.count < 0 ? '#e0e0e0' : 'black'}` }}>{number}</span>
+  <span style={{ color: `${props.count > 2000 ? '#000' : '#e0e0e0'}` }}>{(number).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&, ')}</span>
  );
 };

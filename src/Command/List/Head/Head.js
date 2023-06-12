@@ -2,7 +2,8 @@ import * as React from 'react';
 import './Head.css';
 import moment from 'moment';
 import { VscCheck, VscCheckAll } from "react-icons/vsc";
-
+import { useNavigate } from 'react-router-dom';
+import { HiArrowLeft } from 'react-icons/hi';
 
 let Acces = true;
 
@@ -14,7 +15,7 @@ function DrawerAppBar() {
  let last = JSON.parse(window.localStorage.getItem('--vie&&last**'))
 
  const str1 = first.charAt(0).toUpperCase() + first.slice(1);
- const str2 = last.charAt(0).toUpperCase() + last.slice(1);
+ // const str2 = last.charAt(0).toUpperCase() + last.slice(1);
 
  let pushDocs = JSON.parse(window.localStorage.getItem('%%docs&&col**'));
 
@@ -25,6 +26,14 @@ function DrawerAppBar() {
  }
 
 
+ const navigation = useNavigate();
+ const handlepath = (event) => {
+  event.preventDefault();
+  navigation(-1);
+
+ };
+
+
  return (
   <div className='flex-head-list-cmd'>
 
@@ -32,8 +41,11 @@ function DrawerAppBar() {
     <div className='container'>
      <nav className='navbar'>
 
-      <span style={{ marginRight: '.5em' }}>{str1}</span>
-      <span>{str2}</span>
+      <HiArrowLeft onClick={handlepath} size={'1.6em'} color={'white'} />
+      <div>
+       <span style={{ marginRight: '.5em' }}>{str1}</span>
+       {/* <span>{str2}</span> */}
+      </div>
 
      </nav>
     </div>

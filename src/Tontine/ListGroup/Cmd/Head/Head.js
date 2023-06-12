@@ -13,11 +13,16 @@ import { db } from '../../../../firebase';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
+import { useNavigate } from 'react-router-dom';
+import { HiArrowLeft } from 'react-icons/hi';
+
 
 let Acces = true;
 let listRising = new Array();
 
 function DrawerAppBar() {
+
+ const navigation = useNavigate();
 
  const [load, setLoad] = React.useState(false);
  const [money, setMoney] = React.useState(['']);
@@ -64,6 +69,15 @@ function DrawerAppBar() {
 
  }, []);
 
+
+
+ const handlepath = (event) => {
+  event.preventDefault();
+  navigation(-1);
+
+ };
+
+
  if (Array.isArray(pushDocs) && pushDocs.length) {
   Acces = true;
  } else {
@@ -85,6 +99,8 @@ function DrawerAppBar() {
     <header>
      <div className='container'>
       <nav className='navbar'>
+
+       <HiArrowLeft onClick={handlepath} size={'1.6em'} color={'white'} className={'array-static-navbar'} />
        <ReturnProfil />
 
       </nav>

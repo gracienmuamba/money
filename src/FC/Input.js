@@ -118,10 +118,12 @@ export const ScreenSmall = () => {
   </div>
  )
 };
+
+
 export const FormInputValue = () => {
 
  const navigation = useNavigate();
- const { register, handleSubmit, watch, reset, control } = useForm({});
+ const { handleSubmit, watch, reset, control } = useForm({});
  const [prix, setPrix] = React.useState(Fc);
  const [status, setStatus] = React.useState();
  const [statusOther, setStatusOther] = React.useState();
@@ -183,34 +185,6 @@ export const FormInputValue = () => {
  }
 
 
- // else if (Number(entry) > 75000 && Number(entry) <= 125000) {
- //  frais = remainderInput(entry, 2.9);
- //  count = doesInputEntry(entry, frais);
- // }
- // else if (Number(entry) > 125000 && Number(entry) <= 250000) {
- //  frais = remainderInput(entry, 1.98);
- //  count = doesInputEntry(entry, frais);
- // }
- // else if (Number(entry) > 250000 && Number(entry) <= 1000000) {
- //  frais = remainderInput(entry, 1.7);
- //  count = doesInputEntry(entry, frais);
- // }
- // else if (Number(entry) > 1000000 && Number(entry) <= 2500000) {
- //  frais = remainderInput(entry, 1.69);
- //  count = doesInputEntry(entry, frais);
- // }
- // else if (Number(entry) > 2500000 && Number(entry) <= 4500000) {
- //  frais = remainderInput(entry, 1.6);
- //  count = doesInputEntry(entry, frais);
- // }
- // else {
- //  frais = remainderInput(entry, 1.6);
- //  count = doesInputEntry(entry, frais)
- // };
-
-
-
-
  React.useEffect(async () => {
 
   const querySnapshot = await getDocs(collection(db, "client"));
@@ -244,6 +218,7 @@ export const FormInputValue = () => {
 
 
  }, []);
+
  const prixValue = statusOther === 'client' && status === 'agent' ? Math.floor(Number(prix)) - Number(watch('count')) : Math.floor(Number(value)) - Math.floor(Number(frais));
 
  const onSubmit = async (data) => {
@@ -263,7 +238,7 @@ export const FormInputValue = () => {
     setHigh(true);
     reset();
    }
-   else if (data.count <= 2000) {
+   else if (prixValue < 2000) {
     setMain(true);
     reset();
    } else {
@@ -289,6 +264,7 @@ export const FormInputValue = () => {
  return (
   <>
    <REturnPriX count={prixValue} />
+
    <form onSubmit={handleSubmit(onSubmit)}>
 
     <Controller

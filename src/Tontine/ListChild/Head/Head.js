@@ -19,6 +19,9 @@ import ReturnPrix from './Prix';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
+import { HiArrowLeft } from 'react-icons/hi';
+
+
 
 function DrawerAppBar() {
 
@@ -68,6 +71,12 @@ function DrawerAppBar() {
 
  }, []);
 
+ const handlepath = (event) => {
+  event.preventDefault();
+  navigation(-1);
+
+ };
+
 
  return (
   <>
@@ -85,6 +94,8 @@ function DrawerAppBar() {
     <header>
      <div className='container'>
       <nav className='navbar'>
+
+       <HiArrowLeft onClick={handlepath} size={'1.6em'} color={'white'} className={'array-static-navbar'} />
        <ReturnProfil />
       </nav>
      </div>

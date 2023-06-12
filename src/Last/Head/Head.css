@@ -14,12 +14,11 @@
 }
 .flex-head-list-last header .container {
  width: 100%;
- margin: auto;
+ /* margin: 0; */
 }
 .flex-head-list-last header .navbar {
  display: flex;
- width: 100%;
- justify-content: center;
+ justify-content: space-between;
  align-items: center;
  width: 100%;
 }
@@ -92,11 +91,11 @@
 }
 .flex-head-list-last .box-data-cmd-list-time h2 {
  display: flex;
- font-size: 1.11em;
+ font-size: 1em;
  text-align: justify;
  font-weight: 300;
  font-family: var(--text-family);
- line-height: 1;
+ line-height: 0;
  letter-spacing: 0px;
  color: #5465ff;
 }
@@ -122,10 +121,10 @@
 }
 .flex-head-list-last .cmd-operator-title h3 {
  display: flex;
- font-size: 1.11em;
+ font-size: 1em;
  font-weight: 300;
 
- margin: 2.3vh 0;
+ margin: 1.4vh 0;
 
  line-height: 1;
  font-family: var(--text-family);
@@ -141,7 +140,7 @@
 }
 .flex-head-list-last .cmd-operator-title .cmd-operator-sub-title p {
  display: flex;
- font-size: 1.11em;
+ font-size: 1em;
  font-weight: 300;
  line-height: 0;
  font-family: var(--text-family);
@@ -163,4 +162,9 @@
  justify-content: space-between;
  align-items: center;
  width: 1em;
+}
+
+.array-static-navbar {
+ margin-bottom: 2.5ch;
+ cursor: pointer;
 }

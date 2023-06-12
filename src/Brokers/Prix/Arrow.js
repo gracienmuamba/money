@@ -1,9 +1,7 @@
 import React from 'react';
 import Media from 'react-media';
 import { useNavigate } from 'react-router-dom';
-import { GrFormPrevious } from 'react-icons/gr';
-// import './Arrow.css';
-
+import { HiArrowLeft } from 'react-icons/hi';
 
 
 // REturn Arrow component 
@@ -58,8 +56,7 @@ export function BacK() {
  return (
   <div className='wrp-back-brokers'>
    <div onClick={handlepath} className='wrp-back-box-brokers'>
-    <GrFormPrevious size={'2em'} />
-    <span>Téléphone</span>
+    <HiArrowLeft size={'1.6em'} color={'grey'} />
    </div>
   </div>
  );

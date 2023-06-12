@@ -2,7 +2,7 @@ import * as React from 'react';
 import './Last.css';
 import { useNavigate } from 'react-router-dom';
 import { db } from '../../../firebase';
-import { doc, collection, getDocs, getDocFromCache } from "firebase/firestore";
+import { doc, collection, getDocs, getDocFromCache, onSnapshot, getDoc } from "firebase/firestore";
 
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -24,7 +24,6 @@ export default function ReturnLasT() {
  const navigation = useNavigate();
 
  const [open, setOpen] = React.useState(false);
-
  const [load, setLoad] = React.useState(false);
  const [list, setList] = React.useState([]);
 
@@ -45,19 +44,17 @@ export default function ReturnLasT() {
    const doc = await getDocFromCache(docRef);
    // Document was found in the cache. If no cached document exists,
    setList(doc.data().swap);
-   window.console.log(doc.data().swap);
   } catch (e) {
    console.log("Error getting cached document:", e);
   };
 
  }, []);
 
-
+ let col = pushDocs.includes(JSON.parse(window.localStorage.getItem('USER')));
  const handleClose = () => {
   setOpen(false);
  };
 
- window.console.log(list.length);
  const handlepath = (event) => {
 
   event.preventDefault();
@@ -106,15 +103,15 @@ export default function ReturnLasT() {
      </div>
 
 
-     <div>
-      <IconButton>
-       <img src={'/img/printing.png'} />
-      </IconButton>
-     </div>
-
+     {!col &&
+      <div>
+       <IconButton>
+        <img src={'/img/printing.png'} />
+       </IconButton>
+      </div>
+     }
 
     </div>
-
    </div>
 
    <Dialog
