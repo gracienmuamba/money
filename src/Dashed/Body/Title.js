@@ -7,4 +7,4 @@ export default function ReturnTitle(props) {
    <h2>{props.Text}</h2>
   </div>
  );
-}
+};

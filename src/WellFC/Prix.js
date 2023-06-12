@@ -1,7 +1,6 @@
 import React from 'react';
 import Media from 'react-media';
 import './Prix.css';
-// import { prixHash } from '../Pin/Fc/Simple/Input';
 import ReturnIMAFlags from './Flags';
 
 

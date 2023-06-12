@@ -7,6 +7,7 @@ import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 
 let pushDocs = new Array();
 
+
 // Button blocked
 export default function ReturnBtnBlocKed() {
 
@@ -16,6 +17,7 @@ export default function ReturnBtnBlocKed() {
  const handlepath = (event) => {
   event.preventDefault();
   window.localStorage.setItem('@ª©##', JSON.stringify(true));
+  window.localStorage.setItem('@ª©##courant**^^', JSON.stringify('Épargne'));
   navigation('/send-blocked');
  };
 

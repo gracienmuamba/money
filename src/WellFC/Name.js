@@ -35,6 +35,7 @@ export const ScreenSmall = () => (
   <ViewText />
  </div>
 );
+
 export const ViewText = () => {
 
  let pushDocs = new Array();

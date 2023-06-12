@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './Invited.css';
 import IconButton from '@mui/material/IconButton';
 
@@ -9,14 +10,32 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContentText from '@mui/material/DialogContentText';
 
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+
+import { db } from '../../firebase';
+import { doc, collection, getDocs, getDocFromCache } from "firebase/firestore";
+import ReturnMsg from './Msg';
+
+import { useReactToPrint } from 'react-to-print';
+
+let pushDocs = new Array();
 
 // view invite component
 export default function ReturnInvited() {
 
  const [open, setOpen] = React.useState(false);
+ const [list, setList] = React.useState([]);
 
  const [fullWidth, setFullWidth] = React.useState(true);
  const [maxWidth, setMaxWidth] = React.useState('sm');
+
+ const componentRef = React.useRef();
+ const handlePrint = useReactToPrint({
+  content: () => componentRef.current,
+  documentTitle: 'emp-data',
+  onAfterPrint: () => window.console.log('print success')
+ });
 
  const [values, setValues] = React.useState({
   textmask: '(100) 000-0000',
@@ -32,15 +51,42 @@ export default function ReturnInvited() {
   setOpen(false);
  };
 
+ React.useEffect(async () => {
+
+  const querySnapshotClient = await getDocs(collection(db, "client"));
+  querySnapshotClient.forEach((doc) => {
+   pushDocs.push(doc.id);
+  });
+
+  var verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
+  const docRef = doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+  // Get a document, forcing the SDK to fetch from the offline cache.
+  try {
+   const doc = await getDocFromCache(docRef);
+   // Document was found in the cache. If no cached document exists,
+   setList(doc.data().swap);
+  } catch (e) {
+   console.log("Error getting cached document:", e);
+  };
+
+ }, []);
+
+ let col = pushDocs.includes(JSON.parse(window.localStorage.getItem('USER')));
+
  return (
   <>
-   <div className='tontine-send-invited'>
+   <div ref={componentRef} style={{ height: window.innerHeight }}>
+    <ReturnMsg />
+   </div>
 
-    <div>
-     <IconButton aria-label="cart">
-      <img src={'/img/printing.png'} />
-     </IconButton>
-    </div>
+   <div className='tontine-send-invited'>
+    {!col &&
+     <div onClick={handlePrint}>
+      <IconButton>
+       <img src={'/img/printing.png'} />
+      </IconButton>
+     </div>
+    }
    </div>
 
    <Dialog

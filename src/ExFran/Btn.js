@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { db } from '../firebase';
 
+
 let pushDocs = new Array();
+
 
 // Button blocked
 export default function ReturnBtn() {
@@ -15,8 +17,10 @@ export default function ReturnBtn() {
  const handlepath = (event) => {
   event.preventDefault();
   window.localStorage.setItem('@ª©##', JSON.stringify(true));
+  window.localStorage.setItem('@ª©##courant**^^', JSON.stringify('Courant'));
   navigation('/send-fc');
  };
+
  React.useEffect(async () => {
 
   const querySnapshot = await getDocs(collection(db, "client"));

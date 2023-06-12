@@ -2,10 +2,12 @@ import * as React from 'react';
 import './Last.css';
 import { useNavigate } from 'react-router-dom';
 import { db } from '../../../firebase';
-import { doc, collection, getDocs, getDocFromCache, onSnapshot, getDoc } from "firebase/firestore";
+import { doc, collection, getDocs, getDocFromCache } from "firebase/firestore";
 
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+
+
 import IconButton from '@mui/material/IconButton';
 
 import Button from '@mui/material/Button';
@@ -102,14 +104,15 @@ export default function ReturnLasT() {
       </IconButton>
      </div>
 
+     <div></div>
 
-     {!col &&
+     {/* {!col &&
       <div>
        <IconButton>
         <img src={'/img/printing.png'} />
        </IconButton>
       </div>
-     }
+     } */}
 
     </div>
    </div>

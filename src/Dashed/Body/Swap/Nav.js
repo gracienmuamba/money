@@ -6,7 +6,6 @@ export default function ReturnNaV() {
  return (
   <div className='prix-nav-dashed'>
    <ReturnTitle Text={'Dernière transaction'} />
-
   </div>
  );
 };

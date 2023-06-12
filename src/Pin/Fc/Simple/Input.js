@@ -37,633 +37,633 @@ export let hashTrue = true;
 
 // Input Field Component 
 export default function ReturnInput() {
-   return (
-      <Media
-         queries={{
-            small: '(max-width: 599px)',
-            medium: '(min-width: 600px) and (max-width:1199px)',
-            large: '(min-width: 1200px)',
-         }}>
-         {matches => (
-            <>
-               {matches.small && <ScreenSmall />}
-               {matches.medium && <SreenLarge />}
-               {matches.large && <SreenLarge />}
-            </>
-         )}
-      </Media>
-   );
+ return (
+  <Media
+   queries={{
+    small: '(max-width: 599px)',
+    medium: '(min-width: 600px) and (max-width:1199px)',
+    large: '(min-width: 1200px)',
+   }}>
+   {matches => (
+    <>
+     {matches.small && <ScreenSmall />}
+     {matches.medium && <SreenLarge />}
+     {matches.large && <SreenLarge />}
+    </>
+   )}
+  </Media>
+ );
 };
 export const SreenLarge = () => (
-   <div className='wrp-form-input-pin'>
-      <REturnQuOte />
-      <FormInput />
+ <div className='wrp-form-input-pin'>
+  <REturnQuOte />
+  <FormInput />
 
-   </div>
+ </div>
 );
 export const ScreenSmall = () => (
-   <div className='wrp-form-input-pin'>
-      <REturnQuOte />
-      <FormInput />
-   </div>
+ <div className='wrp-form-input-pin'>
+  <REturnQuOte />
+  <FormInput />
+ </div>
 );
 
 export const FormInput = () => {
 
-   let pushDocs = new Array();
-   let verifierSend;
-   let verifierGet;
-
-   const [load, setLoad] = React.useState(false);
-   const navigation = useNavigate();
-   const { register, handleSubmit, reset, control } = useForm({});
-
-   //  order notebook
-   const [tableClient, setTableClient] = React.useState();
-   const [tableAgent, setTableAgent] = React.useState();
-   const [tableUpgrade, setTableUpgrade] = React.useState();
-   const [tableAdmin, setTableAdmin] = React.useState();
-   const [tableFrais, setTableFrais] = React.useState();
-
-   // send React useState  
-   const [pin, setPin] = React.useState(null);
-   const [state, setState] = React.useState(null);
-   const [first, setFirst] = React.useState('');
-   const [last, setLast] = React.useState('');
-   const [soldeMain, setSoldeMain] = React.useState(null);
-
-   // getting React useState
-   const [getstate, setGetstate] = React.useState(null);
-   const [getfirst, setGetFirst] = React.useState('');
-   const [getlast, setGetLast] = React.useState('');
-
-
-   const [open, setOpen] = React.useState(false);
-   const [cancel, setCancel] = React.useState(false);
-   const [click, setClick] = React.useState(false);
-
-   const [fullWidth, setFullWidth] = React.useState(true);
-   const [maxWidth, setMaxWidth] = React.useState('sm');
-
-   const [showPassword, setShowPassword] = React.useState(false);
-   const [getTeam, setGetTeam] = React.useState('');
-   const [sendTeam, setSendTeam] = React.useState('');
-
-
-   const handleClickShowPassword = () => setShowPassword((show) => !show);
-   const handleMouseDownPassword = (event) => {
-      event.preventDefault();
-   };
-
-   const handleClose = () => {
-      setOpen(false);
-   };
-   const cancelClose = () => {
-      setCancel(false);
-      setClick(true);
-   };
-
-   React.useEffect(async () => {
-
-      const querySnapshot = await getDocs(collection(db, "client"));
-      querySnapshot.forEach((doc) => {
-         pushDocs.push(doc.id);
-      });
-
-      verifierSend = pushDocs.some(value => value == JSON.parse(window.localStorage.getItem('USER')));
-      verifierGet = pushDocs.some(value => value == JSON.parse(window.localStorage.getItem('A@@ph$$&-@#')));
+ let pushDocs = new Array();
+ let verifierSend;
+ let verifierGet;
+
+ const [load, setLoad] = React.useState(false);
+ const navigation = useNavigate();
+ const { register, handleSubmit, reset, control } = useForm({});
+
+ //  order notebook
+ const [tableClient, setTableClient] = React.useState();
+ const [tableAgent, setTableAgent] = React.useState();
+ const [tableUpgrade, setTableUpgrade] = React.useState();
+ const [tableAdmin, setTableAdmin] = React.useState();
+ const [tableFrais, setTableFrais] = React.useState();
+
+ // send React useState  
+ const [pin, setPin] = React.useState(null);
+ const [state, setState] = React.useState(null);
+ const [first, setFirst] = React.useState('');
+ const [last, setLast] = React.useState('');
+ const [soldeMain, setSoldeMain] = React.useState(null);
+
+ // getting React useState
+ const [getstate, setGetstate] = React.useState(null);
+ const [getfirst, setGetFirst] = React.useState('');
+ const [getlast, setGetLast] = React.useState('');
+
+
+ const [open, setOpen] = React.useState(false);
+ const [cancel, setCancel] = React.useState(false);
+ const [click, setClick] = React.useState(false);
+
+ const [fullWidth, setFullWidth] = React.useState(true);
+ const [maxWidth, setMaxWidth] = React.useState('sm');
+
+ const [showPassword, setShowPassword] = React.useState(false);
+ const [getTeam, setGetTeam] = React.useState('');
+ const [sendTeam, setSendTeam] = React.useState('');
+
+
+ const handleClickShowPassword = () => setShowPassword((show) => !show);
+ const handleMouseDownPassword = (event) => {
+  event.preventDefault();
+ };
+
+ const handleClose = () => {
+  setOpen(false);
+ };
+ const cancelClose = () => {
+  setCancel(false);
+  setClick(true);
+ };
+
+ React.useEffect(async () => {
+
+  const querySnapshot = await getDocs(collection(db, "client"));
+  querySnapshot.forEach((doc) => {
+   pushDocs.push(doc.id);
+  });
+
+  verifierSend = pushDocs.some(value => value == JSON.parse(window.localStorage.getItem('USER')));
+  verifierGet = pushDocs.some(value => value == JSON.parse(window.localStorage.getItem('A@@ph$$&-@#')));
 
-      const unsub = onSnapshot(doc(db, verifierSend ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
-         setPin(doc.data().code);
-         setState(doc.data().state);
-         setFirst(doc.data().firstname);
-         setLast(doc.data().lastname);
-         setSoldeMain(doc.data().cdf);
-         setSendTeam(doc.data().team);
+  const unsub = onSnapshot(doc(db, verifierSend ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   setPin(doc.data().code);
+   setState(doc.data().state);
+   setFirst(doc.data().firstname);
+   setLast(doc.data().lastname);
+   setSoldeMain(doc.data().cdf);
+   setSendTeam(doc.data().team);
 
-      });
+  });
 
-      const getRef = doc(db, verifierGet ? "client" : "agent", JSON.parse(window.localStorage.getItem('A@@ph$$&-@#')));
-      const getSnap = await getDoc(getRef);
+  const getRef = doc(db, verifierGet ? "client" : "agent", JSON.parse(window.localStorage.getItem('A@@ph$$&-@#')));
+  const getSnap = await getDoc(getRef);
 
-      if (getSnap.exists()) {
-         setGetstate(getSnap.data().state);
-         setGetFirst(getSnap.data().firstname);
-         setGetLast(getSnap.data().lastname);
-         setGetTeam(getSnap.data().team);
-      };
+  if (getSnap.exists()) {
+   setGetstate(getSnap.data().state);
+   setGetFirst(getSnap.data().firstname);
+   setGetLast(getSnap.data().lastname);
+   setGetTeam(getSnap.data().team);
+  };
 
-      try {
-         await onSnapshot(doc(db, "clients", "emoney"), (doc) => {
-            setTableClient(doc.data().cdf);
-         });
-         await onSnapshot(doc(db, "agents", "emoney"), (doc) => {
-            setTableAgent(doc.data().cdf);
-         });
-         await onSnapshot(doc(db, "muungano", "commission"), (doc) => {
-            setTableAdmin(doc.data().cdf);
-         });
-
-         await onSnapshot(doc(db, "agents", "commission"), (doc) => {
-            setTableFrais(doc.data().cdf);
-         });
+  try {
+   await onSnapshot(doc(db, "clients", "emoney"), (doc) => {
+    setTableClient(doc.data().cdf);
+   });
+   await onSnapshot(doc(db, "agents", "emoney"), (doc) => {
+    setTableAgent(doc.data().cdf);
+   });
+   await onSnapshot(doc(db, "muungano", "commission"), (doc) => {
+    setTableAdmin(doc.data().cdf);
+   });
+
+   await onSnapshot(doc(db, "agents", "commission"), (doc) => {
+    setTableFrais(doc.data().cdf);
+   });
 
-         await onSnapshot(doc(db, "muungano", "upgrade"), (doc) => {
-            setTableUpgrade(doc.data().cdf);
-         });
+   await onSnapshot(doc(db, "muungano", "upgrade"), (doc) => {
+    setTableUpgrade(doc.data().cdf);
+   });
 
-      } catch {
-         window.console.log('Erreur disponible');
-      }
+  } catch {
+   window.console.log('Erreur disponible');
+  }
 
-   }, []);
+ }, []);
 
-   const onSubmit = async (data) => {
+ const onSubmit = async (data) => {
 
-      setLoad(true);
-      // Checked if value code is length valid
-      if (data.code.length != 6 || pin != data.code || pin == '000000' || soldeMain <= 2000) {
+  setLoad(true);
+  // Checked if value code is length valid
+  if (data.code.length != 6 || pin != data.code || pin == '000000' || soldeMain <= 2000) {
 
-         setOpen(true);
-         setLoad(false);
-         reset();
+   setOpen(true);
+   setLoad(false);
+   reset();
 
-      } else {
+  } else {
 
-         const sendUser = first.toLowerCase() + ' ' + last.toLowerCase();
-         const getUser = getfirst.toLowerCase() + ' ' + getlast.toLowerCase();
+   const sendUser = first.toLowerCase() + ' ' + last.toLowerCase();
+   const getUser = getfirst.toLowerCase() + ' ' + getlast.toLowerCase();
 
-         if (state == "agent" && getstate == "agent") {
+   if (state == "agent" && getstate == "agent") {
 
-            window.localStorage.setItem('@ª©##', JSON.stringify(false));
-            window.localStorage.setItem('@cost##', JSON.stringify(true));
+    window.localStorage.setItem('@ª©##', JSON.stringify(false));
+    window.localStorage.setItem('@cost##', JSON.stringify(true));
 
-            hashTrue = false;
-            prixHash = JSON.parse(window.localStorage.getItem('@solde!#!'));
+    hashTrue = false;
+    prixHash = JSON.parse(window.localStorage.getItem('@solde!#!'));
 
-            let soldeAgent = Number(tableAgent[nowField]) + JSON.parse(window.localStorage.getItem('@solde!#!'));
-            let soldeUpgrade = Number(tableUpgrade[nowField]) + JSON.parse(window.localStorage.getItem('@solde!#!'));
-            let soldeAdminFrais = Number(tableAdmin[nowField]) + JSON.parse(window.localStorage.getItem('@frais!#!'));
+    let soldeAgent = Number(tableAgent[nowField]) + JSON.parse(window.localStorage.getItem('@solde!#!'));
+    let soldeUpgrade = Number(tableUpgrade[nowField]) + JSON.parse(window.localStorage.getItem('@solde!#!'));
+    let soldeAdminFrais = Number(tableAdmin[nowField]) + JSON.parse(window.localStorage.getItem('@frais!#!'));
 
-            let arrayAgent = tableAgent;
-            let arrayUpgrade = tableUpgrade;
-            let arrayAdmin = tableAdmin;
+    let arrayAgent = tableAgent;
+    let arrayUpgrade = tableUpgrade;
+    let arrayAdmin = tableAdmin;
 
-            for (let i = now; i <= 31; i++) {
-               arrayAgent[i] = soldeAgent;
-               arrayUpgrade[i] = soldeUpgrade;
-               arrayAdmin[i] = soldeAdminFrais;
+    for (let i = now; i <= 31; i++) {
+     arrayAgent[i] = soldeAgent;
+     arrayUpgrade[i] = soldeUpgrade;
+     arrayAdmin[i] = soldeAdminFrais;
 
-            };
+    };
 
-            const sendPhone = JSON.parse(window.localStorage.getItem('USER'));
-            const getPhone = JSON.parse(window.localStorage.getItem('A@@ph$$&-@#'));
-            const unite = JSON.parse(window.localStorage.getItem('@unite!#!'));
-            const money = JSON.parse(window.localStorage.getItem('@solde!#!'));
-            const frais = JSON.parse(window.localStorage.getItem('@frais!#!'));
-            const main = JSON.parse(window.localStorage.getItem('@main!#!'));
+    const sendPhone = JSON.parse(window.localStorage.getItem('USER'));
+    const getPhone = JSON.parse(window.localStorage.getItem('A@@ph$$&-@#'));
+    const unite = JSON.parse(window.localStorage.getItem('@unite!#!'));
+    const money = JSON.parse(window.localStorage.getItem('@solde!#!'));
+    const frais = JSON.parse(window.localStorage.getItem('@frais!#!'));
+    const main = JSON.parse(window.localStorage.getItem('@main!#!'));
 
 
-            swapInWithDocsAgent(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayAgent, arrayUpgrade, arrayAdmin);
+    swapInWithDocsAgent(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayAgent, arrayUpgrade, arrayAdmin);
 
-            window.setTimeout(() => {
-               navigation('/send-success');
-            }, 3450);
+    window.setTimeout(() => {
+     navigation('/send-success');
+    }, 3450);
 
-         } else if (state == "client" && getstate == "client") {
+   } else if (state == "client" && getstate == "client") {
 
-            window.localStorage.setItem('@ª©##', JSON.stringify(false));
+    window.localStorage.setItem('@ª©##', JSON.stringify(false));
 
-            hashTrue = false;
-            prixHash = JSON.parse(window.localStorage.getItem('@solde!#!'));
+    hashTrue = false;
+    prixHash = JSON.parse(window.localStorage.getItem('@solde!#!'));
 
-            let soldeClient = Number(tableClient[nowField]) + JSON.parse(window.localStorage.getItem('@solde!#!'));
-            let soldeUpgrade = Number(tableUpgrade[nowField]) + JSON.parse(window.localStorage.getItem('@solde!#!'));
-            let soldeAdminFrais = Number(tableAdmin[nowField]) + JSON.parse(window.localStorage.getItem('@frais!#!'));
+    let soldeClient = Number(tableClient[nowField]) + JSON.parse(window.localStorage.getItem('@solde!#!'));
+    let soldeUpgrade = Number(tableUpgrade[nowField]) + JSON.parse(window.localStorage.getItem('@solde!#!'));
+    let soldeAdminFrais = Number(tableAdmin[nowField]) + JSON.parse(window.localStorage.getItem('@frais!#!'));
 
-            let arrayClient = tableClient;
-            let arrayUpgrade = tableUpgrade;
-            let arrayAdmin = tableAdmin;
+    let arrayClient = tableClient;
+    let arrayUpgrade = tableUpgrade;
+    let arrayAdmin = tableAdmin;
 
-            for (let i = now; i <= 31; i++) {
-               arrayClient[i] = soldeClient;
-               arrayUpgrade[i] = soldeUpgrade;
-               arrayAdmin[i] = soldeAdminFrais;
+    for (let i = now; i <= 31; i++) {
+     arrayClient[i] = soldeClient;
+     arrayUpgrade[i] = soldeUpgrade;
+     arrayAdmin[i] = soldeAdminFrais;
 
-            };
+    };
 
-            const sendPhone = JSON.parse(window.localStorage.getItem('USER'));
-            const getPhone = JSON.parse(window.localStorage.getItem('A@@ph$$&-@#'));
-            const money = JSON.parse(window.localStorage.getItem('@solde!#!'));
-            const unite = JSON.parse(window.localStorage.getItem('@unite!#!'));
-            const frais = JSON.parse(window.localStorage.getItem('@frais!#!'));
-            const main = JSON.parse(window.localStorage.getItem('@main!#!'));
+    const sendPhone = JSON.parse(window.localStorage.getItem('USER'));
+    const getPhone = JSON.parse(window.localStorage.getItem('A@@ph$$&-@#'));
+    const money = JSON.parse(window.localStorage.getItem('@solde!#!'));
+    const unite = JSON.parse(window.localStorage.getItem('@unite!#!'));
+    const frais = JSON.parse(window.localStorage.getItem('@frais!#!'));
+    const main = JSON.parse(window.localStorage.getItem('@main!#!'));
 
-            isSwapInWithClientToClient(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayClient, arrayUpgrade, arrayAdmin);
-            window.setTimeout(() => {
-               navigation('/send-success');
-            }, 3450);
+    isSwapInWithClientToClient(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayClient, arrayUpgrade, arrayAdmin);
+    window.setTimeout(() => {
+     navigation('/send-success');
+    }, 3450);
 
 
-         } else {
+   } else {
 
-            if (state == "agent") {
+    if (state == "agent") {
 
-               window.localStorage.setItem('@ª©##', JSON.stringify(false));
+     window.localStorage.setItem('@ª©##', JSON.stringify(false));
 
-               hashTrue = false;
-               prixHash = JSON.parse(window.localStorage.getItem('@solde!#!'));
+     hashTrue = false;
+     prixHash = JSON.parse(window.localStorage.getItem('@solde!#!'));
 
-               let soldeAgent = Number(tableAgent[nowField]) + JSON.parse(window.localStorage.getItem('@solde!#!'));
-               let soldeUpgrade = Number(tableUpgrade[nowField]) + JSON.parse(window.localStorage.getItem('@solde!#!'));
+     let soldeAgent = Number(tableAgent[nowField]) + JSON.parse(window.localStorage.getItem('@solde!#!'));
+     let soldeUpgrade = Number(tableUpgrade[nowField]) + JSON.parse(window.localStorage.getItem('@solde!#!'));
 
-               let arrayAgent = tableAgent;
-               let arrayUpgrade = tableUpgrade;
+     let arrayAgent = tableAgent;
+     let arrayUpgrade = tableUpgrade;
 
-               for (let i = now; i <= 31; i++) {
-                  arrayAgent[i] = soldeAgent;
-                  arrayUpgrade[i] = soldeUpgrade;
-               };
+     for (let i = now; i <= 31; i++) {
+      arrayAgent[i] = soldeAgent;
+      arrayUpgrade[i] = soldeUpgrade;
+     };
 
-               const sendPhone = JSON.parse(window.localStorage.getItem('USER'));
-               const getPhone = JSON.parse(window.localStorage.getItem('A@@ph$$&-@#'));
-               const prix = JSON.parse(window.localStorage.getItem('@solde!#!'));
-               const unite = JSON.parse(window.localStorage.getItem('@unite!#!'));
-               const frais = JSON.parse(window.localStorage.getItem('@frais!#!'));
+     const sendPhone = JSON.parse(window.localStorage.getItem('USER'));
+     const getPhone = JSON.parse(window.localStorage.getItem('A@@ph$$&-@#'));
+     const prix = JSON.parse(window.localStorage.getItem('@solde!#!'));
+     const unite = JSON.parse(window.localStorage.getItem('@unite!#!'));
+     const frais = JSON.parse(window.localStorage.getItem('@frais!#!'));
 
-               swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUser, prix, frais, unite, arrayAgent, arrayUpgrade);
+     swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUser, prix, frais, unite, arrayAgent, arrayUpgrade);
 
+     window.setTimeout(() => {
+      navigation('/send-success');
+     }, 3540);
 
-               navigation('/send-success');
+    } else {
 
+     window.localStorage.setItem('@ª©##', JSON.stringify(false));
 
-            } else {
+     hashTrue = false;
+     prixHash = JSON.parse(window.localStorage.getItem('@solde!#!'));
 
-               window.localStorage.setItem('@ª©##', JSON.stringify(false));
+     let soldeClient = Number(tableClient[nowField]) + JSON.parse(window.localStorage.getItem('@solde!#!'));
+     let soldeUpgrade = Number(tableUpgrade[nowField]) + JSON.parse(window.localStorage.getItem('@solde!#!'));
+     let soldeAdminFrais = Number(tableAdmin[nowField]) + ((JSON.parse(window.localStorage.getItem('@frais!#!')) * 70) / 100);
+     let soldeAgentFrais = Number(tableFrais[nowField]) + ((JSON.parse(window.localStorage.getItem('@frais!#!')) * 30) / 100);
 
-               hashTrue = false;
-               prixHash = JSON.parse(window.localStorage.getItem('@solde!#!'));
+     let arrayClient = tableClient;
+     let arrayUpgrade = tableUpgrade;
+     let arrayAdmin = tableAdmin;
+     let arrayAgent = tableFrais;
 
-               let soldeClient = Number(tableClient[nowField]) + JSON.parse(window.localStorage.getItem('@solde!#!'));
-               let soldeUpgrade = Number(tableUpgrade[nowField]) + JSON.parse(window.localStorage.getItem('@solde!#!'));
-               let soldeAdminFrais = Number(tableAdmin[nowField]) + ((JSON.parse(window.localStorage.getItem('@frais!#!')) * 70) / 100);
-               let soldeAgentFrais = Number(tableFrais[nowField]) + ((JSON.parse(window.localStorage.getItem('@frais!#!')) * 30) / 100);
+     for (let i = now; i <= 31; i++) {
+      arrayClient[i] = soldeClient;
+      arrayUpgrade[i] = soldeUpgrade;
+      arrayAdmin[i] = Math.floor(soldeAdminFrais);
+      arrayAgent[i] = Math.floor(soldeAgentFrais);
 
-               let arrayClient = tableClient;
-               let arrayUpgrade = tableUpgrade;
-               let arrayAdmin = tableAdmin;
-               let arrayAgent = tableFrais;
+     };
 
-               for (let i = now; i <= 31; i++) {
-                  arrayClient[i] = soldeClient;
-                  arrayUpgrade[i] = soldeUpgrade;
-                  arrayAdmin[i] = Math.floor(soldeAdminFrais);
-                  arrayAgent[i] = Math.floor(soldeAgentFrais);
+     const sendPhone = JSON.parse(window.localStorage.getItem('USER'));
+     const getPhone = JSON.parse(window.localStorage.getItem('A@@ph$$&-@#'));
+     const money = JSON.parse(window.localStorage.getItem('@solde!#!'));
+     const prix = JSON.parse(window.localStorage.getItem('@solde!#!'));
+     const unite = JSON.parse(window.localStorage.getItem('@unite!#!'));
+     const frais = JSON.parse(window.localStorage.getItem('@frais!#!'));
+     const main = JSON.parse(window.localStorage.getItem('@main!#!'));
 
-               };
+     isSwapInWithClientToAgent(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayClient, arrayUpgrade, arrayAdmin, arrayAgent);
 
-               const sendPhone = JSON.parse(window.localStorage.getItem('USER'));
-               const getPhone = JSON.parse(window.localStorage.getItem('A@@ph$$&-@#'));
-               const money = JSON.parse(window.localStorage.getItem('@solde!#!'));
-               const prix = JSON.parse(window.localStorage.getItem('@solde!#!'));
-               const unite = JSON.parse(window.localStorage.getItem('@unite!#!'));
-               const frais = JSON.parse(window.localStorage.getItem('@frais!#!'));
-               const main = JSON.parse(window.localStorage.getItem('@main!#!'));
+     window.setTimeout(() => {
+      navigation('/send-success');
+     }, 3450);
 
-               isSwapInWithClientToAgent(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayClient, arrayUpgrade, arrayAdmin, arrayAgent);
+    }
 
-               window.setTimeout(() => {
-                  navigation('/send-success');
-               }, 3450);
+   }
 
-            }
+  }
+ };
 
-         }
+ return (
+  <>
+   <div className='zindex-theme'>
+    <Backdrop
+     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+     open={load}>
 
-      }
-   };
+     <CircularProgress color="inherit" />
+    </Backdrop>
+   </div>
 
-   return (
-      <>
-         <div className='zindex-theme'>
-            <Backdrop
-               sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-               open={load}>
+   <form onSubmit={handleSubmit(onSubmit)}>
 
-               <CircularProgress color="inherit" />
-            </Backdrop>
-         </div>
+    <FormControl
+     sx={{ width: '100%' }}
+     variant="standard">
+     <InputLabel htmlFor="standard-adornment-password"><div className='pop-up'>Pin actuel</div></InputLabel>
 
-         <form onSubmit={handleSubmit(onSubmit)}>
+     <Controller
+      name="code"
+      control={control}
+      render={({ field }) =>
 
-            <FormControl
-               sx={{ width: '100%' }}
-               variant="standard">
-               <InputLabel htmlFor="standard-adornment-password"><div className='pop-up'>Pin actuel</div></InputLabel>
+       <Input
+        id="standard-adornment-password"
+        autocomplete="new-password"
 
-               <Controller
-                  name="code"
-                  control={control}
-                  render={({ field }) =>
+        {...field}
+        type={showPassword ? 'numeric' : 'password'}
 
-                     <Input
-                        id="standard-adornment-password"
-                        autocomplete="new-password"
+        inputProps={{
+         autoComplete: "off", inputMode: 'numeric'
+        }}
 
-                        {...field}
-                        type={showPassword ? 'numeric' : 'password'}
+        endAdornment={
+         <InputAdornment position="end">
 
-                        inputProps={{
-                           autoComplete: "off", inputMode: 'numeric'
-                        }}
+          <IconButton
+           aria-label="toggle password visibility"
+           onClick={handleClickShowPassword}
+           onMouseDown={handleMouseDownPassword}
+          >
+           {showPassword ? <VisibilityOff /> : <Visibility />}
+          </IconButton>
 
-                        endAdornment={
-                           <InputAdornment position="end">
+         </InputAdornment>
+        }
 
-                              <IconButton
-                                 aria-label="toggle password visibility"
-                                 onClick={handleClickShowPassword}
-                                 onMouseDown={handleMouseDownPassword}
-                              >
-                                 {showPassword ? <VisibilityOff /> : <Visibility />}
-                              </IconButton>
+       />}
+     />
 
-                           </InputAdornment>
-                        }
+    </FormControl>
 
-                     />}
-               />
+    <Dialog
+     fullWidth={fullWidth}
+     maxWidth={maxWidth}
+     open={open}
+     onClose={handleClose}>
 
-            </FormControl>
+     <DialogTitle><span className='pop-up'>MuunganoMoney</span></DialogTitle>
+     <DialogContent>
 
-            <Dialog
-               fullWidth={fullWidth}
-               maxWidth={maxWidth}
-               open={open}
-               onClose={handleClose}>
-
-               <DialogTitle><span className='pop-up'>MuunganoMoney</span></DialogTitle>
-               <DialogContent>
-
-                  <DialogContentText>
-                     <p className='pop-up'>
-                        Code [pin] Incorrect
+      <DialogContentText>
+       <p className='pop-up'>
+        Code [pin] Incorrect
      </p>
-                  </DialogContentText>
+      </DialogContentText>
 
-               </DialogContent>
-               <DialogActions>
-                  <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
-               </DialogActions>
-            </Dialog>
+     </DialogContent>
+     <DialogActions>
+      <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
+     </DialogActions>
+    </Dialog>
 
-            <Dialog
-               fullWidth={fullWidth}
-               maxWidth={maxWidth}
-               open={cancel}
-               onClose={cancelClose}>
+    <Dialog
+     fullWidth={fullWidth}
+     maxWidth={maxWidth}
+     open={cancel}
+     onClose={cancelClose}>
 
-               <DialogTitle><span className='pop-up'>MuunganoMoney</span></DialogTitle>
-               <DialogContent>
+     <DialogTitle><span className='pop-up'>MuunganoMoney</span></DialogTitle>
+     <DialogContent>
 
-                  <DialogContentText>
-                     <p className='pop-up'>
-                        Des frais sont appliqués à cette transaction. Merci de choisir Muunganomoney
+      <DialogContentText>
+       <p className='pop-up'>
+        Des frais sont appliqués à cette transaction. Merci de choisir Muunganomoney
      </p>
-                  </DialogContentText>
+      </DialogContentText>
 
-               </DialogContent>
-               <DialogActions>
-                  <Button onClick={cancelClose}><span className='pop-up'>Fermer</span></Button>
-               </DialogActions>
-            </Dialog>
+     </DialogContent>
+     <DialogActions>
+      <Button onClick={cancelClose}><span className='pop-up'>Fermer</span></Button>
+     </DialogActions>
+    </Dialog>
 
-            <button className='Btn'>Envoi</button>
-         </form>
+    <button className='Btn'>Envoi</button>
+   </form>
 
-      </>
-   )
+  </>
+ )
 };
 
 async function swapInWithDocsAgent(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayAgentMoney, upgrade, adminFrais) {
 
-   let time = moment().format('LLL');
-   let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer' }
-   let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu' }
+ let time = moment().format('LLL');
+ let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer' }
+ let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu' }
 
 
-   const sendRef = doc(db, "agent", sendPhone);
-   await updateDoc(sendRef, {
-      cdf: (main),
-      money: money,
-      user: getUser,
-      unite: unite,
-      phoneclient: getPhone,
-      delay: moment().format(),
-      swap: arrayUnion(send),
-      commission: 0,
-      frais: frais,
-      sendtype: 'envoyer'
-   });
+ const sendRef = doc(db, "agent", sendPhone);
+ await updateDoc(sendRef, {
+  cdf: (main),
+  money: money,
+  user: getUser,
+  unite: unite,
+  phoneclient: getPhone,
+  delay: moment().format(),
+  swap: arrayUnion(send),
+  commission: 0,
+  frais: frais,
+  sendtype: 'envoyer'
+ });
 
-   const getRef = doc(db, "agent", getPhone);
-   await updateDoc(getRef, {
-      cdf: increment(money),
-      money: money,
-      user: sendUser,
-      unite: unite,
-      phoneclient: sendPhone,
-      delay: moment().format(),
-      swap: arrayUnion(get),
-      frais: 0,
-      commission: 0,
-      sendtype: 'Reçu'
-   });
+ const getRef = doc(db, "agent", getPhone);
+ await updateDoc(getRef, {
+  cdf: increment(money),
+  money: money,
+  user: sendUser,
+  unite: unite,
+  phoneclient: sendPhone,
+  delay: moment().format(),
+  swap: arrayUnion(get),
+  frais: 0,
+  commission: 0,
+  sendtype: 'Reçu'
+ });
 
-   const agentsemoneyRef = doc(db, "agents", "emoney");
-   await updateDoc(agentsemoneyRef, {
-      cdf: arrayAgentMoney,
-   });
+ const agentsemoneyRef = doc(db, "agents", "emoney");
+ await updateDoc(agentsemoneyRef, {
+  cdf: arrayAgentMoney,
+ });
 
-   const upgradeRef = doc(db, "muungano", "upgrade");
-   await updateDoc(upgradeRef, {
-      cdf: upgrade,
-   });
+ const upgradeRef = doc(db, "muungano", "upgrade");
+ await updateDoc(upgradeRef, {
+  cdf: upgrade,
+ });
 
-   const adminRef = doc(db, "muunganomoney", "money");
-   await updateDoc(adminRef, {
-      spredcdf: increment(Math.floor(Number(frais)))
-   });
+ const adminRef = doc(db, "muunganomoney", "money");
+ await updateDoc(adminRef, {
+  spredcdf: increment(Math.floor(Number(frais)))
+ });
 
-   const fraisRef = doc(db, "muungano", "commission");
-   await updateDoc(fraisRef, {
-      cdf: adminFrais,
-   });
+ const fraisRef = doc(db, "muungano", "commission");
+ await updateDoc(fraisRef, {
+  cdf: adminFrais,
+ });
 
 };
 async function swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUser, prix, frais, unite, arrayAgentMoney, upgrade) {
 
-   let time = moment().format('LLL');
-   let send = { date: time, solde: `${prix} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer' }
-   let get = { date: time, solde: `${prix} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu' }
+ let time = moment().format('LLL');
+ let send = { date: time, solde: `${prix} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer' }
+ let get = { date: time, solde: `${prix} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu' }
 
-   let comm = prix * 0.1 / 100;
+ let comm = prix * 0.1 / 100;
 
-   const sendRef = doc(db, "agent", sendPhone);
-   await updateDoc(sendRef, {
-      cdf: increment(-(prix)),
-      money: prix,
-      user: getUser,
-      unite: unite,
-      phoneclient: getPhone,
-      delay: moment().format(),
-      swap: arrayUnion(send),
-      thriftcdf: increment(Number(comm)),
-      commission: Number(comm),
-      frais: 0,
-      sendtype: 'envoyer'
-   });
+ const sendRef = doc(db, "agent", sendPhone);
+ await updateDoc(sendRef, {
+  cdf: increment(-(prix)),
+  money: prix,
+  user: getUser,
+  unite: unite,
+  phoneclient: getPhone,
+  delay: moment().format(),
+  swap: arrayUnion(send),
+  thriftcdf: increment(Number(comm)),
+  commission: Number(comm),
+  frais: 0,
+  sendtype: 'envoyer'
+ });
 
-   const getRef = doc(db, "client", getPhone);
-   await updateDoc(getRef, {
-      cdf: increment(prix),
-      money: prix,
-      user: sendUser,
-      unite: unite,
-      phoneclient: sendPhone,
-      delay: moment().format(),
-      swap: arrayUnion(get),
-      frais: 0,
-      sendtype: 'Reçu'
-   });
+ const getRef = doc(db, "client", getPhone);
+ await updateDoc(getRef, {
+  cdf: increment(prix),
+  money: prix,
+  user: sendUser,
+  unite: unite,
+  phoneclient: sendPhone,
+  delay: moment().format(),
+  swap: arrayUnion(get),
+  frais: 0,
+  sendtype: 'Reçu'
+ });
 
-   const agentsemoneyRef = doc(db, "agents", "emoney");
-   await updateDoc(agentsemoneyRef, {
-      cdf: arrayAgentMoney,
-   });
+ const agentsemoneyRef = doc(db, "agents", "emoney");
+ await updateDoc(agentsemoneyRef, {
+  cdf: arrayAgentMoney,
+ });
 
-   const upgradeRef = doc(db, "muungano", "upgrade");
-   await updateDoc(upgradeRef, {
-      cdf: upgrade,
-   });
+ const upgradeRef = doc(db, "muungano", "upgrade");
+ await updateDoc(upgradeRef, {
+  cdf: upgrade,
+ });
 
 };
 async function isSwapInWithClientToAgent(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayClientMoney, upgrade, adminFrais, agentFrais) {
 
-   let time = moment().format('LLL');
-   let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer' }
-   let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu' }
+ let time = moment().format('LLL');
+ let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer' }
+ let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu' }
 
 
-   let fraisAdmin = frais;
-   let fraisAgent = money * 2.7 / 100;
+ let fraisAdmin = frais;
+ let fraisAgent = money * 2.7 / 100;
 
 
-   const sendRef = doc(db, "client", sendPhone);
-   await updateDoc(sendRef, {
-      cdf: (main),
-      money: money,
-      user: getUser,
-      unite: unite,
-      phoneclient: getPhone,
-      delay: moment().format(),
-      swap: arrayUnion(send),
-      frais: frais,
-      sendtype: 'envoyer'
-   });
+ const sendRef = doc(db, "client", sendPhone);
+ await updateDoc(sendRef, {
+  cdf: (main),
+  money: money,
+  user: getUser,
+  unite: unite,
+  phoneclient: getPhone,
+  delay: moment().format(),
+  swap: arrayUnion(send),
+  frais: frais,
+  sendtype: 'envoyer'
+ });
 
-   const getRef = doc(db, "agent", getPhone);
-   await updateDoc(getRef, {
-      cdf: increment(money),
-      money: money,
-      user: sendUser,
-      unite: unite,
-      thriftcdf: increment(fraisAgent),
-      phoneclient: sendPhone,
-      delay: moment().format(),
-      swap: arrayUnion(get),
-      frais: 0,
-      sendtype: 'Reçu',
-      commission: fraisAgent
-   });
+ const getRef = doc(db, "agent", getPhone);
+ await updateDoc(getRef, {
+  cdf: increment(money),
+  money: money,
+  user: sendUser,
+  unite: unite,
+  thriftcdf: increment(fraisAgent),
+  phoneclient: sendPhone,
+  delay: moment().format(),
+  swap: arrayUnion(get),
+  frais: 0,
+  sendtype: 'Reçu',
+  commission: fraisAgent
+ });
 
-   const adminRef = doc(db, "muunganomoney", "money");
-   await updateDoc(adminRef, {
-      spredcdf: increment(fraisAdmin)
-   });
+ const adminRef = doc(db, "muunganomoney", "money");
+ await updateDoc(adminRef, {
+  spredcdf: increment(fraisAdmin)
+ });
 
-   const agentsemoneyRef = doc(db, "clients", "emoney");
-   await updateDoc(agentsemoneyRef, {
-      cdf: arrayClientMoney,
-   });
+ const agentsemoneyRef = doc(db, "clients", "emoney");
+ await updateDoc(agentsemoneyRef, {
+  cdf: arrayClientMoney,
+ });
 
-   const upgradeRef = doc(db, "muungano", "upgrade");
-   await updateDoc(upgradeRef, {
-      cdf: upgrade,
-   });
+ const upgradeRef = doc(db, "muungano", "upgrade");
+ await updateDoc(upgradeRef, {
+  cdf: upgrade,
+ });
 
-   const agentFraisRef = doc(db, "agents", "commission");
-   await updateDoc(agentFraisRef, {
-      cdf: agentFrais,
-   });
+ const agentFraisRef = doc(db, "agents", "commission");
+ await updateDoc(agentFraisRef, {
+  cdf: agentFrais,
+ });
 
-   const fraisRef = doc(db, "muungano", "commission");
-   await updateDoc(fraisRef, {
-      cdf: adminFrais,
-   });
+ const fraisRef = doc(db, "muungano", "commission");
+ await updateDoc(fraisRef, {
+  cdf: adminFrais,
+ });
 
 };
 async function isSwapInWithClientToClient(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayClientMoney, upgrade, adminFrais) {
 
-   let time = moment().format('LLL');
-   let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer' }
-   let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu' }
+ let time = moment().format('LLL');
+ let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer' }
+ let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu' }
 
 
-   const sendRef = doc(db, "client", sendPhone);
-   await updateDoc(sendRef, {
-      cdf: (main),
-      money: money,
-      user: getUser,
-      unite: unite,
-      phoneclient: getPhone,
-      delay: moment().format(),
-      swap: arrayUnion(send),
-      frais: frais,
-      sendtype: 'envoyer'
-   });
+ const sendRef = doc(db, "client", sendPhone);
+ await updateDoc(sendRef, {
+  cdf: (main),
+  money: money,
+  user: getUser,
+  unite: unite,
+  phoneclient: getPhone,
+  delay: moment().format(),
+  swap: arrayUnion(send),
+  frais: frais,
+  sendtype: 'envoyer'
+ });
 
-   const getRef = doc(db, "client", getPhone);
-   await updateDoc(getRef, {
-      cdf: increment(money),
-      money: money,
-      user: sendUser,
-      unite: unite,
-      phoneclient: sendPhone,
-      delay: moment().format(),
-      swap: arrayUnion(get),
-      frais: 0,
-      sendtype: 'Reçu'
-   });
+ const getRef = doc(db, "client", getPhone);
+ await updateDoc(getRef, {
+  cdf: increment(money),
+  money: money,
+  user: sendUser,
+  unite: unite,
+  phoneclient: sendPhone,
+  delay: moment().format(),
+  swap: arrayUnion(get),
+  frais: 0,
+  sendtype: 'Reçu'
+ });
 
-   const adminRef = doc(db, "muunganomoney", "money");
-   await updateDoc(adminRef, {
-      spredcdf: increment(Math.floor(Number(frais)))
-   });
+ const adminRef = doc(db, "muunganomoney", "money");
+ await updateDoc(adminRef, {
+  spredcdf: increment(Math.floor(Number(frais)))
+ });
 
-   const agentsemoneyRef = doc(db, "clients", "emoney");
-   await updateDoc(agentsemoneyRef, {
-      cdf: arrayClientMoney,
-   });
+ const agentsemoneyRef = doc(db, "clients", "emoney");
+ await updateDoc(agentsemoneyRef, {
+  cdf: arrayClientMoney,
+ });
 
-   const upgradeRef = doc(db, "muungano", "upgrade");
-   await updateDoc(upgradeRef, {
-      cdf: upgrade,
-   });
+ const upgradeRef = doc(db, "muungano", "upgrade");
+ await updateDoc(upgradeRef, {
+  cdf: upgrade,
+ });
 
-   const fraisRef = doc(db, "muungano", "commission");
-   await updateDoc(fraisRef, {
-      cdf: adminFrais,
-   });
+ const fraisRef = doc(db, "muungano", "commission");
+ await updateDoc(fraisRef, {
+  cdf: adminFrais,
+ });
 
 };
