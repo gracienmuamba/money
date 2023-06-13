@@ -9,6 +9,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
 import moment from 'moment';
+import NavBar from './Nav/Main';
+
 
 
 // This Phone view
@@ -98,6 +100,7 @@ export default function RegisterPhone() {
  return (
   <>
    <div className='App-loading-blank'></div>
+   <NavBar />
    <ReturnPhoneRegister />
 
    {/* <div className='zindex-theme'>

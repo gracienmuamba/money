@@ -5,9 +5,6 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import { useForm, Controller } from 'react-hook-form';
 
-import './Search.css';
-import './User.css';
-
 import { db } from '../../firebase';
 import { collection, getDocs } from "firebase/firestore";
 
@@ -24,7 +21,7 @@ import { CiSearch } from 'react-icons/ci';
 
 import ReturnIMA from './IMA';
 import { TweenMax, Expo } from 'gsap';
-import moment from 'moment';
+
 
 let search = '';
 

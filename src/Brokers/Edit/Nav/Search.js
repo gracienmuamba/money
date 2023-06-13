@@ -43,7 +43,6 @@ export async function getSearchColumn(col) {
  window.localStorage.setItem('%%docs&&col**', JSON.stringify(arr.reverse()));
 
 };
-
 const colors = [
  '#00b4d8', '#6a040f', '#00b4d8', '#8d99ae', '#582f0e', '#001d3d', '#386641',
  '#2c7da0', '#335c67', '#10002b', '#240046', '#495057', '#15616d', '#1b4965',
@@ -51,7 +50,6 @@ const colors = [
  '#9e0059', '#065a60', '#312244', '#ff477e', '#b07d62', '#b07d62', '#242038',
  '#242038', '#087e8b', '#29274c', '#7e52a0', '#735d78', '#4f5d75', '#132a13'
 ];
-
 const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
 export default function CustomizedInputBase() {
@@ -103,6 +101,7 @@ export default function CustomizedInputBase() {
 
  return (
   <div className='wrp-search-stock'>
+
    <Paper
     component="form"
     sx={{ p: '2px 2px', display: 'flex', alignItems: 'center', width: '100%' }}>
@@ -134,6 +133,7 @@ export default function CustomizedInputBase() {
     </IconButton>
 
    </Paper>
+
 
    <div className='user-box-stock'>
 

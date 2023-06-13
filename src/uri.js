@@ -126,7 +126,6 @@ export default function ReturRnURI() {
    <Route path='/usd' element={<ReturnUsd />} />
    <Route path='/valid-fc' element={<ValidExchAnge />} />
 
-
    <Route path='/exchange' element={<ExchAnge />} />
    <Route path='/exchange-usd' element={<RetuRnExUSd />} />
    <Route path='/send-fc' element={<SendSimple />} />
@@ -138,7 +137,6 @@ export default function ReturRnURI() {
 
    <Route path='/send-blocked' element={<SendBlocked />} />
    <Route path='/send-blocked-usd' element={<SendUSDBlocked />} />
-
 
    <Route path='/pin/now' element={<PinNow />} />
    <Route path='/pin/update' element={<PinUpgRAde />} />
@@ -166,7 +164,6 @@ export default function ReturRnURI() {
    <Route path='/wallet' element={<WAlleT />} />
    <Route path='/save/fiat/success' element={<WellFiAt />} />
    <Route path='/save/fiat/update/success' element={<WellFiAtUpdate />} />
-
 
    <Route path='/pret' element={<PreT />} />
    <Route path='/pret/register' element={<RegisterPreT />} />

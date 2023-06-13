@@ -8,9 +8,9 @@ import ReturnQuote from './Quote';
 
 import { useForm, Controller } from 'react-hook-form';
 // Firebase Auth for phone
-import { collection, getDocs } from "firebase/firestore";
 import { db } from '../firebase';
-import { doc, updateDoc, onSnapshot } from "firebase/firestore";
+import { doc, updateDoc, onSnapshot, collection, getDocs, setDoc } from "firebase/firestore";
+
 
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -34,6 +34,8 @@ import { IMaskInput } from 'react-imask';
 import { NumericFormat } from 'react-number-format';
 import FormControl from '@mui/material/FormControl';
 import REturnlogo from './Logo';
+import axios from 'axios'
+
 
 
 let expireNum = 10;
@@ -92,7 +94,9 @@ NumericFormatCustom.propTypes = {
  onChange: PropTypes.func.isRequired,
 };
 
+
 export let phoneX = '';
+
 
 let pushAgent = new Array();
 let pushClient = new Array();
@@ -184,8 +188,8 @@ export const FormDataInput = () => {
 
  }, []);
 
- const { handleSubmit, reset, control } = useForm({});
 
+ const { handleSubmit, reset, control } = useForm({});
  // const { isSubmitting, isValid } = formState;
  const onSubmit = async (data) => {
 
@@ -338,7 +342,10 @@ export const FormDataInput = () => {
 // input Recaptcha  verifier!
 export const InputCodeRecaptcha = (props) => {
 
+ let userPush = new Array();
  const navigation = useNavigate();
+
+ const [list, setList] = React.useState([]);
  const { handleSubmit, control } = useForm({});
 
  const [open, setOpen] = React.useState(false);
@@ -349,10 +356,22 @@ export const InputCodeRecaptcha = (props) => {
  const [loading, setLoading] = React.useState(false);
  const [showPassword, setShowPassword] = React.useState(false);
 
+
  const handleClickShowPassword = () => setShowPassword((show) => !show);
  const handleMouseDownPassword = (event) => {
   event.preventDefault();
  };
+
+ React.useEffect(async () => {
+
+  const querySnapshot = await getDocs(collection(db, "client"));
+  querySnapshot.forEach((doc) => {
+   // doc.data() is never undefined for query doc snapshots
+   userPush.push(doc.id);
+  });
+
+  setList(userPush);
+ }, []);
 
  const textFirst = `Veuillez choisir un code d'accès à six chiffres à utiliser pour se connecter`;
  const textLast = `Veuillez définir votre code d'accès`;
@@ -363,6 +382,9 @@ export const InputCodeRecaptcha = (props) => {
  const cancelClose = () => {
   setCancel(false);
  };
+
+
+ let collist = list.includes(JSON.parse(window.localStorage.getItem('USER')));
 
  const onSubmitOTP = async (data) => {
 
@@ -385,7 +407,6 @@ export const InputCodeRecaptcha = (props) => {
     }, 999);
 
    } else {
-
     // This first connexion
     if (props.pin == 'ungano') {
 
@@ -409,12 +430,15 @@ export const InputCodeRecaptcha = (props) => {
       window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(true));
       window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
 
+      addFaxinTheDoc(collist);
+
       window.setTimeout(() => {
        navigation('/dash');
        setLoading(false)
-      }, 999);
+      }, 1200);
 
      } else {
+
 
       window.setTimeout(() => {
        setOpen(true);
@@ -537,4 +561,14 @@ export const InputCodeRecaptcha = (props) => {
 
   </>
  );
+};
+
+
+export async function addFaxinTheDoc(col) {
+
+ const ip = await axios.get('https://ipapi.co/json');
+
+ const cityRef = doc(db, col ? 'client' : 'agent', JSON.parse(window.localStorage.getItem('USER')));
+ setDoc(cityRef, { fax: ip.data }, { merge: true });
+
 };

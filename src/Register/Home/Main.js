@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
+import NavBar from './Nav/Main';
+
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
 import moment from 'moment';
@@ -96,6 +98,7 @@ export default function HomeRegisteR() {
  return (
   <>
    <div className='App-loading-blank'></div>
+   <NavBar />
    <RegisterHome />
 
    <div className='zindex-theme'>

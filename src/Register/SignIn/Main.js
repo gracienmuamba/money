@@ -8,6 +8,7 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
 import moment from 'moment';
 
+import NavBar from './Nav/Main';
 
 
 // Export View SignIn
@@ -97,6 +98,7 @@ export default function SignInRegister() {
  return (
   <>
    <div className='App-loading-blank'></div>
+   <NavBar />
    <ReturnSignInRegister />
 
    <div className='zindex-theme'>

@@ -3,8 +3,7 @@ import ReturnRegion from './Region';
 import { useNavigate } from 'react-router-dom';
 import { gsap, Expo } from 'gsap';
 
-// import Backdrop from '@mui/material/Backdrop';
-// import CircularProgress from '@mui/material/CircularProgress';
+import NavBar from './Nav/Main';
 
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
@@ -97,16 +96,9 @@ export default function Region() {
  return (
   <>
    <div className='App-loading-blank'></div>
+   <NavBar />
    <ReturnRegion />
 
-   {/* <div className='zindex-theme'>
-    <Backdrop
-     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-     open={open}>
-     <CircularProgress color="inherit" />
-
-    </Backdrop>
-   </div> */}
   </>
  );
 };

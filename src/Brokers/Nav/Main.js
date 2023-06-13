@@ -9,6 +9,8 @@ import moment from 'moment';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
+import ReturnBacK from './Back';
+
 
 // View Nav component 
 export default function FiatLisT() {
@@ -63,7 +65,6 @@ export default function FiatLisT() {
   return () => clearInterval(interval);
 
  }, []);
-
  React.useEffect(() => {
 
   // set Initial Expire Time
@@ -89,8 +90,6 @@ export default function FiatLisT() {
 
  return (
   <>
-
-
    <div className='zindex-theme'>
     <Backdrop
      sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
@@ -100,9 +99,7 @@ export default function FiatLisT() {
     </Backdrop>
    </div>
 
-
-
-
+   <ReturnBacK />
    <ReturnNavStocK />
   </>
  );

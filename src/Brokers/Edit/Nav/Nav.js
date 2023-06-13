@@ -7,7 +7,6 @@ import ReturnSearch from './Search';
 export default function ReturnNavStocK() {
  return (
   <div className='nav-stock'>
-
    <ReturnBox />
    <Divider />
    <ReturnSearch />

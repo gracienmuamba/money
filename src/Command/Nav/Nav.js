@@ -1,4 +1,3 @@
-import './Nav.css';
 import ReturnBox from './Box';
 import Divider from '@mui/material/Divider';
 import ReturnSearch from './Search';
@@ -12,4 +11,4 @@ export default function ReturnNavStocK() {
    <ReturnSearch />
   </div>
  );
-}
+};

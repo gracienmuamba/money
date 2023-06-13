@@ -1,4 +1,3 @@
-import './IMA.css';
 
 // View IMA Component 
 export default function ReturnIMA() {

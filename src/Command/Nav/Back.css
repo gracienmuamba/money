@@ -1,0 +1,19 @@
+.wrp-back-cmd-fiat {
+ display: flex;
+ flex-direction: row;
+ justify-content: start;
+ align-items: start;
+ cursor: pointer;
+
+ padding: 3vh 5%;
+ width: 100%;
+}
+.wrp-back-cmd-fiat span {
+ display: flex;
+ font-size: 1.2em;
+ font-weight: 300;
+ margin-left: -0.3em;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: 0px;
+}
