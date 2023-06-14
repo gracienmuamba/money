@@ -18,7 +18,6 @@
  font-family: "Alata";
  src: url("./Alata-Regular.ttf");
 }
-
 a {
  text-decoration: underline;
  color: black;
@@ -44,6 +43,26 @@ a {
  color: var(--color-btn);
  border: 0.1px solid var(--bgcolor-btn);
  background: var(--bgcolor-btn);
+}
+.Btn-Disable {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+
+ border-radius: 0.7em;
+ font-size: 1em;
+ letter-spacing: 1px;
+ white-space: nowrap;
+
+ outline-style: none;
+ font-family: var(--text-family);
+
+ padding: 0.355em;
+ width: 100%;
+
+ color: #fff;
+ border: 0.1px solid #e3f2fd;
+ background: #e3f2fd;
 }
 
 .Btn-green {

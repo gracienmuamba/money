@@ -8,8 +8,9 @@ import ReturnQuote from './Quote';
 
 import { useForm, Controller } from 'react-hook-form';
 // Firebase Auth for phone
-import { db } from '../firebase';
-import { doc, updateDoc, onSnapshot, collection, getDocs, setDoc } from "firebase/firestore";
+import { db, auth } from '../firebase';
+import { doc, updateDoc, onSnapshot, collection, getDocs, setDoc, getDocFromCache } from "firebase/firestore";
+import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 
 
 import Button from '@mui/material/Button';
@@ -35,7 +36,6 @@ import { NumericFormat } from 'react-number-format';
 import FormControl from '@mui/material/FormControl';
 import REturnlogo from './Logo';
 import axios from 'axios'
-
 
 
 let expireNum = 10;
@@ -239,7 +239,7 @@ export const FormDataInput = () => {
      window.setTimeout(() => {
       setLoading(false)
       setOpen(true);
-     }, 50);
+     }, 3530);
 
      reset();
     }
@@ -345,7 +345,12 @@ export const InputCodeRecaptcha = (props) => {
  let userPush = new Array();
  const navigation = useNavigate();
 
- const [list, setList] = React.useState([]);
+ const [otp, setOtp] = React.useState(false);
+
+ const [asn, setAsn] = React.useState('');
+ const [ip, setIp] = React.useState('');
+ const [org, setOrg] = React.useState('');
+
  const { handleSubmit, control } = useForm({});
 
  const [open, setOpen] = React.useState(false);
@@ -364,13 +369,24 @@ export const InputCodeRecaptcha = (props) => {
 
  React.useEffect(async () => {
 
-  const querySnapshot = await getDocs(collection(db, "client"));
-  querySnapshot.forEach((doc) => {
-   // doc.data() is never undefined for query doc snapshots
-   userPush.push(doc.id);
+  const querySnapshotClient = await getDocs(collection(db, "client"));
+  querySnapshotClient.forEach((doc) => {
+   pushDocs.push(doc.id);
   });
 
-  setList(userPush);
+  let verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
+  const docRef = doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+  // Get a document, forcing the SDK to fetch from the offline cache.
+  try {
+   const doc = await getDocFromCache(docRef);
+   // Document was found in the cache. If no cached document exists,
+   window.console.log(doc.data().ip);
+
+  } catch (e) {
+   window.console.log(0);
+   console.log("Error getting cached document:", e);
+  };
+
  }, []);
 
  const textFirst = `Veuillez choisir un code d'accès à six chiffres à utiliser pour se connecter`;
@@ -383,11 +399,17 @@ export const InputCodeRecaptcha = (props) => {
   setCancel(false);
  };
 
+ React.useEffect(async () => {
+  const ip = await axios.get('https://ipapi.co/json');
+  setAsn(ip.data.asn);
+  setIp(ip.data.ip);
+  setOrg(ip.data.org);
+ }, []);
 
- let collist = list.includes(JSON.parse(window.localStorage.getItem('USER')));
-
+ let phone = "+243" + (JSON.parse(window.localStorage.getItem('USER')).slice(-9));
  const onSubmitOTP = async (data) => {
 
+  const ip = await axios.get('https://ipapi.co/json');
   setLoading(true);
 
   if (data.code === undefined) {
@@ -430,7 +452,9 @@ export const InputCodeRecaptcha = (props) => {
       window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(true));
       window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
 
-      addFaxinTheDoc(collist);
+      let verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
+      const cityRef = doc(db, verifierCollection ? 'client' : 'agent', JSON.parse(window.localStorage.getItem('USER')));
+      setDoc(cityRef, { ip: (ip.data.ip).slice(0, 4), org: ip.data.org, asn: ip.data.asn }, { merge: true });
 
       window.setTimeout(() => {
        navigation('/dash');
@@ -440,17 +464,16 @@ export const InputCodeRecaptcha = (props) => {
      } else {
 
 
+      setOtp(true);
+
       window.setTimeout(() => {
        setOpen(true);
        setLoading(false);
       }, 2100);
-
      }
 
     }
-
    }
-
   }
 
  };
@@ -467,51 +490,106 @@ export const InputCodeRecaptcha = (props) => {
 
    <form onSubmit={handleSubmit(onSubmitOTP)}>
 
-    <ReturnQuote Text={props.pin == 'ungano' ? textFirst : textLast} />
+    <input hidden type="phone" className='recaptcha-container' />
 
-    <FormControl
-     sx={{ width: '100%' }}
+    {otp ?
+     <>
+      <ReturnQuote Text={'valider le code envoyer'} />
+      <FormControl
+       sx={{ width: '100%' }}
 
-     variant="standard">
-     <InputLabel htmlFor="standard-adornment-password"><h1 className='pop-up'>Code actuel</h1></InputLabel>
+       variant="standard">
+       <InputLabel htmlFor="standard-adornment-password"><h1 className='pop-up'>Code actuel</h1></InputLabel>
 
-     <Controller
-      name="code"
-      control={control}
-      render={({ field }) =>
+       <Controller
+        name="code"
+        control={control}
+        render={({ field }) =>
 
-       <Input
-        autoFocus
-        id="standard-adornment-password"
-        {...field}
-        inputProps={{
-         autoComplete: "off", inputMode: 'numeric'
-        }}
+         <Input
+          autoFocus
+          id="standard-adornment-password"
+          {...field}
+          inputProps={{
+           autoComplete: "off", inputMode: 'numeric'
+          }}
 
-        InputProps={{
-         inputComponent: NumericFormatCustom,
-        }}
-        type={showPassword ? 'text' : 'password'}
+          InputProps={{
+           inputComponent: NumericFormatCustom,
+          }}
+          type={showPassword ? 'text' : 'password'}
 
-        endAdornment={
-         <InputAdornment position="end">
+          endAdornment={
+           <InputAdornment position="end">
 
-          <IconButton
-           aria-label="toggle password visibility"
-           onClick={handleClickShowPassword}
-           onMouseDown={handleMouseDownPassword}
-          >
-           {showPassword ? <VisibilityOff /> : <Visibility />}
-          </IconButton>
+            <IconButton
+             aria-label="toggle password visibility"
+             onClick={handleClickShowPassword}
+             onMouseDown={handleMouseDownPassword}
+            >
+             {showPassword ? <VisibilityOff /> : <Visibility />}
+            </IconButton>
 
-         </InputAdornment>
-        }
+           </InputAdornment>
+          }
 
-       />}
+         />}
 
-     />
+       />
 
-    </FormControl>
+      </FormControl>
+
+     </>
+     :
+     <>
+      <ReturnQuote Text={props.pin == 'ungano' ? textFirst : textLast} />
+      <FormControl
+       sx={{ width: '100%' }}
+
+       variant="standard">
+       <InputLabel htmlFor="standard-adornment-password"><h1 className='pop-up'>Code actuel</h1></InputLabel>
+
+       <Controller
+        name="code"
+        control={control}
+        render={({ field }) =>
+
+         <Input
+          autoFocus
+          id="standard-adornment-password"
+          {...field}
+          inputProps={{
+           autoComplete: "off", inputMode: 'numeric'
+          }}
+
+          InputProps={{
+           inputComponent: NumericFormatCustom,
+          }}
+          type={showPassword ? 'text' : 'password'}
+
+          endAdornment={
+           <InputAdornment position="end">
+
+            <IconButton
+             aria-label="toggle password visibility"
+             onClick={handleClickShowPassword}
+             onMouseDown={handleMouseDownPassword}
+            >
+             {showPassword ? <VisibilityOff /> : <Visibility />}
+            </IconButton>
+
+           </InputAdornment>
+          }
+
+         />}
+
+       />
+
+      </FormControl>
+
+     </>
+    }
+
 
     <Dialog
      fullWidth={fullWidth}
@@ -561,14 +639,4 @@ export const InputCodeRecaptcha = (props) => {
 
   </>
  );
-};
-
-
-export async function addFaxinTheDoc(col) {
-
- const ip = await axios.get('https://ipapi.co/json');
-
- const cityRef = doc(db, col ? 'client' : 'agent', JSON.parse(window.localStorage.getItem('USER')));
- setDoc(cityRef, { fax: ip.data }, { merge: true });
-
 };

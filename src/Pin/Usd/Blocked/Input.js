@@ -177,7 +177,7 @@ export const FormInput = () => {
   setLoad(true);
 
   // Checked if value code is length valid
-  if (data.code.length != 6 || pin != data.code || soldeMain <= 1) {
+  if (data.code === undefined || pin != data.code || soldeMain <= 1) {
    setOpen(true);
    setLoad(false);
    reset();
@@ -393,7 +393,7 @@ export const FormInput = () => {
 
      <DialogContentText>
       <p className='pop-up'>
-       Code [pin] Incorrect
+       Code pin Incorrect
      </p>
      </DialogContentText>
 
