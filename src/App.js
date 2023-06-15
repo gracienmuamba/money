@@ -4,9 +4,7 @@ import Hm from './Hm/Main';
 
 function App() {
  return (
-  <>
-   <Hm />
-  </>
+  <Hm />
  );
 };
 

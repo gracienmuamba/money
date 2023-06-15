@@ -1,8 +1,9 @@
 import React from 'react';
 import './Balance.css';
-import { collection, getDocs, doc, onSnapshot, getDocFromCache } from "firebase/firestore";
+import { collection, getDocs, doc, getDocFromCache } from "firebase/firestore";
 import { db } from '../../../firebase';
 import Media from 'react-media';
+
 
 // Prix HeAd 
 export default function ReturnBalance() {

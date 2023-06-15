@@ -11,6 +11,7 @@ function DrawerAppBar() {
 
  const navigation = useNavigate();
  const pushDocs = JSON.parse(window.localStorage.getItem('&&$$!@lis::**swap++'));
+
  if (Array.isArray(pushDocs) && pushDocs.length) {
   Acces = true;
  } else {
@@ -55,22 +56,21 @@ function DrawerAppBar() {
            <div className='cmd-operator-title'>
 
             <div className='cmd-operator-sub-title'>
-             <h3>Quantité</h3>
+             {/* <h3>Quantité</h3> */}
              <p>{(pushDocs[index].type).charAt(0).toUpperCase() + (pushDocs[index].type).slice(1)} {(pushDocs[index]).solde}</p>
             </div>
 
             <div className='cmd-operator-sub-title'>
              <h3>Identiter</h3>
              <p>{(pushDocs[index].user)}</p>
-
-            </div>
-
-            <div className='cmd-operator-sub-title'>
-             <h3>Numero</h3>
              <p>{(pushDocs[index].phone)}</p>
 
             </div>
 
+            <div className='cmd-operator-sub-title'>
+             <h3>Nouveau Solde</h3>
+             <p>{(pushDocs[index].actual)}</p>
+            </div>
 
            </div>
 

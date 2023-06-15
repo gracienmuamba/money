@@ -10,7 +10,7 @@ import { useForm, Controller } from 'react-hook-form';
 // Firebase Auth for phone
 import { db, auth } from '../firebase';
 import { doc, updateDoc, onSnapshot, collection, getDocs, setDoc, getDocFromCache } from "firebase/firestore";
-import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import { RecaptchaVerifier, signInWithPhoneNumber, signOut } from "firebase/auth";
 
 
 import Button from '@mui/material/Button';
@@ -342,14 +342,18 @@ export const FormDataInput = () => {
 // input Recaptcha  verifier!
 export const InputCodeRecaptcha = (props) => {
 
- let userPush = new Array();
  const navigation = useNavigate();
+ let phoneNumber = "+243" + (JSON.parse(window.localStorage.getItem('USER')).slice(-9));
 
  const [otp, setOtp] = React.useState(false);
 
- const [asn, setAsn] = React.useState('');
- const [ip, setIp] = React.useState('');
- const [org, setOrg] = React.useState('');
+ const [asnline, setAsnline] = React.useState('');
+ const [ipline, setIpline] = React.useState('');
+ const [orgline, setOrgline] = React.useState('');
+
+ const [asnFax, setAsnFax] = React.useState('');
+ const [ipFax, setIpFax] = React.useState('');
+ const [orgFax, setOrgFax] = React.useState('');
 
  const { handleSubmit, control } = useForm({});
 
@@ -380,7 +384,9 @@ export const InputCodeRecaptcha = (props) => {
   try {
    const doc = await getDocFromCache(docRef);
    // Document was found in the cache. If no cached document exists,
-   window.console.log(doc.data().ip);
+   setAsnFax(doc.data().asn);
+   setIpFax(doc.data().ip);
+   setOrgFax(doc.data().org);
 
   } catch (e) {
    window.console.log(0);
@@ -398,22 +404,19 @@ export const InputCodeRecaptcha = (props) => {
  const cancelClose = () => {
   setCancel(false);
  };
-
  React.useEffect(async () => {
   const ip = await axios.get('https://ipapi.co/json');
-  setAsn(ip.data.asn);
-  setIp(ip.data.ip);
-  setOrg(ip.data.org);
+  setAsnline((ip.data.asn));
+  setIpline((ip.data.ip).slice(0, 4));
+  setOrgline((ip.data.org));
  }, []);
 
- let phone = "+243" + (JSON.parse(window.localStorage.getItem('USER')).slice(-9));
  const onSubmitOTP = async (data) => {
 
   const ip = await axios.get('https://ipapi.co/json');
   setLoading(true);
 
   if (data.code === undefined) {
-
    window.setTimeout(() => {
     setCancel(true);
     setLoading(false);
@@ -456,20 +459,26 @@ export const InputCodeRecaptcha = (props) => {
       const cityRef = doc(db, verifierCollection ? 'client' : 'agent', JSON.parse(window.localStorage.getItem('USER')));
       setDoc(cityRef, { ip: (ip.data.ip).slice(0, 4), org: ip.data.org, asn: ip.data.asn }, { merge: true });
 
+
       window.setTimeout(() => {
        navigation('/dash');
        setLoading(false)
-      }, 1200);
+      }, 950);
+
+      // if (asnline === asnFax && ipline === ipFax && orgline === orgFax) {
+      // } else {
+      //  setOtp(true);
+      //  setLoading(false)
+      // }
 
      } else {
-
-
       setOtp(true);
-
       window.setTimeout(() => {
        setOpen(true);
        setLoading(false);
       }, 2100);
+
+
      }
 
     }
@@ -490,7 +499,7 @@ export const InputCodeRecaptcha = (props) => {
 
    <form onSubmit={handleSubmit(onSubmitOTP)}>
 
-    <input hidden type="phone" className='recaptcha-container' />
+    <input type="phone" className='recaptcha-container' />
 
     {otp ?
      <>
@@ -589,7 +598,6 @@ export const InputCodeRecaptcha = (props) => {
 
      </>
     }
-
 
     <Dialog
      fullWidth={fullWidth}
