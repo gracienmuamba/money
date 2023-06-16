@@ -215,7 +215,6 @@ export const FormInput = () => {
      arrayAgent[i] = soldeAgent;
      arrayUpgrade[i] = soldeUpgrade;
      arrayAdmin[i] = soldeAdminFrais;
-
     };
 
     const sendPhone = JSON.parse(window.localStorage.getItem('USER'));
@@ -226,7 +225,7 @@ export const FormInput = () => {
     const main = JSON.parse(window.localStorage.getItem('@main!#!'));
 
 
-    swapInWithDocsAgent(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayAgent, arrayUpgrade, arrayAdmin);
+    swapInWithDocsAgent(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayAgent, arrayUpgrade, arrayAdmin, price);
 
     window.setTimeout(() => {
      navigation('/send-success');
@@ -293,7 +292,7 @@ export const FormInput = () => {
      const unite = JSON.parse(window.localStorage.getItem('@unite!#!'));
      const frais = JSON.parse(window.localStorage.getItem('@frais!#!'));
 
-     swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUser, prix, frais, unite, arrayAgent, arrayUpgrade);
+     swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUser, prix, frais, unite, arrayAgent, arrayUpgrade, price);
 
      window.setTimeout(() => {
       navigation('/send-success');
@@ -332,7 +331,7 @@ export const FormInput = () => {
      const frais = JSON.parse(window.localStorage.getItem('@frais!#!'));
      const main = JSON.parse(window.localStorage.getItem('@main!#!'));
 
-     isSwapInWithClientToAgent(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayClient, arrayUpgrade, arrayAdmin, arrayAgent);
+     isSwapInWithClientToAgent(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayClient, arrayUpgrade, arrayAdmin, arrayAgent, price);
 
      window.setTimeout(() => {
       navigation('/send-success');
@@ -451,11 +450,12 @@ export const FormInput = () => {
 async function swapInWithDocsAgent(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayAgentMoney, upgrade, adminFrais, solde) {
 
  let time = moment().format('LLL');
+
  // let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer' }
  // let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu' }
 
- let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', actual: Number(main) + ' ' + unite, unite: unite }
- let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu', actual: (Number(solde) + Number(money)) + ' ' + unite, unite: unite }
+ let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', actual: parseInt(Number(main)) + ' ' + unite, unite: unite }
+ let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu', actual: parseInt(Number(solde) + Number(money)) + ' ' + unite, unite: unite }
 
 
  const sendRef = doc(db, "agent", sendPhone);

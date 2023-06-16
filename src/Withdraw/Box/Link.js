@@ -1,8 +1,8 @@
-
 import './Link.css';
 import Media from 'react-media';
 import { useNavigate } from 'react-router-dom';
 import { ReturnFrAnc, ReturnDollArs } from './IMA';
+
 
 //  REturn link withdraw
 export default function REturnLinK() {
@@ -42,7 +42,7 @@ export const Fran = (props) => {
  const navigation = useNavigate();
  const handlepath = (event) => {
   event.preventDefault();
-  navigation('/fran');
+  // navigation('/fran');
  };
 
  return (
@@ -56,7 +56,7 @@ export const Dollars = (props) => {
  const navigation = useNavigate();
  const handlepath = (event) => {
   event.preventDefault();
-  navigation('/usd');
+  // navigation('/usd');
  };
 
  return (
@@ -64,4 +64,4 @@ export const Dollars = (props) => {
    <span>{props.Text}</span><ReturnDollArs />
   </buttton>
  );
-}
+};

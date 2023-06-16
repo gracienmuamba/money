@@ -314,8 +314,8 @@ export const FormInput = () => {
      for (let i = now; i <= 31; i++) {
       arrayClient[i] = soldeClient;
       arrayUpgrade[i] = soldeUpgrade;
-      arrayAdmin[i] = soldeAdminFrais.toFixed(2);
-      arrayAgent[i] = soldeAgentFrais.toFixed(2);
+      arrayAdmin[i] = soldeAdminFrais;
+      arrayAgent[i] = soldeAgentFrais;
 
      };
 
@@ -424,8 +424,8 @@ async function swapInWithDocsAgent(sendPhone, getPhone, sendUser, getUser, main,
 
  let time = moment().format('LLL');
 
- let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', actual: Number(main.toFixed(2)) + ' ' + unite, unite: unite }
- let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu', actual: ((Number(solde) + Number(money))).toFixed(2) + ' ' + unite, unite: unite }
+ let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', actual: parseInt(Number(main)) + ' ' + unite, unite: unite }
+ let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu', actual: parseInt((Number(solde) + Number(money))) + ' ' + unite, unite: unite }
 
  const sendRef = doc(db, "agent", sendPhone);
  await updateDoc(sendRef, {
@@ -480,8 +480,8 @@ async function swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUse
 
  let time = moment().format('LLL');
 
- let send = { date: time, solde: `${prix} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', actual: Number(prix).toFixed(2) + ' ' + unite, unite: unite }
- let get = { date: time, solde: `${prix} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu', actual: (Number(solde) + Number(prix)).toFixed(2) + ' ' + unite, unite: unite }
+ let send = { date: time, solde: `${prix} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', actual: parseInt(Number(prix)) + ' ' + unite, unite: unite }
+ let get = { date: time, solde: `${prix} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu', actual: parseInt(Number(solde) + Number(prix)) + ' ' + unite, unite: unite }
 
 
  let comm = prix * 0.1 / 100;
@@ -529,8 +529,8 @@ async function isSwapInWithClientToAgent(sendPhone, getPhone, sendUser, getUser,
 
  let time = moment().format('LLL');
 
- let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', actual: Number(main).toFixed(2) + ' ' + unite, unite: unite }
- let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu', actual: ((Number(solde) + Number(money))).toFixed(2) + ' ' + unite, unite: unite }
+ let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', actual: parseInt(Number(main)) + ' ' + unite, unite: unite }
+ let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu', actual: parseInt((Number(solde) + Number(money))) + ' ' + unite, unite: unite }
 
 
  let fraisAdmin = frais;
@@ -595,8 +595,8 @@ async function isSwapInWithClientToClient(sendPhone, getPhone, sendUser, getUser
 
 
  let time = moment().format('LLL');
- let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', actual: Number(main).toFixed(2) + ' ' + unite, unite: unite }
- let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu', actual: ((Number(solde) + Number(money))).toFixed(2) + ' ' + unite, unite: unite }
+ let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', actual: parseInt(Number(main)) + ' ' + unite, unite: unite }
+ let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu', actual: parseInt((Number(solde) + Number(money))) + ' ' + unite, unite: unite }
 
 
  const sendRef = doc(db, "client", sendPhone);
