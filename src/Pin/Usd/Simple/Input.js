@@ -98,7 +98,6 @@ export const FormInput = () => {
  const [getfirst, setGetFirst] = React.useState('');
  const [getlast, setGetLast] = React.useState('');
 
-
  const [price, setPrice] = React.useState(0);
 
 
@@ -112,7 +111,6 @@ export const FormInput = () => {
  const handleMouseDownPassword = (event) => {
   event.preventDefault();
  };
-
 
  const handleClose = () => {
   setOpen(false);
@@ -288,8 +286,10 @@ export const FormInput = () => {
      const prix = JSON.parse(window.localStorage.getItem('@solde!#!'));
      const unite = JSON.parse(window.localStorage.getItem('@unite!#!'));
      const frais = JSON.parse(window.localStorage.getItem('@frais!#!'));
+     const main = JSON.parse(window.localStorage.getItem('@main!#!'));
 
-     swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUser, prix, unite, frais, arrayAgent, arrayUpgrade, price);
+
+     swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUser, main, prix, unite, arrayAgent, arrayUpgrade, price);
      window.setTimeout(() => {
       navigation('/send-success-usd');
      }, 3440)
@@ -476,15 +476,18 @@ async function swapInWithDocsAgent(sendPhone, getPhone, sendUser, getUser, main,
  });
 
 };
-async function swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUser, prix, unite, arrayAgentMoney, upgrade, solde) {
+async function swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUser, main, prix, unite, arrayAgentMoney, upgrade, solde) {
 
  let time = moment().format('LLL');
+ // let send = { date: time, solde: `${prix} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer' }
+ // let get = { date: time, solde: `${prix} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu' }
 
- let send = { date: time, solde: `${prix} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', actual: parseInt(Number(prix)) + ' ' + unite, unite: unite }
+
+ let send = { date: time, solde: `${prix} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', actual: parseInt(Number(main)) + ' ' + unite, unite: unite }
  let get = { date: time, solde: `${prix} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu', actual: parseInt(Number(solde) + Number(prix)) + ' ' + unite, unite: unite }
 
 
- let comm = prix * 0.1 / 100;
+ let comm = prix * 0.3 / 100;
 
  const sendRef = doc(db, "agent", sendPhone);
  await updateDoc(sendRef, {
@@ -495,7 +498,7 @@ async function swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUse
   phoneclient: getPhone,
   delay: moment().format(),
   swap: arrayUnion(send),
-  thriftusd: increment(Number(comm)),
+  thriftcdf: increment(Number(comm)),
   commission: Number(comm),
   frais: 0,
   sendtype: 'envoyer'
@@ -523,6 +526,7 @@ async function swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUse
  await updateDoc(upgradeRef, {
   usd: upgrade,
  });
+
 
 };
 async function isSwapInWithClientToAgent(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayClientMoney, upgrade, adminFrais, agentFrais, solde) {

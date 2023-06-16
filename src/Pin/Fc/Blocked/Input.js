@@ -287,9 +287,10 @@ export const FormInput = () => {
      const getPhone = JSON.parse(window.localStorage.getItem('A@@ph$$&-@#'));
      const prix = JSON.parse(window.localStorage.getItem('@solde!#!'));
      const unite = JSON.parse(window.localStorage.getItem('@unite!#!'));
-     const frais = JSON.parse(window.localStorage.getItem('@frais!#!'));
+     const main = JSON.parse(window.localStorage.getItem('@main!#!'));
+     // const frais = JSON.parse(window.localStorage.getItem('@frais!#!'));
 
-     swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUser, prix, frais, unite, arrayAgent, arrayUpgrade, price);
+     swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUser, main, prix, unite, arrayAgent, arrayUpgrade, price);
 
      window.setTimeout(() => {
       navigation('/send-success-blocked');
@@ -324,7 +325,7 @@ export const FormInput = () => {
      const sendPhone = JSON.parse(window.localStorage.getItem('USER'));
      const getPhone = JSON.parse(window.localStorage.getItem('A@@ph$$&-@#'));
      const money = JSON.parse(window.localStorage.getItem('@solde!#!'));
-     const prix = JSON.parse(window.localStorage.getItem('@solde!#!'));
+     // const prix = JSON.parse(window.localStorage.getItem('@solde!#!'));
      const unite = JSON.parse(window.localStorage.getItem('@unite!#!'));
      const frais = JSON.parse(window.localStorage.getItem('@frais!#!'));
      const main = JSON.parse(window.localStorage.getItem('@main!#!'));
@@ -479,11 +480,11 @@ async function swapInWithDocsAgent(sendPhone, getPhone, sendUser, getUser, main,
  });
 
 };
-async function swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUser, prix, unite, arrayAgentMoney, upgrade, solde) {
+async function swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUser, main, prix, unite, arrayAgentMoney, upgrade, solde) {
 
  let time = moment().format('LLL');
 
- let send = { date: time, solde: `${prix} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', actual: Number(prix) + ' ' + unite, unite: unite }
+ let send = { date: time, solde: `${prix} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', actual: Number(main) + ' ' + unite, unite: unite }
  let get = { date: time, solde: `${prix} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu', actual: (Number(solde) + Number(prix)) + ' ' + unite, unite: unite }
 
  let comm = prix * 0.1 / 100;

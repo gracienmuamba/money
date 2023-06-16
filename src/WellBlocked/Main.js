@@ -1,8 +1,5 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
-import Snackbar from '@mui/material/Snackbar';
 import ReturnWithdrAw from './Withdraw';
-import MuiAlert from '@mui/material/Alert';
 import { useNavigate } from 'react-router-dom';
 import { gsap, Expo } from 'gsap';
 
@@ -11,24 +8,10 @@ import { auth } from '../firebase';
 import moment from 'moment';
 
 
-const Alert = React.forwardRef(function Alert(props, ref) {
- return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
-
-
 // Main Withdraw Sucess
 export default function WithdrawSuccess() {
 
- const [state, setState] = React.useState({
-  open: JSON.parse(window.localStorage.getItem('@cost##')),
-  vertical: 'top',
-  horizontal: 'right',
- });
-
- const { vertical, horizontal, open } = state;
-
  const navigation = useNavigate();
-
  React.useEffect(() => {
 
   window.setTimeout(() => {
@@ -37,33 +20,6 @@ export default function WithdrawSuccess() {
 
  }, []);
 
- const handleClick = (newState) => () => {
-  setState({ open: true, ...newState });
- };
-
- const handleClose = () => {
-  setState({ ...state, open: false });
- };
-
- const buttons = (
-  <React.Fragment>
-
-   <Button
-    onClick={handleClick({
-     vertical: 'top',
-     horizontal: 'right',
-    })}
-   >
-    Top-Right
-      </Button>
-
-
-  </React.Fragment>
- );
-
-
-
- // const navigation = useNavigate();
  const [view, setView] = React.useState(true);
 
  React.useEffect(() => {
@@ -142,20 +98,6 @@ export default function WithdrawSuccess() {
   <>
    <div className='App-loading-blank'></div>
    <ReturnWithdrAw />
-   <div>
-    <Snackbar
-     anchorOrigin={{ vertical, horizontal }}
-     open={open}
-     onClose={handleClose}
-     key={vertical + horizontal}
-    >
-
-     <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-      Les frais sont pris en compte
-     </Alert>
-
-    </Snackbar>
-   </div>
   </>
  );
 };

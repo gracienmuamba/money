@@ -22,9 +22,10 @@ import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
+import moment from 'moment';
+
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-import moment from 'moment';
 
 
 export let nowField = moment().date();
@@ -224,7 +225,6 @@ export const FormInput = () => {
     const frais = JSON.parse(window.localStorage.getItem('@frais!#!'));
     const main = JSON.parse(window.localStorage.getItem('@main!#!'));
 
-
     swapInWithDocsAgent(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayAgent, arrayUpgrade, arrayAdmin, price);
 
     window.setTimeout(() => {
@@ -290,9 +290,9 @@ export const FormInput = () => {
      const getPhone = JSON.parse(window.localStorage.getItem('A@@ph$$&-@#'));
      const prix = JSON.parse(window.localStorage.getItem('@solde!#!'));
      const unite = JSON.parse(window.localStorage.getItem('@unite!#!'));
-     const frais = JSON.parse(window.localStorage.getItem('@frais!#!'));
+     const main = JSON.parse(window.localStorage.getItem('@main!#!'));
 
-     swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUser, prix, frais, unite, arrayAgent, arrayUpgrade, price);
+     swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUser, main, prix, unite, arrayAgent, arrayUpgrade, price);
 
      window.setTimeout(() => {
       navigation('/send-success');
@@ -447,12 +447,14 @@ export const FormInput = () => {
  )
 };
 
+
 async function swapInWithDocsAgent(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayAgentMoney, upgrade, adminFrais, solde) {
 
  let time = moment().format('LLL');
 
  // let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer' }
  // let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu' }
+
 
  let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', actual: parseInt(Number(main)) + ' ' + unite, unite: unite }
  let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu', actual: parseInt(Number(solde) + Number(money)) + ' ' + unite, unite: unite }
@@ -507,16 +509,19 @@ async function swapInWithDocsAgent(sendPhone, getPhone, sendUser, getUser, main,
  });
 
 };
-async function swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUser, prix, unite, arrayAgentMoney, upgrade, solde) {
+async function swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUser, main, prix, unite, arrayAgentMoney, upgrade, solde) {
 
 
  let time = moment().format('LLL');
+ // let send = { date: time, solde: `${prix} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer' }
+ // let get = { date: time, solde: `${prix} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu' }
 
- let send = { date: time, solde: `${prix} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', actual: Number(prix) + ' ' + unite, unite: unite }
+
+ let send = { date: time, solde: `${prix} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', actual: parseInt(Number(main)) + ' ' + unite, unite: unite }
  let get = { date: time, solde: `${prix} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu', actual: (Number(solde) + Number(prix)) + ' ' + unite, unite: unite }
 
 
- let comm = prix * 0.1 / 100;
+ let comm = prix * 0.3 / 100;
 
  const sendRef = doc(db, "agent", sendPhone);
  await updateDoc(sendRef, {
@@ -556,14 +561,18 @@ async function swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUse
   cdf: upgrade,
  });
 
+
+
+
+
+
 };
 async function isSwapInWithClientToAgent(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayClientMoney, upgrade, adminFrais, agentFrais, solde) {
 
  let time = moment().format('LLL');
+
  // let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer' }
  // let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu' }
-
-
 
  let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', actual: Number(main) + ' ' + unite, unite: unite }
  let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu', actual: (Number(solde) + Number(money)) + ' ' + unite, unite: unite }

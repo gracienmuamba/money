@@ -42,7 +42,7 @@ export const Fran = (props) => {
  const navigation = useNavigate();
  const handlepath = (event) => {
   event.preventDefault();
-  // navigation('/fran');
+  navigation('/fran');
  };
 
  return (
@@ -56,7 +56,7 @@ export const Dollars = (props) => {
  const navigation = useNavigate();
  const handlepath = (event) => {
   event.preventDefault();
-  // navigation('/usd');
+  navigation('/usd');
  };
 
  return (

@@ -23,90 +23,89 @@ let pushDocs = new Array();
 // Return Last Transaction
 export default function ReturnLasT() {
 
-  const navigation = useNavigate();
+ const navigation = useNavigate();
 
-  const [open, setOpen] = React.useState(false);
-  const [load, setLoad] = React.useState(false);
-  const [list, setList] = React.useState([]);
+ const [open, setOpen] = React.useState(false);
+ const [load, setLoad] = React.useState(false);
+ const [list, setList] = React.useState([]);
 
-  const [fullWidth, setFullWidth] = React.useState(true);
-  const [maxWidth, setMaxWidth] = React.useState('sm');
+ const [fullWidth, setFullWidth] = React.useState(true);
+ const [maxWidth, setMaxWidth] = React.useState('sm');
 
-  React.useEffect(async () => {
+ React.useEffect(async () => {
 
-    const querySnapshotClient = await getDocs(collection(db, "client"));
-    querySnapshotClient.forEach((doc) => {
-      pushDocs.push(doc.id);
-    });
+  const querySnapshotClient = await getDocs(collection(db, "client"));
+  querySnapshotClient.forEach((doc) => {
+   pushDocs.push(doc.id);
+  });
 
-    var verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
-    const docRef = doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
-    // Get a document, forcing the SDK to fetch from the offline cache.
-    try {
-      const doc = await getDocFromCache(docRef);
-      // Document was found in the cache. If no cached document exists,
-      setList(doc.data().swap);
-    } catch (e) {
-      console.log("Error getting cached document:", e);
-    };
-
-  }, []);
-
-  let col = pushDocs.includes(JSON.parse(window.localStorage.getItem('USER')));
-  const handleClose = () => {
-    setOpen(false);
+  var verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
+  const docRef = doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+  // Get a document, forcing the SDK to fetch from the offline cache.
+  try {
+   const doc = await getDocFromCache(docRef);
+   // Document was found in the cache. If no cached document exists,
+   setList(doc.data().swap);
+  } catch (e) {
+   console.log("Error getting cached document:", e);
   };
 
-  const handlepath = (event) => {
+ }, []);
 
-    event.preventDefault();
-    setLoad(true);
-    window.localStorage.setItem('&&$$!@lis::**swap++', JSON.stringify(list.reverse()));
+ let col = pushDocs.includes(JSON.parse(window.localStorage.getItem('USER')));
+ const handleClose = () => {
+  setOpen(false);
+ };
+ const handlepath = (event) => {
 
-    if (list.length > 10) {
-      window.localStorage.setItem('&&lis++$$!@lis::**||{}', JSON.stringify(10));
-    } else {
-      window.localStorage.setItem('&&lis++$$!@lis::**||{}', JSON.stringify(list.length));
-    }
+  event.preventDefault();
+  setLoad(true);
+  window.localStorage.setItem('&&$$!@lis::**swap++', JSON.stringify(list.reverse()));
 
-    window.setTimeout(() => {
+  if (list.length > 2) {
+   window.localStorage.setItem('&&lis++$$!@lis::**||{}', JSON.stringify(2));
+  } else {
+   window.localStorage.setItem('&&lis++$$!@lis::**||{}', JSON.stringify(list.length));
+  }
 
-      if (list.length === 0) {
-        setOpen(true);
-        setLoad(false);
-      } else {
-        navigation('/last/transaction');
-      }
+  window.setTimeout(() => {
 
-    }, 1300);
+   if (list.length === 0) {
+    setOpen(true);
+    setLoad(false);
+   } else {
+    navigation('/last/transaction');
+   }
 
-  };
+  }, 1300);
 
-  return (
-    <>
-      <div className='zindex-theme'>
-        <Backdrop
-          sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-          open={load}>
+ };
 
-          <CircularProgress color="inherit" />
-        </Backdrop>
-      </div>
+ return (
+  <>
+   <div className='zindex-theme'>
+    <Backdrop
+     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+     open={load}>
 
-      <div className='wrp-last-swap-ten'>
+     <CircularProgress color="inherit" />
+    </Backdrop>
+   </div>
 
-        <h3>Dernière transaction</h3>
-        <div className='wrp-last-swap-ten-row'>
+   <div className='wrp-last-swap-ten'>
 
-          <div onClick={handlepath}>
-            <IconButton>
-              <img src={'/img/arrow.png'} />
-            </IconButton>
-          </div>
+    <h3>Dernière transaction</h3>
+    <div className='wrp-last-swap-ten-row'>
 
-          <div></div>
+     <div onClick={handlepath}>
+      <IconButton>
+       <img src={'/img/arrow.png'} />
+      </IconButton>
+     </div>
 
-          {/* {!col &&
+     <div></div>
+
+     {/* {!col &&
       <div>
        <IconButton>
         <img src={'/img/printing.png'} />
@@ -114,30 +113,30 @@ export default function ReturnLasT() {
       </div>
      } */}
 
-        </div>
-      </div>
+    </div>
+   </div>
 
-      <Dialog
-        fullWidth={fullWidth}
-        maxWidth={maxWidth}
-        open={open}
-        onClose={handleClose}
-      >
-        <DialogTitle><p className='pop-up'>MuunganoMoney</p></DialogTitle>
-        <DialogContent>
+   <Dialog
+    fullWidth={fullWidth}
+    maxWidth={maxWidth}
+    open={open}
+    onClose={handleClose}
+   >
+    <DialogTitle><p className='pop-up'>MuunganoMoney</p></DialogTitle>
+    <DialogContent>
 
-          <DialogContentText>
-            <p className='pop-up'>
-              L'historique des transactions est en cours de chargement, veuillez patienter.
+     <DialogContentText>
+      <p className='pop-up'>
+       L'historique des transactions est en cours de chargement, veuillez patienter.
        </p>
-          </DialogContentText>
+     </DialogContentText>
 
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
-        </DialogActions>
-      </Dialog>
+    </DialogContent>
+    <DialogActions>
+     <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
+    </DialogActions>
+   </Dialog>
 
-    </>
-  )
+  </>
+ )
 };

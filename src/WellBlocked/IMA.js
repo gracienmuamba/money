@@ -57,7 +57,7 @@ export const FirstLetteR = () => {
 
  return (
   <div className='wrp-firstchar-avatar'>
-   <img src={profil} alt={'profil'} />
+   <img src={profil} />
   </div>
  );
 }
