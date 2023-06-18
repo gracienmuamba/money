@@ -1,5 +1,4 @@
 import React from 'react';
-import './Date.css';
 import Media from 'react-media'
 import moment from 'moment';
 
@@ -29,13 +28,12 @@ export const ScreenLarge = () => (
  </div>
 );
 export const ScreenSmall = () => (
- <div className='wrp-time-exchange-sm'>
+ <div className='wrp-time-exchange'>
   <ReturnTimestamp />
  </div>
 );
 export const ReturnTimestamp = () => {
 
- let pushDocs = new Array();
  const [time, setTime] = React.useState(`${new Date()}`);
 
  return (

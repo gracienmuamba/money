@@ -7,6 +7,8 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../../firebase';
 import moment from 'moment';
 
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 // Simple Main 
@@ -14,6 +16,7 @@ export default function SendSimple() {
 
  const navigation = useNavigate();
  const [open, setOpen] = React.useState(true);
+ const [load, setLoad] = React.useState(true);
 
  React.useEffect(() => {
 
@@ -29,7 +32,8 @@ export default function SendSimple() {
 
   window.setTimeout(() => {
    setOpen(false);
-  }, 7600);
+   setLoad(false);
+  }, 17600);
 
  }, []);
 
@@ -95,6 +99,16 @@ export default function SendSimple() {
 
  return (
   <>
+   <div className='zindex-theme'>
+    <Backdrop
+     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+     open={load}>
+
+     <CircularProgress color="inherit" />
+
+    </Backdrop>
+   </div>
+
    <div className='App-loading-blank'></div>
    <ReturnValidSimple />
   </>

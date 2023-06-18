@@ -15,6 +15,7 @@ export default function ReturnBtn() {
  const handlepath = (event) => {
   event.preventDefault();
   window.localStorage.setItem('@ª©##', JSON.stringify(true));
+  window.localStorage.setItem('@ª©##courant**^^', JSON.stringify('Courant'));
   navigation('/send-usd');
  };
  React.useEffect(async () => {

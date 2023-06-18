@@ -4,10 +4,9 @@ import './Duration.css';
 // Duraction Return 
 export default function ReturnDuraTion() {
 
- React.useEffect(async () => { }, []);
  return (
   <div className='quote-pret-duration'>
-   <p>Le prêt est disponible pour 180 jours non renouvelables</p>
+   <p>Le prêt est pour 120 jours renouvelables</p>
   </div>
  );
 };

@@ -1,0 +1,8 @@
+.tontine-nav-invited-icon-dash {
+ display: flex;
+}
+.tontine-nav-invited-icon-dash img {
+ height: 1.8em;
+ width: 1.8em;
+ object-fit: cover;
+}

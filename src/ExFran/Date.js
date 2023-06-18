@@ -31,7 +31,7 @@ export const ScreenLarge = () => (
  </div>
 );
 export const ScreenSmall = () => (
- <div className='wrp-time-exchange-sm'>
+ <div className='wrp-time-exchange'>
   <ReturnTimestamp />
  </div>
 );

@@ -2,9 +2,8 @@
 import React from 'react';
 import './Date.css';
 import Media from 'react-media';
-import moment from 'moment';
 
-// Return Date 
+// Return Date  
 export default function RetuRnDate() {
  return (
   <Media
@@ -23,7 +22,6 @@ export default function RetuRnDate() {
   </Media>
  );
 };
-
 export const ScreenLarge = () => (
  <div className='wrp-date-fcwell'>
   <ViewTimesTamp />
@@ -35,8 +33,7 @@ export const ScreenSmall = () => (
  </div>
 );
 export const ViewTimesTamp = () => {
-
  return (
-  <p>{moment().format('LLLL')}</p>
+  <p>{JSON.parse(window.localStorage.getItem('@dateª©#&&++#'))}</p>
  );
 };

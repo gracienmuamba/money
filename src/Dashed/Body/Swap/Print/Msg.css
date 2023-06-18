@@ -1,0 +1,14 @@
+.wrp-msg-output-ticked-dash {
+ display: flex;
+ flex-direction: column;
+ /* justify-content: space-between; */
+ /* padding: 1em; */
+ width: 100%;
+ max-width: 302.36px;
+ background-color: #fdc500;
+}
+@media screen {
+ .wrp-msg-output-ticked {
+  visibility: hidden;
+ }
+}

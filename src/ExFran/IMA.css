@@ -4,7 +4,7 @@
 
 .wrp-avatar-profil-exh-dash {
  display: flex;
- margin: 3ch 0;
+ margin: 1ch 0;
 }
 .avatar-circle-profil-exh-dash {
  display: flex;
@@ -15,38 +15,10 @@
 }
 .avatar-circle-profil-exh-dash img {
  display: flex;
- height: 7em;
- width: 7em;
+ height: 6em;
+ width: 6em;
  border-radius: 100%;
  border: none;
  background: var(--bg-avatar-yellow);
  object-fit: cover;
-}
-
-.avatar-circle-profil-exh-dash-sm {
- display: flex;
- flex-direction: column;
-
- position: relative;
- width: 100%;
-
- justify-content: center;
- align-items: center;
-
- position: absolute;
- top: 20%;
- left: 50%;
- transform: translate(-50%, -50%);
-}
-.avatar-circle-profil-exh-dash-sm img {
- display: flex;
-
- height: 6em;
- width: 6em;
- background: var(--bg-avatar-yellow);
- border-radius: 100%;
-
- object-fit: cover;
- justify-content: center;
- align-items: center;
 }

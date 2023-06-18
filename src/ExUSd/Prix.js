@@ -30,7 +30,7 @@ export const ScreenLarge = () => (
  </div>
 );
 export const ScreenSmall = () => (
- <div className='wrp-prix-exchange-sm'>
+ <div className='wrp-prix-exchange'>
   <ViewText />
  </div>
 );

@@ -34,7 +34,7 @@ export const ScreenLarge = () => {
  );
 }
 export const ScreenSmall = () => (
- <div className='avatar-circle-profil-exh-dash-sm'>
+ <div className='avatar-circle-profil-exh-dash'>
   <FirstLetteR />
  </div>
 );

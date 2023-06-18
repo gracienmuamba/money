@@ -1,6 +1,5 @@
 import React from 'react';
 import Media from 'react-media';
-import moment from 'moment';
 
 // Return Date 
 export default function RetuRnDate() {
@@ -33,7 +32,8 @@ export const ScreenSmall = () => (
  </div>
 );
 export const ViewTimesTamp = () => {
+
  return (
-  <p>{moment().format('LLLL')}</p>
+  <p>{JSON.parse(window.localStorage.getItem('@dateª©#&&++#'))}</p>
  );
 };

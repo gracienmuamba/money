@@ -1,0 +1,15 @@
+.tontine-back-exfran {
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ align-items: center;
+ cursor: pointer;
+}
+.tontine-back-exfran span {
+ display: flex;
+ font-size: 1.2em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 0;
+ letter-spacing: 0px;
+}

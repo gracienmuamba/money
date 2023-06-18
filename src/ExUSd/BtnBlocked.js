@@ -14,6 +14,7 @@ export default function ReturnBtnBlocKed() {
  const handlepath = (event) => {
   event.preventDefault();
   window.localStorage.setItem('@ª©##', JSON.stringify(true));
+  window.localStorage.setItem('@ª©##courant**^^', JSON.stringify('Épargne'));
   navigation('/send-blocked-usd');
  };
 

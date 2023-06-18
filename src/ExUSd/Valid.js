@@ -1,5 +1,4 @@
 import React from 'react';
-import './Valid.css';
 import Media from 'react-media';
 import { collection, getDocs, onSnapshot, doc } from "firebase/firestore";
 import { db } from '../firebase';

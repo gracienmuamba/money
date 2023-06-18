@@ -1,0 +1,34 @@
+/* logo available */
+
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap");
+
+:root {
+ --font-condensed: "Dosis", sans-serif;
+ --font-title-name: "Rubik Vinyl", cursive;
+}
+
+.wrp-logo-print-tickets-dash {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+}
+.wrp-logo-print-tickets-dash img {
+ height: 5em;
+ width: 5em;
+ object-fit: cover;
+}
+.wrp-logo-print-tickets-dash h2 {
+ display: flex;
+ font-size: 1.2em;
+ margin-top: 2vh;
+ margin-bottom: 2vh;
+
+ font-weight: 400;
+ font-family: var(--font-title-name);
+ line-height: 1;
+ letter-spacing: 1px;
+ border-bottom: 2px solde black;
+}

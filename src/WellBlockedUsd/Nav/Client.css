@@ -1,0 +1,14 @@
+.wrp-title-print-tickets-client {
+ display: flex;
+ width: 100%;
+ justify-content: space-between;
+ align-items: center;
+}
+.wrp-title-print-tickets-client h2 {
+ display: flex;
+ font-size: 0.7em;
+ font-weight: 400;
+ font-family: var(--font-condensed);
+ line-height: 1;
+ letter-spacing: 0px;
+}

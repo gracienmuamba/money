@@ -167,7 +167,6 @@ export const FormDataInput = () => {
     numPhone += index;
    });
 
-
    if (numPhone.length != 10 || numPhone.charAt(0) != 0) {
     setOpen(true);
     setLoad(false);

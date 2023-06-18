@@ -6,8 +6,6 @@ import { doc, collection, getDocs, getDocFromCache } from "firebase/firestore";
 
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-
-
 import IconButton from '@mui/material/IconButton';
 
 import Button from '@mui/material/Button';
@@ -17,8 +15,11 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContentText from '@mui/material/DialogContentText';
 
+import PrinT from './Print/Main';
+
 
 let pushDocs = new Array();
+
 
 // Return Last Transaction
 export default function ReturnLasT() {
@@ -62,8 +63,8 @@ export default function ReturnLasT() {
   setLoad(true);
   window.localStorage.setItem('&&$$!@lis::**swap++', JSON.stringify(list.reverse()));
 
-  if (list.length > 2) {
-   window.localStorage.setItem('&&lis++$$!@lis::**||{}', JSON.stringify(2));
+  if (list.length > 5) {
+   window.localStorage.setItem('&&lis++$$!@lis::**||{}', JSON.stringify(5));
   } else {
    window.localStorage.setItem('&&lis++$$!@lis::**||{}', JSON.stringify(list.length));
   }
@@ -103,15 +104,7 @@ export default function ReturnLasT() {
       </IconButton>
      </div>
 
-     <div></div>
-
-     {/* {!col &&
-      <div>
-       <IconButton>
-        <img src={'/img/printing.png'} />
-       </IconButton>
-      </div>
-     } */}
+     <PrinT />
 
     </div>
    </div>
