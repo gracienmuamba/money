@@ -7,6 +7,7 @@ export default function ReturnNewSolde() {
 
  let pushDocs = new Array();
  const [solde, setSolde] = React.useState(' ');
+
  React.useEffect(async () => {
 
   const querySnapshot = await getDocs(collection(db, "client"));

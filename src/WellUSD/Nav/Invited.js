@@ -1,6 +1,4 @@
 import React from 'react';
-
-import './Invited.css';
 import IconButton from '@mui/material/IconButton';
 
 import Button from '@mui/material/Button';
@@ -10,8 +8,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContentText from '@mui/material/DialogContentText';
 
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
+// import Backdrop from '@mui/material/Backdrop';
+// import CircularProgress from '@mui/material/CircularProgress';
 
 import { db } from '../../firebase';
 import { doc, collection, getDocs, getDocFromCache } from "firebase/firestore";

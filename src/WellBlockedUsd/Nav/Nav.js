@@ -1,5 +1,3 @@
-
-import './Nav.css';
 import ReturnBacK from './Back';
 import ReturnInvited from './Invited';
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { db } from '../../firebase';
-import './Client.css';
 
 // Title Return Compoennt
 export default function ReturnNameClienT() {

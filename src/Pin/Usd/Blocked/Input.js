@@ -34,6 +34,7 @@ export let now = moment().date();
 export let prixHash = 0;
 export let hashTrue = true;
 
+
 // Input Field Component 
 export default function ReturnInput() {
   return (
@@ -428,7 +429,6 @@ export const FormInput = () => {
 async function swapInWithDocsAgent(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayAgentMoney, upgrade, adminFrais, solde) {
 
   let time = moment().format('LLL');
-
   let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', actual: Number(main).toFixed(2) + ' ' + unite, unite: unite }
   let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu', actual: ((Number(solde) + Number(money)).toFixed(2)) + ' ' + unite, unite: unite }
 
@@ -481,6 +481,16 @@ async function swapInWithDocsAgent(sendPhone, getPhone, sendUser, getUser, main,
     usd: adminFrais,
   });
 
+  const sendtransaction = doc(db, "muungano", "alltransaction");
+  await updateDoc(sendtransaction, {
+    send: arrayUnion(send),
+  });
+
+  const gettransaction = doc(db, "muungano", "alltransaction");
+  await updateDoc(gettransaction, {
+    get: arrayUnion(get),
+  });
+
 };
 async function swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUser, main, prix, unite, arrayAgentMoney, upgrade, solde) {
 
@@ -528,6 +538,17 @@ async function swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUse
   const upgradeRef = doc(db, "muungano", "upgrade");
   await updateDoc(upgradeRef, {
     usd: upgrade,
+  });
+
+
+  const sendtransaction = doc(db, "muungano", "alltransaction");
+  await updateDoc(sendtransaction, {
+    send: arrayUnion(send),
+  });
+
+  const gettransaction = doc(db, "muungano", "alltransaction");
+  await updateDoc(gettransaction, {
+    get: arrayUnion(get),
   });
 
 };
@@ -600,6 +621,17 @@ async function isSwapInWithClientToAgent(sendPhone, getPhone, sendUser, getUser,
   });
 
 
+  const sendtransaction = doc(db, "muungano", "alltransaction");
+  await updateDoc(sendtransaction, {
+    send: arrayUnion(send),
+  });
+
+  const gettransaction = doc(db, "muungano", "alltransaction");
+  await updateDoc(gettransaction, {
+    get: arrayUnion(get),
+  });
+
+
 };
 async function isSwapInWithClientToClient(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayClientMoney, upgrade, adminFrais, solde) {
 
@@ -654,6 +686,16 @@ async function isSwapInWithClientToClient(sendPhone, getPhone, sendUser, getUser
   const fraisRef = doc(db, "muungano", "commission");
   await updateDoc(fraisRef, {
     usd: adminFrais,
+  });
+
+  const sendtransaction = doc(db, "muungano", "alltransaction");
+  await updateDoc(sendtransaction, {
+    send: arrayUnion(send),
+  });
+
+  const gettransaction = doc(db, "muungano", "alltransaction");
+  await updateDoc(gettransaction, {
+    get: arrayUnion(get),
   });
 
 };

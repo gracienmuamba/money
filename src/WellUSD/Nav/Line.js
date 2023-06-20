@@ -1,6 +1,4 @@
 
-import './Line.css';
-
 // Return Line dash
 export default function ReturnLine() {
  return (

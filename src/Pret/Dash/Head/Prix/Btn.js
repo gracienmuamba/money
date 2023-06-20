@@ -6,7 +6,6 @@ import { db } from '../../../../firebase';
 import moment from 'moment';
 import { useNavigate } from 'react-router-dom';
 
-
 // Btn Component view 
 export default function ReturnBTn() {
 
@@ -14,7 +13,7 @@ export default function ReturnBTn() {
 
  const [cdf, setCdf] = React.useState(0.00);
  const [usd, setUsd] = React.useState(0.00);
- const [time, setTime] = React.useState(null);
+ const [time, setTime] = React.useState(' ');
 
  const [walletusd, setWalletusd] = React.useState(0.00);
  const [walletcdf, setWalletcdf] = React.useState(0.00);
@@ -65,7 +64,6 @@ export default function ReturnBTn() {
   }
 
  }, []);
-
  React.useEffect(async () => {
 
   try {
@@ -128,6 +126,7 @@ export default function ReturnBTn() {
   }
  };
 
+
  const handlepathcdf = (event) => {
   event.preventDefault();
   window.localStorage.setItem('&&money::pret__', JSON.stringify(pretCdf));
@@ -169,22 +168,33 @@ export default function ReturnBTn() {
   window.localStorage.setItem('solde&&%%¢pret', JSON.stringify('/pret/costs/asked/usd'));
   navigation('/pret/method');
 
- }
+ };
+
+ window.console.log(moment(time).format() < moment(time).add(120, 'days').format());
 
  return (
   <>
-   {
-    usd > 0 &&
-    <div className='btn-pret-asked'>
-     <button onClick={handlepathusd}>Remboursé</button>
-    </div>
+   {moment(time).add(2, 'days').format() > moment(time).format() &&
+    <>
+     {
+      usd > 0 &&
+      <div className='btn-pret-asked'>
+       <button onClick={handlepathusd}>Remboursé</button>
+      </div>
+     }
+    </>
    }
 
    {
-    cdf > 0 &&
-    <div className='btn-pret-asked'>
-     <button onClick={handlepathcdf}>Remboursé</button>
-    </div>
+    moment(time).add(2, 'days').format() > moment(time).format() &&
+    <>
+     {
+      cdf > 0 &&
+      <div className='btn-pret-asked'>
+       <button onClick={handlepathcdf}>Remboursé</button>
+      </div>
+     }
+    </>
    }
   </>
  );

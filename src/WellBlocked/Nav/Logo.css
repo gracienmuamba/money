@@ -1,32 +1,38 @@
 /* logo available */
-
 @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@800&display=swap");
+
 :root {
- --font-condensed: 'Dosis', sans-serif;
+ /* --font-condensed: "Dosis", sans-serif; */
+
+ --font-condensed: "Jost", sans-serif;
  --font-title-name: "Rubik Vinyl", cursive;
+ --font-quote-name: "Nunito Sans", sans-serif;
 }
 
 .wrp-logo-print-tickets {
  display: flex;
- flex-direction: column;
+ flex-direction: row;
  justify-content: center;
  align-items: center;
  width: 100%;
 }
 .wrp-logo-print-tickets img {
- height: 5em;
- width: 5em;
+ height: 3em;
+ width: 3em;
  object-fit: cover;
 }
 .wrp-logo-print-tickets h2 {
  display: flex;
- font-size: 1.2em;
+ font-size: 1em;
  margin-top: 2vh;
  margin-bottom: 2vh;
 
- font-weight: 400;
+ font-weight: 500;
  font-family: var(--font-title-name);
  line-height: 1;
  letter-spacing: 1px;

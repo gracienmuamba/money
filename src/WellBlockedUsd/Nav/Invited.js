@@ -1,6 +1,4 @@
 import React from 'react';
-
-import './Invited.css';
 import IconButton from '@mui/material/IconButton';
 
 import Button from '@mui/material/Button';

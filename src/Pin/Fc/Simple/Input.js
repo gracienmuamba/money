@@ -450,14 +450,8 @@ export const FormInput = () => {
 async function swapInWithDocsAgent(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayAgentMoney, upgrade, adminFrais, solde) {
 
 	let time = moment().format('LLL');
-
-	// let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer' }
-	// let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu' }
-
-
-	let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', actual: parseInt(Number(main)) + ' ' + unite, unite: unite }
-	let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu', actual: parseInt(Number(solde) + Number(money)) + ' ' + unite, unite: unite }
-
+	let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', price: parseInt(Number(main)), actual: parseInt(Number(main)) + ' ' + unite, unite: unite }
+	let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu', pricenew: parseInt(Number(solde) + Number(money)), actual: parseInt(Number(solde) + Number(money)) + ' ' + unite, unite: unite }
 
 	const sendRef = doc(db, "agent", sendPhone);
 	await updateDoc(sendRef, {
@@ -507,18 +501,22 @@ async function swapInWithDocsAgent(sendPhone, getPhone, sendUser, getUser, main,
 		cdf: adminFrais,
 	});
 
+	const sendtransaction = doc(db, "muungano", "alltransaction");
+	await updateDoc(sendtransaction, {
+		send: arrayUnion(send),
+	});
+
+	const gettransaction = doc(db, "muungano", "alltransaction");
+	await updateDoc(gettransaction, {
+		get: arrayUnion(get),
+	});
+
 };
 async function swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUser, main, prix, unite, arrayAgentMoney, upgrade, solde) {
 
-
 	let time = moment().format('LLL');
-	// let send = { date: time, solde: `${prix} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer' }
-	// let get = { date: time, solde: `${prix} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu' }
-
-
-	let send = { date: time, solde: `${prix} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', actual: parseInt(Number(main)) + ' ' + unite, unite: unite }
-	let get = { date: time, solde: `${prix} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu', actual: (Number(solde) + Number(prix)) + ' ' + unite, unite: unite }
-
+	let send = { date: time, solde: `${prix} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', price: parseInt(Number(main)), actual: parseInt(Number(main)) + ' ' + unite, unite: unite }
+	let get = { date: time, solde: `${prix} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu', pricenew: parseInt(Number(solde) + Number(prix)), actual: (Number(solde) + Number(prix)) + ' ' + unite, unite: unite }
 
 	let comm = prix * 0.3 / 100;
 
@@ -561,22 +559,22 @@ async function swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUse
 	});
 
 
+	const sendtransaction = doc(db, "muungano", "alltransaction");
+	await updateDoc(sendtransaction, {
+		send: arrayUnion(send),
+	});
 
-
-
+	const gettransaction = doc(db, "muungano", "alltransaction");
+	await updateDoc(gettransaction, {
+		get: arrayUnion(get),
+	});
 
 };
 async function isSwapInWithClientToAgent(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayClientMoney, upgrade, adminFrais, agentFrais, solde) {
 
 	let time = moment().format('LLL');
-
-	// let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer' }
-	// let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu' }
-
-	let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', actual: Number(main) + ' ' + unite, unite: unite }
-	let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu', actual: (Number(solde) + Number(money)) + ' ' + unite, unite: unite }
-
-
+	let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', price: parseInt(Number(main)), actual: parseInt(Number(main)) + ' ' + unite, unite: unite }
+	let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu', pricenew: parseInt(Number(solde) + Number(money)), actual: (Number(solde) + Number(money)) + ' ' + unite, unite: unite }
 
 	let fraisAdmin = frais;
 	let fraisAgent = money * 2.7 / 100;
@@ -635,13 +633,24 @@ async function isSwapInWithClientToAgent(sendPhone, getPhone, sendUser, getUser,
 		cdf: adminFrais,
 	});
 
+
+	const sendtransaction = doc(db, "muungano", "alltransaction");
+	await updateDoc(sendtransaction, {
+		send: arrayUnion(send),
+	});
+
+	const gettransaction = doc(db, "muungano", "alltransaction");
+	await updateDoc(gettransaction, {
+		get: arrayUnion(get),
+	});
+
+
 };
 async function isSwapInWithClientToClient(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayClientMoney, upgrade, adminFrais, solde) {
 
 	let time = moment().format('LLL');
-
-	let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', actual: Number(main) + ' ' + unite, unite: unite }
-	let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu', actual: (Number(solde) + Number(money)) + ' ' + unite, unite: unite }
+	let send = { date: time, solde: `${money} ${unite}`, phone: getPhone, user: getUser, type: 'envoyer', price: parseInt(Number(main)), actual: Number(main) + ' ' + unite, unite: unite }
+	let get = { date: time, solde: `${money} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu', pricenew: parseInt(Number(solde) + Number(money)), actual: (Number(solde) + Number(money)) + ' ' + unite, unite: unite }
 
 
 
@@ -690,5 +699,18 @@ async function isSwapInWithClientToClient(sendPhone, getPhone, sendUser, getUser
 	await updateDoc(fraisRef, {
 		cdf: adminFrais,
 	});
+
+
+	const sendtransaction = doc(db, "muungano", "alltransaction");
+	await updateDoc(sendtransaction, {
+		send: arrayUnion(send),
+	});
+
+	const gettransaction = doc(db, "muungano", "alltransaction");
+	await updateDoc(gettransaction, {
+		get: arrayUnion(get),
+	});
+
+
 
 };

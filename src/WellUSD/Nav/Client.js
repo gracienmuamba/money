@@ -1,7 +1,6 @@
 import React from 'react';
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { db } from '../../firebase';
-import './Client.css';
 
 // Title Return Compoennt
 export default function ReturnNameClienT() {
@@ -31,7 +30,7 @@ export default function ReturnNameClienT() {
 
  return (
   <div className='wrp-title-print-tickets-client'>
-   <h2>Client :</h2>
+   <h2>Client : </h2>
    <h2>{`${first.toUpperCase()} ${last.toUpperCase()}`}</h2>
   </div>
  );

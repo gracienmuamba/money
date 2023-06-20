@@ -2,7 +2,11 @@
  display: flex;
 }
 .tontine-nav-invited img {
- height: 2.4em;
- width: 2.4em;
+ height: 1em;
+ width: 1em;
  object-fit: cover;
+}
+.tontine-send-invited img {
+ height: 0.5em;
+ width: 0.5em;
 }

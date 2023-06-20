@@ -1,7 +1,7 @@
 import React from 'react';
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { db } from '../../firebase';
-import './Title.css';
+
 
 
 // Title Return Compoennt

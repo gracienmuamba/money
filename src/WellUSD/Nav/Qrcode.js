@@ -1,5 +1,4 @@
 import QRCode from "react-qr-code";
-import './Qrcode.css';
 
 // Title Return Compoennt
 export default function ReturnQRcode() {

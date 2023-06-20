@@ -9,7 +9,7 @@ export default function ReturnQRcode() {
   <div className='wrp-logo-print-tickets-qrcode'>
 
    <QRCode
-    size={156}
+    size={95}
     value={`${qrcodeId}`}
 
    />

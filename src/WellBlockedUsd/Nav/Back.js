@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
 import { HiArrowLeft } from 'react-icons/hi';
-import './Back.css';
 
 // Back 
 export default function ReturnBacK() {

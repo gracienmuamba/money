@@ -3,11 +3,12 @@
  flex-direction: column;
  justify-content: space-between;
 
- padding: 1em;
+ padding: 1em 1em;
 
  width: 100%;
  max-width: 302.36px;
- background-color: #fdc500;
+ background-color: #fee255;
+ /* background-color: #fdc500; */
 }
 @media screen {
  .wrp-msg-output-ticked {

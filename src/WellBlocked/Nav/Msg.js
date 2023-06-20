@@ -14,6 +14,7 @@ import ReturnLine from './Line';
 import ReturnDateClienT from './Date';
 import ReturnQRcode from './Qrcode';
 
+import ReturnContry from './Contry';
 
 // Msg React from Component !!!
 export default function ReturnMsg() {
@@ -22,6 +23,7 @@ export default function ReturnMsg() {
    <ReturnLine />
 
    <ReturnLogo />
+   <ReturnContry />
 
    <ReturnNameClienT />
    <ReturnPhoneClienT />

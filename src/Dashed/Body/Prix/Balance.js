@@ -1,6 +1,6 @@
 import React from 'react';
 import './Balance.css';
-import { collection, getDocs, doc, getDocFromCache } from "firebase/firestore";
+import { collection, getDocs, doc, getDocFromCache, onSnapshot } from "firebase/firestore";
 import { db } from '../../../firebase';
 import Media from 'react-media';
 
@@ -38,8 +38,35 @@ export const ScreenSmall = () => (
 export const View = () => {
 
  let pushDocs = new Array();
+
  const [fc, setFc] = React.useState(0);
  const [usd, setUsd] = React.useState(0);
+
+ // React.useEffect(async () => {
+
+ //  const querySnapshotClient = await getDocs(collection(db, "client"));
+ //  querySnapshotClient.forEach((doc) => {
+ //   pushDocs.push(doc.id);
+ //  });
+
+ //  var verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
+ //  const docRef = doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+ //  // Get a document, forcing the SDK to fetch from the offline cache.
+ //  try {
+ //   const doc = await getDocFromCache(docRef);
+ //   // Document was found in the cache. If no cached document exists,
+ //   setFc(doc.data().cdf);
+ //   setUsd(doc.data().usd);
+
+ //  } catch (e) {
+ //   setFc(0);
+ //   setUsd(0);
+
+ //   console.log("Error getting cached document:", e);
+ //  };
+
+ // }, []);
+
 
  React.useEffect(async () => {
 
@@ -49,22 +76,23 @@ export const View = () => {
   });
 
   var verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
-  const docRef = doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
-  // Get a document, forcing the SDK to fetch from the offline cache.
-  try {
-   const doc = await getDocFromCache(docRef);
-   // Document was found in the cache. If no cached document exists,
-   setFc(doc.data().cdf);
-   setUsd(doc.data().usd);
 
-  } catch (e) {
+  try {
+
+   const unsub = onSnapshot(doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+    // Document was found in the cache. If no cached document exists,
+    setFc(doc.data().cdf);
+    setUsd(doc.data().usd);
+   });
+
+  } catch (error) {
+
    setFc(0);
    setUsd(0);
-   console.log("Error getting cached document:", e);
-  };
+
+  }
 
  }, []);
-
 
  return (
   <>
