@@ -30,13 +30,14 @@ export default function ReturnMsg() {
 
    <ReturnType />
    <ReturnDepot />
-   <ReturnDateClienT />
-   <ReturnNameAgent />
+
    <ReturnNewSolde />
+   <ReturnNameAgent />
+   <ReturnDateClienT />
+
    <ReturnQuote />
    <ReturnThanKs />
    <ReturnQRcode />
-
 
    <ReturnLine />
 

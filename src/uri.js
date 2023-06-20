@@ -103,6 +103,7 @@ import ListcmdStocK from './Command/List/Main';
 
 
 import LastTransacTion from './Last/Main';
+import TicKet from './Ticket/Main';
 
 
 // URI viewer component 
@@ -213,6 +214,7 @@ export default function ReturRnURI() {
    <Route path='/command/agent/list' element={<ListcmdStocK />} />
 
    <Route path='/last/transaction' element={<LastTransacTion />} />
+   <Route path='/muungano/print/ticket' element={<TicKet />} />
 
    <Route path='*' element={<App />} />
   </Routes>
