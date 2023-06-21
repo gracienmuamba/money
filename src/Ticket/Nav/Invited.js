@@ -34,6 +34,7 @@ export default function ReturnInvited() {
     content: () => componentRef.current,
     documentTitle: 'emp-data',
     onAfterPrint: () => window.console.log('print success'),
+
     pageStyle: `@media print {
       @page {
        size: ${dimensions.width}mm ${dimensions.height}mm;

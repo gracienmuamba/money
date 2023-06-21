@@ -12,10 +12,12 @@ export default function ReturnLogouTButton() {
 
  const handlepathOut = () => {
 
-  // window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(false));
-  // window.localStorage.setItem('USER', JSON.stringify(null));
   reactLocalStorage.remove('USER');
   reactLocalStorage.remove('ACTIVE_M_USER');
+  reactLocalStorage.remove('##^^@@%^***^^++=$');
+  reactLocalStorage.remove('@dateª©#&&++#');
+  reactLocalStorage.remove('@ª©##courant**^^');
+  reactLocalStorage.remove('');
 
   signOut(auth);
   window.location.href = "/";

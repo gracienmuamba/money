@@ -10,7 +10,7 @@
 }
 .wrp-contry-print-overview h1 {
  display: flex;
- font-size: 2em;
+ font-size: 2.4em;
  font-weight: 500;
  font-family: var(--font-quote-name);
  line-height: 1;
@@ -18,7 +18,7 @@
 }
 .wrp-contry-print-overview p {
  display: flex;
- font-size: 0.2em;
+ font-size: 0.9em;
  font-weight: 300;
  text-align: center;
  font-family: var(--font-condensed);
@@ -27,7 +27,7 @@
 }
 .wrp-contry-print-overview span {
  display: flex;
- font-size: 0.2em;
+ font-size: 0.9em;
  font-weight: 300;
  text-align: center;
  font-family: var(--font-condensed);

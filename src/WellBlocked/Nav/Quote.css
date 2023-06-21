@@ -1,10 +1,10 @@
 .wrp-quote-tiket-msg {
  display: flex;
- margin-top: 1.5vh;
+ /* margin-top: 1.5vh; */
 }
 .wrp-quote-tiket-msg p {
  display: flex;
- font-size: 0.7em;
+ font-size: 0.2em;
  font-weight: 500;
  line-height: 1;
  font-family: var(--font-condensed);

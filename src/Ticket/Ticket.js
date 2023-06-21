@@ -1,12 +1,11 @@
-
 import './Ticket.css';
-import ReturnAvataR from './IMA';
+import ReturnBox from './Box';
 
 // Return Ticket
 export default function ReturnTickeT() {
  return (
   <div className='wrp-ticket-print'>
-   <ReturnAvataR />
+   <ReturnBox />
   </div>
  );
 };

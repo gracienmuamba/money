@@ -1,6 +1,7 @@
 .wrp-line-ticket-client-dash {
  display: flex;
+ margin-top: 2vh;
  width: 100%;
- height: 0.02em;
- border-bottom: 0.2em dashed black;
+ height: 0.2em;
+ border-bottom: 0.162em dashed black;
 }

@@ -1,0 +1,11 @@
+import ReturnTitle from './Title';
+
+//  Logo Print Available
+export default function ReturnLogo() {
+ return (
+  <div className='wrp-logo-print-tickets'>
+   <img src={'/img/logo.png'} />
+   <ReturnTitle />
+  </div>
+ );
+};

@@ -11,13 +11,13 @@ import DialogContentText from '@mui/material/DialogContentText';
 
 import { db } from '../../../../firebase';
 import { doc, collection, getDocs, getDocFromCache } from "firebase/firestore";
-import ReturnMsg from './Msg';
+// import ReturnMsg from './Msg';
 
 import { useNavigate } from 'react-router-dom';
+import { reactLocalStorage } from 'reactjs-localstorage';
 
 
 let pushDocs = new Array();
-
 
 // view invite component
 export default function ReturnIconPrinT() {
@@ -65,11 +65,16 @@ export default function ReturnIconPrinT() {
 
  const handlepath = (event) => {
   event.preventDefault();
-  navigation('/muungano/print/ticket');
+
+  if (JSON.parse(window.localStorage.getItem('##^^@@%^***^^++=$'))) {
+   navigation('/muungano/print/ticket');
+  } else {
+   setOpen(true);
+  }
+
  };
 
  let col = pushDocs.includes(JSON.parse(window.localStorage.getItem('USER')));
-
  return (
   <>
    <div className='tontine-nav-invited-icon-dash'>
@@ -93,7 +98,7 @@ export default function ReturnIconPrinT() {
 
      <DialogContentText>
       <p className='pop-up'>
-       Désolé, vous n'appartenez à aucun groupe Tontine
+       Aucune transaction n'est disponible pour lancer Impression
        </p>
      </DialogContentText>
 

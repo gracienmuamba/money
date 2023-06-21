@@ -3,10 +3,13 @@ import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { db } from '../../firebase';
 
 // Title Return Compoennt
-export default function ReturnNewSolde() {
+export default function ReturnNameClienT() {
 
  let pushDocs = new Array();
- const [solde, setSolde] = React.useState(' ');
+
+ const [first, setFirst] = React.useState(' ');
+ const [last, setLast] = React.useState(' ');
+
  React.useEffect(async () => {
 
   const querySnapshot = await getDocs(collection(db, "client"));
@@ -19,14 +22,16 @@ export default function ReturnNewSolde() {
 
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
-   setSolde(docSnap.data().thriftcdf);
+   setFirst(docSnap.data().firstname);
+   setLast(docSnap.data().lastname);
   }
 
  }, []);
+
  return (
   <div className='wrp-title-print-tickets-client'>
-   <h2>Nouveau solde :</h2>
-   <h2>{parseInt(Number(solde))} {JSON.parse(window.localStorage.getItem('@unite!#!'))}</h2>
+   <h2>Client : </h2>
+   <h2>{`${first.toUpperCase()} ${last.toUpperCase()}`}</h2>
   </div>
  );
 };

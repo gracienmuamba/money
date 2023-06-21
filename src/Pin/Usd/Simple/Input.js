@@ -27,6 +27,8 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
+import { reactLocalStorage } from 'reactjs-localstorage';
+
 
 export let nowField = moment().date();
 export let now = moment().date();
@@ -174,6 +176,8 @@ export const FormInput = () => {
 
   setLoad(true);
   window.localStorage.setItem('@dateª©#&&++#', JSON.stringify(moment().format('LLLL')));
+  reactLocalStorage.set('##^^@@%^***^^++=$', true);
+
   // Checked if value code is length valid
   if (data.code === undefined || pin != data.code || pin == '000000' || soldeMain <= 1) {
    setOpen(true);

@@ -22,16 +22,13 @@
  width: 100%;
 }
 .wrp-logo-print-tickets img {
- height: 3em;
- width: 3em;
+ height: 2.7em;
+ width: 2.7em;
  object-fit: cover;
 }
 .wrp-logo-print-tickets h2 {
  display: flex;
- font-size: 1em;
- margin-top: 2vh;
- margin-bottom: 2vh;
-
+ font-size: 1.2em;
  font-weight: 500;
  font-family: var(--font-title-name);
  line-height: 1;

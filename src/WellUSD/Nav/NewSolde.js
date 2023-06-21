@@ -26,7 +26,7 @@ export default function ReturnNewSolde() {
  return (
   <div className='wrp-title-print-tickets-client'>
    <h2>Nouveau solde :</h2>
-   <h2>{Number(solde)} {JSON.parse(window.localStorage.getItem('@unite!#!'))}</h2>
+   <h2>{parseInt(Number(solde))} {JSON.parse(window.localStorage.getItem('@unite!#!'))}</h2>
   </div>
  );
 };

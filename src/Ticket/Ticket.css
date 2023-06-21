@@ -1,7 +1,7 @@
 /* Ticket Component ticket  */
 .wrp-ticket-print {
  display: flex;
- height: 100vh;
+ height: 90vh;
  width: 100%;
 
  justify-content: center;

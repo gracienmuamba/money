@@ -1,0 +1,12 @@
+.wrp-quote-printer-ticket {
+ display: flex;
+}
+
+.wrp-quote-printer-ticket p {
+ display: flex;
+ font-size: 1em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ letter-spacing: 0px;
+}
