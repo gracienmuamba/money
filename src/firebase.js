@@ -22,9 +22,11 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
 
+
 export const db = getFirestore();
 export const auth = getAuth(app);
 auth.languageCode = 'fr';
+
 
 // Initialize Cloud Storage and get a reference to the service
 export const storage = getStorage(app);

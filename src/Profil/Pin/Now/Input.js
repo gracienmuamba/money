@@ -111,7 +111,7 @@ export const FormInputField = () => {
           reset();
         } else {
 
-          window.localStorage.setItem('@!che03', JSON.stringify(true));
+          window.localStorage.setItem('JqERbgU2C+G9bAiPTQfkAzPe7aN8VkOWTGczzf+d1qpUXepHaZHta9HyLDBGtHdjdrn0hlrzbmZ4lhNTA2YWOlaQehAO2RjTZcfByXpkOVCY7XnzG8aztWCybJqL+TA3', JSON.stringify(true));
           navigation('/pin/update');
         }
 

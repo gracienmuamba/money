@@ -18,6 +18,12 @@
 .flex-head-list-cmds header .navbar {
  display: flex;
  width: 100%;
+ position: absolute;
+ top: 1.5vh;
+ z-index: 10;
+
+ padding: 0 5%;
+
  justify-content: space-between;
  align-items: center;
 }

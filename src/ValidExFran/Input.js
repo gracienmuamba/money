@@ -80,9 +80,7 @@ NumericFormatCustom.propTypes = {
  onChange: PropTypes.func.isRequired,
 };
 
-
 export let sendPhone = '';
-
 
 // Input Field form
 export default function REturnInPutCode() {
@@ -152,7 +150,6 @@ export const FormDataInput = () => {
  const onSubmit = async (data) => {
 
   setLoad(true);
-
   if (data.phone === undefined) {
 
    setOpen(true);
@@ -177,7 +174,6 @@ export const FormDataInput = () => {
     clientSnapshot.forEach((doc) => {
      pushClient.push(doc.id);
     });
-
 
     const agentSnapshot = await getDocs(collection(db, "agent"));
     agentSnapshot.forEach((doc) => {
@@ -215,9 +211,7 @@ export const FormDataInput = () => {
 
    };
 
-
   }
-
 
  };
 
@@ -280,6 +274,7 @@ export const FormDataInput = () => {
      </DialogActions>
     </Dialog>
 
+
     <Dialog
      fullWidth={fullWidth}
      maxWidth={maxWidth}
@@ -299,6 +294,8 @@ export const FormDataInput = () => {
       <Button onClick={handleSome}><span className='pop-up'>Fermer</span></Button>
      </DialogActions>
     </Dialog>
+
+
 
     <button className='Btn'>Suivant</button>
    </form>

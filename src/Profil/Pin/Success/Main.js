@@ -9,6 +9,7 @@ import { auth } from '../../../firebase';
 import moment from 'moment';
 import { useNavigate } from 'react-router-dom';
 
+import NavBar from './Nav/Main';
 
 // Main Success Component 
 export default function SuccessPin() {
@@ -87,18 +88,22 @@ export default function SuccessPin() {
 
 
  return (
-  <div>
-   <div className='zindex-theme'>
-    <Backdrop
-     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-     open={open}>
+  <>
+   <NavBar />
 
-     <CircularProgress color="inherit" />
+   <div>
+    <div className='zindex-theme'>
+     <Backdrop
+      sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      open={open}>
 
-    </Backdrop>
+      <CircularProgress color="inherit" />
+
+     </Backdrop>
+    </div>
+
+    <ReturnSuccessPin />
    </div>
-
-   <ReturnSuccessPin />
-  </div>
+  </>
  );
 };

@@ -2,7 +2,6 @@ import React from 'react';
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { db } from '../../firebase';
 
-
 // Title Return Compoennt
 export default function ReturnNameAgent() {
 
@@ -24,8 +23,8 @@ export default function ReturnNameAgent() {
 
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
-   setFirstAgent(docSnap.data().firstname);
-   setLastAgent(docSnap.data().lastname);
+   setFirstAgent(docSnap.data().firstname === undefined ? '' : docSnap.data().firstname);
+   setLastAgent(docSnap.data().lastname === undefined ? '' : docSnap.data().lastname);
   }
 
  }, []);

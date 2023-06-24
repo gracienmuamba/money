@@ -10,7 +10,6 @@ import { useForm, Controller } from 'react-hook-form';
 // Firebase Auth for phone
 import { db, auth } from '../firebase';
 import { doc, updateDoc, onSnapshot, collection, getDocs, setDoc, getDocFromCache } from "firebase/firestore";
-import { RecaptchaVerifier, signInWithPhoneNumber, signOut } from "firebase/auth";
 
 
 import Button from '@mui/material/Button';
@@ -28,14 +27,13 @@ import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-
+import { reactLocalStorage } from 'reactjs-localstorage';
 
 import PropTypes from 'prop-types';
 import { IMaskInput } from 'react-imask';
 import { NumericFormat } from 'react-number-format';
 import FormControl from '@mui/material/FormControl';
 import REturnlogo from './Logo';
-import axios from 'axios'
 
 
 let expireNum = 10;
@@ -135,21 +133,19 @@ export const ScreenSmall = () => (
   <FormDataInput />
  </div>
 );
-export const FormDataInput = () => {
 
+export const FormDataInput = () => {
 
  const [checked, setChecked] = React.useState(true);
  const [open, setOpen] = React.useState(false);
  const [fullWidth, setFullWidth] = React.useState(true);
  const [maxWidth, setMaxWidth] = React.useState('sm');
 
-
  const [loading, setLoading] = React.useState(false);
  const [codepin, setCodepin] = React.useState();
 
  const inputRef = React.useRef();
  const [searchTerm, setSearchTerm] = React.useState('');
-
 
  const [values, setValues] = React.useState({
   textmask: '(100) 000-0000',
@@ -161,11 +157,9 @@ export const FormDataInput = () => {
    [event.target.name]: event.target.value,
   });
  };
-
  const handleClose = () => {
   setOpen(false);
  };
-
  React.useEffect(async () => {
 
   const querySnapshot = await getDocs(collection(db, "client"));
@@ -188,13 +182,17 @@ export const FormDataInput = () => {
 
  }, []);
 
-
  const { handleSubmit, reset, control } = useForm({});
  // const { isSubmitting, isValid } = formState;
  const onSubmit = async (data) => {
 
+  let num = (data.phone).match(/\d+/g);
+  let numPhone = '';
+  num.map(index => {
+   numPhone += index;
+  });
+
   setLoading(true);
-  window.localStorage.setItem('^^blue--color≥', JSON.stringify(bluecolor))
 
   if (data.phone === undefined) {
 
@@ -204,11 +202,6 @@ export const FormDataInput = () => {
 
   } else {
 
-   let num = (data.phone).match(/\d+/g);
-   let numPhone = '';
-   num.map(index => {
-    numPhone += index;
-   });
    if (numPhone.length != 10 || numPhone.charAt(0) != 0) {
 
     setOpen(true);
@@ -217,9 +210,13 @@ export const FormDataInput = () => {
 
    } else {
 
-    const isExistClient = pushClient.includes(numPhone);
-    const isExistAgent = pushAgent.includes(numPhone);
-    const isInDataPhone = pushDocs.includes(numPhone);
+    // const isExistClient = pushClient.includes(numPhone);
+    // const isExistAgent = pushAgent.includes(numPhone);
+
+    const isExistClient = pushClient.some(value => value == numPhone);
+    const isExistAgent = pushAgent.some(value => value == numPhone);
+    const isInDataPhone = pushDocs.some(value => value == numPhone);
+
 
     if (isExistClient || isExistAgent) {
 
@@ -252,6 +249,8 @@ export const FormDataInput = () => {
 
  return (
   <>
+   <div className='recaptcha-container'></div>
+
    {loading && <div className='Loading-Hm'>
     <FadeLoader
      size={15}
@@ -338,23 +337,14 @@ export const FormDataInput = () => {
   </>
  );
 };
-
 // input Recaptcha  verifier!
 export const InputCodeRecaptcha = (props) => {
 
  const navigation = useNavigate();
- let phoneNumber = "+243" + (JSON.parse(window.localStorage.getItem('USER')).slice(-9));
+
+ const [ipUid, setIpUid] = React.useState('');
 
  const [otp, setOtp] = React.useState(false);
-
- const [asnline, setAsnline] = React.useState('');
- const [ipline, setIpline] = React.useState('');
- const [orgline, setOrgline] = React.useState('');
-
- const [asnFax, setAsnFax] = React.useState('');
- const [ipFax, setIpFax] = React.useState('');
- const [orgFax, setOrgFax] = React.useState('');
-
  const { handleSubmit, control } = useForm({});
 
  const [open, setOpen] = React.useState(false);
@@ -365,38 +355,30 @@ export const InputCodeRecaptcha = (props) => {
  const [loading, setLoading] = React.useState(false);
  const [showPassword, setShowPassword] = React.useState(false);
 
-
  const handleClickShowPassword = () => setShowPassword((show) => !show);
  const handleMouseDownPassword = (event) => {
   event.preventDefault();
  };
 
+ const textFirst = `Veuillez choisir un code d'accès à six chiffres à utiliser pour se connecter`;
+ const textLast = `Veuillez définir votre code d'accès`;
+ let isInDataPhone = pushClient.some(value => value == JSON.parse(window.localStorage.getItem('USER')));
+
+
  React.useEffect(async () => {
+  const unsub = onSnapshot(doc(db, isInDataPhone ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
 
-  const querySnapshotClient = await getDocs(collection(db, "client"));
-  querySnapshotClient.forEach((doc) => {
-   pushDocs.push(doc.id);
+   if (doc.data().ip === undefined) {
+    setIpUid('');
+    console.log('ip no disponible');
+   } else {
+    setIpUid(doc.data().ip);
+   }
+
   });
-
-  let verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
-  const docRef = doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
-  // Get a document, forcing the SDK to fetch from the offline cache.
-  try {
-   const doc = await getDocFromCache(docRef);
-   // Document was found in the cache. If no cached document exists,
-   setAsnFax(doc.data().asn);
-   setIpFax(doc.data().ip);
-   setOrgFax(doc.data().org);
-
-  } catch (e) {
-   window.console.log(0);
-   console.log("Error getting cached document:", e);
-  };
 
  }, []);
 
- const textFirst = `Veuillez choisir un code d'accès à six chiffres à utiliser pour se connecter`;
- const textLast = `Veuillez définir votre code d'accès`;
 
  const handleClose = () => {
   setOpen(false);
@@ -404,17 +386,20 @@ export const InputCodeRecaptcha = (props) => {
  const cancelClose = () => {
   setCancel(false);
  };
- React.useEffect(async () => {
-  const ip = await axios.get('https://ipapi.co/json');
-  setAsnline((ip.data.asn));
-  setIpline((ip.data.ip).slice(0, 4));
-  setOrgline((ip.data.org));
- }, []);
-
  const onSubmitOTP = async (data) => {
 
-  const ip = await axios.get('https://ipapi.co/json');
   setLoading(true);
+
+  var navigatorInfo = window.navigator;
+  var navigatorScreen = window.screen;
+
+  var uid = navigatorInfo.mimeTypes.length;
+  uid += navigatorInfo.userAgent.replace(/\D+/g, '');
+  uid += navigatorInfo.plugins.length;
+
+  uid += navigatorScreen.height || '';
+  uid += navigatorScreen.width || '';
+  uid += navigatorScreen.pixelDepth || '';
 
   if (data.code === undefined) {
    window.setTimeout(() => {
@@ -443,6 +428,10 @@ export const InputCodeRecaptcha = (props) => {
      window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(true));
      window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
 
+     let verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
+     const cityRef = doc(db, verifierCollection ? 'client' : 'agent', JSON.parse(window.localStorage.getItem('USER')));
+     setDoc(cityRef, { ip: uid }, { merge: true });
+
      window.setTimeout(() => {
       navigation('/dash');
       setLoading(false)
@@ -452,24 +441,42 @@ export const InputCodeRecaptcha = (props) => {
 
      if (props.pin == data.code) {
 
-      window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(true));
-      window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
+      if (uid === ipUid) {
 
-      let verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
-      const cityRef = doc(db, verifierCollection ? 'client' : 'agent', JSON.parse(window.localStorage.getItem('USER')));
-      setDoc(cityRef, { ip: (ip.data.ip).slice(0, 4), org: ip.data.org, asn: ip.data.asn }, { merge: true });
+       window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(true));
+       window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
 
+       window.console.log('no auth');
 
-      window.setTimeout(() => {
-       navigation('/dash');
-       setLoading(false)
-      }, 950);
+       window.setTimeout(() => {
+        navigation('/dash');
+        setLoading(false)
+       }, 950);
 
-      // if (asnline === asnFax && ipline === ipFax && orgline === orgFax) {
-      // } else {
-      //  setOtp(true);
-      //  setLoading(false)
-      // }
+      } else if (JSON.parse(window.localStorage.getItem('Ex47jorXU49V+GVNt7jmtI33vaG9N8d+ckoZd0f4set0XiaOM5WuKL8yB5dDUSgh8gbloNcH+CzP5tGMRNBi3YgLK7Zc'))) {
+
+       window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(true));
+       window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
+
+       let verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
+       const cityRef = doc(db, verifierCollection ? 'client' : 'agent', JSON.parse(window.localStorage.getItem('USER')));
+       setDoc(cityRef, { ip: uid }, { merge: true });
+
+       reactLocalStorage.remove('Ex47jorXU49V+GVNt7jmtI33vaG9N8d+ckoZd0f4set0XiaOM5WuKL8yB5dDUSgh8gbloNcH+CzP5tGMRNBi3YgLK7Zc');
+
+       window.console.log('auth');
+
+       window.setTimeout(() => {
+        navigation('/dash');
+        setLoading(false)
+       }, 950);
+
+      } else {
+
+       navigation('/auth/redirect/token');
+       window.console.log('redirects');
+      }
+
 
      } else {
       setOtp(true);

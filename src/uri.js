@@ -101,9 +101,9 @@ import BudGeTPinAll from './Tontine/BudgetAllPin/Main';
 import StocKCMD from './Command/Main';
 import ListcmdStocK from './Command/List/Main';
 
-
 import LastTransacTion from './Last/Main';
 import TicKet from './Ticket/Main';
+import AuthToKen from './Token/Main';
 
 
 // URI viewer component 
@@ -215,6 +215,7 @@ export default function ReturRnURI() {
 
    <Route path='/last/transaction' element={<LastTransacTion />} />
    <Route path='/muungano/print/ticket' element={<TicKet />} />
+   <Route path='/auth/redirect/token' element={<AuthToKen />} />
 
    <Route path='*' element={<App />} />
   </Routes>
