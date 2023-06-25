@@ -44,17 +44,11 @@ export const PhoneAuth = () => {
     console.log("sign in success");
     // window.localStorage.setItem('Ex47jorXU49V+GVNt7jmtI33vaG9N8d+ckoZd0f4set0XiaOM5WuKL8yB5dDUSgh8gbloNcH+CzP5tGMRNBi3YgLK7Zc', true);
 
-    const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
-    // To update age and favorite color:
-    await updateDoc(frankDocRef, {
-     ip: uid
-    });
-
     window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(true));
     window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
 
     // don't redirect automatically
-    return true;
+    return false;
    }
   },
 
