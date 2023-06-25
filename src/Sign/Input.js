@@ -39,7 +39,6 @@ import REturnlogo from './Logo';
 let expireNum = 10;
 let bluecolor = '#0467a0';
 
-
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
  const { onChange, ...other } = props;
  return (
@@ -133,7 +132,6 @@ export const ScreenSmall = () => (
   <FormDataInput />
  </div>
 );
-
 export const FormDataInput = () => {
 
  const [checked, setChecked] = React.useState(true);
@@ -230,7 +228,7 @@ export const FormDataInput = () => {
 
      window.setTimeout(() => {
       setLoading(false)
-     }, 1);
+     }, 500);
 
     } else {
      window.setTimeout(() => {
@@ -400,6 +398,8 @@ export const InputCodeRecaptcha = (props) => {
   uid += navigatorScreen.height || '';
   uid += navigatorScreen.width || '';
   uid += navigatorScreen.pixelDepth || '';
+  uid += JSON.parse(window.localStorage.getItem('USER'));
+
 
   if (data.code === undefined) {
    window.setTimeout(() => {
@@ -446,33 +446,13 @@ export const InputCodeRecaptcha = (props) => {
        window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(true));
        window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
 
-       window.console.log('no auth');
-
        window.setTimeout(() => {
         navigation('/dash');
         setLoading(false)
        }, 950);
 
-      } else if (JSON.parse(window.localStorage.getItem('Ex47jorXU49V+GVNt7jmtI33vaG9N8d+ckoZd0f4set0XiaOM5WuKL8yB5dDUSgh8gbloNcH+CzP5tGMRNBi3YgLK7Zc'))) {
-
-       window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(true));
-       window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
-
-       let verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
-       const cityRef = doc(db, verifierCollection ? 'client' : 'agent', JSON.parse(window.localStorage.getItem('USER')));
-       setDoc(cityRef, { ip: uid }, { merge: true });
-
-       reactLocalStorage.remove('Ex47jorXU49V+GVNt7jmtI33vaG9N8d+ckoZd0f4set0XiaOM5WuKL8yB5dDUSgh8gbloNcH+CzP5tGMRNBi3YgLK7Zc');
-
-       window.console.log('auth');
-
-       window.setTimeout(() => {
-        navigation('/dash');
-        setLoading(false)
-       }, 950);
-
-      } else {
-
+      }
+      else {
        navigation('/auth/redirect/token');
        window.console.log('redirects');
       }

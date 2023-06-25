@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import ReturnICOn from './Icon';
 import Media from 'react-media';
 
-import { collection, getDocs, doc, onSnapshot } from 'firebase/firestore';
+import { collection, getDocs, doc, onSnapshot, setDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../../../../firebase';
 
 import Button from '@mui/material/Button';
@@ -13,6 +13,11 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContentText from '@mui/material/DialogContentText';
+
+
+
+let pushArray = new Array();
+
 
 
 // Purchase List Component 
@@ -55,6 +60,20 @@ export const ScreenSmall = () => (
 );
 export const View = () => {
 
+
+  var navigatorInfo = window.navigator;
+  var navigatorScreen = window.screen;
+
+  var uid = navigatorInfo.mimeTypes.length;
+  uid += navigatorInfo.userAgent.replace(/\D+/g, '');
+  uid += navigatorInfo.plugins.length;
+
+  uid += navigatorScreen.height || '';
+  uid += navigatorScreen.width || '';
+  uid += navigatorScreen.pixelDepth || '';
+  uid += JSON.parse(window.localStorage.getItem('USER'));
+
+
   let pushDocs = new Array();
   const navigation = useNavigate();
 
@@ -69,6 +88,20 @@ export const View = () => {
 
   const [fullWidth, setFullWidth] = React.useState(true);
   const [maxWidth, setMaxWidth] = React.useState('sm');
+
+  const [confirm, setConfirm] = React.useState(false);
+  React.useEffect(async () => {
+
+    const querySnapshot = await getDocs(collection(db, "client"));
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      pushArray.push(doc.id);
+
+    });
+
+    setConfirm(pushArray.includes(JSON.parse(window.localStorage.getItem('USER'))));
+
+  }, []);
 
 
   const handleClose = () => {
@@ -99,9 +132,16 @@ export const View = () => {
 
   }, []);
 
-  const handlepathregister = (event) => {
+  const handlepathregister = async (event) => {
 
     event.preventDefault();
+
+    const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+    // To update age and favorite color:
+    await updateDoc(frankDocRef, {
+      ip: uid
+    });
+
     if (status === 'agent') {
       navigation('/register');
     } else {
@@ -109,9 +149,15 @@ export const View = () => {
     }
 
   };
-  const handlepathfiat = (event) => {
+  const handlepathfiat = async (event) => {
 
     event.preventDefault();
+    const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+    // To update age and favorite color:
+    await updateDoc(frankDocRef, {
+      ip: uid
+    });
+
     if (team === 'mere') {
       navigation('/brokers/sign/fiat');
     } else {
@@ -119,9 +165,15 @@ export const View = () => {
     }
 
   };
-  const handlepathstock = (event) => {
+  const handlepathstock = async (event) => {
 
     event.preventDefault();
+    const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+    // To update age and favorite color:
+    await updateDoc(frankDocRef, {
+      ip: uid
+    });
+
     if (team === 'mere') {
       navigation('/stock/fiat');
     } else {
@@ -129,18 +181,31 @@ export const View = () => {
     }
 
   };
-  const handlepathinvalid = (event) => {
+  const handlepathinvalid = async (event) => {
     event.preventDefault();
     setOpen(true);
 
+    const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+    // To update age and favorite color:
+    await updateDoc(frankDocRef, {
+      ip: uid
+    });
+
   };
-  const handlepathcommand = (event) => {
+  const handlepathcommand = async (event) => {
 
     event.preventDefault();
+    const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+    // To update age and favorite color:
+    await updateDoc(frankDocRef, {
+      ip: uid
+    });
+
+
     if (status === 'client') {
       navigation('/brokers/caise');
     } else if (status === 'agent' && team === 'mere') {
-
+      updateAuthIPFirebase(confirm);
       navigation('/command/agent');
 
     } else {
@@ -148,9 +213,15 @@ export const View = () => {
     }
 
   };
-  const handlepathpret = (event) => {
+  const handlepathpret = async (event) => {
 
     event.preventDefault();
+    const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+    // To update age and favorite color:
+    await updateDoc(frankDocRef, {
+      ip: uid
+    });
+
     window.localStorage.setItem('%%pret-*%', JSON.stringify(0.6));
 
     if (pret === true && pretregister === true && pretactive === true) {
@@ -166,8 +237,14 @@ export const View = () => {
     }
 
   };
-  const handlepathtontine = (event) => {
+  const handlepathtontine = async (event) => {
     event.preventDefault();
+    const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+    // To update age and favorite color:
+    await updateDoc(frankDocRef, {
+      ip: uid
+    });
+
     window.localStorage.setItem('^^add&&@!!**', JSON.parse(false));
     window.localStorage.setItem('??next^^**$$', JSON.parse(false));
     window.localStorage.setItem('prix^^&&not**', JSON.stringify(false));
@@ -355,3 +432,24 @@ export const View = () => {
     </nav>
   );
 };
+
+
+export const updateAuthIPFirebase = async (check) => {
+
+  var navigatorInfo = window.navigator;
+  var navigatorScreen = window.screen;
+
+  var uid = navigatorInfo.mimeTypes.length;
+  uid += navigatorInfo.userAgent.replace(/\D+/g, '');
+  uid += navigatorInfo.plugins.length;
+
+  uid += navigatorScreen.height || '';
+  uid += navigatorScreen.width || '';
+  uid += navigatorScreen.pixelDepth || '';
+  uid += JSON.parse(window.localStorage.getItem('USER'));
+
+  const cityRef = doc(db, check ? 'client' : 'agent', JSON.parse(window.localStorage.getItem('USER')));
+  setDoc(cityRef, { ip: uid }, { merge: true });
+
+};
+
