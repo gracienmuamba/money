@@ -22,12 +22,9 @@ export default function AuthFirebaseToken() {
  const [user, setUser] = React.useState(null);
 
  React.useEffect(() => {
-
   const unRegistered = onAuthStateChanged(firebase.auth(), (currentUser) => {
    setUser(currentUser);
-   console.log(user);
   })
-
   return () => unRegistered();
 
  });

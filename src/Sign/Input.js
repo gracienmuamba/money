@@ -208,13 +208,9 @@ export const FormDataInput = () => {
 
    } else {
 
-    // const isExistClient = pushClient.includes(numPhone);
-    // const isExistAgent = pushAgent.includes(numPhone);
-
     const isExistClient = pushClient.some(value => value == numPhone);
     const isExistAgent = pushAgent.some(value => value == numPhone);
     const isInDataPhone = pushDocs.some(value => value == numPhone);
-
 
     if (isExistClient || isExistAgent) {
 
@@ -400,6 +396,7 @@ export const InputCodeRecaptcha = (props) => {
   uid += navigatorScreen.pixelDepth || '';
   uid += JSON.parse(window.localStorage.getItem('USER'));
 
+  let phoneNumber = '+243' + (JSON.parse(window.localStorage.getItem('USER'))).slice(1, 10);
 
   if (data.code === undefined) {
    window.setTimeout(() => {
@@ -441,21 +438,25 @@ export const InputCodeRecaptcha = (props) => {
 
      if (props.pin == data.code) {
 
-      if (uid === ipUid) {
+      window.setTimeout(() => {
+       if (uid === ipUid) {
 
-       window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(true));
-       window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
+        window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(true));
+        window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
 
-       window.setTimeout(() => {
-        navigation('/dash');
-        setLoading(false)
-       }, 950);
+        window.setTimeout(() => {
+         navigation('/dash');
+         setLoading(false)
+        }, 950);
 
-      }
-      else {
-       navigation('/auth/redirect/token');
-       window.console.log('redirects');
-      }
+       } else {
+
+        window.localStorage.setItem('hsd82&@&#(@**@((#@', JSON.stringify(phoneNumber));
+        window.console.log(phoneNumber);
+        navigation('/auth/redirect/token');
+       }
+
+      }, 750);
 
 
      } else {
