@@ -66,10 +66,11 @@ export const View = () => {
  }, []);
 
  var euro = value => currency(value, { separator: ' ', decimal: '.', symbol: '' });
+
  return (
   <>
    {asked === false && <Skeleton variant="rectangular" width={310} height={60} />}
-   {asked !== false && <p> {euro(asked).format()} {devise}</p>}
+   {asked !== false && <p> {euro(asked).format()} {(devise).includes('USD') ? 'USD' : 'CDF'}</p>}
   </>
  );
 };

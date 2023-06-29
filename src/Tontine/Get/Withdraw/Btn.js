@@ -85,14 +85,6 @@ export default function ReturnAskedWallet() {
 
 
 
- // const handleRemoveCol = async () => {
- //  await deleteDoc(doc(db, "tontine", JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')))
- //  );
- // };
-
-
-
-
  const handleButtonClick = async () => {
 
   setLoad(true);
@@ -136,7 +128,7 @@ export default function ReturnAskedWallet() {
   }, 500);
   window.setTimeout(async () => {
 
-   if (devise === 'CDF') {
+   if ((devise).includes('CDF') === 'CDF') {
 
     const washingtonRefCdf = doc(db, "client", JSON.parse(window.localStorage.getItem('USER')));
     // Set the "capital" field of the city 'DC'
@@ -144,7 +136,7 @@ export default function ReturnAskedWallet() {
      cdf: increment(asked)
     });
 
-   } else if (devise === 'USD') {
+   } else if ((devise).includes('USD') === 'USD') {
 
     const washingtonRefUsd = doc(db, "client", JSON.parse(window.localStorage.getItem('USER')));
     // Set the "capital" field of the city 'DC'
@@ -156,6 +148,7 @@ export default function ReturnAskedWallet() {
    }
 
   }, 1230);
+
 
   const listRef = doc(db, "tontine", JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')));
   // Atomically remove a region from the "regions" array field.
@@ -172,7 +165,6 @@ export default function ReturnAskedWallet() {
     setLoading(false);
    }, 6737);
   };
-
   window.setTimeout(async () => {
 
    if (JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘˚˚')).length == 1) {
@@ -180,7 +172,7 @@ export default function ReturnAskedWallet() {
    };
 
    await deleteDoc(doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('USER'))));
-   window.location.href = "/tontine";
+   window.location.href = "/dash";
   }, 1300);
 
  };
@@ -195,6 +187,7 @@ export default function ReturnAskedWallet() {
      <CircularProgress color="inherit" />
     </Backdrop>
    </div>
+
 
    {Number(count) === Number(position) &&
     <div className='wrp-btn-asked-tontine-withdraw'>

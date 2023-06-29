@@ -81,8 +81,6 @@ NumericFormatCustom.propTypes = {
 };
 
 
-
-
 // Return Phone input component
 export default function REturnInputPhone() {
  return (
@@ -219,7 +217,19 @@ export const FormInputValue = () => {
 
  }, []);
 
- const prixValue = statusOther === 'client' && status === 'agent' ? Math.floor(Number(prix)) - Number(watch('count')) : Math.floor(Number(value)) - Math.floor(Number(frais));
+ let prixValue = 0;
+ // const prixValue = statusOther === 'client' && status === 'agent' ? Math.floor(Number(prix)) - Number(watch('count')) : Math.floor(Number(value)) - Math.floor(Number(frais));
+
+ if (statusOther === 'client' && status === 'agent') {
+  prixValue = Math.floor(Number(prix)) - Number(watch('count'));
+ } else if (statusOther === 'agent' && status === 'agent') {
+  prixValue = Math.floor(Number(prix)) - Number(watch('count'));
+ }
+
+ else {
+  prixValue = Math.floor(Number(value)) - Math.floor(Number(frais));
+ }
+
 
  const onSubmit = async (data) => {
 

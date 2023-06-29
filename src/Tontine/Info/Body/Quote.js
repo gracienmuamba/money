@@ -21,7 +21,7 @@ export default function ReturnQuoTe() {
 
    <div className='title-qt-info-tontine'>
     <p>Devise Utiliser : </p>
-    <p>{devise.toUpperCase()}</p>
+    <p>{(devise.toUpperCase()).includes('USD') ? 'USD' : 'CDF'}</p>
    </div>
 
    <div className='title-qt-info-tontine'>

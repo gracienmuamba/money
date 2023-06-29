@@ -24,8 +24,6 @@ export default function REturnLogo() {
 };
 
 export const ScreenLarge = () => {
-
-
  return (
   <div className='wrp-logo-region'>
    <img src={'/img/logo.png'} alt={'logo view '} />

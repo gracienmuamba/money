@@ -95,6 +95,11 @@ function DrawerAppBar() {
 							<ul>
 								{
 									[...Array(pushDocs.length).keys()].map(index => {
+
+
+										let argent = '';
+										argent = (devise[index]) === undefined ? 'USD' : 'CDF';
+
 										return (
 											<div onClick={async () => {
 
@@ -125,7 +130,9 @@ function DrawerAppBar() {
 
 																</div>
 
-																<p>{money[index]} {devise[index]}</p>
+																{/* <p>{money[index]} {(devise[index]).includes('USD') ? 'USD' : 'CDF'}</p> */}
+																{/* <p>{money[index]} {(devise[index])}</p> */}
+																<p>{money[index]} {argent.includes('USD') ? 'USD' : 'CDF'}</p>
 															</li>
 
 														</ListItemButton>

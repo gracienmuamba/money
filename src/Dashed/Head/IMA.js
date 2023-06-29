@@ -4,6 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { doc, collection, getDocs, updateDoc } from "firebase/firestore";
 import { db } from '../../firebase';
 
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+
+
 let pushArray = new Array();
 
 // Return IMA
@@ -11,7 +15,9 @@ export default function ReturnIMA() {
 
  const navigation = useNavigate();
 
+ const [load, setLoad] = React.useState(false);
  const [confirm, setConfirm] = React.useState(false);
+
  React.useEffect(async () => {
 
   const querySnapshot = await getDocs(collection(db, "client"));
@@ -38,9 +44,9 @@ export default function ReturnIMA() {
  uid += navigatorScreen.pixelDepth || '';
  uid += JSON.parse(window.localStorage.getItem('USER'));
 
-
  const handlePath = async (event) => {
   event.preventDefault();
+  setLoad(true);
 
   const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
   // To update age and favorite color:
@@ -52,11 +58,22 @@ export default function ReturnIMA() {
    navigation('/profil');
   }, 500);
 
- }
+ };
 
  return (
-  <div onClick={handlePath} className='head-img-dashed'>
-   <img src={'/img/account-settings.png'} alt='images dash muungano' />
-  </div>
+  <>
+   <div className='zindex-theme'>
+    <Backdrop
+     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+     open={load}>
+
+     <CircularProgress color="inherit" />
+    </Backdrop>
+   </div>
+
+   <div onClick={handlePath} className='head-img-dashed'>
+    <img src={'/img/account-settings.png'} alt='images dash muungano' />
+   </div>
+  </>
  );
 };

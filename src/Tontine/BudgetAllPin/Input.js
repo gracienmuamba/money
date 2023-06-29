@@ -51,6 +51,7 @@ let userDevise = JSON.parse(window.localStorage.getItem('##!!devi&&*>>'));
 let listPush = JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘˚˚'));
 let lastChild = JSON.parse(window.localStorage.getItem('&&**++<///last{}'));
 
+window.console.log(userDevise);
 
 export const ScreenLarge = () => (
  <div className='wrp-form-input-nows'>
@@ -62,6 +63,8 @@ export const ScreenSmall = () => (
   <FormInputField />
  </div>
 );
+
+
 export const FormInputField = () => {
 
  let regular = /[a-z]+/;
@@ -81,7 +84,6 @@ export const FormInputField = () => {
 
  const [nothing, setNothing] = React.useState(false);
  const [open, setOpen] = React.useState(false);
-
 
  const [showPassword, setShowPassword] = React.useState(false);
 
@@ -146,6 +148,7 @@ export const FormInputField = () => {
      reset();
     } else {
 
+
      if (userDevise === 'USD') {
       if (Number(parseInt(usd)) < Number(rising)) {
 
@@ -191,7 +194,7 @@ export const FormInputField = () => {
        }, 9394);
       }
 
-     } else {
+     } else if (userDevise === 'CDF') {
 
       if (Number(parseInt(cdf)) < Number(rising)) {
 
@@ -209,7 +212,6 @@ export const FormInputField = () => {
         accretionAskedTontineAll();
        } else if (lastChild === false) {
         accretionAskedTontineAll();
-        // accretionAskedTontine(Number(asked));
        } else {
         window.console.log('nothing!');
        };
@@ -239,7 +241,16 @@ export const FormInputField = () => {
 
       }
 
+     } else {
+
+      window.alert('error nothing');
+      navigation('/tontine/list/group/child/budget');
+
      }
+
+
+
+
     }
    };
   }
@@ -403,7 +414,6 @@ export async function accretionAskedTontine(asked) {
  });
 
 };
-
 export async function accretionAddUpdate(rising) {
 
  const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('USER')));
@@ -417,7 +427,6 @@ export async function accretionAddUpdate(rising) {
  });
 
 };
-
 export async function accretionAskedTontineAll() {
 
  const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++')));

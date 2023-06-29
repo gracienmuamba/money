@@ -9,7 +9,7 @@ import ReturnQuote from './Quote';
 import { useForm, Controller } from 'react-hook-form';
 // Firebase Auth for phone
 import { db, auth } from '../firebase';
-import { doc, updateDoc, onSnapshot, collection, getDocs, setDoc, getDocFromCache } from "firebase/firestore";
+import { doc, updateDoc, onSnapshot, collection, getDocs, setDoc } from "firebase/firestore";
 
 
 import Button from '@mui/material/Button';
@@ -27,13 +27,17 @@ import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { reactLocalStorage } from 'reactjs-localstorage';
 
 import PropTypes from 'prop-types';
 import { IMaskInput } from 'react-imask';
 import { NumericFormat } from 'react-number-format';
 import FormControl from '@mui/material/FormControl';
 import REturnlogo from './Logo';
+import ls from 'localstorage-slim';
+
+
+
+ls.config.encrypt = true;
 
 
 let expireNum = 10;
@@ -220,8 +224,8 @@ export const FormDataInput = () => {
 
      phoneX = numPhone;
      window.localStorage.setItem('USER', JSON.stringify(numPhone));
-     setChecked(false);
 
+     setChecked(false);
      window.setTimeout(() => {
       setLoading(false)
      }, 500);
@@ -361,14 +365,7 @@ export const InputCodeRecaptcha = (props) => {
 
  React.useEffect(async () => {
   const unsub = onSnapshot(doc(db, isInDataPhone ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
-
-   if (doc.data().ip === undefined) {
-    setIpUid('');
-    console.log('ip no disponible');
-   } else {
-    setIpUid(doc.data().ip);
-   }
-
+   setIpUid(doc.data().ip);
   });
 
  }, []);
@@ -383,7 +380,6 @@ export const InputCodeRecaptcha = (props) => {
  const onSubmitOTP = async (data) => {
 
   setLoading(true);
-
   var navigatorInfo = window.navigator;
   var navigatorScreen = window.screen;
 
@@ -395,8 +391,6 @@ export const InputCodeRecaptcha = (props) => {
   uid += navigatorScreen.width || '';
   uid += navigatorScreen.pixelDepth || '';
   uid += JSON.parse(window.localStorage.getItem('USER'));
-
-  let phoneNumber = '+243' + (JSON.parse(window.localStorage.getItem('USER'))).slice(1, 10);
 
   if (data.code === undefined) {
    window.setTimeout(() => {
@@ -424,6 +418,7 @@ export const InputCodeRecaptcha = (props) => {
 
      window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(true));
      window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
+     ls.set('last##73**++Phone &&*@&&@@Number', JSON.parse(window.localStorage.getItem('USER')), { encrypt: true, secret: 500 });
 
      let verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
      const cityRef = doc(db, verifierCollection ? 'client' : 'agent', JSON.parse(window.localStorage.getItem('USER')));
@@ -438,8 +433,12 @@ export const InputCodeRecaptcha = (props) => {
 
      if (props.pin == data.code) {
 
+      // window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(true));
+      // window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
+      // navigation('/dash');
+
       window.setTimeout(() => {
-       if (uid === ipUid) {
+       if (uid === ipUid && JSON.parse(window.localStorage.getItem('USER')) === ls.get('last##73**++Phone &&*@&&@@Number', { decrypt: true, secret: 500 })) {
 
         window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(true));
         window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
@@ -450,16 +449,12 @@ export const InputCodeRecaptcha = (props) => {
         }, 950);
 
        } else {
-
-        window.localStorage.setItem('hsd82&@&#(@**@((#@', JSON.stringify(phoneNumber));
-        window.console.log(phoneNumber);
         navigation('/auth/redirect/token');
        }
-
       }, 750);
 
-
      } else {
+
       setOtp(true);
       window.setTimeout(() => {
        setOpen(true);

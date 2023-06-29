@@ -14,6 +14,9 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContentText from '@mui/material/DialogContentText';
 
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 
 let pushArray = new Array();
@@ -22,434 +25,461 @@ let pushArray = new Array();
 
 // Purchase List Component 
 export default function ReturnListPurchAse() {
-  return (
-    <Media
-      queries={{
-        small: '(max-width: 599px)',
-        medium: '(min-width: 600px) and (max-width:1199px)',
-        large: '(min-width: 1200px)',
-      }}>
-      {matches => (
-        <>
-          {matches.small && <ScreenSmall />}
-          {matches.medium && <ScreenMedium />}
-          {matches.large && <ScreenLarge />}
-        </>
-      )}
-    </Media>
-  );
+ return (
+  <Media
+   queries={{
+    small: '(max-width: 599px)',
+    medium: '(min-width: 600px) and (max-width:1199px)',
+    large: '(min-width: 1200px)',
+   }}>
+   {matches => (
+    <>
+     {matches.small && <ScreenSmall />}
+     {matches.medium && <ScreenMedium />}
+     {matches.large && <ScreenLarge />}
+    </>
+   )}
+  </Media>
+ );
 };
 
 export const ScreenLarge = () => (
-  <div className='wrp-list-purchase-dashed'>
-    <View />
+ <div className='wrp-list-purchase-dashed'>
+  <View />
 
-  </div>
+ </div>
 );
 export const ScreenMedium = () => (
-  <div className='wrp-list-purchase-dashed-md'>
-    <View />
+ <div className='wrp-list-purchase-dashed-md'>
+  <View />
 
-  </div>
+ </div>
 );
 export const ScreenSmall = () => (
-  <div className='wrp-list-purchase-dashed-sm'>
-    <View />
+ <div className='wrp-list-purchase-dashed-sm'>
+  <View />
 
-  </div>
+ </div>
 );
 export const View = () => {
 
 
-  var navigatorInfo = window.navigator;
-  var navigatorScreen = window.screen;
+ var navigatorInfo = window.navigator;
+ var navigatorScreen = window.screen;
 
-  var uid = navigatorInfo.mimeTypes.length;
-  uid += navigatorInfo.userAgent.replace(/\D+/g, '');
-  uid += navigatorInfo.plugins.length;
+ var uid = navigatorInfo.mimeTypes.length;
+ uid += navigatorInfo.userAgent.replace(/\D+/g, '');
+ uid += navigatorInfo.plugins.length;
 
-  uid += navigatorScreen.height || '';
-  uid += navigatorScreen.width || '';
-  uid += navigatorScreen.pixelDepth || '';
-  uid += JSON.parse(window.localStorage.getItem('USER'));
-
-
-  let pushDocs = new Array();
-  const navigation = useNavigate();
-
-  const [Open, setOpen] = React.useState(false);
-  const [pretOpen, setPretOpen] = React.useState(false);
-  const [status, setStatus] = React.useState(null);
-  const [team, setTeam] = React.useState('simple');
-
-  const [pret, setPret] = React.useState(null);
-  const [pretregister, setPretregister] = React.useState(null);
-  const [pretactive, setPretactive] = React.useState(null);
-
-  const [fullWidth, setFullWidth] = React.useState(true);
-  const [maxWidth, setMaxWidth] = React.useState('sm');
-
-  const [confirm, setConfirm] = React.useState(false);
-  React.useEffect(async () => {
-
-    const querySnapshot = await getDocs(collection(db, "client"));
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      pushArray.push(doc.id);
-
-    });
-
-    setConfirm(pushArray.includes(JSON.parse(window.localStorage.getItem('USER'))));
-
-  }, []);
+ uid += navigatorScreen.height || '';
+ uid += navigatorScreen.width || '';
+ uid += navigatorScreen.pixelDepth || '';
+ uid += JSON.parse(window.localStorage.getItem('USER'));
 
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-  const handlePretClose = () => {
-    setPretOpen(false);
-  };
+ let pushDocs = new Array();
+ const navigation = useNavigate();
+ const [load, setLoad] = React.useState(false);
+
+ const [Open, setOpen] = React.useState(false);
+ const [pretOpen, setPretOpen] = React.useState(false);
+ const [status, setStatus] = React.useState(null);
+ const [team, setTeam] = React.useState('simple');
+
+ const [pret, setPret] = React.useState(null);
+ const [pretregister, setPretregister] = React.useState(null);
+ const [pretactive, setPretactive] = React.useState(null);
+
+ const [fullWidth, setFullWidth] = React.useState(true);
+ const [maxWidth, setMaxWidth] = React.useState('sm');
+
+ const [confirm, setConfirm] = React.useState(false);
+ React.useEffect(async () => {
+
+  const querySnapshot = await getDocs(collection(db, "client"));
+  querySnapshot.forEach((doc) => {
+   // doc.data() is never undefined for query doc snapshots
+   pushArray.push(doc.id);
+
+  });
+
+  setConfirm(pushArray.includes(JSON.parse(window.localStorage.getItem('USER'))));
+
+ }, []);
 
 
-  React.useEffect(async () => {
-
-    const querySnapshot = await getDocs(collection(db, "client"));
-    querySnapshot.forEach((doc) => {
-      pushDocs.push(doc.id);
-    });
-
-    const verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
-    const unsub = onSnapshot(doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
-      setStatus(doc.data().state);
-      setTeam(doc.data().team);
-      setPret(doc.data().pret);
-      setPretregister(doc.data().pretregister);
-      setPretregister(doc.data().pretregister);
-      setPretactive(doc.data().pretactive);
-    });
+ const handleClose = () => {
+  setOpen(false);
+ };
+ const handlePretClose = () => {
+  setPretOpen(false);
+ };
 
 
-  }, []);
+ React.useEffect(async () => {
 
-  const handlepathregister = async (event) => {
+  const querySnapshot = await getDocs(collection(db, "client"));
+  querySnapshot.forEach((doc) => {
+   pushDocs.push(doc.id);
+  });
 
-    event.preventDefault();
-
-    const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
-    // To update age and favorite color:
-    await updateDoc(frankDocRef, {
-      ip: uid
-    });
-
-    if (status === 'agent') {
-      navigation('/register');
-    } else {
-      setPretOpen(true);
-    }
-
-  };
-  const handlepathfiat = async (event) => {
-
-    event.preventDefault();
-    const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
-    // To update age and favorite color:
-    await updateDoc(frankDocRef, {
-      ip: uid
-    });
-
-    if (team === 'mere') {
-      navigation('/brokers/sign/fiat');
-    } else {
-      setPretOpen(true);
-    }
-
-  };
-  const handlepathstock = async (event) => {
-
-    event.preventDefault();
-    const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
-    // To update age and favorite color:
-    await updateDoc(frankDocRef, {
-      ip: uid
-    });
-
-    if (team === 'mere') {
-      navigation('/stock/fiat');
-    } else {
-      setPretOpen(true);
-    }
-
-  };
-  const handlepathinvalid = async (event) => {
-    event.preventDefault();
-    setOpen(true);
-
-    const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
-    // To update age and favorite color:
-    await updateDoc(frankDocRef, {
-      ip: uid
-    });
-
-  };
-  const handlepathcommand = async (event) => {
-
-    event.preventDefault();
-    const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
-    // To update age and favorite color:
-    await updateDoc(frankDocRef, {
-      ip: uid
-    });
+  const verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
+  const unsub = onSnapshot(doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   setStatus(doc.data().state);
+   setTeam(doc.data().team);
+   setPret(doc.data().pret);
+   setPretregister(doc.data().pretregister);
+   setPretregister(doc.data().pretregister);
+   setPretactive(doc.data().pretactive);
+  });
 
 
-    if (status === 'client') {
-      navigation('/brokers/caise');
-    } else if (status === 'agent' && team === 'mere') {
-      updateAuthIPFirebase(confirm);
-      navigation('/command/agent');
+ }, []);
 
-    } else {
-      window.console.log('thank');
-    }
+ const handlepathregister = async (event) => {
 
-  };
-  const handlepathpret = async (event) => {
+  event.preventDefault();
+  setLoad(true);
 
-    event.preventDefault();
-    const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
-    // To update age and favorite color:
-    await updateDoc(frankDocRef, {
-      ip: uid
-    });
+  const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+  // To update age and favorite color:
+  await updateDoc(frankDocRef, {
+   ip: uid
+  });
 
-    window.localStorage.setItem('%%pret-*%', JSON.stringify(0.6));
-
-    if (pret === true && pretregister === true && pretactive === true) {
-      navigation('/pret/dash');
-      window.localStorage.setItem('^^snack->', JSON.stringify(false));
-
-    } else if (pret === true && pretregister === true) {
-      navigation('/pret/send');
-    } else if (pret === true) {
-      navigation('/pret');
-    } else {
-      navigation('/pret');
-    }
-
-  };
-  const handlepathtontine = async (event) => {
-    event.preventDefault();
-    const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
-    // To update age and favorite color:
-    await updateDoc(frankDocRef, {
-      ip: uid
-    });
-
-    window.localStorage.setItem('^^add&&@!!**', JSON.parse(false));
-    window.localStorage.setItem('??next^^**$$', JSON.parse(false));
-    window.localStorage.setItem('prix^^&&not**', JSON.stringify(false));
-    navigation('/tontine');
+  if (status === 'agent') {
+   navigation('/register');
+  } else {
+   setPretOpen(true);
   }
 
-  return (
-    <nav className='Anima'>
-      <ul>
+ };
+ const handlepathfiat = async (event) => {
 
-        <li onClick={() => navigation('/valid-fc')}>
-          <div className='wrp-list-abs'>
-            <ReturnICOn IMA={'/img/money.png'} />
-            <span>
-              Envoi Monnaies
+  event.preventDefault();
+  setLoad(true);
+
+
+  const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+  // To update age and favorite color:
+  await updateDoc(frankDocRef, {
+   ip: uid
+  });
+
+  if (team === 'mere') {
+   navigation('/brokers/sign/fiat');
+  } else {
+   setPretOpen(true);
+  }
+
+ };
+ const handlepathstock = async (event) => {
+
+  event.preventDefault();
+  setLoad(true);
+
+  const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+  // To update age and favorite color:
+  await updateDoc(frankDocRef, {
+   ip: uid
+  });
+
+  if (team === 'mere') {
+   navigation('/stock/fiat');
+  } else {
+   setPretOpen(true);
+  }
+
+ };
+ const handlepathinvalid = async (event) => {
+  event.preventDefault();
+  setLoad(true);
+  setOpen(true);
+
+  const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+  // To update age and favorite color:
+  await updateDoc(frankDocRef, {
+   ip: uid
+  });
+
+ };
+ const handlepathcommand = async (event) => {
+
+  event.preventDefault();
+  setLoad(true);
+
+  const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+  // To update age and favorite color:
+  await updateDoc(frankDocRef, {
+   ip: uid
+  });
+
+
+  if (status === 'client') {
+   navigation('/brokers/caise');
+  } else if (status === 'agent' && team === 'mere') {
+   updateAuthIPFirebase(confirm);
+   navigation('/command/agent');
+
+  } else {
+   window.console.log('thank');
+  }
+
+ };
+ const handlepathpret = async (event) => {
+
+  event.preventDefault();
+  setLoad(true);
+
+  const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+  // To update age and favorite color:
+  await updateDoc(frankDocRef, {
+   ip: uid
+  });
+
+  // window.localStorage.setItem('%%pret-*%', JSON.stringify(0.6));
+
+  if (pret === true && pretregister === true && pretactive === true) {
+   navigation('/pret/dash');
+   window.localStorage.setItem('^^snack->', JSON.stringify(false));
+
+  } else if (pret === true && pretregister === true) {
+   navigation('/pret/send');
+  } else if (pret === true) {
+   navigation('/pret');
+  } else {
+   navigation('/pret');
+  }
+
+ };
+ const handlepathtontine = async (event) => {
+  event.preventDefault();
+  setLoad(true);
+
+  const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+  // To update age and favorite color:
+  await updateDoc(frankDocRef, {
+   ip: uid
+  });
+
+  window.localStorage.setItem('^^add&&@!!**', JSON.parse(false));
+  window.localStorage.setItem('??next^^**$$', JSON.parse(false));
+  window.localStorage.setItem('prix^^&&not**', JSON.stringify(false));
+  navigation('/tontine');
+ }
+
+ return (
+  <>
+
+   <div className='zindex-theme'>
+    <Backdrop
+     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+     open={load}>
+
+     <CircularProgress color="inherit" />
+    </Backdrop>
+   </div>
+
+   <nav className='Anima'>
+    <ul>
+
+     <li onClick={() => navigation('/valid-fc')}>
+      <div className='wrp-list-abs'>
+       <ReturnICOn IMA={'/img/money.png'} />
+       <span>
+        Envoi Monnaies
        </span>
-          </div>
-        </li>
+      </div>
+     </li>
 
-        {(status === 'agent' && team === 'simple') &&
-          <li onClick={() => navigation('/brokers/unite')}>
-            <div className='wrp-list-abs'>
-              <ReturnICOn IMA={'/img/stock.png'} />
-              <span>
-                Unité stock
+     {(status === 'agent' && team === 'simple') &&
+      <li onClick={() => navigation('/brokers/unite')}>
+       <div className='wrp-list-abs'>
+        <ReturnICOn IMA={'/img/stock.png'} />
+        <span>
+         Unité stock
      </span>
-            </div>
-          </li>
+       </div>
+      </li>
 
-        }
+     }
 
-        {((status === 'agent' && team === 'mere') || status === 'client') &&
-          <li onClick={() => navigation('/brokers/unite')}>
-            <div className='wrp-list-abs'>
-              <ReturnICOn IMA={'/img/mobile-phones.png'} />
-              <span>
-                Unité
+     {((status === 'agent' && team === 'mere') || status === 'client') &&
+      <li onClick={() => navigation('/brokers/unite')}>
+       <div className='wrp-list-abs'>
+        <ReturnICOn IMA={'/img/mobile-phones.png'} />
+        <span>
+         Unité
      </span>
-            </div>
+       </div>
 
-          </li>
+      </li>
 
-        }
+     }
 
-        {(status === 'agent' && team === 'mere') &&
-          <li onClick={handlepathstock}>
-            <div className='wrp-list-abs'>
-              <ReturnICOn IMA={'/img/Stock.png'} />
-              <span>
-                Unité stock
+     {(status === 'agent' && team === 'mere') &&
+      <li onClick={handlepathstock}>
+       <div className='wrp-list-abs'>
+        <ReturnICOn IMA={'/img/Stock.png'} />
+        <span>
+         Unité stock
         </span>
-            </div>
-          </li>
-        }
+       </div>
+      </li>
+     }
 
-        <li onClick={handlepathinvalid}>
-          <div className='wrp-list-abs'>
-            <ReturnICOn IMA={'/img/electricity.png'} />
-            <span>
-              Muungano Énergie
+     <li onClick={handlepathinvalid}>
+      <div className='wrp-list-abs'>
+       <ReturnICOn IMA={'/img/electricity.png'} />
+       <span>
+        Muungano Énergie
         </span>
-          </div>
-        </li>
+      </div>
+     </li>
 
-        <li onClick={handlepathinvalid}>
-          <div className='wrp-list-abs'>
-            <ReturnICOn IMA={'/img/television.png'} />
-            <span>
-              TV
+     <li onClick={handlepathinvalid}>
+      <div className='wrp-list-abs'>
+       <ReturnICOn IMA={'/img/television.png'} />
+       <span>
+        TV
      </span>
-          </div>
-        </li>
+      </div>
+     </li>
 
-        {(status === 'agent' && team === 'mere') &&
-          <li onClick={handlepathfiat}>
-            <div className='wrp-list-abs'>
-              <ReturnICOn IMA={'/img/add-fiat.png'} />
-              <span>
-                Enregistré Fiat
+     {(status === 'agent' && team === 'mere') &&
+      <li onClick={handlepathfiat}>
+       <div className='wrp-list-abs'>
+        <ReturnICOn IMA={'/img/add-fiat.png'} />
+        <span>
+         Enregistré Fiat
        </span>
-            </div>
-          </li>
+       </div>
+      </li>
 
-        }
-        <li onClick={() => navigation('/wallet')}>
-          <div className='wrp-list-abs'>
-            <ReturnICOn IMA={'/img/donate.png'} />
-            <span>
-              Coffres
+     }
+     <li onClick={() => navigation('/wallet')}>
+      <div className='wrp-list-abs'>
+       <ReturnICOn IMA={'/img/donate.png'} />
+       <span>
+        Coffres
        </span>
-          </div>
-        </li>
+      </div>
+     </li>
 
 
-        {status === 'client' &&
-          <li onClick={handlepathpret}>
-            <div className='wrp-list-abs'>
-              <span>
-                <ReturnICOn IMA={'/img/pret.png'} />
-              </span>
-              <span>
-                Prêt
+     {status === 'client' &&
+      <li onClick={handlepathpret}>
+       <div className='wrp-list-abs'>
+        <span>
+         <ReturnICOn IMA={'/img/pret.png'} />
+        </span>
+        <span>
+         Prêt
        </span>
-            </div>
-          </li>
-        }
+       </div>
+      </li>
+     }
 
-        {(status === 'agent') &&
-          <li onClick={handlepathregister}>
-            <div className='wrp-list-abs'>
-              <ReturnICOn IMA={'/img/enroll.png'} />
-              <span>
-                Enregistré Client
+     {(status === 'agent') &&
+      <li onClick={handlepathregister}>
+       <div className='wrp-list-abs'>
+        <ReturnICOn IMA={'/img/enroll.png'} />
+        <span>
+         Enregistré Client
        </span>
-            </div>
-          </li>
-        }
+       </div>
+      </li>
+     }
 
-        {status === 'client' &&
-          <li onClick={handlepathtontine}>
-            <div className='wrp-list-abs'>
-              <ReturnICOn IMA={'/img/friends.png'} />
-              <span>
-                Tontine
+     {status === 'client' &&
+      <li onClick={handlepathtontine}>
+       <div className='wrp-list-abs'>
+        <ReturnICOn IMA={'/img/friends.png'} />
+        <span>
+         Tontine
        </span>
-            </div>
-          </li>
-        }
+       </div>
+      </li>
+     }
 
-        {(status === 'agent' && team === 'mere') &&
-          <li onClick={handlepathcommand}>
-            <div className='wrp-list-abs'>
-              <ReturnICOn IMA={'/img/caise.png'} />
-              <span>
-                Commande
+     {(status === 'agent' && team === 'mere') &&
+      <li onClick={handlepathcommand}>
+       <div className='wrp-list-abs'>
+        <ReturnICOn IMA={'/img/caise.png'} />
+        <span>
+         Commande
            </span>
-            </div>
-          </li>
+       </div>
+      </li>
 
-        }
-      </ul>
+     }
+    </ul>
 
-      <Dialog
-        fullWidth={fullWidth}
-        maxWidth={maxWidth}
-        open={pretOpen}
-        onClose={handlePretClose}>
+    <Dialog
+     fullWidth={fullWidth}
+     maxWidth={maxWidth}
+     open={pretOpen}
+     onClose={handlePretClose}>
 
-        <DialogTitle><span className='pop-up'>MuunganoMoney</span></DialogTitle>
-        <DialogContent>
+     <DialogTitle><span className='pop-up'>MuunganoMoney</span></DialogTitle>
+     <DialogContent>
 
-          <DialogContentText>
-            <p className='pop-up'>
-              Désolé, vous n'êtes pas autorisé à utiliser ce service
+      <DialogContentText>
+       <p className='pop-up'>
+        Désolé, vous n'êtes pas autorisé à utiliser ce service
             </p>
-          </DialogContentText>
+      </DialogContentText>
 
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handlePretClose}><span className='pop-up'>Fermer</span></Button>
-        </DialogActions>
-      </Dialog>
+     </DialogContent>
+     <DialogActions>
+      <Button onClick={handlePretClose}><span className='pop-up'>Fermer</span></Button>
+     </DialogActions>
+    </Dialog>
 
-      <Dialog
-        fullWidth={fullWidth}
-        maxWidth={maxWidth}
-        open={Open}
-        onClose={handleClose}>
+    <Dialog
+     fullWidth={fullWidth}
+     maxWidth={maxWidth}
+     open={Open}
+     onClose={handleClose}>
 
-        <DialogTitle><span className='pop-up'>MuunganoMoney</span></DialogTitle>
-        <DialogContent>
+     <DialogTitle><span className='pop-up'>MuunganoMoney</span></DialogTitle>
+     <DialogContent>
 
-          <DialogContentText>
-            <p className='pop-up'>
-              Ce service est actuellement indisponible
+      <DialogContentText>
+       <p className='pop-up'>
+        Ce service est actuellement indisponible
             </p>
-          </DialogContentText>
+      </DialogContentText>
 
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
-        </DialogActions>
-      </Dialog>
+     </DialogContent>
+     <DialogActions>
+      <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
+     </DialogActions>
+    </Dialog>
 
-    </nav>
-  );
+   </nav>
+
+  </>
+
+ );
 };
-
 
 export const updateAuthIPFirebase = async (check) => {
 
-  var navigatorInfo = window.navigator;
-  var navigatorScreen = window.screen;
+ var navigatorInfo = window.navigator;
+ var navigatorScreen = window.screen;
 
-  var uid = navigatorInfo.mimeTypes.length;
-  uid += navigatorInfo.userAgent.replace(/\D+/g, '');
-  uid += navigatorInfo.plugins.length;
+ var uid = navigatorInfo.mimeTypes.length;
+ uid += navigatorInfo.userAgent.replace(/\D+/g, '');
+ uid += navigatorInfo.plugins.length;
 
-  uid += navigatorScreen.height || '';
-  uid += navigatorScreen.width || '';
-  uid += navigatorScreen.pixelDepth || '';
-  uid += JSON.parse(window.localStorage.getItem('USER'));
+ uid += navigatorScreen.height || '';
+ uid += navigatorScreen.width || '';
+ uid += navigatorScreen.pixelDepth || '';
+ uid += JSON.parse(window.localStorage.getItem('USER'));
 
-  const cityRef = doc(db, check ? 'client' : 'agent', JSON.parse(window.localStorage.getItem('USER')));
-  setDoc(cityRef, { ip: uid }, { merge: true });
+ const cityRef = doc(db, check ? 'client' : 'agent', JSON.parse(window.localStorage.getItem('USER')));
+ setDoc(cityRef, { ip: uid }, { merge: true });
 
 };
 

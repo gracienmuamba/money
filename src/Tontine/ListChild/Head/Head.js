@@ -114,7 +114,8 @@ function DrawerAppBar() {
              if (listPush[index] === JSON.parse(window.localStorage.getItem('USER'))) {
 
               setLoad(true);
-              window.localStorage.setItem('##!!devi&&*>>', JSON.stringify(currency));
+              window.localStorage.setItem('##!!devi&&*>>', JSON.stringify((currency).includes('USD') ? 'USD' : 'CDF'));
+
               window.localStorage.setItem('>>pos;;{}$$++==act...', JSON.stringify(active));
               window.setTimeout(() => {
                navigation('/tontine/list/group/child/budget');

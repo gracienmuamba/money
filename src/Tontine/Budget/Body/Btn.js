@@ -108,18 +108,22 @@ export function View() {
 		window.localStorage.setItem('***#$$pso..<<add++', JSON.stringify(position));
 		window.localStorage.setItem('***#$$pso..<<askedpos**++', JSON.stringify(listNumber[askedPosition]));
 
-
 		window.setTimeout(() => {
+
 			if (Number(count) === (Number(position) + 1)) {
 
 				window.console.log('all');
 				if ((Number(askedPosition) + 1) === Number(count)) {
+
 					window.localStorage.setItem('&&**++<///last{}', JSON.stringify(true));
 					window.localStorage.setItem('!@@++baskte&&++', JSON.stringify(Number(asked) + Number(rising)));
+
+
 				} else {
 					window.localStorage.setItem('&&**++<///last{}', JSON.stringify(false));
 					window.localStorage.setItem('!@@++baskte&&++', JSON.stringify(Number(asked)));
 				}
+
 				navigation('/tontine/list/group/child/budget/pin/all');
 
 			} else {

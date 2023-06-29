@@ -9,10 +9,14 @@ import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 
 import PropTypes from 'prop-types';
-import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { VscCheck } from 'react-icons/vsc';
+
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+
+import { useNavigate } from 'react-router-dom';
 
 
 let pushDocs = new Array();
@@ -95,6 +99,10 @@ export const LetteRName = () => {
  const [viewBtn, setViewBtn] = React.useState(false);
  const [exten, setExten] = React.useState(null);
 
+ const [load, setLoad] = React.useState(false);
+
+ const navigation = useNavigate();
+
  React.useEffect(async () => {
 
   const querySnapshot = await getDocs(collection(db, "client"));
@@ -112,6 +120,8 @@ export const LetteRName = () => {
  }, []);
 
  const uploadImage = async () => {
+
+  setLoad(true);
 
   if (imageUpload == null)
    return;
@@ -160,39 +170,59 @@ export const LetteRName = () => {
     window.console.log('Error Reomve');
     // Uh-oh, an error occurred!
    });
-  }
+  };
+
+ };
+
+ if (progress === 100) {
+  navigation(0);
+  window.console.log('cool');
+ } else {
+  window.console.log('not cool');
 
  }
 
  return (
-  <div className='wrp-profil-avatar-user'>
+  <>
+   <div className='zindex-theme'>
+    <Backdrop
+     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+     open={load}>
 
-   <IconButton color="primary" aria-label="upload picture" component="label">
-    <div className='profile-user'>
+     <CircularProgress color="inherit" />
+    </Backdrop>
+   </div>
 
-     <img src={profil} />
 
-     <input
-      hidden
-      accept="image/*"
-      type="file"
-      onChange={(event) => {
-       setImageUpload(event.target.files[0]);
-       setViewBtn(true);
-      }
-      }
+   <div className='wrp-profil-avatar-user'>
 
-     />
-     <div className='icon-camera-profil'>
-      <PhotoCamera />
+    <IconButton color="primary" aria-label="upload picture" component="label">
+     <div className='profile-user'>
+
+      <img src={profil} />
+      <input
+       hidden
+       accept="image/*"
+       type="file"
+       onChange={(event) => {
+        setImageUpload(event.target.files[0]);
+        setViewBtn(true);
+       }
+       }
+
+      />
+      <div className='icon-camera-profil'>
+       <PhotoCamera />
+      </div>
      </div>
-    </div>
-   </IconButton>
+    </IconButton>
 
-   <CircularProgressWithLabel value={progress} />
-   {viewBtn && <button onClick={uploadImage}>
-    <span>Cliqué pour changer image </span><VscCheck size={'1.2em'} /></button>}
-  </div>
+    <CircularProgressWithLabel value={progress} />
+    {viewBtn && <button onClick={uploadImage}>
+     <span>Cliqué pour changer image </span><VscCheck size={'1.2em'} /></button>}
+   </div>
+
+  </>
  );
 };
 

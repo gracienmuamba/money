@@ -8,6 +8,9 @@ import Chip from '@mui/material/Chip';
 import Avatar from '@mui/material/Avatar';
 import { reactLocalStorage } from 'reactjs-localstorage';
 
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 let pushArray = new Array();
 
@@ -16,6 +19,7 @@ let pushArray = new Array();
 export default function ReturnLogouTButton() {
 
  const [list, setList] = React.useState([]);
+ const [load, setLoad] = React.useState(false);
 
  var navigatorInfo = window.navigator;
  var navigatorScreen = window.screen;
@@ -40,13 +44,17 @@ export default function ReturnLogouTButton() {
 
   setList(pushArray);
  }, []);
+
  const handlepathOut = async () => {
+
+  setLoad(true);
 
   const docRef = doc(db, list.includes(JSON.parse(window.localStorage.getItem('USER'))) ? 'client' : 'agent', JSON.parse(window.localStorage.getItem('USER')));
   // Update the timestamp field with the value from the server
   await updateDoc(docRef, {
    ip: uid
   });
+
   window.setTimeout(() => {
 
    reactLocalStorage.remove('USER');
@@ -78,16 +86,28 @@ export default function ReturnLogouTButton() {
 
  };
  return (
-  <div onClick={handlepathOut} className='wrp-logout-ima'>
+  <>
+   <div className='zindex-theme'>
+    <Backdrop
+     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+     open={load}>
 
-   <Chip
-    variant="outlined"
-    label={<div className='child-custom'>Déconnecter</div>}
-    color="info" avatar={<Avatar src="/img/pwer.png" />}
+     <CircularProgress color="inherit" />
+    </Backdrop>
+   </div>
 
-   />
+   <div onClick={handlepathOut} className='wrp-logout-ima'>
 
-  </div>
+    <Chip
+     variant="outlined"
+     label={<div className='child-custom'>Déconnecter</div>}
+     color="info" avatar={<Avatar src="/img/pwer.png" />}
+
+    />
+
+   </div>
+
+  </>
  );
 };
 

@@ -445,7 +445,7 @@ async function swapInWithDocsAgent(sendPhone, getPhone, sendUser, getUser, main,
   delay: moment().format(),
   swap: arrayUnion(send),
   commission: 0,
-  frais: frais,
+  frais: 0,
   sendtype: 'envoyer'
  });
 

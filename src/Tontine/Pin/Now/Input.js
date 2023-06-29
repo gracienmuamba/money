@@ -84,10 +84,10 @@ export const FormInputField = () => {
  let listgroup = JSON.parse(window.localStorage.getItem('@@xi^^,view**++'));
  let docTon = namegroup + JSON.parse(window.localStorage.getItem('USER'));
 
-
  const handleClose = () => {
   setOpen(false);
- }
+ };
+
  React.useEffect(async () => {
 
   try {
@@ -101,22 +101,26 @@ export const FormInputField = () => {
  }, []);
 
  const onSubmit = async (data) => {
+
   setLoad(true);
 
   if (data.code === undefined) {
    setOpen(true);
+   setLoad(false);
    reset();
 
   } else {
 
    if (data.code.length != 6 || regular.test(data.code)) {
     setOpen(true);
+    setLoad(false);
     reset();
 
    } else {
 
     if (pin != data.code) {
      setOpen(true);
+     setLoad(false);
      reset();
     } else {
 
@@ -275,7 +279,6 @@ export async function decrementMoneyClientFran(money) {
  });
 
 };
-
 // create Group tontine in the list
 export async function createTontine(docUser, rising, asked, count, currency, table) {
  // Add a new document in collection "client"

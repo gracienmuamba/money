@@ -25,8 +25,8 @@ function DrawerAppBar() {
  const navigation = useNavigate();
 
  const [load, setLoad] = React.useState(false);
- const [money, setMoney] = React.useState(['']);
- const [devise, setDevise] = React.useState(['']);
+ const [money, setMoney] = React.useState([' ']);
+ const [devise, setDevise] = React.useState('');
 
  const pushDocs = JSON.parse(window.localStorage.getItem('&&view$$list£¢ton…'));
  const pushOther = JSON.parse(window.localStorage.getItem('&&view$$list£¢toncol§§-…'));
@@ -52,14 +52,15 @@ function DrawerAppBar() {
 
 
  }, []);
-
  React.useEffect(async () => {
 
   try {
 
    const unsub = onSnapshot(doc(db, "client", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
-    setMoney(doc.data().grouptontinemoney === undefined ? [''] : doc.data().grouptontinemoney);
-    setDevise(doc.data().grouptontinedevise === undefined ? [''] : doc.data().grouptontinedevise);
+
+    setMoney(doc.data().grouptontinemoney === undefined ? [] : doc.data().grouptontinemoney);
+    setDevise(doc.data().grouptontinedevise === undefined ? [] : doc.data().grouptontinedevise);
+
    });
 
   } catch (error) {
@@ -69,14 +70,11 @@ function DrawerAppBar() {
 
  }, []);
 
-
-
  const handlepath = (event) => {
   event.preventDefault();
   navigation(-1);
 
  };
-
 
  if (Array.isArray(pushDocs) && pushDocs.length) {
   Acces = true;
@@ -113,6 +111,10 @@ function DrawerAppBar() {
        <ul>
         {
          [...Array(pushDocs.length).keys()].map(index => {
+
+          let argent = '';
+          argent = (devise[index]) === undefined ? 'USD' : 'CDF';
+
           return (
            <div onClick={async () => {
 
@@ -143,7 +145,8 @@ function DrawerAppBar() {
 
                 </div>
 
-                <p>{money[index]} {devise[index]}</p>
+                <p>{money[index]} {argent.includes('USD') ? 'USD' : 'CDF'}</p>
+
                </li>
 
               </ListItemButton>

@@ -3,7 +3,7 @@ import Media from 'react-media';
 import { useForm, Controller } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
-import { collection, getDocs, doc, updateDoc } from 'firebase/firestore';
+import { collection, getDocs, doc, updateDoc, onSnapshot } from 'firebase/firestore';
 import { db } from '../../../firebase';
 
 import Button from '@mui/material/Button';
@@ -67,14 +67,18 @@ export const FormInputField = () => {
  const { handleSubmit, control, reset, watch } = useForm({});
 
  const [open, setOpen] = React.useState(false);
- const [load, setLoad] = React.useState(false);
+ const [exist, setExist] = React.useState(false);
 
+
+ const [load, setLoad] = React.useState(false);
  const [fullWidth, setFullWidth] = React.useState(true);
  const [maxWidth, setMaxWidth] = React.useState('sm');
 
  const [firstChart, setFirstChart] = React.useState(false);
  const [checked, setChecked] = React.useState(false);
  const [showPassword, setShowPassword] = React.useState(false);
+
+ const [access, setAccess] = React.useState('');
 
 
  const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -85,6 +89,9 @@ export const FormInputField = () => {
  const handleClose = () => {
   setOpen(false);
  };
+ const handleExist = () => {
+  setExist(false);
+ };
 
  React.useEffect(async () => {
 
@@ -93,7 +100,11 @@ export const FormInputField = () => {
    pushDocs.push(doc.id);
   });
 
+  const unsub = onSnapshot(doc(db, pushDocs.includes(JSON.parse(window.localStorage.getItem('USER'))) ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   setAccess(doc.data().pin);
+  });
  }, []);
+
  React.useEffect(() => {
 
   const subscription = watch((data) => {
@@ -118,6 +129,8 @@ export const FormInputField = () => {
 
  }, [watch]);
 
+ window.console.log(access);
+
  const onSubmitPwd = async (data) => {
 
   setLoad(true);
@@ -130,13 +143,36 @@ export const FormInputField = () => {
 
   } else {
 
-   const verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
-   updatePinInWithDocs(verifierCollection, data.first, JSON.parse(window.localStorage.getItem('USER')));
-   reactLocalStorage.remove('JqERbgU2C+G9bAiPTQfkAzPe7aN8VkOWTGczzf+d1qpUXepHaZHta9HyLDBGtHdjdrn0hlrzbmZ4lhNTA2YWOlaQehAO2RjTZcfByXpkOVCY7XnzG8aztWCybJqL+TA3');
+   if (access === data.first) {
 
-   window.setTimeout(() => {
-    navigation('/pin/success');
-   }, 3450);
+
+    window.setTimeout(() => {
+
+     setExist(true);
+     setLoad(false);
+
+    }, 850);
+
+   }
+   else if (access === data.first) {
+    window.setTimeout(() => {
+
+     setExist(true);
+     setLoad(false);
+
+    }, 850);
+
+   } else {
+
+    const verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
+    updatePinInWithDocs(verifierCollection, data.first, JSON.parse(window.localStorage.getItem('USER')));
+    reactLocalStorage.remove('JqERbgU2C+G9bAiPTQfkAzPe7aN8VkOWTGczzf+d1qpUXepHaZHta9HyLDBGtHdjdrn0hlrzbmZ4lhNTA2YWOlaQehAO2RjTZcfByXpkOVCY7XnzG8aztWCybJqL+TA3');
+
+    window.setTimeout(() => {
+     navigation('/pin/success');
+    }, 3450);
+
+   }
 
   };
 
@@ -247,6 +283,7 @@ export const FormInputField = () => {
      <p className='wrp-errors-code-transparent pop-up'>Seul caractère numérique</p>
     </Box>
 
+
     <Dialog
      fullWidth={fullWidth}
      maxWidth={maxWidth}
@@ -266,6 +303,27 @@ export const FormInputField = () => {
      </DialogContent>
      <DialogActions>
       <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
+     </DialogActions>
+    </Dialog>
+
+    <Dialog
+     fullWidth={fullWidth}
+     maxWidth={maxWidth}
+     open={exist}
+     onClose={handleExist}>
+
+     <DialogTitle><h1 className='pop-up'>MuunganoMoney</h1></DialogTitle>
+     <DialogContent>
+
+      <DialogContentText>
+       <p className='pop-up'>
+        Ce code est déjà utilisé, contactez MuunganoMoney pour plus d'informations.
+      </p>
+      </DialogContentText>
+
+     </DialogContent>
+     <DialogActions>
+      <Button onClick={handleExist}><span className='pop-up'>Fermer</span></Button>
      </DialogActions>
     </Dialog>
 

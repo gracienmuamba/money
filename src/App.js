@@ -1,7 +1,6 @@
 import React from 'react';
 import './Loading.css';
 import Hm from './Hm/Main';
-import { v4 } from 'uuid';
 
 function App() {
  return (
@@ -9,4 +8,4 @@ function App() {
  );
 };
 // Export component Main
-export default App
+export default App;

@@ -3,7 +3,6 @@ import './IconSuccess.css';
 import { VscCheck } from 'react-icons/vsc';
 import { TweenMax, Expo } from 'gsap';
 
-
 // Return Icon Success 
 export default function ReturnIconSuccess() {
 

@@ -3,7 +3,7 @@ import Media from 'react-media';
 import { useForm, Controller } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
-import { collection, getDocs, doc, updateDoc } from 'firebase/firestore';
+import { collection, getDocs, doc, updateDoc, onSnapshot } from 'firebase/firestore';
 import { db } from '../../../firebase';
 
 import Button from '@mui/material/Button';
@@ -27,11 +27,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { reactLocalStorage } from 'reactjs-localstorage';
 
 
-
-
 let pushDocs = new Array();
-
-
 
 
 // View Form Update view
@@ -96,8 +92,8 @@ export const FormInputField = () => {
   querySnapshot.forEach((doc) => {
    pushDocs.push(doc.id);
   });
-
  }, []);
+
  React.useEffect(() => {
 
   const subscription = watch((data) => {
@@ -122,6 +118,7 @@ export const FormInputField = () => {
 
  }, [watch]);
 
+ React.useEffect(async () => { }, []);
 
  const onSubmitPwd = async (data) => {
 
@@ -133,16 +130,19 @@ export const FormInputField = () => {
    setLoad(false);
    reset();
 
+
   } else {
+
+
 
    const verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
    updatePinInWithDocs(verifierCollection, data.first, JSON.parse(window.localStorage.getItem('USER')));
-
    reactLocalStorage.remove('JqERbgU2C+G9bAiPTQfkAzPe7aN8VkOWTGczzf+d1qpUXepHaZHta9HyLDBGtHdjdrn0hlrzbmZ4lhNTA2YWOlaQehAO2RjTZcfByXpkOVCY7XnzG8aztWCybJqL+TA3');
-
    window.setTimeout(() => {
     navigation('/pin/success');
    }, 3540);
+
+
 
   };
 
@@ -150,7 +150,6 @@ export const FormInputField = () => {
 
  return (
   <>
-
    <div className='zindex-theme'>
     <Backdrop
      sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}

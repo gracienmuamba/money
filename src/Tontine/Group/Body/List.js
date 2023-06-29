@@ -3,10 +3,8 @@ import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
-import InboxIcon from '@mui/icons-material/Inbox';
 import './List.css';
 
 import { useNavigate } from 'react-router-dom';
@@ -20,7 +18,7 @@ export default function BasicList() {
  const handlepath = (event) => {
   event.preventDefault();
   navigation('/tontine/group/register');
- }
+ };
 
  return (
   <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
@@ -51,4 +49,4 @@ export default function BasicList() {
    </nav>
   </Box>
  );
-}
+};

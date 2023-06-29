@@ -183,36 +183,6 @@ export const FormInputValue = () => {
  }
 
 
-
- // else if (Number(entry) > 30 && Number(entry) <= 50) {
- //  frais = remainderInput(entry, 2.9);
- //  count = doesInputEntry(entry, frais);
- // }
- // else if (Number(entry) > 50 && Number(entry) <= 100) {
- //  frais = remainderInput(entry, 1.98);
- //  count = doesInputEntry(entry, frais);
- // }
- // else if (Number(entry) > 100 && Number(entry) <= 400) {
- //  frais = remainderInput(entry, 1.7);
- //  count = doesInputEntry(entry, frais);
- // }
- // else if (Number(entry) > 400 && Number(entry) <= 1000) {
- //  frais = remainderInput(entry, 1.69);
- //  count = doesInputEntry(entry, frais);
- // }
- // else if (Number(entry) > 1000 && Number(entry) <= 2000) {
- //  frais = remainderInput(entry, 1.6);
- //  count = doesInputEntry(entry, frais);
- // }
- // else {
- //  frais = remainderInput(entry, 1.6);
- //  count = doesInputEntry(entry, frais)
- // };
-
-
-
-
-
  React.useEffect(async () => {
 
   const querySnapshot = await getDocs(collection(db, "client"));
@@ -249,7 +219,15 @@ export const FormInputValue = () => {
 
  }, []);
 
- const prixValue = statusOther === 'client' && status === 'agent' ? (Number(prix)) - Number(watch('count')) : (Number(value)) - (Number(frais));
+ let prixValue = 0;
+ //  const prixValue = statusOther === 'client' && status === 'agent' ? (Number(prix)) - Number(watch('count')) : (Number(value)) - (Number(frais));
+
+ if (statusOther === 'client' && status === 'agent') {
+  prixValue = Math.floor(Number(prix)) - Number(watch('count'));
+ } else if (statusOther === 'agent' && status === 'agent') {
+  prixValue = Math.floor(Number(prix)) - Number(watch('count'));
+ }
+
 
  const onSubmit = async (data) => {
 
@@ -295,6 +273,7 @@ export const FormInputValue = () => {
  return (
   <>
    <REturnPriX count={(prixValue)} />
+
    <form onSubmit={handleSubmit(onSubmit)}>
 
     <Controller
