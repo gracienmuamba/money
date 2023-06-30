@@ -8,7 +8,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../../firebase';
 import moment from 'moment';
-
+import secureLocalStorage from "react-secure-storage";
 
 // Return Now Component 
 export default function PinUpgRAde() {
@@ -19,7 +19,8 @@ export default function PinUpgRAde() {
 
  React.useEffect(() => {
 
-  JSON.parse(window.localStorage.getItem('JqERbgU2C+G9bAiPTQfkAzPe7aN8VkOWTGczzf+d1qpUXepHaZHta9HyLDBGtHdjdrn0hlrzbmZ4lhNTA2YWOlaQehAO2RjTZcfByXpkOVCY7XnzG8aztWCybJqL+TA3')) != true && navigation('/dash');
+  secureLocalStorage.getItem('updateaccescode') != true && navigation('/dash');
+
   JSON.parse(window.localStorage.getItem('ACTIVE_M_USER')) !== true && navigation('/sign');
   window.setTimeout(() => {
    setOpen(false);

@@ -10,6 +10,8 @@ import { reactLocalStorage } from 'reactjs-localstorage';
 
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+import secureLocalStorage from "react-secure-storage";
+
 
 
 let pushArray = new Array();
@@ -76,6 +78,9 @@ export default function ReturnLogouTButton() {
    reactLocalStorage.remove('&&$$!@lis::**swap++');
    reactLocalStorage.remove('&&lis++$$!@lis::**||{}');
    reactLocalStorage.remove('');
+
+
+   secureLocalStorage.removeItem("ip^^valid-&&access++dash");
 
   }, 1000);
 

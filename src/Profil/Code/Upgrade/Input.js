@@ -3,7 +3,7 @@ import Media from 'react-media';
 import { useForm, Controller } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
-import { collection, getDocs, doc, updateDoc, onSnapshot } from 'firebase/firestore';
+import { collection, getDocs, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../../firebase';
 
 import Button from '@mui/material/Button';
@@ -24,7 +24,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-import { reactLocalStorage } from 'reactjs-localstorage';
+import secureLocalStorage from "react-secure-storage";
 
 
 let pushDocs = new Array();
@@ -60,8 +60,8 @@ export const ScreenSmall = () => (
   <FormInputField />
  </div>
 );
-export const FormInputField = () => {
 
+export const FormInputField = () => {
 
  const navigation = useNavigate();
  const { handleSubmit, control, reset, watch } = useForm({});
@@ -118,7 +118,6 @@ export const FormInputField = () => {
 
  }, [watch]);
 
- React.useEffect(async () => { }, []);
 
  const onSubmitPwd = async (data) => {
 
@@ -130,19 +129,15 @@ export const FormInputField = () => {
    setLoad(false);
    reset();
 
-
   } else {
-
-
 
    const verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
    updatePinInWithDocs(verifierCollection, data.first, JSON.parse(window.localStorage.getItem('USER')));
-   reactLocalStorage.remove('JqERbgU2C+G9bAiPTQfkAzPe7aN8VkOWTGczzf+d1qpUXepHaZHta9HyLDBGtHdjdrn0hlrzbmZ4lhNTA2YWOlaQehAO2RjTZcfByXpkOVCY7XnzG8aztWCybJqL+TA3');
+   secureLocalStorage.removeItem('updateaccescode');
+
    window.setTimeout(() => {
     navigation('/pin/success');
    }, 3540);
-
-
 
   };
 
@@ -282,7 +277,6 @@ export const FormInputField = () => {
   </>
  );
 };
-
 async function updatePinInWithDocs(verifierCollection, newPin, numPhone) {
 
  const washingtonRef = doc(db, verifierCollection ? "client" : "agent", numPhone);

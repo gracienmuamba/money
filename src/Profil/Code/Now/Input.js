@@ -21,6 +21,8 @@ import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
+import secureLocalStorage from "react-secure-storage";
+
 
 // View Form Update view
 export default function ReturnFormUpdate() {
@@ -110,7 +112,8 @@ export const FormInputField = () => {
      reset();
     } else {
 
-     window.localStorage.setItem('JqERbgU2C+G9bAiPTQfkAzPe7aN8VkOWTGczzf+d1qpUXepHaZHta9HyLDBGtHdjdrn0hlrzbmZ4lhNTA2YWOlaQehAO2RjTZcfByXpkOVCY7XnzG8aztWCybJqL+TA3', JSON.stringify(true));
+     // window.localStorage.setItem('updateaccescode', JSON.stringify(true));
+     secureLocalStorage.setItem("updateaccescode", true);
      navigation('/code/update');
     }
 

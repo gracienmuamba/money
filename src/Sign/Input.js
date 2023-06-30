@@ -34,7 +34,7 @@ import { NumericFormat } from 'react-number-format';
 import FormControl from '@mui/material/FormControl';
 import REturnlogo from './Logo';
 import ls from 'localstorage-slim';
-
+import secureLocalStorage from "react-secure-storage";
 
 
 ls.config.encrypt = true;
@@ -411,7 +411,7 @@ export const InputCodeRecaptcha = (props) => {
     // This first connexion
     if (props.pin == 'ungano') {
 
-     const washingtonRef = doc(db, props.collections ? "client" : "agent", phoneX);
+     const washingtonRef = doc(db, props.collections ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
      await updateDoc(washingtonRef, {
       pin: data.code
      });
@@ -423,6 +423,8 @@ export const InputCodeRecaptcha = (props) => {
      let verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
      const cityRef = doc(db, verifierCollection ? 'client' : 'agent', JSON.parse(window.localStorage.getItem('USER')));
      setDoc(cityRef, { ip: uid }, { merge: true });
+
+     secureLocalStorage.setItem("ip^^valid-&&access++dash", uid);
 
      window.setTimeout(() => {
       navigation('/dash');
@@ -438,10 +440,21 @@ export const InputCodeRecaptcha = (props) => {
       // navigation('/dash');
 
       window.setTimeout(() => {
+
        if (uid === ipUid && JSON.parse(window.localStorage.getItem('USER')) === ls.get('last##73**++Phone &&*@&&@@Number', { decrypt: true, secret: 500 })) {
+
+        secureLocalStorage.setItem("ip^^valid-&&access++dash", uid);
 
         window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(true));
         window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
+
+        ls.set('last##73**++Phone &&*@&&@@Number', JSON.parse(window.localStorage.getItem('USER')), { encrypt: true, secret: 500 });
+
+        let verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
+        const cityRef = doc(db, verifierCollection ? 'client' : 'agent', JSON.parse(window.localStorage.getItem('USER')));
+        setDoc(cityRef, { ip: uid }, { merge: true });
+
+        secureLocalStorage.setItem("ip^^valid-&&access++dash", uid);
 
         window.setTimeout(() => {
          navigation('/dash');
@@ -449,6 +462,8 @@ export const InputCodeRecaptcha = (props) => {
         }, 950);
 
        } else {
+
+        secureLocalStorage.setItem("ip^^valid-&&access++dash", uid);
         navigation('/auth/redirect/token');
        }
       }, 750);

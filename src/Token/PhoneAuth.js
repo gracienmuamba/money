@@ -2,10 +2,11 @@ import React from 'react';
 import firebase from 'firebase/compat/app';
 import * as firebaseui from 'firebaseui';
 import 'firebaseui/dist/firebaseui.css';
-import { collection, getDocs, } from "firebase/firestore";
+import { collection, getDocs, doc, setDoc } from "firebase/firestore";
 import { db } from '../firebase';
 import { reactLocalStorage } from 'reactjs-localstorage';
 import ls from 'localstorage-slim';
+import secureLocalStorage from "react-secure-storage";
 
 
 let expireNum = 10;
@@ -14,6 +15,7 @@ let pushArray = new Array();
 export const PhoneAuth = () => {
 
  const [confirm, setConfirm] = React.useState(false);
+ const [disable, setDisable] = React.useState(false);
 
  React.useEffect(async () => {
 
@@ -39,22 +41,28 @@ export const PhoneAuth = () => {
     // User successfully signed in.
     if (authResult.user.phoneNumber == phone) {
 
+     setDisable(true)
      window.localStorage.setItem('USER', JSON.stringify('0' + (authResult.user.phoneNumber).slice(4, 13)));
      window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(true));
      window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
      ls.set('last##73**++Phone &&*@&&@@Number', JSON.parse(window.localStorage.getItem('USER')), { encrypt: true, secret: 500 });
 
-     window.location.href = 'https://muungano-money.netlify.app/dash';
      // window.location.href = 'http://localhost:3000/dash';
+     window.setTimeout(() => {
+      window.location.href = 'https://muungano-money.netlify.app/dash';
+     }, 1000);
 
     } else {
 
+     setDisable(false)
      reactLocalStorage.remove('ACTIVE_M_USER');
      reactLocalStorage.remove('USER');
      reactLocalStorage.remove('@expire˚˚ø');
 
      // window.location.href = 'http://localhost:3000/';
-     window.location.href = 'https://muungano-money.netlify.app/'
+     window.setTimeout(() => {
+      window.location.href = 'https://muungano-money.netlify.app/'
+     }, 1000);
 
     }
     console.log("sign in success");
@@ -96,17 +104,36 @@ export const PhoneAuth = () => {
  };
  React.useEffect(async () => {
 
-  let ui = new firebaseui.auth.AuthUI(firebase.auth());
-  ui.start("#firebaseui-auth-container", uiConfig);
-  return () => {
-   ui.delete();
-  };
+  try {
+
+   let ui = new firebaseui.auth.AuthUI(firebase.auth());
+   ui.start("#firebaseui-auth-container", uiConfig);
+   return () => {
+    ui.delete();
+   };
+
+  } catch (e) {
+
+   window.console.log(e)
+  }
 
  }, []);
+
+
+ if (disable) {
+  updateIpForDocFirestore(confirm, secureLocalStorage.getItem('ip^^valid-&&access++dash'));
+ }
 
  return (
   <div id='firebaseui-auth-container'></div>
  );
+};
+
+export async function updateIpForDocFirestore(check, uid) {
+
+ const cityRef = doc(db, check ? 'client' : 'agent', JSON.parse(window.localStorage.getItem('USER')));
+ setDoc(cityRef, { ip: uid }, { merge: true });
+
 };
 
 export default PhoneAuth;

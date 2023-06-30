@@ -22,171 +22,172 @@ import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
+import secureLocalStorage from "react-secure-storage";
 
 // View Form Update view
 export default function ReturnFormUpdate() {
-  return (
-    <Media
-      queries={{
-        small: '(max-width: 599px)',
-        medium: '(min-width: 600px) and (max-width:1199px)',
-        large: '(min-width: 1200px)',
-      }}>
-      {matches => (
-        <>
-          {matches.small && <ScreenSmall />}
-          {matches.medium && <ScreenLarge />}
-          {matches.large && <ScreenLarge />}
-        </>
-      )}
-    </Media>
-  );
+ return (
+  <Media
+   queries={{
+    small: '(max-width: 599px)',
+    medium: '(min-width: 600px) and (max-width:1199px)',
+    large: '(min-width: 1200px)',
+   }}>
+   {matches => (
+    <>
+     {matches.small && <ScreenSmall />}
+     {matches.medium && <ScreenLarge />}
+     {matches.large && <ScreenLarge />}
+    </>
+   )}
+  </Media>
+ );
 };
 
 export const ScreenLarge = () => (
-  <div className='wrp-form-input-nows'>
-    <FormInputField />
-  </div>
+ <div className='wrp-form-input-nows'>
+  <FormInputField />
+ </div>
 );
 export const ScreenSmall = () => (
-  <div className='wrp-form-input-nows'>
-    <FormInputField />
-  </div>
+ <div className='wrp-form-input-nows'>
+  <FormInputField />
+ </div>
 );
 export const FormInputField = () => {
 
-  let pushDocs = new Array();
-  let regular = /[a-z]+/;
+ let pushDocs = new Array();
+ let regular = /[a-z]+/;
 
-  const navigation = useNavigate();
-  const { handleSubmit, reset, control } = useForm();
-  const [pin, setPin] = React.useState(null);
+ const navigation = useNavigate();
+ const { handleSubmit, reset, control } = useForm();
+ const [pin, setPin] = React.useState(null);
 
-  const [open, setOpen] = React.useState(false);
-  const [fullWidth, setFullWidth] = React.useState(true);
-  const [maxWidth, setMaxWidth] = React.useState('sm');
-
-
-  const [showPassword, setShowPassword] = React.useState(false);
-
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
+ const [open, setOpen] = React.useState(false);
+ const [fullWidth, setFullWidth] = React.useState(true);
+ const [maxWidth, setMaxWidth] = React.useState('sm');
 
 
-  React.useEffect(async () => {
+ const [showPassword, setShowPassword] = React.useState(false);
 
-    const querySnapshot = await getDocs(collection(db, "client"));
-    querySnapshot.forEach((doc) => {
-      pushDocs.push(doc.id);
-    });
+ const handleClickShowPassword = () => setShowPassword((show) => !show);
+ const handleMouseDownPassword = (event) => {
+  event.preventDefault();
+ };
 
-    const verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
-    const unsub = onSnapshot(doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
-      setPin(doc.data().code);
-    });
+ const handleClose = () => {
+  setOpen(false);
+ };
 
-  }, []);
 
-  const onSubmit = async (data) => {
+ React.useEffect(async () => {
 
-    if (data.code === undefined) {
-      setOpen(true);
+  const querySnapshot = await getDocs(collection(db, "client"));
+  querySnapshot.forEach((doc) => {
+   pushDocs.push(doc.id);
+  });
 
+  const verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
+  const unsub = onSnapshot(doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   setPin(doc.data().code);
+  });
+
+ }, []);
+
+ const onSubmit = async (data) => {
+
+  if (data.code === undefined) {
+   setOpen(true);
+
+  } else {
+
+   if (data.code.length != 6 || regular.test(data.code)) {
+    setOpen(true);
+    reset();
+
+   } else {
+
+    if (pin != data.code) {
+     setOpen(true);
+     reset();
     } else {
 
-      if (data.code.length != 6 || regular.test(data.code)) {
-        setOpen(true);
-        reset();
-
-      } else {
-
-        if (pin != data.code) {
-          setOpen(true);
-          reset();
-        } else {
-
-          window.localStorage.setItem('JqERbgU2C+G9bAiPTQfkAzPe7aN8VkOWTGczzf+d1qpUXepHaZHta9HyLDBGtHdjdrn0hlrzbmZ4lhNTA2YWOlaQehAO2RjTZcfByXpkOVCY7XnzG8aztWCybJqL+TA3', JSON.stringify(true));
-          navigation('/pin/update');
-        }
-
-      };
-
+     secureLocalStorage.setItem("updateaccescode", true);
+     navigation('/pin/update');
     }
 
+   };
 
-  };
+  }
 
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
 
-      <FormControl
-        sx={{ width: '100%' }}
+ };
 
-        variant="standard">
-        <InputLabel htmlFor="standard-adornment-password"><span className='pop-up'>Pin actuel</span></InputLabel>
+ return (
+  <form onSubmit={handleSubmit(onSubmit)}>
 
-        <Controller
-          name="code"
-          control={control}
-          render={({ field }) =>
+   <FormControl
+    sx={{ width: '100%' }}
 
-            <Input
-              id="standard-adornment-password"
-              autocomplete="new-password"
-              inputProps={{
-                autoComplete: "off", inputMode: 'numeric'
-              }}
-              {...field}
-              type={showPassword ? 'text' : 'password'}
+    variant="standard">
+    <InputLabel htmlFor="standard-adornment-password"><span className='pop-up'>Pin actuel</span></InputLabel>
 
-              endAdornment={
-                <InputAdornment position="end">
+    <Controller
+     name="code"
+     control={control}
+     render={({ field }) =>
 
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
+      <Input
+       id="standard-adornment-password"
+       autocomplete="new-password"
+       inputProps={{
+        autoComplete: "off", inputMode: 'numeric'
+       }}
+       {...field}
+       type={showPassword ? 'text' : 'password'}
 
-                </InputAdornment>
-              }
+       endAdornment={
+        <InputAdornment position="end">
 
-            />}
-        />
+         <IconButton
+          aria-label="toggle password visibility"
+          onClick={handleClickShowPassword}
+          onMouseDown={handleMouseDownPassword}
+         >
+          {showPassword ? <VisibilityOff /> : <Visibility />}
+         </IconButton>
 
-      </FormControl>
+        </InputAdornment>
+       }
 
-      <Dialog
-        fullWidth={fullWidth}
-        maxWidth={maxWidth}
-        open={open}
-        onClose={handleClose}>
+      />}
+    />
 
-        <DialogTitle><h1 className='pop-up'>MuunganoMoney</h1></DialogTitle>
-        <DialogContent>
+   </FormControl>
 
-          <DialogContentText>
-            <p className='pop-up'>
-              code PIN ,Incorrect
+   <Dialog
+    fullWidth={fullWidth}
+    maxWidth={maxWidth}
+    open={open}
+    onClose={handleClose}>
+
+    <DialogTitle><h1 className='pop-up'>MuunganoMoney</h1></DialogTitle>
+    <DialogContent>
+
+     <DialogContentText>
+      <p className='pop-up'>
+       code PIN ,Incorrect
      </p>
-          </DialogContentText>
+     </DialogContentText>
 
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
-        </DialogActions>
-      </Dialog>
+    </DialogContent>
+    <DialogActions>
+     <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
+    </DialogActions>
+   </Dialog>
 
-      <button className='Btn'>Suivant</button>
-    </form>
-  );
+   <button className='Btn'>Suivant</button>
+  </form>
+ );
 };
 

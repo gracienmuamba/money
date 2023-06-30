@@ -24,8 +24,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-import { reactLocalStorage } from 'reactjs-localstorage';
-
+import secureLocalStorage from "react-secure-storage";
 
 
 let pushDocs = new Array();
@@ -145,7 +144,6 @@ export const FormInputField = () => {
 
    if (access === data.first) {
 
-
     window.setTimeout(() => {
 
      setExist(true);
@@ -165,8 +163,9 @@ export const FormInputField = () => {
    } else {
 
     const verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
+
     updatePinInWithDocs(verifierCollection, data.first, JSON.parse(window.localStorage.getItem('USER')));
-    reactLocalStorage.remove('JqERbgU2C+G9bAiPTQfkAzPe7aN8VkOWTGczzf+d1qpUXepHaZHta9HyLDBGtHdjdrn0hlrzbmZ4lhNTA2YWOlaQehAO2RjTZcfByXpkOVCY7XnzG8aztWCybJqL+TA3');
+    secureLocalStorage.removeItem('updateaccescode');
 
     window.setTimeout(() => {
      navigation('/pin/success');
