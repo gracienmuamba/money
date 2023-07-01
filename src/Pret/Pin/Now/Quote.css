@@ -1,4 +1,4 @@
-.wrp-quote-now {
+/* .wrp-quote-now {
  display: flex;
  justify-content: center;
  align-items: center;
@@ -14,7 +14,7 @@
  letter-spacing: 0.5px;
 }
 
-/* Small Screen */
+Small Screen
 .wrp-quote-now-sm {
  display: flex;
  padding: 1em;
@@ -25,4 +25,4 @@
  font-weight: 300;
  line-height: 1;
  letter-spacing: 0.5px;
-}
+} */

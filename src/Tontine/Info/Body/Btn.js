@@ -1,7 +1,7 @@
 import './Btn.css';
 import Media from 'react-media';
 import { useNavigate } from 'react-router-dom';
-
+import secureLocalStorage from "react-secure-storage";
 
 // Btn view component 
 export default function ReturnBtn() {
@@ -40,7 +40,7 @@ export const View = () => {
  const handlepath = (event) => {
   event.preventDefault();
   window.localStorage.setItem('??next^^**$$', JSON.stringify(false));
-  window.localStorage.setItem('@@xi^^,view**++', JSON.stringify([JSON.parse(window.localStorage.getItem('USER'))]));
+  window.localStorage.setItem('@@xi^^,view**++', JSON.stringify([secureLocalStorage.getItem("USER")]));
   navigation('/tontine/group/child');
  };
 

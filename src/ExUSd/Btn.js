@@ -3,8 +3,13 @@ import { IoSend } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { db } from '../firebase';
+import secureLocalStorage from "react-secure-storage";
+
+
 
 let pushDocs = new Array();
+
+
 
 // Button blocked
 export default function ReturnBtn() {
@@ -24,9 +29,9 @@ export default function ReturnBtn() {
   querySnapshot.forEach((doc) => {
    pushDocs.push(doc.id);
   });
-  const verifier = pushDocs.some(value => value == JSON.parse(window.localStorage.getItem('USER')));
+  const verifier = pushDocs.some(value => value == secureLocalStorage.getItem("USER"));
 
-  const docRef = doc(db, verifier ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+  const docRef = doc(db, verifier ? "client" : "agent", secureLocalStorage.getItem("USER"));
   const docSnap = await getDoc(docRef);
 
   if (docSnap.exists()) {

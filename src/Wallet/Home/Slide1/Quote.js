@@ -4,7 +4,7 @@ import moment from 'moment';
 import { db } from '../../../firebase';
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import Media from 'react-media';
-
+import secureLocalStorage from "react-secure-storage";
 
 // View Quote Component 
 export default function ReturnQuoTe() {
@@ -45,9 +45,9 @@ export const View = () => {
   querySnapshot.forEach((doc) => {
    pushDocs.push(doc.id);
   });
-  const verifier = pushDocs.some(value => value == JSON.parse(window.localStorage.getItem('USER')));
+  const verifier = pushDocs.some(value => value == secureLocalStorage.getItem("USER"));
 
-  const docRef = doc(db, verifier ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+  const docRef = doc(db, verifier ? "client" : "agent", secureLocalStorage.getItem("USER"));
   const docSnap = await getDoc(docRef);
 
   if (docSnap.exists()) {

@@ -24,7 +24,7 @@ import moment from 'moment';
 
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-
+import secureLocalStorage from "react-secure-storage";
 
 
 let nowFromDate = moment().format();
@@ -34,7 +34,7 @@ export async function getDocsView(col, fiatDocs, data) {
  await setDoc(doc(db, col, fiatDocs), { date: moment().format(), data: arrayUnion(data) }, { merge: true });
 };
 export async function updateTimeTransaction() {
- await setDoc(doc(db, JSON.parse(window.localStorage.getItem('USER')), JSON.parse(window.localStorage.getItem('--vie&&id'))),
+ await setDoc(doc(db, secureLocalStorage.getItem("USER"), JSON.parse(window.localStorage.getItem('--vie&&id'))),
   { date: moment().format() },
   { merge: true });
 };
@@ -119,8 +119,8 @@ export const FormInputField = () => {
    pushDocs.push(doc.id);
   });
 
-  const verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
-  const unsub = onSnapshot(doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+  const verifierCollection = pushDocs.some((value) => value == secureLocalStorage.getItem("USER"));
+  const unsub = onSnapshot(doc(db, verifierCollection ? "client" : "agent", secureLocalStorage.getItem("USER")), (doc) => {
    setPin(doc.data().code);
    setStatus(doc.data().state);
   });
@@ -314,7 +314,7 @@ export const FormInputField = () => {
 // View component 
 export async function updatesoldcdf(money) {
 
- const washingtonRef = doc(db, "agent", JSON.parse(window.localStorage.getItem('USER')));
+ const washingtonRef = doc(db, "agent", secureLocalStorage.getItem("USER"));
 
  // Set the "capital" field of the city 'DC'
  await updateDoc(washingtonRef, {
@@ -325,7 +325,7 @@ export async function updatesoldcdf(money) {
 // View component 
 export async function updatesoldusd(money) {
 
- const washingtonRef = doc(db, "agent", JSON.parse(window.localStorage.getItem('USER')));
+ const washingtonRef = doc(db, "agent", secureLocalStorage.getItem("USER"));
  // Set the "capital" field of the city 'DC'
  await updateDoc(washingtonRef, {
   usd: money

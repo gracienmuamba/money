@@ -18,9 +18,8 @@ import ReturnPrix from './Prix';
 
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-
+import secureLocalStorage from "react-secure-storage";
 import { HiArrowLeft } from 'react-icons/hi';
-
 
 
 function DrawerAppBar() {
@@ -111,7 +110,7 @@ function DrawerAppBar() {
           <div
            onClick={
             () => {
-             if (listPush[index] === JSON.parse(window.localStorage.getItem('USER'))) {
+             if (listPush[index] === secureLocalStorage.getItem("USER")) {
 
               setLoad(true);
               window.localStorage.setItem('##!!devi&&*>>', JSON.stringify((currency).includes('USD') ? 'USD' : 'CDF'));

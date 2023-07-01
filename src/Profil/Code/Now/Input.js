@@ -84,8 +84,8 @@ export const FormInputField = () => {
    pushDocs.push(doc.id);
   });
 
-  const verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
-  const unsub = onSnapshot(doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+  const verifierCollection = pushDocs.some((value) => value == secureLocalStorage.getItem("USER"));
+  const unsub = onSnapshot(doc(db, verifierCollection ? "client" : "agent", secureLocalStorage.getItem("USER")), (doc) => {
    setPin(doc.data().pin);
   });
 
@@ -112,7 +112,6 @@ export const FormInputField = () => {
      reset();
     } else {
 
-     // window.localStorage.setItem('updateaccescode', JSON.stringify(true));
      secureLocalStorage.setItem("updateaccescode", true);
      navigation('/code/update');
     }

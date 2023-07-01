@@ -6,7 +6,7 @@ import { db } from '../../firebase';
 
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-
+import secureLocalStorage from "react-secure-storage";
 
 let pushArray = new Array();
 
@@ -27,7 +27,7 @@ export default function ReturnIMA() {
 
   });
 
-  setConfirm(pushArray.includes(JSON.parse(window.localStorage.getItem('USER'))));
+  setConfirm(pushArray.includes(secureLocalStorage.getItem("USER")));
 
  }, []);
 
@@ -42,13 +42,13 @@ export default function ReturnIMA() {
  uid += navigatorScreen.height || '';
  uid += navigatorScreen.width || '';
  uid += navigatorScreen.pixelDepth || '';
- uid += JSON.parse(window.localStorage.getItem('USER'));
+ uid += secureLocalStorage.getItem("USER");
 
  const handlePath = async (event) => {
   event.preventDefault();
   setLoad(true);
 
-  const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+  const frankDocRef = doc(db, confirm ? "client" : "agent", secureLocalStorage.getItem("USER"));
   // To update age and favorite color:
   await updateDoc(frankDocRef, {
    ip: uid

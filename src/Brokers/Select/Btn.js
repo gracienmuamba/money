@@ -2,7 +2,6 @@ import React from 'react';
 import { TweenMax, Power3 } from 'gsap';
 import { useNavigate } from 'react-router-dom';
 import FadeLoader from 'react-spinners/FadeLoader';
-import { VscChevronRight } from 'react-icons/vsc';
 
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -30,7 +29,6 @@ export default function RetuRnBtn() {
  const handleClose = () => {
   setOpen(false);
  };
-
  React.useEffect(() => {
   TweenMax.from('.wrp-btn-brokers button', 1, { delay: 1.4, opacity: 0, x: 0, ease: Power3.easeIn })
  }, []);

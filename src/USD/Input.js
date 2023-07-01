@@ -19,7 +19,8 @@ import PropTypes from 'prop-types';
 import { IMaskInput } from 'react-imask';
 import { NumericFormat } from 'react-number-format';
 import TextField from '@mui/material/TextField';
-import InputAdornment from '@mui/material/InputAdornment';
+import secureLocalStorage from "react-secure-storage";
+
 
 
 export let money = 0;
@@ -192,13 +193,13 @@ export const FormInputValue = () => {
   });
 
 
-  verifierCollection = pushUser.some(value => value == JSON.parse(window.localStorage.getItem('USER')));
+  verifierCollection = pushUser.some(value => value == secureLocalStorage.getItem("USER"));
   verifierOther = pushOther.some(value => value == JSON.parse(window.localStorage.getItem('A@@ph$$&-@#')));
 
 
 
   try {
-   const unsub = onSnapshot(doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   const unsub = onSnapshot(doc(db, verifierCollection ? "client" : "agent", secureLocalStorage.getItem("USER")), (doc) => {
     setPrix(doc.data().usd);
     setStatus(doc.data().state);
    });

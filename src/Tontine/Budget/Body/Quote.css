@@ -2,10 +2,9 @@
  display: flex;
  margin: 5ch 0;
 }
-
 .wrp-quote-budget-tontine p {
  display: flex;
- font-size: 1.313em;
+ font-size: 1.113em;
  font-family: var(--text-family);
  font-weight: 300;
  line-height: 1;

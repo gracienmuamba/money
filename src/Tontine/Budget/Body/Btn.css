@@ -12,14 +12,14 @@
 
  border-radius: 0.9em;
  font-size: 1em;
- letter-spacing: 1px;
+ letter-spacing: 0.5px;
  cursor: pointer;
  white-space: nowrap;
 
  outline-style: none;
  font-family: var(--text-family);
 
- padding: 1ch 2em;
+ padding: 0.5ch 3em;
  width: 100%;
 
  color: var(--color-btn);
@@ -39,26 +39,26 @@
 }
 .tontine-btn-next-budget-sm button {
  display: flex;
+
  justify-content: center;
  align-items: center;
-
  border-radius: 0.9em;
  font-size: 1em;
  letter-spacing: 1px;
+
  cursor: pointer;
  white-space: nowrap;
 
  outline-style: none;
  font-family: var(--text-family);
 
- padding: 1ch 2em;
+ padding: 0.5ch 3em;
  width: 100%;
 
  color: var(--color-btn);
  border: 0.1px solid var(--bg-green-btn-tontine);
  background: var(--bg-green-btn-tontine);
 }
-
 .tontine-btn-next-budget-sm button img {
  height: 2em;
  width: 2em;

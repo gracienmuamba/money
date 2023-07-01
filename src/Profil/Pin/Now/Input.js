@@ -24,6 +24,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import secureLocalStorage from "react-secure-storage";
 
+
 // View Form Update view
 export default function ReturnFormUpdate() {
  return (
@@ -87,8 +88,8 @@ export const FormInputField = () => {
    pushDocs.push(doc.id);
   });
 
-  const verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
-  const unsub = onSnapshot(doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+  const verifierCollection = pushDocs.some((value) => value == secureLocalStorage.getItem("USER"));
+  const unsub = onSnapshot(doc(db, verifierCollection ? "client" : "agent", secureLocalStorage.getItem("USER")), (doc) => {
    setPin(doc.data().code);
   });
 

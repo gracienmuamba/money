@@ -17,10 +17,10 @@ import DialogContentText from '@mui/material/DialogContentText';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
+import secureLocalStorage from "react-secure-storage";
 
 
 let pushArray = new Array();
-
 
 
 // Purchase List Component 
@@ -74,7 +74,7 @@ export const View = () => {
  uid += navigatorScreen.height || '';
  uid += navigatorScreen.width || '';
  uid += navigatorScreen.pixelDepth || '';
- uid += JSON.parse(window.localStorage.getItem('USER'));
+ uid += secureLocalStorage.getItem("USER");
 
 
  let pushDocs = new Array();
@@ -103,7 +103,7 @@ export const View = () => {
 
   });
 
-  setConfirm(pushArray.includes(JSON.parse(window.localStorage.getItem('USER'))));
+  setConfirm(pushArray.includes(secureLocalStorage.getItem("USER")));
 
  }, []);
 
@@ -123,8 +123,8 @@ export const View = () => {
    pushDocs.push(doc.id);
   });
 
-  const verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
-  const unsub = onSnapshot(doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+  const verifierCollection = pushDocs.some((value) => value == secureLocalStorage.getItem("USER"));
+  const unsub = onSnapshot(doc(db, verifierCollection ? "client" : "agent", secureLocalStorage.getItem("USER")), (doc) => {
    setStatus(doc.data().state);
    setTeam(doc.data().team);
    setPret(doc.data().pret);
@@ -141,7 +141,7 @@ export const View = () => {
   event.preventDefault();
   setLoad(true);
 
-  const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+  const frankDocRef = doc(db, confirm ? "client" : "agent", secureLocalStorage.getItem("USER"));
   // To update age and favorite color:
   await updateDoc(frankDocRef, {
    ip: uid
@@ -160,7 +160,7 @@ export const View = () => {
   setLoad(true);
 
 
-  const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+  const frankDocRef = doc(db, confirm ? "client" : "agent", secureLocalStorage.getItem("USER"));
   // To update age and favorite color:
   await updateDoc(frankDocRef, {
    ip: uid
@@ -178,7 +178,7 @@ export const View = () => {
   event.preventDefault();
   setLoad(true);
 
-  const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+  const frankDocRef = doc(db, confirm ? "client" : "agent", secureLocalStorage.getItem("USER"));
   // To update age and favorite color:
   await updateDoc(frankDocRef, {
    ip: uid
@@ -196,7 +196,7 @@ export const View = () => {
   setLoad(true);
   setOpen(true);
 
-  const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+  const frankDocRef = doc(db, confirm ? "client" : "agent", secureLocalStorage.getItem("USER"));
   // To update age and favorite color:
   await updateDoc(frankDocRef, {
    ip: uid
@@ -208,7 +208,7 @@ export const View = () => {
   event.preventDefault();
   setLoad(true);
 
-  const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+  const frankDocRef = doc(db, confirm ? "client" : "agent", secureLocalStorage.getItem("USER"));
   // To update age and favorite color:
   await updateDoc(frankDocRef, {
    ip: uid
@@ -231,7 +231,7 @@ export const View = () => {
   event.preventDefault();
   setLoad(true);
 
-  const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+  const frankDocRef = doc(db, confirm ? "client" : "agent", secureLocalStorage.getItem("USER"));
   // To update age and favorite color:
   await updateDoc(frankDocRef, {
    ip: uid
@@ -256,21 +256,27 @@ export const View = () => {
   event.preventDefault();
   setLoad(true);
 
-  const frankDocRef = doc(db, confirm ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+  const frankDocRef = doc(db, confirm ? "client" : "agent", secureLocalStorage.getItem("USER"));
   // To update age and favorite color:
   await updateDoc(frankDocRef, {
    ip: uid
   });
 
+  secureLocalStorage.setItem("^^add&&@!!**", false);
+  secureLocalStorage.setItem("??next^^**$$", false);
+  secureLocalStorage.setItem("prix^^&&not**", false);
+
+
   window.localStorage.setItem('^^add&&@!!**', JSON.parse(false));
   window.localStorage.setItem('??next^^**$$', JSON.parse(false));
   window.localStorage.setItem('prix^^&&not**', JSON.stringify(false));
+
+
   navigation('/tontine');
  }
 
  return (
   <>
-
    <div className='zindex-theme'>
     <Backdrop
      sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
@@ -460,7 +466,6 @@ export const View = () => {
    </nav>
 
   </>
-
  );
 };
 
@@ -476,9 +481,9 @@ export const updateAuthIPFirebase = async (check) => {
  uid += navigatorScreen.height || '';
  uid += navigatorScreen.width || '';
  uid += navigatorScreen.pixelDepth || '';
- uid += JSON.parse(window.localStorage.getItem('USER'));
+ uid += secureLocalStorage.getItem("USER");
 
- const cityRef = doc(db, check ? 'client' : 'agent', JSON.parse(window.localStorage.getItem('USER')));
+ const cityRef = doc(db, check ? 'client' : 'agent', secureLocalStorage.getItem("USER"));
  setDoc(cityRef, { ip: uid }, { merge: true });
 
 };

@@ -13,7 +13,6 @@ const ReturnPrix = (props) => {
  const [devise, setDevise] = React.useState('');
  const [active, setActive] = React.useState(null);
 
-
  React.useEffect(async () => {
 
   await onSnapshot(doc(db, 'tontine', docTon), (doc) => {
@@ -31,7 +30,7 @@ const ReturnPrix = (props) => {
   <div className='profil-tontine-navs-prix'>
    <h4 style={{ color: active && '#38b000' }}>
     {active && true ? euro(rising).format() : euro(0).format()}
-    {devise === 'USD' ? ' USD' : ' CDF'}
+    {devise.includes('USD') ? ' USD' : ' CDF'}
    </h4>
   </div>
  );

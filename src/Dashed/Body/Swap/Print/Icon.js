@@ -12,6 +12,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import { db } from '../../../../firebase';
 import { doc, collection, getDocs, getDocFromCache } from "firebase/firestore";
 // import ReturnMsg from './Msg';
+import secureLocalStorage from "react-secure-storage";
 
 import { useNavigate } from 'react-router-dom';
 import { reactLocalStorage } from 'reactjs-localstorage';
@@ -50,8 +51,8 @@ export default function ReturnIconPrinT() {
    pushDocs.push(doc.id);
   });
 
-  var verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
-  const docRef = doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+  var verifierCollection = pushDocs.some((value) => value == secureLocalStorage.getItem("USER"));
+  const docRef = doc(db, verifierCollection ? "client" : "agent", secureLocalStorage.getItem("USER"));
   // Get a document, forcing the SDK to fetch from the offline cache.
   try {
    const doc = await getDocFromCache(docRef);
@@ -74,7 +75,7 @@ export default function ReturnIconPrinT() {
 
  };
 
- let col = pushDocs.includes(JSON.parse(window.localStorage.getItem('USER')));
+ let col = pushDocs.includes(secureLocalStorage.getItem("USER"));
  return (
   <>
    <div className='tontine-nav-invited-icon-dash'>

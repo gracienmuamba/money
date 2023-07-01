@@ -22,6 +22,9 @@ import { NumericFormat } from 'react-number-format';
 import Switch from '@mui/material/Switch';
 import ReturnDevise from './Devise';
 
+import secureLocalStorage from "react-secure-storage";
+
+
 
 let pushDocs = new Array();
 
@@ -105,7 +108,6 @@ export const ScreenSmall = () => (
   <ViewInpuT />
  </div>
 );
-
 export const ViewInpuT = () => {
 
  const { handleSubmit, control, watch } = useForm({});
@@ -130,8 +132,10 @@ export const ViewInpuT = () => {
   setDialog(false);
  };
  const dialogConfirm = () => {
-  navigation('/brokers/unite/pin');
-  window.localStorage.setItem('^*$#path**', JSON.stringify(true));
+
+  window.console.log('unite simple');
+  // navigation('/brokers/unite/pin');
+  // window.localStorage.setItem('^*$#path**', JSON.stringify(true));
 
  };
 
@@ -146,13 +150,14 @@ export const ViewInpuT = () => {
   }
  }, [dialog]);
 
+ const [open, setOpen] = React.useState(false);
 
  // Network Operator
+
  const [voda, setVoda] = React.useState(false);
  const [fullWidth, setFullWidth] = React.useState(true);
  const [maxWidth, setMaxWidth] = React.useState('sm');
  const [checked, setChecked] = React.useState(true);
-
 
  const [values, setValues] = React.useState({
   textmask: '1000000000',
@@ -164,6 +169,7 @@ export const ViewInpuT = () => {
    [event.target.name]: event.target.value,
   });
  };
+
  React.useEffect(async () => {
 
   const querySnapshot = await getDocs(collection(db, "client"));
@@ -171,10 +177,10 @@ export const ViewInpuT = () => {
    pushDocs.push(doc.id);
   });
 
-  const verifierCollection = pushDocs.some(value => value == JSON.parse(window.localStorage.getItem('USER')));
+  const verifierCollection = pushDocs.some(value => value == secureLocalStorage.getItem("USER"));
 
   try {
-   const unsub = onSnapshot(doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   const unsub = onSnapshot(doc(db, verifierCollection ? "client" : "agent", secureLocalStorage.getItem("USER")), (doc) => {
     setCdf(doc.data().cdf);
     setUsd(doc.data().usd);
     setStatus(doc.data().state);
@@ -370,6 +376,11 @@ export const ViewInpuT = () => {
   setChecked(event.target.checked);
  };
 
+ const handleClose = () => {
+  setOpen(false);
+ };
+
+
  const handleVoda = () => {
   setVoda(false);
  };
@@ -470,8 +481,13 @@ export const ViewInpuT = () => {
 
 
   let AcessOperator = Number(AccesVodA) + Number(AccesAirtel) + Number(AccesOrange) + Number(AccesAfricell)
+
   if (AcessOperator === Operator) {
-   setDialog(true);
+
+   // Section no disponiblie 
+
+   // setDialog(true);  // ********
+   setOpen(true);
   } else {
    setDialog(false);
   }
@@ -711,6 +727,27 @@ export const ViewInpuT = () => {
     {checked == true && value > 1 && <button onClick={handleClickDialog('paper')} className='Btn-Broker'>Suivant</button>}
     {checked == false && value > 2000 && <button className='Btn'>Suivant</button>}
    </form>
+
+   <Dialog
+    fullWidth={fullWidth}
+    maxWidth={maxWidth}
+    open={open}
+    onClose={handleClose}>
+
+    <DialogTitle><h2 className='pop-up'>MuunganoMoney</h2></DialogTitle>
+    <DialogContent>
+
+     <DialogContentText>
+      <p className='pop-up'>
+       Désolé, ce service est temporairement indisponible, veuillez contacter MuunganoMoney. Pour plus d'informations.
+      </p>
+     </DialogContentText>
+
+    </DialogContent>
+    <DialogActions>
+     <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
+    </DialogActions>
+   </Dialog>
 
    <Dialog
     fullWidth={fullWidth}

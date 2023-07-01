@@ -13,6 +13,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContentText from '@mui/material/DialogContentText';
 
 import { useNavigate } from 'react-router-dom';
+import secureLocalStorage from "react-secure-storage";
 
 
 // Btn view component 
@@ -34,7 +35,6 @@ export default function ReturnBtn() {
 		</Media>
 	);
 };
-
 export const ScreenLarge = () => (
 	<div className='tontine-btn-next-budget'>
 		<View />
@@ -56,7 +56,6 @@ export function View() {
 
 	const [fullWidth, setFullWidth] = React.useState(true);
 	const [maxWidth, setMaxWidth] = React.useState('sm');
-
 
 	const [active, setActive] = React.useState(false);
 
@@ -82,22 +81,35 @@ export function View() {
 	let listNumber = JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘˚˚'));
 
 	React.useEffect(async () => {
-		const unsub = onSnapshot(doc(db, colTon, JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
-			setActive(doc.data().soldeactive);
-		});
+
+		try {
+			const unsub = onSnapshot(doc(db, colTon, secureLocalStorage.getItem("USER")), (doc) => {
+				setActive(doc.data().soldeactive);
+			});
+
+		} catch (e) {
+			window.console.log(e);
+		}
 
 	}, []);
 	React.useEffect(async () => {
-		const unsub = onSnapshot(doc(db, 'tontine', colTon), (doc) => {
-			setPosition(doc.data().position);
-			setCount(doc.data().count);
-			setAskedPosition(doc.data().askedposition);
-			setAsked(doc.data().asked);
-			setRising(doc.data().rising);
-		});
+
+		try {
+
+			const unsub = onSnapshot(doc(db, 'tontine', colTon), (doc) => {
+				setPosition(doc.data().position);
+				setCount(doc.data().count);
+				setAskedPosition(doc.data().askedposition);
+				setAsked(doc.data().asked);
+				setRising(doc.data().rising);
+			});
+
+		} catch (e) {
+
+			window.console.log(e);
+		}
 
 	}, []);
-
 
 	const handlepath = (event) => {
 

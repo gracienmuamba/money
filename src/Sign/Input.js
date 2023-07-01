@@ -37,7 +37,9 @@ import ls from 'localstorage-slim';
 import secureLocalStorage from "react-secure-storage";
 
 
+
 ls.config.encrypt = true;
+
 
 
 let expireNum = 10;
@@ -223,7 +225,7 @@ export const FormDataInput = () => {
      });
 
      phoneX = numPhone;
-     window.localStorage.setItem('USER', JSON.stringify(numPhone));
+     secureLocalStorage.setItem('USER', numPhone);
 
      setChecked(false);
      window.setTimeout(() => {
@@ -360,11 +362,11 @@ export const InputCodeRecaptcha = (props) => {
 
  const textFirst = `Veuillez choisir un code d'accès à six chiffres à utiliser pour se connecter`;
  const textLast = `Veuillez définir votre code d'accès`;
- let isInDataPhone = pushClient.some(value => value == JSON.parse(window.localStorage.getItem('USER')));
+ let isInDataPhone = pushClient.some(value => value == secureLocalStorage.getItem("USER"));
 
 
  React.useEffect(async () => {
-  const unsub = onSnapshot(doc(db, isInDataPhone ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+  const unsub = onSnapshot(doc(db, isInDataPhone ? "client" : "agent", secureLocalStorage.getItem("USER")), (doc) => {
    setIpUid(doc.data().ip);
   });
 
@@ -377,6 +379,8 @@ export const InputCodeRecaptcha = (props) => {
  const cancelClose = () => {
   setCancel(false);
  };
+
+
  const onSubmitOTP = async (data) => {
 
   setLoading(true);
@@ -390,7 +394,7 @@ export const InputCodeRecaptcha = (props) => {
   uid += navigatorScreen.height || '';
   uid += navigatorScreen.width || '';
   uid += navigatorScreen.pixelDepth || '';
-  uid += JSON.parse(window.localStorage.getItem('USER'));
+  uid += secureLocalStorage.getItem("USER");
 
   if (data.code === undefined) {
    window.setTimeout(() => {
@@ -411,17 +415,17 @@ export const InputCodeRecaptcha = (props) => {
     // This first connexion
     if (props.pin == 'ungano') {
 
-     const washingtonRef = doc(db, props.collections ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+     const washingtonRef = doc(db, props.collections ? "client" : "agent", secureLocalStorage.getItem("USER"));
      await updateDoc(washingtonRef, {
       pin: data.code
      });
 
      window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(true));
      window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
-     ls.set('last##73**++Phone &&*@&&@@Number', JSON.parse(window.localStorage.getItem('USER')), { encrypt: true, secret: 500 });
+     ls.set('last##73**++Phone &&*@&&@@Number', secureLocalStorage.getItem("USER"), { encrypt: true, secret: 500 });
 
-     let verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
-     const cityRef = doc(db, verifierCollection ? 'client' : 'agent', JSON.parse(window.localStorage.getItem('USER')));
+     let verifierCollection = pushDocs.some((value) => value == secureLocalStorage.getItem("USER"));
+     const cityRef = doc(db, verifierCollection ? 'client' : 'agent', secureLocalStorage.getItem("USER"));
      setDoc(cityRef, { ip: uid }, { merge: true });
 
      secureLocalStorage.setItem("ip^^valid-&&access++dash", uid);
@@ -439,19 +443,20 @@ export const InputCodeRecaptcha = (props) => {
       // window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
       // navigation('/dash');
 
+
       window.setTimeout(() => {
 
-       if (uid === ipUid && JSON.parse(window.localStorage.getItem('USER')) === ls.get('last##73**++Phone &&*@&&@@Number', { decrypt: true, secret: 500 })) {
+       if (uid === ipUid && secureLocalStorage.getItem("USER") === ls.get('last##73**++Phone &&*@&&@@Number', { decrypt: true, secret: 500 })) {
 
         secureLocalStorage.setItem("ip^^valid-&&access++dash", uid);
 
         window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(true));
         window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
 
-        ls.set('last##73**++Phone &&*@&&@@Number', JSON.parse(window.localStorage.getItem('USER')), { encrypt: true, secret: 500 });
+        ls.set('last##73**++Phone &&*@&&@@Number', secureLocalStorage.getItem("USER"), { encrypt: true, secret: 500 });
 
-        let verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
-        const cityRef = doc(db, verifierCollection ? 'client' : 'agent', JSON.parse(window.localStorage.getItem('USER')));
+        let verifierCollection = pushDocs.some((value) => value == secureLocalStorage.getItem("USER"));
+        const cityRef = doc(db, verifierCollection ? 'client' : 'agent', secureLocalStorage.getItem("USER"));
         setDoc(cityRef, { ip: uid }, { merge: true });
 
         secureLocalStorage.setItem("ip^^valid-&&access++dash", uid);
@@ -467,6 +472,7 @@ export const InputCodeRecaptcha = (props) => {
         navigation('/auth/redirect/token');
        }
       }, 750);
+
 
      } else {
 

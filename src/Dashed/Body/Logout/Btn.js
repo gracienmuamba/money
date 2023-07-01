@@ -13,7 +13,6 @@ import CircularProgress from '@mui/material/CircularProgress';
 import secureLocalStorage from "react-secure-storage";
 
 
-
 let pushArray = new Array();
 
 
@@ -33,7 +32,7 @@ export default function ReturnLogouTButton() {
  uid += navigatorScreen.height || '';
  uid += navigatorScreen.width || '';
  uid += navigatorScreen.pixelDepth || '';
- uid += JSON.parse(window.localStorage.getItem('USER'));
+ uid += secureLocalStorage.getItem("USER");
 
  React.useEffect(async () => {
 
@@ -51,7 +50,7 @@ export default function ReturnLogouTButton() {
 
   setLoad(true);
 
-  const docRef = doc(db, list.includes(JSON.parse(window.localStorage.getItem('USER'))) ? 'client' : 'agent', JSON.parse(window.localStorage.getItem('USER')));
+  const docRef = doc(db, list.includes(secureLocalStorage.getItem("USER")) ? 'client' : 'agent', secureLocalStorage.getItem("USER"));
   // Update the timestamp field with the value from the server
   await updateDoc(docRef, {
    ip: uid
@@ -128,9 +127,9 @@ export const updateAuthIPFirebase = async (check) => {
  uid += navigatorScreen.height || '';
  uid += navigatorScreen.width || '';
  uid += navigatorScreen.pixelDepth || '';
- uid += JSON.parse(window.localStorage.getItem('USER'));
+ uid += secureLocalStorage.getItem("USER");
 
- const cityRef = doc(db, check ? 'client' : 'agent', JSON.parse(window.localStorage.getItem('USER')));
+ const cityRef = doc(db, check ? 'client' : 'agent', secureLocalStorage.getItem("USER"));
  setDoc(cityRef, { ip: uid }, { merge: true });
 
 };

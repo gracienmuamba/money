@@ -19,7 +19,7 @@ import Button from '@mui/material/Button';
 import Fab from '@mui/material/Fab';
 import CheckIcon from '@mui/icons-material/Check';
 // import SaveIcon from '@mui/icons-material/Save';
-
+import secureLocalStorage from "react-secure-storage";
 import { CiUnlock } from 'react-icons/ci';
 
 export let exchAnge = 0; // Export view 
@@ -121,10 +121,10 @@ export const FormInputValue = () => {
    pushDocs.push(doc.id);
   });
 
-  verifierCollection = pushDocs.includes(JSON.parse(window.localStorage.getItem('USER')));
+  verifierCollection = pushDocs.includes(secureLocalStorage.getItem("USER"));
 
   try {
-   const unsub = onSnapshot(doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   const unsub = onSnapshot(doc(db, verifierCollection ? "client" : "agent", secureLocalStorage.getItem("USER")), (doc) => {
     setCdf(doc.data().thriftcdf);
     setUsd(doc.data().thriftusd);
    });
@@ -236,7 +236,7 @@ export const FormInputValue = () => {
 
 async function incrementThrift(prixCdf, prixUsd, collections) {
 
- const washingtonRef = doc(db, collections ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+ const washingtonRef = doc(db, collections ? "client" : "agent", secureLocalStorage.getItem("USER"));
  // Set the "capital" field of the city 'DC'
  await updateDoc(washingtonRef, {
   cdf: increment(prixCdf),
@@ -246,7 +246,7 @@ async function incrementThrift(prixCdf, prixUsd, collections) {
 }
 async function depreciateThrift(collections) {
 
- const washingtonRef = doc(db, collections ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+ const washingtonRef = doc(db, collections ? "client" : "agent", secureLocalStorage.getItem("USER"));
  // Set the "capital" field of the city 'DC'
  await updateDoc(washingtonRef, {
   thriftcdf: 0,

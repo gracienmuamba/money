@@ -35,6 +35,7 @@ import { green } from '@mui/material/colors';
 import Fab from '@mui/material/Fab';
 import CheckIcon from '@mui/icons-material/Check';
 import SaveIcon from '@mui/icons-material/Save';
+import secureLocalStorage from "react-secure-storage";
 
 
 
@@ -230,7 +231,7 @@ export const FormInput = () => {
       setExist(true);
     } else {
 
-      if (phoneNum === JSON.parse(window.localStorage.getItem('USER'))) {
+      if (phoneNum == secureLocalStorage.getItem("USER")) {
 
         setInvite(true);
         setLoad(false);

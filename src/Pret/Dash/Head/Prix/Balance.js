@@ -6,7 +6,7 @@ import { doc, onSnapshot } from "firebase/firestore";
 import { TweenMax, Expo } from 'gsap';
 import moment from 'moment';
 import currency from 'currency.js';
-
+import secureLocalStorage from "react-secure-storage";
 
 // Prix HeAd 
 export default function ReturnBalance() {
@@ -50,7 +50,7 @@ export const View = () => {
  React.useEffect(async () => {
 
   try {
-   await onSnapshot(doc(db, "pret", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   await onSnapshot(doc(db, "pret", secureLocalStorage.getItem("USER")), (doc) => {
 
     setCdf(doc.data().pretcdf);
     setUsd(doc.data().pretusd);

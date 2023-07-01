@@ -5,7 +5,7 @@ import { db } from '../firebase';
 
 import ReturnBtnBlocKed from './BtnBlocked';
 import ReturnBtn from './Btn';
-
+import secureLocalStorage from "react-secure-storage";
 
 let pushDocs = new Array();
 
@@ -51,8 +51,8 @@ export const ViewBtn = () => {
    pushDocs.push(doc.id);
   });
 
-  const collections = pushDocs.includes(JSON.parse(window.localStorage.getItem('USER')));
-  const unsub = onSnapshot(doc(db, collections ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+  const collections = pushDocs.includes(secureLocalStorage.getItem("USER"));
+  const unsub = onSnapshot(doc(db, collections ? "client" : "agent", secureLocalStorage.getItem("USER")), (doc) => {
    setChecked(doc.data().state);
   });
 

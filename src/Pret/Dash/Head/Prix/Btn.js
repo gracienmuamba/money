@@ -5,6 +5,8 @@ import { db } from '../../../../firebase';
 
 import moment from 'moment';
 import { useNavigate } from 'react-router-dom';
+import secureLocalStorage from "react-secure-storage";
+
 
 // Btn Component view 
 export default function ReturnBTn() {
@@ -25,7 +27,7 @@ export default function ReturnBTn() {
  React.useEffect(async () => {
 
   try {
-   await onSnapshot(doc(db, "pret", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   await onSnapshot(doc(db, "pret", secureLocalStorage.getItem("USER")), (doc) => {
 
     setSoldecdf(doc.data().cdf);
     setSoldeusd(doc.data().usd);
@@ -53,7 +55,7 @@ export default function ReturnBTn() {
  React.useEffect(async () => {
 
   try {
-   await onSnapshot(doc(db, "pret", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   await onSnapshot(doc(db, "pret", secureLocalStorage.getItem("USER")), (doc) => {
 
     setCdf(doc.data().pretcdf);
     setUsd(doc.data().pretusd);
@@ -67,7 +69,7 @@ export default function ReturnBTn() {
  React.useEffect(async () => {
 
   try {
-   await onSnapshot(doc(db, "client", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   await onSnapshot(doc(db, "client", secureLocalStorage.getItem("USER")), (doc) => {
     setWalletusd(doc.data().usd);
     setWalletcdf(doc.data().cdf);
    });
@@ -202,7 +204,7 @@ export default function ReturnBTn() {
 
 // add pret for client
 export async function asKedpret() {
- const washingtonRef = doc(db, "client", JSON.parse(window.localStorage.getItem('USER')));
+ const washingtonRef = doc(db, "client", secureLocalStorage.getItem("USER"));
  // Set the "capital" field of the city 'DC'
  await updateDoc(washingtonRef, {
   pret: false,

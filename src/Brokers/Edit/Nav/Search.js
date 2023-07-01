@@ -9,7 +9,7 @@ import './Search.css';
 import './User.css';
 
 import { db } from '../../../firebase';
-import { collection, getDocs, onSnapshot } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
@@ -24,8 +24,7 @@ import { CiSearch } from 'react-icons/ci';
 
 import ReturnIMA from './IMA';
 import { TweenMax, Linear } from 'gsap';
-import moment from 'moment';
-
+import secureLocalStorage from "react-secure-storage";
 
 let search = '';
 
@@ -64,7 +63,7 @@ export default function CustomizedInputBase() {
 
  React.useEffect(async () => {
 
-  const querySnapshot = await getDocs(collection(db, `${JSON.parse(window.localStorage.getItem('USER'))}`));
+  const querySnapshot = await getDocs(collection(db, `${secureLocalStorage.getItem("USER")}`));
   querySnapshot.forEach((doc) => {
    // doc.data() is never undefined for query doc snapshots
    if (true) {

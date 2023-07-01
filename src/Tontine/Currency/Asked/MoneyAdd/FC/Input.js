@@ -17,7 +17,7 @@ import PropTypes from 'prop-types';
 import { IMaskInput } from 'react-imask';
 import { NumericFormat } from 'react-number-format';
 import TextField from '@mui/material/TextField';
-
+import secureLocalStorage from "react-secure-storage";
 
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -130,7 +130,7 @@ export const FormInputValue = () => {
   React.useEffect(async () => {
 
     try {
-      await onSnapshot(doc(db, "client", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+      await onSnapshot(doc(db, "client", secureLocalStorage.getItem("USER")), (doc) => {
         setUsd(doc.data().usd);
       });
     } catch {

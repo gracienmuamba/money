@@ -27,9 +27,14 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import { reactLocalStorage } from 'reactjs-localstorage';
+import secureLocalStorage from "react-secure-storage";
+
+
 
 export let nowField = moment().date();
 export let now = moment().date();
+
+
 
 export let prixHash = 0;
 export let hashTrue = true;
@@ -127,10 +132,10 @@ export const FormInput = () => {
    pushDocs.push(doc.id);
   });
 
-  verifierSend = pushDocs.some(value => value == JSON.parse(window.localStorage.getItem('USER')));
+  verifierSend = pushDocs.some(value => value == secureLocalStorage.getItem("USER"));
   verifierGet = pushDocs.some(value => value == JSON.parse(window.localStorage.getItem('A@@ph$$&-@#')));
 
-  const unsub = onSnapshot(doc(db, verifierSend ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+  const unsub = onSnapshot(doc(db, verifierSend ? "client" : "agent", secureLocalStorage.getItem("USER")), (doc) => {
    setPin(doc.data().code);
    setState(doc.data().state);
    setFirst(doc.data().firstname);
@@ -216,7 +221,7 @@ export const FormInput = () => {
 
     };
 
-    const sendPhone = JSON.parse(window.localStorage.getItem('USER'));
+    const sendPhone = secureLocalStorage.getItem("USER");
     const getPhone = JSON.parse(window.localStorage.getItem('A@@ph$$&-@#'));
     const prix = JSON.parse(window.localStorage.getItem('@solde!#!'));
     const unite = JSON.parse(window.localStorage.getItem('@unite!#!'));
@@ -254,7 +259,7 @@ export const FormInput = () => {
 
     };
 
-    const sendPhone = JSON.parse(window.localStorage.getItem('USER'));
+    const sendPhone = secureLocalStorage.getItem("USER");
     const getPhone = JSON.parse(window.localStorage.getItem('A@@ph$$&-@#'));
     const money = JSON.parse(window.localStorage.getItem('@solde!#!'));
     const unite = JSON.parse(window.localStorage.getItem('@unite!#!'));
@@ -287,7 +292,7 @@ export const FormInput = () => {
       arrayUpgrade[i] = soldeUpgrade;
      };
 
-     const sendPhone = JSON.parse(window.localStorage.getItem('USER'));
+     const sendPhone = secureLocalStorage.getItem("USER");
      const getPhone = JSON.parse(window.localStorage.getItem('A@@ph$$&-@#'));
      const prix = JSON.parse(window.localStorage.getItem('@solde!#!'));
      const unite = JSON.parse(window.localStorage.getItem('@unite!#!'));
@@ -326,7 +331,7 @@ export const FormInput = () => {
 
      };
 
-     const sendPhone = JSON.parse(window.localStorage.getItem('USER'));
+     const sendPhone = secureLocalStorage.getItem("USER");
      const getPhone = JSON.parse(window.localStorage.getItem('A@@ph$$&-@#'));
      const money = JSON.parse(window.localStorage.getItem('@solde!#!'));
      const prix = JSON.parse(window.localStorage.getItem('@solde!#!'));

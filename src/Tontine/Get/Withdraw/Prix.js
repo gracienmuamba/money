@@ -5,7 +5,7 @@ import { doc, onSnapshot } from "firebase/firestore";
 import { db } from '../../../firebase';
 import currency from 'currency.js';
 import Skeleton from '@mui/material/Skeleton';
-
+import secureLocalStorage from "react-secure-storage";
 
 // Print view Asked
 export default function ReturnPrix() {
@@ -28,12 +28,12 @@ export default function ReturnPrix() {
 };
 
 export const ScreenLarge = () => (
- <div className='wrp-prix-quote-withdraw'>
+ <div className='wrp-prix-quote-withdraw-get-tontine'>
   <View />
  </div>
 );
 export const ScreenSmall = () => (
- <div className='wrp-prix-quote-withdraw-sm'>
+ <div className='wrp-prix-quote-withdraw-get-tontine-sm'>
   <View />
  </div>
 );
@@ -45,12 +45,12 @@ export const View = () => {
  React.useEffect(async () => {
 
   try {
-   const unsub = onSnapshot(doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   const unsub = onSnapshot(doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), secureLocalStorage.getItem("USER")), (doc) => {
     setAsked(doc.data().asked);
    });
 
-  } catch (error) {
-   window.console.log(error);
+  } catch (e) {
+   window.console.log(e);
   }
 
  }, []);
@@ -59,8 +59,8 @@ export const View = () => {
    const unsub = onSnapshot(doc(db, 'tontine', JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil'))), (doc) => {
     setDevise(doc.data().currency);
    });
-  } catch (error) {
-   window.console.log(error);
+  } catch (e) {
+   window.console.log(e);
   }
 
  }, []);

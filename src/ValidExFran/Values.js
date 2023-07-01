@@ -4,6 +4,7 @@ import Media from 'react-media';
 import { doc, onSnapshot, collection, getDocs } from "firebase/firestore";
 import { db } from '../firebase';
 import ReturnIMA from './IMA';
+import secureLocalStorage from "react-secure-storage";
 
 export let newExchAnge = 0;
 
@@ -48,10 +49,10 @@ export const ViewExchAnge = () => {
   querySnapshot.forEach((doc) => {
    pushArray.push(doc.id);
   });
-  const verifier = pushArray.some(value => value == JSON.parse(window.localStorage.getItem('USER')));
+  const verifier = pushArray.some(value => value == secureLocalStorage.getItem("USER"));
 
   try {
-   await onSnapshot(doc(db, verifier ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   await onSnapshot(doc(db, verifier ? "client" : "agent", secureLocalStorage.getItem("USER")), (doc) => {
     setStatus(doc.data().state);
    });
   } catch {

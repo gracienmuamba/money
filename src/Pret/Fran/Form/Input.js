@@ -3,8 +3,7 @@ import './Input.css';
 import Media from 'react-media';
 import { useForm, Controller } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { doc, setDoc, updateDoc, increment, onSnapshot, getDocs, collection } from 'firebase/firestore';
-import MomentUtils from "@date-io/moment";
+import { doc, setDoc, updateDoc, onSnapshot, getDocs, collection } from 'firebase/firestore';
 import moment from 'moment';
 import "moment/locale/fr";
 
@@ -24,13 +23,12 @@ import PropTypes from 'prop-types';
 import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { VscCheck } from 'react-icons/vsc';
 import { green } from '@mui/material/colors';
 import Button from '@mui/material/Button';
 import Fab from '@mui/material/Fab';
 import CheckIcon from '@mui/icons-material/Check';
 import SaveIcon from '@mui/icons-material/Save';
-
+import secureLocalStorage from "react-secure-storage";
 
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
@@ -45,51 +43,51 @@ import TextField from '@mui/material/TextField';
 
 
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
-  const { onChange, ...other } = props;
-  return (
-    <IMaskInput
-      {...other}
-      mask="(#00) 000-0000"
-      definitions={{
-        '#': /[1-9]/,
-      }}
-      inputRef={ref}
-      onAccept={(value) => onChange({ target: { name: props.name, value } })}
-      overwrite
-    />
-  );
+ const { onChange, ...other } = props;
+ return (
+  <IMaskInput
+   {...other}
+   mask="(#00) 000-0000"
+   definitions={{
+    '#': /[1-9]/,
+   }}
+   inputRef={ref}
+   onAccept={(value) => onChange({ target: { name: props.name, value } })}
+   overwrite
+  />
+ );
 });
 TextMaskCustom.propTypes = {
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+ name: PropTypes.string.isRequired,
+ onChange: PropTypes.func.isRequired,
 };
 const NumericFormatCustom = React.forwardRef(function NumericFormatCustom(
-  props,
-  ref,
+ props,
+ ref,
 ) {
-  const { onChange, ...other } = props;
+ const { onChange, ...other } = props;
 
-  return (
-    <NumericFormat
-      {...other}
-      getInputRef={ref}
-      onValueChange={(values) => {
-        onChange({
-          target: {
-            name: props.name,
-            value: values.value,
-          },
-        });
-      }}
-      thousandSeparator
-      valueIsNumericString
-      prefix=""
-    />
-  );
+ return (
+  <NumericFormat
+   {...other}
+   getInputRef={ref}
+   onValueChange={(values) => {
+    onChange({
+     target: {
+      name: props.name,
+      value: values.value,
+     },
+    });
+   }}
+   thousandSeparator
+   valueIsNumericString
+   prefix=""
+  />
+ );
 });
 NumericFormatCustom.propTypes = {
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+ name: PropTypes.string.isRequired,
+ onChange: PropTypes.func.isRequired,
 };
 
 
@@ -99,522 +97,521 @@ export let pushDocs = new Array();
 
 let pushPieces = new Array();
 function CircularProgressWithLabel(props) {
-  return (
-    <Box sx={{ position: 'relative', display: 'inline-flex' }}>
-      <CircularProgress variant="determinate" {...props} />
-      <Box
-        sx={{
-          top: 0,
-          left: 0,
-          bottom: 0,
-          right: 0,
-          position: 'absolute',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <Typography variant="caption" component="div" color="text.secondary">
-          {`${Math.round(props.value)}%`}
-        </Typography>
-      </Box>
-    </Box>
-  );
+ return (
+  <Box sx={{ position: 'relative', display: 'inline-flex' }}>
+   <CircularProgress variant="determinate" {...props} />
+   <Box
+    sx={{
+     top: 0,
+     left: 0,
+     bottom: 0,
+     right: 0,
+     position: 'absolute',
+     display: 'flex',
+     alignItems: 'center',
+     justifyContent: 'center',
+    }}
+   >
+    <Typography variant="caption" component="div" color="text.secondary">
+     {`${Math.round(props.value)}%`}
+    </Typography>
+   </Box>
+  </Box>
+ );
 }
 CircularProgressWithLabel.propTypes = {
-  /**
-   * The value of the progress indicator for the determinate variant.
-   * Value between 0 and 100.
-   * @default 0
-   */
-  value: PropTypes.number.isRequired,
+ /**
+  * The value of the progress indicator for the determinate variant.
+  * Value between 0 and 100.
+  * @default 0
+  */
+ value: PropTypes.number.isRequired,
 };
-
 
 // Input Field Component 
 export default function ReturnInput() {
-  return (
-    <Media
-      queries={{
-        small: '(max-width: 599px)',
-        medium: '(min-width: 600px) and (max-width:1199px)',
-        large: '(min-width: 1200px)',
-      }}>
-      {matches => (
-        <>
-          {matches.small && <ScreenSmall />}
-          {matches.medium && <SreenLarge />}
-          {matches.large && <SreenLarge />}
-        </>
-      )}
-    </Media>
-  );
+ return (
+  <Media
+   queries={{
+    small: '(max-width: 599px)',
+    medium: '(min-width: 600px) and (max-width:1199px)',
+    large: '(min-width: 1200px)',
+   }}>
+   {matches => (
+    <>
+     {matches.small && <ScreenSmall />}
+     {matches.medium && <SreenLarge />}
+     {matches.large && <SreenLarge />}
+    </>
+   )}
+  </Media>
+ );
 };
 
 export const SreenLarge = () => {
-  return (
-    <div className='wrp-input-pieces'>
-      <FormInput />
-    </div>
-  )
+ return (
+  <div className='wrp-input-pieces'>
+   <FormInput />
+  </div>
+ )
 }
 export const ScreenSmall = () => {
-  return (
-    <div className='wrp-input-pieces'>
-      <FormInput />
-    </div>
-  )
+ return (
+  <div className='wrp-input-pieces'>
+   <FormInput />
+  </div>
+ )
 };
 export const FormInput = () => {
 
-  const [imageUpload, setImageUpload] = React.useState(null);
-  const [url, setUrl] = React.useState(null);
-  const [profil, setProfil] = React.useState(null);
-  const [progress, setProgress] = React.useState(0);
-  const [viewBtn, setViewBtn] = React.useState(false);
-  const [exten, setExten] = React.useState(null);
+ const [imageUpload, setImageUpload] = React.useState(null);
+ const [url, setUrl] = React.useState(null);
+ const [profil, setProfil] = React.useState(null);
+ const [progress, setProgress] = React.useState(0);
+ const [viewBtn, setViewBtn] = React.useState(false);
+ const [exten, setExten] = React.useState(null);
 
-  const [loading, setLoading] = React.useState(false);
-  const [success, setSuccess] = React.useState(false);
-  const timer = React.useRef();
+ const [loading, setLoading] = React.useState(false);
+ const [success, setSuccess] = React.useState(false);
+ const timer = React.useRef();
 
 
-  const [values, setValues] = React.useState({
-    textmask: '(100) 000-0000',
-    numberformat: '1320',
+ const [values, setValues] = React.useState({
+  textmask: '(100) 000-0000',
+  numberformat: '1320',
+ });
+
+ const handleChange = (event) => {
+  setValues({
+   ...values,
+   [event.target.name]: event.target.value,
+  });
+ };
+
+ const buttonSx = {
+  ...(success && {
+   bgcolor: green[500],
+   '&:hover': {
+    bgcolor: green[700],
+   },
+  }),
+ };
+
+ React.useEffect(async () => {
+
+  const querySnapshot = await getDocs(collection(db, "client"));
+  querySnapshot.forEach((doc) => {
+   // doc.data() is never undefined for query doc snapshots
+   pushPieces.push(doc.id);
   });
 
-  const handleChange = (event) => {
-    setValues({
-      ...values,
-      [event.target.name]: event.target.value,
-    });
+  const unsub = onSnapshot(doc(db, "client", secureLocalStorage.getItem("USER")), (doc) => {
+   setProfil(doc.data().pretprofile);
+   setExten(doc.data().pretexten);
+  });
+
+  return () => {
+   clearTimeout(timer.current);
   };
 
-  const buttonSx = {
-    ...(success && {
-      bgcolor: green[500],
-      '&:hover': {
-        bgcolor: green[700],
-      },
-    }),
-  };
+ }, []);
+ const handleButtonClick = () => {
+  if (!loading) {
+   setSuccess(false);
+   setLoading(true);
+   timer.current = window.setTimeout(() => {
+    setSuccess(true);
+    setLoading(false);
+   }, 2000);
+  }
+ };
+ const uploadImage = async () => {
 
-  React.useEffect(async () => {
+  if (imageUpload == null)
+   return;
 
-    const querySnapshot = await getDocs(collection(db, "client"));
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      pushPieces.push(doc.id);
+  const imgRef = imageUpload.name + v4();
+  const imageRef = ref(storage, `pret/${imgRef}`);
+
+
+  uploadBytes(imageRef, imageUpload).then(() => {
+   getDownloadURL(imageRef, imageUpload).then((url) => {
+
+    const uploadTask = uploadBytesResumable(imageRef, imageUpload)
+    uploadTask.on('state_changed', (snapshot) => {
+     const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+     setProgress(prog);
+    },
+     (err) => window.console.log(err), () => {
+      getDownloadURL(uploadTask.snapshot.ref).then((url) => console.log(url))
+     })
+
+    setUrl(url);
+    const collect = pushPieces.includes(secureLocalStorage.getItem("USER"));
+    const washingtonRef = doc(db, collect ? "client" : "agent", secureLocalStorage.getItem("USER"));
+    // Set the "capital" field of the city 'DC'
+    updateDoc(washingtonRef, {
+     pretprofile: url,
+     pretexten: imgRef
     });
 
-    const unsub = onSnapshot(doc(db, "client", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
-      setProfil(doc.data().pretprofile);
-      setExten(doc.data().pretexten);
-    });
+   }).catch(error => { window.console.log(error.message) })
+   setImageUpload(null);
 
-    return () => {
-      clearTimeout(timer.current);
-    };
+  }).catch(error => { window.console.log(error.message) });
+  setViewBtn(false);
 
-  }, []);
-  const handleButtonClick = () => {
-    if (!loading) {
-      setSuccess(false);
-      setLoading(true);
-      timer.current = window.setTimeout(() => {
-        setSuccess(true);
-        setLoading(false);
-      }, 2000);
-    }
+  window.console.log(imgRef);
+  if (exten != '') {
+   // Create a reference to the file to delete
+   const desertRef = ref(storage, `pret/${exten}`);
+   // Delete the file
+   deleteObject(desertRef).then(() => {
+    // File deleted successfully
+    window.console.log('Success remove image');
+
+   }).catch((error) => {
+    window.console.log('Error Reomve');
+    // Uh-oh, an error occurred!
+   });
+  }
+
+ }
+
+ const [open, setOpen] = React.useState(false);
+ const [fullWidth, setFullWidth] = React.useState(true);
+ const [maxWidth, setMaxWidth] = React.useState('sm');
+
+ const navigation = useNavigate();
+ const { register, handleSubmit, control } = useForm({});
+
+ const handleClose = () => {
+  setOpen(false);
+ };
+
+ // Ref collection database!
+ const onSubmit = async (data) => {
+
+  window.localStorage.setItem('@!pret&*access*^^', JSON.stringify(false));
+  window.localStorage.setItem('^^&&register__pret', JSON.stringify(false));
+
+  let money = {
+
+   cdf: Number(data.digit),
+   usd: 0,
+   pretusd: 0,
+   pretcdf: Number(data.digit),
+   rationusdin: 0,
+   rationusdout: 0,
+   rationcdfin: 0,
+   rationcdfout: 0,
+   date: moment().format()
+
   };
-  const uploadImage = async () => {
-
-    if (imageUpload == null)
-      return;
-
-    const imgRef = imageUpload.name + v4();
-    const imageRef = ref(storage, `pret/${imgRef}`);
-
-
-    uploadBytes(imageRef, imageUpload).then(() => {
-      getDownloadURL(imageRef, imageUpload).then((url) => {
-
-        const uploadTask = uploadBytesResumable(imageRef, imageUpload)
-        uploadTask.on('state_changed', (snapshot) => {
-          const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-          setProgress(prog);
-        },
-          (err) => window.console.log(err), () => {
-            getDownloadURL(uploadTask.snapshot.ref).then((url) => console.log(url))
-          })
-
-        setUrl(url);
-        const collect = pushPieces.includes(JSON.parse(window.localStorage.getItem('USER')));
-        const washingtonRef = doc(db, collect ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
-        // Set the "capital" field of the city 'DC'
-        updateDoc(washingtonRef, {
-          pretprofile: url,
-          pretexten: imgRef
-        });
-
-      }).catch(error => { window.console.log(error.message) })
-      setImageUpload(null);
-
-    }).catch(error => { window.console.log(error.message) });
-    setViewBtn(false);
-
-    window.console.log(imgRef);
-    if (exten != '') {
-      // Create a reference to the file to delete
-      const desertRef = ref(storage, `pret/${exten}`);
-      // Delete the file
-      deleteObject(desertRef).then(() => {
-        // File deleted successfully
-        window.console.log('Success remove image');
-
-      }).catch((error) => {
-        window.console.log('Error Reomve');
-        // Uh-oh, an error occurred!
-      });
-    }
+  const clone = {
+   ...money,
+   ...data
 
   }
 
-  const [open, setOpen] = React.useState(false);
-  const [fullWidth, setFullWidth] = React.useState(true);
-  const [maxWidth, setMaxWidth] = React.useState('sm');
+  documentPret(clone);
+  updateRegister();
+  navigation('/pret/send');
 
-  const navigation = useNavigate();
-  const { register, handleSubmit, control } = useForm({});
+ };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+ return (
+  <form autocomplete="off" onSubmit={handleSubmit(onSubmit)}>
 
-  // Ref collection database!
-  const onSubmit = async (data) => {
+   <FormControl sx={{ width: '100%' }} variant="standard">
+    <InputLabel htmlFor="formatted-text-mask-input"><h1 className='pop-up'>Nom</h1></InputLabel>
 
-    window.localStorage.setItem('@!pret&*access*^^', JSON.stringify(false));
-    window.localStorage.setItem('^^&&register__pret', JSON.stringify(false));
+    <Controller
+     name="name"
+     control={control}
+     render={({ field }) =>
 
-    let money = {
+      <Input
+       inputProps={{ autoComplete: "off" }}
+       name="name"
+       {...field}
+      />
 
-      cdf: Number(data.digit),
-      usd: 0,
-      pretusd: 0,
-      pretcdf: Number(data.digit),
-      rationusdin: 0,
-      rationusdout: 0,
-      rationcdfin: 0,
-      rationcdfout: 0,
-      date: moment().format()
+     }
+    />
+   </FormControl>
+   <FormControl sx={{ width: '100%' }} variant="standard">
+    <InputLabel htmlFor="formatted-text-mask-input"><h1 className='pop-up'>Adresse domiciliaire actuelle</h1></InputLabel>
 
-    };
-    const clone = {
-      ...money,
-      ...data
+    <Controller
+     name="address"
+     control={control}
+     render={({ field }) =>
+
+      <Input
+       inputProps={{ autoComplete: "off" }}
+       name="address"
+       {...field}
+      />
+
+     }
+    />
+   </FormControl>
+   <FormControl sx={{ width: '100%' }} variant="standard">
+    <InputLabel htmlFor="formatted-text-mask-input"><h1 className='pop-up'>Spécifiez le projet</h1></InputLabel>
+
+    <Controller
+     name="specify"
+     control={control}
+     render={({ field }) =>
+
+      <Input
+       inputProps={{ autoComplete: "off" }}
+       name="specify"
+       {...field}
+      />
+
+     }
+    />
+   </FormControl>
+
+
+   <Controller
+    name="costs"
+    defaultValue=''
+    control={control}
+    render={({ field }) =>
+
+     <TextField
+      label={<h2 className='pop-up'>Le cout de mon Projet est estimé à CDF</h2>}
+      value={values.numberformat}
+      onChange={handleChange}
+
+      inputProps={{
+       autoComplete: "off", inputMode: 'decimal'
+      }}
+
+      {...field}
+      name="costs"
+      placeholder="0"
+      id="formatted-numberformat-input"
+      InputProps={{
+       inputComponent: NumericFormatCustom,
+      }}
+
+      variant="standard"
+     />
 
     }
+   />
+   <Controller
+    name="revenu"
+    defaultValue=''
+    control={control}
+    render={({ field }) =>
 
-    documentPret(clone);
-    updateRegister();
-    navigation('/pret/send');
+     <TextField
+      label={<h2 className='pop-up'>Mon revenu mensuel estimé à CDF</h2>}
+      value={values.numberformat}
+      onChange={handleChange}
 
-  };
+      inputProps={{
+       autoComplete: "off", inputMode: 'decimal'
+      }}
 
-  return (
-    <form autocomplete="off" onSubmit={handleSubmit(onSubmit)}>
+      {...field}
+      name="revenu"
+      placeholder="0"
+      id="formatted-numberformat-input"
+      InputProps={{
+       inputComponent: NumericFormatCustom,
+      }}
 
-      <FormControl sx={{ width: '100%' }} variant="standard">
-        <InputLabel htmlFor="formatted-text-mask-input"><h1 className='pop-up'>Nom</h1></InputLabel>
+      variant="standard"
+     />
 
-        <Controller
-          name="name"
-          control={control}
-          render={({ field }) =>
+    }
+   />
 
-            <Input
-              inputProps={{ autoComplete: "off" }}
-              name="name"
-              {...field}
-            />
+   <Controller
+    name="apport"
+    defaultValue=''
+    control={control}
+    render={({ field }) =>
 
-          }
-        />
-      </FormControl>
-      <FormControl sx={{ width: '100%' }} variant="standard">
-        <InputLabel htmlFor="formatted-text-mask-input"><h1 className='pop-up'>Adresse domiciliaire actuelle</h1></InputLabel>
+     <TextField
+      label={<h2 className='pop-up'>Un Apport estimé à CDF</h2>}
+      value={values.numberformat}
+      onChange={handleChange}
 
-        <Controller
-          name="address"
-          control={control}
-          render={({ field }) =>
+      inputProps={{
+       autoComplete: "off", inputMode: 'decimal'
+      }}
 
-            <Input
-              inputProps={{ autoComplete: "off" }}
-              name="address"
-              {...field}
-            />
+      {...field}
+      name="apport"
+      placeholder="0"
+      id="formatted-numberformat-input"
+      InputProps={{
+       inputComponent: NumericFormatCustom,
+      }}
 
-          }
-        />
-      </FormControl>
-      <FormControl sx={{ width: '100%' }} variant="standard">
-        <InputLabel htmlFor="formatted-text-mask-input"><h1 className='pop-up'>Spécifiez le projet</h1></InputLabel>
+      variant="standard"
+     />
 
-        <Controller
-          name="specify"
-          control={control}
-          render={({ field }) =>
+    }
+   />
 
-            <Input
-              inputProps={{ autoComplete: "off" }}
-              name="specify"
-              {...field}
-            />
+   <FormControl sx={{ width: '100%' }} variant="standard">
+    <InputLabel htmlFor="formatted-text-mask-input"><h1 className='pop-up'>Montant demander en lettre</h1></InputLabel>
 
-          }
-        />
-      </FormControl>
+    <Controller
+     name="letter"
+     control={control}
+     render={({ field }) =>
 
-
-      <Controller
-        name="costs"
-        defaultValue=''
-        control={control}
-        render={({ field }) =>
-
-          <TextField
-            label={<h2 className='pop-up'>Le cout de mon Projet est estimé à CDF</h2>}
-            value={values.numberformat}
-            onChange={handleChange}
-
-            inputProps={{
-              autoComplete: "off", inputMode: 'decimal'
-            }}
-
-            {...field}
-            name="costs"
-            placeholder="0"
-            id="formatted-numberformat-input"
-            InputProps={{
-              inputComponent: NumericFormatCustom,
-            }}
-
-            variant="standard"
-          />
-
-        }
-      />
-      <Controller
-        name="revenu"
-        defaultValue=''
-        control={control}
-        render={({ field }) =>
-
-          <TextField
-            label={<h2 className='pop-up'>Mon revenu mensuel estimé à CDF</h2>}
-            value={values.numberformat}
-            onChange={handleChange}
-
-            inputProps={{
-              autoComplete: "off", inputMode: 'decimal'
-            }}
-
-            {...field}
-            name="revenu"
-            placeholder="0"
-            id="formatted-numberformat-input"
-            InputProps={{
-              inputComponent: NumericFormatCustom,
-            }}
-
-            variant="standard"
-          />
-
-        }
+      <Input
+       inputProps={{ autoComplete: "off" }}
+       name="letter"
+       {...field}
       />
 
-      <Controller
-        name="apport"
-        defaultValue=''
-        control={control}
-        render={({ field }) =>
+     }
+    />
+   </FormControl>
 
-          <TextField
-            label={<h2 className='pop-up'>Un Apport estimé à CDF</h2>}
-            value={values.numberformat}
-            onChange={handleChange}
+   <Controller
+    name="digit"
+    defaultValue=''
+    control={control}
+    render={({ field }) =>
 
-            inputProps={{
-              autoComplete: "off", inputMode: 'decimal'
-            }}
+     <TextField
+      label={<h2 className='pop-up'>Montant demander en chiffre</h2>}
+      value={values.numberformat}
+      onChange={handleChange}
 
-            {...field}
-            name="apport"
-            placeholder="0"
-            id="formatted-numberformat-input"
-            InputProps={{
-              inputComponent: NumericFormatCustom,
-            }}
+      inputProps={{
+       autoComplete: "off", inputMode: 'decimal'
+      }}
 
-            variant="standard"
-          />
+      {...field}
+      name="digit"
+      placeholder="0"
+      id="formatted-numberformat-input"
+      InputProps={{
+       inputComponent: NumericFormatCustom,
+      }}
 
-        }
-      />
+      variant="standard"
+     />
 
-      <FormControl sx={{ width: '100%' }} variant="standard">
-        <InputLabel htmlFor="formatted-text-mask-input"><h1 className='pop-up'>Montant demander en lettre</h1></InputLabel>
+    }
+   />
 
-        <Controller
-          name="letter"
-          control={control}
-          render={({ field }) =>
+   <div className='import-pieces'>
+    <p>Importer pièces justificatives</p>
 
-            <Input
-              inputProps={{ autoComplete: "off" }}
-              name="letter"
-              {...field}
-            />
+    <div className='wrp-pieces-avatar-user'>
 
-          }
-        />
-      </FormControl>
+     <IconButton color="primary" aria-label="upload picture" component="label">
+      <div className='profile-user'>
 
-      <Controller
-        name="digit"
-        defaultValue=''
-        control={control}
-        render={({ field }) =>
-
-          <TextField
-            label={<h2 className='pop-up'>Montant demander en chiffre</h2>}
-            value={values.numberformat}
-            onChange={handleChange}
-
-            inputProps={{
-              autoComplete: "off", inputMode: 'decimal'
-            }}
-
-            {...field}
-            name="digit"
-            placeholder="0"
-            id="formatted-numberformat-input"
-            InputProps={{
-              inputComponent: NumericFormatCustom,
-            }}
-
-            variant="standard"
-          />
-
-        }
-      />
-
-      <div className='import-pieces'>
-        <p>Importer pièces justificatives</p>
-
-        <div className='wrp-pieces-avatar-user'>
-
-          <IconButton color="primary" aria-label="upload picture" component="label">
-            <div className='profile-user'>
-
-              <img src={'/img/uploadpret.png'} alt={'upload file'} />
-              <input
-                hidden
-                type="file"
-                onChange={(event) => {
-                  setImageUpload(event.target.files[0]);
-                  setViewBtn(true);
-                }}
-              />
-            </div>
-          </IconButton>
-
-          <CircularProgressWithLabel value={progress} />
-          {viewBtn &&
-            <div onClick={uploadImage}>
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
-
-                <Box sx={{ position: 'relative' }}>
-
-                  <Fab
-
-                    aria-label="save"
-                    color="primary"
-                    sx={buttonSx}
-                    onClick={handleButtonClick}
-                  >
-                    {success ? <CheckIcon /> : <SaveIcon />}
-                  </Fab>
-
-                  {loading && (
-                    <CircularProgress
-                      size={45}
-                      sx={{
-                        color: green[500],
-                        position: 'absolute',
-                        top: -6,
-                        left: -6,
-                        zIndex: 1,
-                      }}
-                    />
-                  )}
-                </Box>
-
-              </Box>
-
-            </div>
-          }
-
-
-        </div>
+       <img src={'/img/uploadpret.png'} alt={'upload file'} />
+       <input
+        hidden
+        type="file"
+        onChange={(event) => {
+         setImageUpload(event.target.files[0]);
+         setViewBtn(true);
+        }}
+       />
       </div>
+     </IconButton>
 
-      {progress > 95 &&
-        <button className='Btn'>Envoyer Formulaire</button>
-      }
+     <CircularProgressWithLabel value={progress} />
+     {viewBtn &&
+      <div onClick={uploadImage}>
+       <Box sx={{ display: 'flex', alignItems: 'center' }}>
 
-      <Dialog
-        fullWidth={fullWidth}
-        maxWidth={maxWidth}
-        open={open}
-        onClose={handleClose}
-      >
-        <DialogTitle><span className='pop-up'>MuunganoMoney</span></DialogTitle>
-        <DialogContent>
+        <Box sx={{ position: 'relative' }}>
 
-          <DialogContentText>
-            <p className='pop-up'>
-              Veuillez confirmer la date de naissance
+         <Fab
+
+          aria-label="save"
+          color="primary"
+          sx={buttonSx}
+          onClick={handleButtonClick}
+         >
+          {success ? <CheckIcon /> : <SaveIcon />}
+         </Fab>
+
+         {loading && (
+          <CircularProgress
+           size={45}
+           sx={{
+            color: green[500],
+            position: 'absolute',
+            top: -6,
+            left: -6,
+            zIndex: 1,
+           }}
+          />
+         )}
+        </Box>
+
+       </Box>
+
+      </div>
+     }
+
+
+    </div>
+   </div>
+
+   {progress > 95 &&
+    <button className='Btn'>Envoyer Formulaire</button>
+   }
+
+   <Dialog
+    fullWidth={fullWidth}
+    maxWidth={maxWidth}
+    open={open}
+    onClose={handleClose}
+   >
+    <DialogTitle><span className='pop-up'>MuunganoMoney</span></DialogTitle>
+    <DialogContent>
+
+     <DialogContentText>
+      <p className='pop-up'>
+       Veuillez confirmer la date de naissance
      </p>
-          </DialogContentText>
+     </DialogContentText>
 
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
-        </DialogActions>
-      </Dialog>
+    </DialogContent>
+    <DialogActions>
+     <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
+    </DialogActions>
+   </Dialog>
 
-    </form>
-  );
+  </form>
+ );
 };
 
 // Add Document Pret
 export async function documentPret(data) {
-  await setDoc(doc(db, "pret", JSON.parse(window.localStorage.getItem('USER'))), data);
+ await setDoc(doc(db, "pret", secureLocalStorage.getItem("USER")), data);
 };
 // Update docs register
 export async function updateRegister() {
 
-  const washingtonRef = doc(db, "client", JSON.parse(window.localStorage.getItem('USER')));
-  // Set the "capital" field of the city 'DC'
-  await updateDoc(washingtonRef, {
-    pretregister: true
-  });
+ const washingtonRef = doc(db, "client", secureLocalStorage.getItem("USER"));
+ // Set the "capital" field of the city 'DC'
+ await updateDoc(washingtonRef, {
+  pretregister: true
+ });
 
-}
+};
 
 
 

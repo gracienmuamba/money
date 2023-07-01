@@ -14,7 +14,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContentText from '@mui/material/DialogContentText';
-
+import secureLocalStorage from "react-secure-storage";
 
 // view invite component
 export default function ReturnInvited() {
@@ -36,7 +36,7 @@ export default function ReturnInvited() {
  React.useEffect(async () => {
 
   try {
-   const unsub = onSnapshot(doc(db, "client", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   const unsub = onSnapshot(doc(db, "client", secureLocalStorage.getItem("USER")), (doc) => {
     setList(doc.data().tontinegroup);
    });
   } catch (e) {

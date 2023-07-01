@@ -27,6 +27,9 @@ import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useNavigate } from 'react-router-dom';
 
+import secureLocalStorage from "react-secure-storage";
+
+
 // import DateFnsUtils from '@date-io/date-fns'; // choose your lib
 import {
   DatePicker,
@@ -143,7 +146,7 @@ export const FormInput = () => {
   const [fullWidth, setFullWidth] = React.useState(true);
   const [maxWidth, setMaxWidth] = React.useState('sm');
 
-  // const navigation = useNavigate();
+  const navigation = useNavigate();
 
   const existing = { active: true, credit: [], state: "client", cdf: 5000, usd: 0, thriftcdf: 0, thriftusd: 0, pretexten: '', sendtype: '', accountdate: moment().format(), pret: false, pretregister: false, pretactive: false, delay: '', code: '000000', pin: 'ungano', phoneclient: '', unite: '', solde: 0, money: 0, frais: 0, user: '', swap: [], extension: 'extension', profile: 'https://firebasestorage.googleapis.com/v0/b/ungamamoney-wallet.appspot.com/o/image%2Flogo.png?alt=media&token=a1b84070-76b5-43c7-a3e1-199e353c0711' }
   const { register, handleSubmit, control } = useForm({});
@@ -181,7 +184,7 @@ export const FormInput = () => {
     }
 
     try {
-      await onSnapshot(doc(db, "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+      await onSnapshot(doc(db, "agent", secureLocalStorage.getItem("USER")), (doc) => {
         setFran(doc.data().cdf);
       });
     } catch {
@@ -526,7 +529,7 @@ async function incrementPartner(arrayPartner, value) {
     register: increment(1000),
   });
 
-  const agentRef = doc(db, "agent", `${JSON.parse(window.localStorage.getItem('USER'))}`);
+  const agentRef = doc(db, "agent", `${secureLocalStorage.getItem("USER")}`);
   await updateDoc(agentRef, {
     cdf: increment(-value),
     thriftcdf: increment(1000)

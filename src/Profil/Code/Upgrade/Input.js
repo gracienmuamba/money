@@ -26,7 +26,6 @@ import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import secureLocalStorage from "react-secure-storage";
 
-
 let pushDocs = new Array();
 
 
@@ -131,8 +130,8 @@ export const FormInputField = () => {
 
   } else {
 
-   const verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
-   updatePinInWithDocs(verifierCollection, data.first, JSON.parse(window.localStorage.getItem('USER')));
+   const verifierCollection = pushDocs.some((value) => value == secureLocalStorage.getItem("USER"));
+   updatePinInWithDocs(verifierCollection, data.first, secureLocalStorage.getItem("USER"));
    secureLocalStorage.removeItem('updateaccescode');
 
    window.setTimeout(() => {

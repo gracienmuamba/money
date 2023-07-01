@@ -3,7 +3,6 @@ import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import SearchIcon from '@mui/icons-material/Search';
 import { useForm, Controller } from 'react-hook-form';
 
 import './Search.css';
@@ -19,6 +18,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { useNavigate } from 'react-router-dom';
 
+import secureLocalStorage from "react-secure-storage";
 import Avatar from '@mui/material/Avatar';
 import { CiSearch } from 'react-icons/ci';
 
@@ -46,7 +46,7 @@ export default function CustomizedInputBase() {
 
  React.useEffect(async () => {
 
-  const querySnapshot = await getDocs(collection(db, `${JSON.parse(window.localStorage.getItem('USER'))}`));
+  const querySnapshot = await getDocs(collection(db, `${secureLocalStorage.getItem("USER")}`));
   querySnapshot.forEach((doc) => {
    // doc.data() is never undefined for query doc snapshots
    pushDoc.push({ id: doc.id, first: doc.data().firstname, last: doc.data().lastname });

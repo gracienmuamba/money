@@ -25,6 +25,9 @@ import moment from 'moment';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
+import secureLocalStorage from "react-secure-storage";
+
+
 
 // View Form Update view
 export default function ReturnFormUpdate() {
@@ -51,7 +54,7 @@ let userDevise = JSON.parse(window.localStorage.getItem('##!!devi&&*>>'));
 let listPush = JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘˚˚'));
 let lastChild = JSON.parse(window.localStorage.getItem('&&**++<///last{}'));
 
-window.console.log(userDevise);
+
 
 export const ScreenLarge = () => (
  <div className='wrp-form-input-nows'>
@@ -63,7 +66,6 @@ export const ScreenSmall = () => (
   <FormInputField />
  </div>
 );
-
 
 export const FormInputField = () => {
 
@@ -102,7 +104,7 @@ export const FormInputField = () => {
  React.useEffect(async () => {
 
   try {
-   await onSnapshot(doc(db, "client", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   await onSnapshot(doc(db, "client", secureLocalStorage.getItem("USER")), (doc) => {
     setPin(doc.data().code);
     setCdf(doc.data().cdf);
     setUsd(doc.data().usd);
@@ -148,9 +150,8 @@ export const FormInputField = () => {
      reset();
     } else {
 
-
      if (userDevise === 'USD') {
-      if (Number(parseInt(usd)) < Number(rising)) {
+      if (parseInt(Number(usd)) <= parseInt(Number(rising))) {
 
        setNothing(true);
        setLoad(false);
@@ -165,20 +166,18 @@ export const FormInputField = () => {
         accretionAskedTontineAll();
        } else if (lastChild === false) {
         accretionAskedTontineAll();
-        // accretionAskedTontine(Number(asked));
        } else {
         window.console.log('nothing!');
        };
 
-
-       if (JSON.parse(window.localStorage.getItem('USER')) === JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'))) {
+       if (secureLocalStorage.getItem("USER") === JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'))) {
         accretionAddUpdate(Number(rising));
        }
 
        [...listPush].map(item => {
 
         window.setTimeout(() => {
-         if (item === JSON.parse(window.localStorage.getItem('USER')) || item === JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'))) {
+         if (item === secureLocalStorage.getItem("USER") || item === JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'))) {
           window.console.log('nothing');
          } else {
           const cityRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), item);
@@ -191,12 +190,14 @@ export const FormInputField = () => {
        window.setTimeout(() => {
         window.localStorage.setItem('***#$$view..<<valid++', JSON.stringify(false));
         navigation('/tontine');
-       }, 9394);
+       }, 9820);
       }
 
-     } else if (userDevise === 'CDF') {
+     }
 
-      if (Number(parseInt(cdf)) < Number(rising)) {
+     if (userDevise === 'CDF') {
+
+      if (parseInt(Number(cdf)) <= parseInt(Number(rising))) {
 
        setNothing(true);
        setLoad(false);
@@ -216,14 +217,14 @@ export const FormInputField = () => {
         window.console.log('nothing!');
        };
 
-       if (JSON.parse(window.localStorage.getItem('USER')) === JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'))) {
+       if (secureLocalStorage.getItem("USER") === JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'))) {
         accretionAddUpdate(Number(rising));
        }
 
        [...listPush].map(item => {
 
         window.setTimeout(() => {
-         if (item === JSON.parse(window.localStorage.getItem('USER')) || item === JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'))) {
+         if (item === secureLocalStorage.getItem("USER") || item === JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'))) {
           window.console.log('nothing');
          } else {
           const cityRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), item);
@@ -237,19 +238,12 @@ export const FormInputField = () => {
        window.setTimeout(() => {
         window.localStorage.setItem('***#$$view..<<valid++', JSON.stringify(false));
         navigation('/tontine');
-       }, 9394);
+       }, 9820);
 
       }
 
-     } else {
-
-      window.alert('error nothing');
-      navigation('/tontine/list/group/child/budget');
 
      }
-
-
-
 
     }
    };
@@ -359,7 +353,7 @@ export const FormInputField = () => {
 
 export async function decrementMoneyClientDollar(money) {
 
- const washingtonRef = doc(db, "client", JSON.parse(window.localStorage.getItem('USER')));
+ const washingtonRef = doc(db, "client", secureLocalStorage.getItem("USER"));
 
  // Set the "capital" field of the city 'DC'
  await updateDoc(washingtonRef, {
@@ -369,7 +363,7 @@ export async function decrementMoneyClientDollar(money) {
 };
 export async function decrementMoneyClientFran(money) {
 
- const washingtonRef = doc(db, "client", JSON.parse(window.localStorage.getItem('USER')));
+ const washingtonRef = doc(db, "client", secureLocalStorage.getItem("USER"));
 
  // Set the "capital" field of the city 'DC'
  await updateDoc(washingtonRef, {
@@ -377,7 +371,6 @@ export async function decrementMoneyClientFran(money) {
  });
 
 };
-
 export async function updateBasket(money) {
 
  const washingtonRef = doc(db, "tontine", JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')));
@@ -416,7 +409,7 @@ export async function accretionAskedTontine(asked) {
 };
 export async function accretionAddUpdate(rising) {
 
- const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('USER')));
+ const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), secureLocalStorage.getItem("USER"));
  let obj = { asked: 0, date: moment().format(), solde: rising }
  // Set the "capital" field of the city 'DC'
  await updateDoc(washingtonRef, {

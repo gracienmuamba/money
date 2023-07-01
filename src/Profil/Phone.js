@@ -5,7 +5,7 @@ import Media from 'react-media';
 
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { db } from '../firebase';
-
+import secureLocalStorage from "react-secure-storage";
 
 // This is Name view 
 export default function ReturnPhoneSetting() {
@@ -57,8 +57,8 @@ export const PhoneView = () => {
    pushDocs.push(doc.id);
   });
 
-  let collections = pushDocs.some(x => x == JSON.parse(window.localStorage.getItem('USER')));
-  const docRef = doc(db, collections ? 'client' : 'agent', JSON.parse(window.localStorage.getItem('USER')));
+  let collections = pushDocs.some(x => x == secureLocalStorage.getItem("USER"));
+  const docRef = doc(db, collections ? 'client' : 'agent', secureLocalStorage.getItem("USER"));
   const docSnap = await getDoc(docRef);
 
   if (docSnap.exists()) {

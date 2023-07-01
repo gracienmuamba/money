@@ -3,7 +3,7 @@ import './Network.css';
 import './Input.css';
 import './Prix.css';
 import ReturnTitle from './Title';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import Switch from '@mui/material/Switch';
 import ReturnDevise from './Devise';
 
@@ -20,11 +20,9 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContentText from '@mui/material/DialogContentText';
 import './Progres.css';
+import secureLocalStorage from "react-secure-storage";
 
 import moment from 'moment';
-import { v4 } from 'uuid';
-
-
 
 // Money Africell
 let africount = 1;
@@ -131,10 +129,10 @@ export default function ReturnStocKInput() {
    pushDocs.push(doc.id);
   });
 
-  var verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
+  var verifierCollection = pushDocs.some((value) => value == secureLocalStorage.getItem("USER"));
 
   try {
-   await onSnapshot(doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   await onSnapshot(doc(db, verifierCollection ? "client" : "agent", secureLocalStorage.getItem("USER")), (doc) => {
     setUsd(doc.data().usd);
     setCdf(doc.data().cdf);
    });

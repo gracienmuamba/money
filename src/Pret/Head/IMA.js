@@ -6,7 +6,7 @@ import { db } from '../../firebase';
 import ReturnName from './Name';
 import './IMA.css';
 import Media from 'react-media';
-
+import secureLocalStorage from "react-secure-storage";
 
 let arrayClient = new Array();
 let pushDocs = new Array();
@@ -58,7 +58,7 @@ export const FirstLetteR = () => {
   });
 
   try {
-   const unsub = onSnapshot(doc(db, "client", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   const unsub = onSnapshot(doc(db, "client", secureLocalStorage.getItem("USER")), (doc) => {
     setPret(doc.data().pret);
    });
   } catch {
@@ -73,9 +73,9 @@ export const FirstLetteR = () => {
    arrayClient.push(doc.id);
   });
 
-  // const collections = arrayClient.some(value => value == JSON.parse(window.localStorage.getItem('USER')));
-  const collections = arrayClient.includes(JSON.parse(window.localStorage.getItem('USER')));
-  const unsub = onSnapshot(doc(db, collections ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+  // const collections = arrayClient.some(value => value == secureLocalStorage.getItem("USER"));
+  const collections = arrayClient.includes(secureLocalStorage.getItem("USER"));
+  const unsub = onSnapshot(doc(db, collections ? "client" : "agent", secureLocalStorage.getItem("USER")), (doc) => {
    setProfil(doc.data().profile);
   });
 

@@ -8,7 +8,8 @@
 .wrp-quote-now p {
  display: flex;
  text-align: center;
- font-size: 1.02em;
+ font-size: 1.2em;
+ font-family: var(--text-family);
  font-weight: 300;
  line-height: 1;
  letter-spacing: 0.5px;
@@ -21,8 +22,9 @@
 }
 .wrp-quote-now-sm p {
  display: flex;
- font-size: 1.02em;
+ font-size: 1.12em;
  font-weight: 300;
- line-height: 1;
+ font-family: var(--text-family);
+ line-height: 1.17;
  letter-spacing: 0.5px;
 }

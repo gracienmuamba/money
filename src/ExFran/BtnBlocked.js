@@ -3,7 +3,7 @@ import { FcLock } from 'react-icons/fc';
 import { useNavigate } from 'react-router-dom';
 import { db } from '../firebase';
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
-
+import secureLocalStorage from "react-secure-storage";
 
 let pushDocs = new Array();
 
@@ -27,9 +27,9 @@ export default function ReturnBtnBlocKed() {
   querySnapshot.forEach((doc) => {
    pushDocs.push(doc.id);
   });
-  const verifier = pushDocs.some(value => value == JSON.parse(window.localStorage.getItem('USER')));
+  const verifier = pushDocs.some(value => value == secureLocalStorage.getItem("USER"));
 
-  const docRef = doc(db, verifier ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+  const docRef = doc(db, verifier ? "client" : "agent", secureLocalStorage.getItem("USER"));
   const docSnap = await getDoc(docRef);
 
   if (docSnap.exists()) {

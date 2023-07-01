@@ -21,8 +21,9 @@ import Button from '@mui/material/Button';
 import { doc, setDoc, deleteDoc, collection, getDocs, arrayUnion } from "firebase/firestore";
 import { db } from '../../../../firebase';
 
-import moment from 'moment';
 import { HiArrowLeft } from 'react-icons/hi';
+
+import secureLocalStorage from "react-secure-storage";
 
 
 let pushSnapshots = new Array();
@@ -681,7 +682,7 @@ function DrawerAppBar() {
 
 // Remove Doc list fiat
 export async function removeDocFiAt(docsFiat) {
- await deleteDoc(doc(db, JSON.parse(window.localStorage.getItem('USER')), docsFiat));
+ await deleteDoc(doc(db, secureLocalStorage.getItem("USER"), docsFiat));
 
 }
 // Remove Collection list fiat
@@ -691,7 +692,7 @@ export async function removeDocAllFiAt(collectionFiat, docsFiat) {
 // Set new update doc fiat 
 export async function defineNewDocsFiatUpdate(docsIDFiat, data) {
 
- const cityRef = doc(db, JSON.parse(window.localStorage.getItem('USER')), docsIDFiat);
+ const cityRef = doc(db, secureLocalStorage.getItem("USER"), docsIDFiat);
  setDoc(cityRef, { ...data }, { merge: true });
 
 }

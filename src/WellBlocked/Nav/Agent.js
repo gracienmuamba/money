@@ -2,6 +2,7 @@ import React from 'react';
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { db } from '../../firebase';
 import './Title.css';
+import secureLocalStorage from "react-secure-storage";
 
 // Title Return Compoennt
 export default function ReturnNameAgent() {
@@ -19,8 +20,8 @@ export default function ReturnNameAgent() {
    pushDocs.push(doc.id);
   });
 
-  const verifierCollection = pushDocsAgent.some(value => value == JSON.parse(window.localStorage.getItem('USER')));
-  const docRef = doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+  const verifierCollection = pushDocsAgent.some(value => value == secureLocalStorage.getItem("USER"));
+  const docRef = doc(db, verifierCollection ? "client" : "agent", secureLocalStorage.getItem("USER"));
 
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {

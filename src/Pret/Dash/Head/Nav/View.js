@@ -6,7 +6,7 @@ import { db } from '../../../../firebase';
 import { collection, getDocs } from "firebase/firestore";
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-
+import secureLocalStorage from "react-secure-storage";
 
 export async function getSearchColumn(col) {
 
@@ -34,7 +34,7 @@ export default function ReturnViEw() {
 
  React.useEffect(async () => {
 
-  const querySnapshot = await getDocs(collection(db, `${'pret' + JSON.parse(window.localStorage.getItem('USER'))}`));
+  const querySnapshot = await getDocs(collection(db, `${'pret' + secureLocalStorage.getItem("USER")}`));
   querySnapshot.forEach((doc) => {
    // doc.data() is never undefined for query doc snapshots
    pushDoc.push(doc.data());

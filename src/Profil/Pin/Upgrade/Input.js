@@ -99,7 +99,7 @@ export const FormInputField = () => {
    pushDocs.push(doc.id);
   });
 
-  const unsub = onSnapshot(doc(db, pushDocs.includes(JSON.parse(window.localStorage.getItem('USER'))) ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+  const unsub = onSnapshot(doc(db, pushDocs.includes(secureLocalStorage.getItem("USER")) ? "client" : "agent", secureLocalStorage.getItem("USER")), (doc) => {
    setAccess(doc.data().pin);
   });
  }, []);
@@ -162,9 +162,9 @@ export const FormInputField = () => {
 
    } else {
 
-    const verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
+    const verifierCollection = pushDocs.some((value) => value == secureLocalStorage.getItem("USER"));
 
-    updatePinInWithDocs(verifierCollection, data.first, JSON.parse(window.localStorage.getItem('USER')));
+    updatePinInWithDocs(verifierCollection, data.first, secureLocalStorage.getItem("USER"));
     secureLocalStorage.removeItem('updateaccescode');
 
     window.setTimeout(() => {

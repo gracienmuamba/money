@@ -11,7 +11,7 @@ import { db } from '../../../firebase';
 
 import { CiWallet } from "react-icons/ci";
 import Backdrop from '@mui/material/Backdrop';
-
+import secureLocalStorage from "react-secure-storage";
 
 export default function ReturnAskedWallet() {
 
@@ -49,7 +49,7 @@ export default function ReturnAskedWallet() {
  React.useEffect(async () => {
 
   try {
-   const unsub = onSnapshot(doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   const unsub = onSnapshot(doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), secureLocalStorage.getItem("USER")), (doc) => {
     setAsked(doc.data().asked === undefined ? false : doc.data().asked);
    });
 
@@ -73,7 +73,7 @@ export default function ReturnAskedWallet() {
  }, []);
  React.useEffect(async () => {
   try {
-   const unsub = onSnapshot(doc(db, "client", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   const unsub = onSnapshot(doc(db, "client", secureLocalStorage.getItem("USER")), (doc) => {
     setGroupTon(doc.data().grouptontine);
     setGroupTonDevise(doc.data().grouptontinedevise);
     setGroupTonName(doc.data().grouptontinename);
@@ -84,6 +84,7 @@ export default function ReturnAskedWallet() {
  }, []);
 
 
+ window.console.log(devise);
 
  const handleButtonClick = async () => {
 
@@ -92,7 +93,7 @@ export default function ReturnAskedWallet() {
 
   window.setTimeout(async () => {
 
-   const washingtonRef = doc(db, "client", JSON.parse(window.localStorage.getItem('USER')));
+   const washingtonRef = doc(db, "client", secureLocalStorage.getItem("USER"));
    // Atomically remove a region from the "regions" array field.
    await updateDoc(washingtonRef, {
     grouptontine: arrayRemove(JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')))
@@ -101,7 +102,7 @@ export default function ReturnAskedWallet() {
   }, 500);
   window.setTimeout(async () => {
 
-   const washingtonRef = doc(db, "client", JSON.parse(window.localStorage.getItem('USER')));
+   const washingtonRef = doc(db, "client", secureLocalStorage.getItem("USER"));
    // Atomically remove a region from the "regions" array field.
    await updateDoc(washingtonRef, {
     grouptontinedevise: arrayRemove(groupTonDevise[groupTon.indexOf(JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')))])
@@ -110,7 +111,7 @@ export default function ReturnAskedWallet() {
   }, 500);
   window.setTimeout(async () => {
 
-   const washingtonRef = doc(db, "client", JSON.parse(window.localStorage.getItem('USER')));
+   const washingtonRef = doc(db, "client", secureLocalStorage.getItem("USER"));
    // Atomically remove a region from the "regions" array field.
    await updateDoc(washingtonRef, {
     grouptontinename: arrayRemove(groupTonName[groupTon.indexOf(JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')))])
@@ -119,7 +120,7 @@ export default function ReturnAskedWallet() {
   }, 500);
   window.setTimeout(async () => {
 
-   const washingtonRef = doc(db, "client", JSON.parse(window.localStorage.getItem('USER')));
+   const washingtonRef = doc(db, "client", secureLocalStorage.getItem("USER"));
    // Atomically remove a region from the "regions" array field.
    await updateDoc(washingtonRef, {
     grouptontinemoney: arrayRemove(rising.toString())
@@ -128,17 +129,17 @@ export default function ReturnAskedWallet() {
   }, 500);
   window.setTimeout(async () => {
 
-   if ((devise).includes('CDF') === 'CDF') {
+   if ((devise).includes('CDF')) {
 
-    const washingtonRefCdf = doc(db, "client", JSON.parse(window.localStorage.getItem('USER')));
+    const washingtonRefCdf = doc(db, "client", secureLocalStorage.getItem("USER"));
     // Set the "capital" field of the city 'DC'
     await updateDoc(washingtonRefCdf, {
      cdf: increment(asked)
     });
 
-   } else if ((devise).includes('USD') === 'USD') {
+   } else if ((devise).includes('USD')) {
 
-    const washingtonRefUsd = doc(db, "client", JSON.parse(window.localStorage.getItem('USER')));
+    const washingtonRefUsd = doc(db, "client", secureLocalStorage.getItem("USER"));
     // Set the "capital" field of the city 'DC'
     await updateDoc(washingtonRefUsd, {
      usd: increment(asked)
@@ -153,7 +154,7 @@ export default function ReturnAskedWallet() {
   const listRef = doc(db, "tontine", JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')));
   // Atomically remove a region from the "regions" array field.
   await updateDoc(listRef, {
-   table: arrayRemove(JSON.parse(window.localStorage.getItem('USER')))
+   table: arrayRemove(secureLocalStorage.getItem("USER"))
   });
 
   if (!loading) {
@@ -171,8 +172,8 @@ export default function ReturnAskedWallet() {
     await deleteDoc(doc(db, "tontine", JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil'))))
    };
 
-   await deleteDoc(doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('USER'))));
-   window.location.href = "/dash";
+   await deleteDoc(doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), secureLocalStorage.getItem("USER")));
+   window.location.href = "/tontine";
   }, 1300);
 
  };

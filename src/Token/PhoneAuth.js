@@ -26,12 +26,12 @@ export const PhoneAuth = () => {
 
   });
 
-  setConfirm(pushArray.includes(JSON.parse(window.localStorage.getItem('USER'))));
+  setConfirm(pushArray.includes(secureLocalStorage.getItem("USER")));
 
  }, []);
 
- let phone = JSON.parse(window.localStorage.getItem('USER'));
- phone = phone.slice(1, 10)
+ let phone = secureLocalStorage.getItem("USER");
+ phone = phone.slice(1, 10);
  phone = '+243' + phone;
 
  var uiConfig = {
@@ -45,7 +45,7 @@ export const PhoneAuth = () => {
      window.localStorage.setItem('USER', JSON.stringify('0' + (authResult.user.phoneNumber).slice(4, 13)));
      window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(true));
      window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
-     ls.set('last##73**++Phone &&*@&&@@Number', JSON.parse(window.localStorage.getItem('USER')), { encrypt: true, secret: 500 });
+     ls.set('last##73**++Phone &&*@&&@@Number', secureLocalStorage.getItem("USER"), { encrypt: true, secret: 500 });
 
      // window.location.href = 'http://localhost:3000/dash';
      window.setTimeout(() => {
@@ -81,8 +81,8 @@ export const PhoneAuth = () => {
     provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
     defaultCountry: 'CD',
 
-    defaultNationalNumber: JSON.parse(window.localStorage.getItem('USER')),
-    loginHint: '+243' + (JSON.parse(window.localStorage.getItem('USER'))).slice(1, 10),
+    defaultNationalNumber: secureLocalStorage.getItem("USER"),
+    loginHint: '+243' + (secureLocalStorage.getItem("USER")).slice(1, 10),
 
     // Invisible reCAPTCHA with image challenge and bottom left badge.
     recaptchaParameters: {
@@ -119,7 +119,6 @@ export const PhoneAuth = () => {
 
  }, []);
 
-
  if (disable) {
   updateIpForDocFirestore(confirm, secureLocalStorage.getItem('ip^^valid-&&access++dash'));
  }
@@ -131,7 +130,7 @@ export const PhoneAuth = () => {
 
 export async function updateIpForDocFirestore(check, uid) {
 
- const cityRef = doc(db, check ? 'client' : 'agent', JSON.parse(window.localStorage.getItem('USER')));
+ const cityRef = doc(db, check ? 'client' : 'agent', secureLocalStorage.getItem("USER"));
  setDoc(cityRef, { ip: uid }, { merge: true });
 
 };

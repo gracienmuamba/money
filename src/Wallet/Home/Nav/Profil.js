@@ -4,7 +4,7 @@ import Media from 'react-media';
 import { collection, getDocs, doc, onSnapshot } from "firebase/firestore";
 import { db } from '../../../firebase';
 import ReturnName from './Name';
-
+import secureLocalStorage from "react-secure-storage";
 
 // Avatar IMAGE VIew
 export default function ReturnProfil() {
@@ -50,9 +50,9 @@ export const View = () => {
    arrayClient.push(doc.id);
   });
 
-  const collections = arrayClient.some(value => value == JSON.parse(window.localStorage.getItem('USER')));
+  const collections = arrayClient.some(value => value == secureLocalStorage.getItem("USER"));
 
-  const unsub = onSnapshot(doc(db, collections ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+  const unsub = onSnapshot(doc(db, collections ? "client" : "agent", secureLocalStorage.getItem("USER")), (doc) => {
    setProfil(doc.data().profile);
   });
 

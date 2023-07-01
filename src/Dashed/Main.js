@@ -9,37 +9,13 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase';
 import moment from 'moment';
-import { collection, getDocs, onSnapshot, doc } from "firebase/firestore";
-import { db } from '../firebase';
-import secureLocalStorage from "react-secure-storage";
 
-
-let pushClient = new Array();
 
 // Return Dashed Component
 export default function DashEd() {
 
  const navigation = useNavigate();
  const [open, setOpen] = React.useState(true);
-
- // React.useEffect(async () => {
-
- //  const querySnapshot = await getDocs(collection(db, "client"));
- //  querySnapshot.forEach((doc) => {
- //   // doc.data() is never undefined for query doc snapshots
- //   pushClient.push(doc.id);
-
- //  });
-
- //  const unsub = onSnapshot(doc(db, pushClient.includes(JSON.parse(window.localStorage.getItem('USER'))) ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
-
- //   window.setTimeout(() => {
- //    doc.data().ip === secureLocalStorage.getItem('ip^^valid-&&access++dash') ? window.console.log('very') : navigation('/sign');
- //   }, 25000);
-
- //  });
-
- // }, []);
 
  React.useEffect(() => {
 

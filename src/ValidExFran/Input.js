@@ -25,7 +25,7 @@ import { db } from '../firebase';
 import PropTypes from 'prop-types';
 import { IMaskInput } from 'react-imask';
 import { NumericFormat } from 'react-number-format';
-
+import secureLocalStorage from "react-secure-storage";
 
 
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
@@ -120,7 +120,7 @@ export const FormDataInput = () => {
  const [load, setLoad] = React.useState(false);
 
  const navigation = useNavigate();
- const { register, handleSubmit, reset, control } = useForm({});
+ const { handleSubmit, reset, control } = useForm({});
 
  const [open, setOpen] = React.useState(false);
  const [some, setSome] = React.useState(false);
@@ -185,7 +185,7 @@ export const FormDataInput = () => {
 
     if (verifierClient || verifierAgent) {
 
-     if (JSON.parse(window.localStorage.getItem('USER')) !== numPhone) {
+     if (secureLocalStorage.getItem("USER") !== numPhone) {
 
       sendPhone = numPhone;
       window.localStorage.setItem('A@@ph$$&-@#', JSON.stringify(numPhone));

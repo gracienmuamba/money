@@ -24,6 +24,7 @@ import moment from 'moment';
 
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+import secureLocalStorage from "react-secure-storage";
 
 
 // View Form Update view
@@ -99,7 +100,7 @@ export const FormInputField = () => {
  React.useEffect(async () => {
 
   try {
-   await onSnapshot(doc(db, "client", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   await onSnapshot(doc(db, "client", secureLocalStorage.getItem("USER")), (doc) => {
     setPin(doc.data().code);
     setCdf(doc.data().cdf);
     setUsd(doc.data().usd);
@@ -296,7 +297,7 @@ export const FormInputField = () => {
 
 export async function decrementMoneyClientDollar(money) {
 
- const washingtonRef = doc(db, "client", JSON.parse(window.localStorage.getItem('USER')));
+ const washingtonRef = doc(db, "client", secureLocalStorage.getItem("USER"));
 
  // Set the "capital" field of the city 'DC'
  await updateDoc(washingtonRef, {
@@ -306,7 +307,7 @@ export async function decrementMoneyClientDollar(money) {
 };
 export async function decrementMoneyClientFran(money) {
 
- const washingtonRef = doc(db, "client", JSON.parse(window.localStorage.getItem('USER')));
+ const washingtonRef = doc(db, "client", secureLocalStorage.getItem("USER"));
 
  // Set the "capital" field of the city 'DC'
  await updateDoc(washingtonRef, {
@@ -350,7 +351,7 @@ export async function accretionChildTon(numDocs) {
 };
 export async function accretionChildUpdate(rising) {
 
- const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('USER')));
+ const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), secureLocalStorage.getItem("USER"));
  let obj = { asked: 0, date: moment().format(), solde: rising }
  // Set the "capital" field of the city 'DC'
  await updateDoc(washingtonRef, {

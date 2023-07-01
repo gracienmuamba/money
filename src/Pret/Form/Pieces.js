@@ -124,9 +124,9 @@
 //    pushPieces.push(doc.id);
 //   });
 
-//   // const toCollection = pushPieces.includes(JSON.parse(window.localStorage.getItem('USER')));
+//   // const toCollection = pushPieces.includes(secureLocalStorage.getItem("USER"));
 
-//   const unsub = onSnapshot(doc(db, "client", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+//   const unsub = onSnapshot(doc(db, "client", secureLocalStorage.getItem("USER")), (doc) => {
 //    setProfil(doc.data().pretprofile);
 //    setExten(doc.data().pretexten);
 //   });
@@ -168,8 +168,8 @@
 //      })
 
 //     setUrl(url);
-//     const collect = pushPieces.includes(JSON.parse(window.localStorage.getItem('USER')));
-//     const washingtonRef = doc(db, collect ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+//     const collect = pushPieces.includes(secureLocalStorage.getItem("USER"));
+//     const washingtonRef = doc(db, collect ? "client" : "agent", secureLocalStorage.getItem("USER"));
 //     // Set the "capital" field of the city 'DC'
 //     updateDoc(washingtonRef, {
 //      pretprofile: url,

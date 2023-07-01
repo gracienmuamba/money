@@ -13,7 +13,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContentText from '@mui/material/DialogContentText';
-
+import secureLocalStorage from "react-secure-storage";
 
 // View Form Update view
 export default function ReturnFormUpdate() {
@@ -82,8 +82,8 @@ export const FormInputField = () => {
 
   } else {
 
-   const verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
-   updatePinInWithDocs(verifierCollection, data.code, JSON.parse(window.localStorage.getItem('USER')));
+   const verifierCollection = pushDocs.some((value) => value == secureLocalStorage.getItem("USER"));
+   updatePinInWithDocs(verifierCollection, data.code, secureLocalStorage.getItem("USER"));
    navigation('/dash');
 
   };

@@ -25,7 +25,7 @@ import moment from 'moment';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
-
+import secureLocalStorage from "react-secure-storage";
 
 // View Form Update view
 export default function ReturnFormUpdate() {
@@ -82,7 +82,7 @@ export const FormInputField = () => {
  let currencygroup = JSON.parse(window.localStorage.getItem('**tont>>currency??').toUpperCase());
 
  let listgroup = JSON.parse(window.localStorage.getItem('@@xi^^,view**++'));
- let docTon = namegroup + JSON.parse(window.localStorage.getItem('USER'));
+ let docTon = namegroup + secureLocalStorage.getItem("USER");
 
  const handleClose = () => {
   setOpen(false);
@@ -91,7 +91,7 @@ export const FormInputField = () => {
  React.useEffect(async () => {
 
   try {
-   await onSnapshot(doc(db, "client", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   await onSnapshot(doc(db, "client", secureLocalStorage.getItem("USER")), (doc) => {
     setPin(doc.data().code);
    });
   } catch {
@@ -124,9 +124,9 @@ export const FormInputField = () => {
      reset();
     } else {
 
-     let group = namegroup + JSON.parse(window.localStorage.getItem('USER'));
+     let group = namegroup + secureLocalStorage.getItem("USER");
 
-     if (JSON.parse(window.localStorage.getItem('**tont>>currency??')) === 'USD') {
+     if (JSON.parse(window.localStorage.getItem('**tont>>currency??')).includes('usd')) {
       decrementMoneyClientDollar(Number(rising));
      } else {
       decrementMoneyClientFran(Number(rising));
@@ -136,7 +136,7 @@ export const FormInputField = () => {
 
      [...list].map((item) => {
 
-      if (item === JSON.parse(window.localStorage.getItem('USER'))) {
+      if (item === secureLocalStorage.getItem("USER")) {
        window.setTimeout(async () => {
         allUserTontine(group, item, rising, 0, true, moment().format(), list.indexOf(item));
         const washingtonRef = doc(db, "client", item);
@@ -261,7 +261,7 @@ export const FormInputField = () => {
 
 export async function decrementMoneyClientDollar(money) {
 
- const washingtonRef = doc(db, "client", JSON.parse(window.localStorage.getItem('USER')));
+ const washingtonRef = doc(db, "client", secureLocalStorage.getItem("USER"));
 
  // Set the "capital" field of the city 'DC'
  await updateDoc(washingtonRef, {
@@ -271,7 +271,7 @@ export async function decrementMoneyClientDollar(money) {
 };
 export async function decrementMoneyClientFran(money) {
 
- const washingtonRef = doc(db, "client", JSON.parse(window.localStorage.getItem('USER')));
+ const washingtonRef = doc(db, "client", secureLocalStorage.getItem("USER"));
 
  // Set the "capital" field of the city 'DC'
  await updateDoc(washingtonRef, {

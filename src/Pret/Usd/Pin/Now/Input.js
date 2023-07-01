@@ -4,7 +4,7 @@ import Media from 'react-media';
 import { useNavigate } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 
-import { collection, getDocs, doc, onSnapshot, updateDoc, increment, arrayUnion, setDoc } from 'firebase/firestore';
+import { doc, onSnapshot, updateDoc, increment, arrayUnion, setDoc } from 'firebase/firestore';
 import { db } from '../../../../firebase';
 
 import Button from '@mui/material/Button';
@@ -22,253 +22,254 @@ import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import moment from 'moment';
+import secureLocalStorage from "react-secure-storage";
+
 
 
 // View Form Update view
 export default function ReturnFormUpdate() {
-  return (
-    <Media
-      queries={{
-        small: '(max-width: 599px)',
-        medium: '(min-width: 600px) and (max-width:1199px)',
-        large: '(min-width: 1200px)',
-      }}>
-      {matches => (
-        <>
-          {matches.small && <ScreenSmall />}
-          {matches.medium && <ScreenLarge />}
-          {matches.large && <ScreenLarge />}
-        </>
-      )}
-    </Media>
-  );
+ return (
+  <Media
+   queries={{
+    small: '(max-width: 599px)',
+    medium: '(min-width: 600px) and (max-width:1199px)',
+    large: '(min-width: 1200px)',
+   }}>
+   {matches => (
+    <>
+     {matches.small && <ScreenSmall />}
+     {matches.medium && <ScreenLarge />}
+     {matches.large && <ScreenLarge />}
+    </>
+   )}
+  </Media>
+ );
 };
 
 export const ScreenLarge = () => (
-  <div className='wrp-form-input-nows'>
-    <FormInputField />
-  </div>
+ <div className='wrp-form-input-nows'>
+  <FormInputField />
+ </div>
 );
 export const ScreenSmall = () => (
-  <div className='wrp-form-input-nows'>
-    <FormInputField />
-  </div>
+ <div className='wrp-form-input-nows'>
+  <FormInputField />
+ </div>
 );
 export const FormInputField = () => {
 
-  let regular = /[a-z]+/;
+ let regular = /[a-z]+/;
 
-  const navigation = useNavigate();
-  const { handleSubmit, reset, control } = useForm();
-  const [pin, setPin] = React.useState(null);
+ const navigation = useNavigate();
+ const { handleSubmit, reset, control } = useForm();
+ const [pin, setPin] = React.useState(null);
 
-  const [fullWidth, setFullWidth] = React.useState(true);
-  const [maxWidth, setMaxWidth] = React.useState('sm');
-  const [open, setOpen] = React.useState(false);
-  const [showPassword, setShowPassword] = React.useState(false);
+ const [fullWidth, setFullWidth] = React.useState(true);
+ const [maxWidth, setMaxWidth] = React.useState('sm');
+ const [open, setOpen] = React.useState(false);
+ const [showPassword, setShowPassword] = React.useState(false);
 
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+ const handleClickShowPassword = () => setShowPassword((show) => !show);
+ const handleMouseDownPassword = (event) => {
+  event.preventDefault();
+ };
 
-  const handleClose = () => {
-    setOpen(false);
+ const handleClose = () => {
+  setOpen(false);
+ }
+
+
+ React.useEffect(async () => {
+
+  try {
+   await onSnapshot(doc(db, "client", secureLocalStorage.getItem("USER")), (doc) => {
+    setPin(doc.data().code);
+   });
+  } catch {
+   window.console.log(`Erreur`);
   }
 
-
-  React.useEffect(async () => {
-
-    try {
-      await onSnapshot(doc(db, "client", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
-        setPin(doc.data().code);
-      });
-    } catch {
-      window.console.log(`Erreur`);
-    }
-
-  }, []);
+ }, []);
 
 
-  const onSubmit = async (data) => {
+ const onSubmit = async (data) => {
 
-    if (data.code === undefined) {
-      setOpen(true);
-      reset();
+  if (data.code === undefined) {
+   setOpen(true);
+   reset();
 
+  } else {
+
+   if (data.code.length != 6 || regular.test(data.code)) {
+    setOpen(true);
+    reset();
+
+   } else {
+
+    if (pin != data.code) {
+     setOpen(true);
+     reset();
     } else {
 
-      if (data.code.length != 6 || regular.test(data.code)) {
-        setOpen(true);
-        reset();
 
-      } else {
-
-        if (pin != data.code) {
-          setOpen(true);
-          reset();
-        } else {
+     let valuepret = JSON.parse(window.localStorage.getItem('^^pret->value'));
+     let countpret = JSON.parse(window.localStorage.getItem('&&money::pret__'));
+     let datacount = JSON.parse(window.localStorage.getItem('^^pret->count'));
 
 
-          let valuepret = JSON.parse(window.localStorage.getItem('^^pret->value'));
-          let countpret = JSON.parse(window.localStorage.getItem('&&money::pret__'));
-          let datacount = JSON.parse(window.localStorage.getItem('^^pret->count'));
+     if (JSON.parse(window.localStorage.getItem('^^pret->ok'))) {
+      asKedpretActive();
 
+      asKedpret(JSON.parse(window.localStorage.getItem('^^pret->value')));
+      asKedDecrimentpret(JSON.parse(window.localStorage.getItem('^^pret->count')));
+      JSON.parse(window.localStorage.getItem('^^pret->part')) && asKedpretpart(valuepret);
+     } else {
 
-          if (JSON.parse(window.localStorage.getItem('^^pret->ok'))) {
-            asKedpretActive();
+      asKedpret(JSON.parse(window.localStorage.getItem('^^pret->value')));
+      asKedDecrimentpret(JSON.parse(window.localStorage.getItem('^^pret->count')));
 
-            asKedpret(JSON.parse(window.localStorage.getItem('^^pret->value')));
-            asKedDecrimentpret(JSON.parse(window.localStorage.getItem('^^pret->count')));
-            JSON.parse(window.localStorage.getItem('^^pret->part')) && asKedpretpart(valuepret);
-          } else {
+      let pretInfo = 'pret' + secureLocalStorage.getItem("USER");
+      collectionPret(pretInfo, moment().format(), Number(valuepret), Number(countpret), datacount);
 
-            asKedpret(JSON.parse(window.localStorage.getItem('^^pret->value')));
-            asKedDecrimentpret(JSON.parse(window.localStorage.getItem('^^pret->count')));
+      JSON.parse(window.localStorage.getItem('^^pret->part')) && asKedpretpart(valuepret);
+     }
 
-            let pretInfo = 'pret' + JSON.parse(window.localStorage.getItem('USER'));
-            collectionPret(pretInfo, moment().format(), Number(valuepret), Number(countpret), datacount);
+     window.localStorage.setItem('^^pret->ok', JSON.stringify(false));
+     window.localStorage.setItem('^^pret->', JSON.stringify(false));
+     window.localStorage.setItem('^^snack->', JSON.stringify(true));
+     window.localStorage.setItem('^^pret->part', JSON.stringify(false));
 
-            JSON.parse(window.localStorage.getItem('^^pret->part')) && asKedpretpart(valuepret);
-          }
+     window.setTimeout(() => {
+      navigation('/pret/dash');
+     }, 500);
 
-          window.localStorage.setItem('^^pret->ok', JSON.stringify(false));
-          window.localStorage.setItem('^^pret->', JSON.stringify(false));
-          window.localStorage.setItem('^^snack->', JSON.stringify(true));
-          window.localStorage.setItem('^^pret->part', JSON.stringify(false));
-
-          window.setTimeout(() => {
-            navigation('/pret/dash');
-          }, 500);
-
-
-        }
-
-      };
 
     }
 
-  };
+   };
 
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+  }
 
-      <FormControl
-        sx={{ width: '100%' }}
+ };
 
-        variant="standard">
-        <InputLabel htmlFor="standard-adornment-password"><span className='pop-up'>Pin actuel</span></InputLabel>
+ return (
+  <form onSubmit={handleSubmit(onSubmit)}>
 
-        <Controller
-          name="code"
-          control={control}
-          render={({ field }) =>
+   <FormControl
+    sx={{ width: '100%' }}
 
-            <Input
-              id="standard-adornment-password"
-              {...field}
-              type={showPassword ? 'numeric' : 'password'}
-              inputProps={{
-                autoComplete: "off", inputMode: 'numeric'
-              }}
+    variant="standard">
+    <InputLabel htmlFor="standard-adornment-password"><span className='pop-up'>Pin actuel</span></InputLabel>
 
-              endAdornment={
-                <InputAdornment position="end">
+    <Controller
+     name="code"
+     control={control}
+     render={({ field }) =>
 
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
+      <Input
+       id="standard-adornment-password"
+       {...field}
+       type={showPassword ? 'numeric' : 'password'}
+       inputProps={{
+        autoComplete: "off", inputMode: 'numeric'
+       }}
 
-                </InputAdornment>
-              }
+       endAdornment={
+        <InputAdornment position="end">
 
-            />}
-        />
+         <IconButton
+          aria-label="toggle password visibility"
+          onClick={handleClickShowPassword}
+          onMouseDown={handleMouseDownPassword}
+         >
+          {showPassword ? <VisibilityOff /> : <Visibility />}
+         </IconButton>
 
-      </FormControl>
+        </InputAdornment>
+       }
 
-      <Dialog
-        fullWidth={fullWidth}
-        maxWidth={maxWidth}
-        open={open}
-        onClose={handleClose}>
+      />}
+    />
 
-        <DialogTitle><h1 className='pop-up'>MuunganoMoney</h1></DialogTitle>
-        <DialogContent>
+   </FormControl>
 
-          <DialogContentText>
-            <p className='pop-up'>
-              Code pin Incorrect
+   <Dialog
+    fullWidth={fullWidth}
+    maxWidth={maxWidth}
+    open={open}
+    onClose={handleClose}>
+
+    <DialogTitle><h1 className='pop-up'>MuunganoMoney</h1></DialogTitle>
+    <DialogContent>
+
+     <DialogContentText>
+      <p className='pop-up'>
+       Code pin Incorrect
      </p>
-          </DialogContentText>
+     </DialogContentText>
 
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
-        </DialogActions>
-      </Dialog>
+    </DialogContent>
+    <DialogActions>
+     <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
+    </DialogActions>
+   </Dialog>
 
-      <button className='Btn-Broker'>Envoi</button>
-    </form>
-  );
+   <button className='Btn-Broker'>Envoi</button>
+  </form>
+ );
 };
 
 
 // add pret for client
 export async function asKedpret(prix) {
-  const washingtonRef = doc(db, "pret", JSON.parse(window.localStorage.getItem('USER')));
+ const washingtonRef = doc(db, "pret", secureLocalStorage.getItem("USER"));
 
-  // Set the "capital" field of the city 'DC'
-  await updateDoc(washingtonRef, {
-    usd: increment(-prix),
-    pretusd: increment(-prix),
-    date: moment().format()
-  });
+ // Set the "capital" field of the city 'DC'
+ await updateDoc(washingtonRef, {
+  usd: increment(-prix),
+  pretusd: increment(-prix),
+  date: moment().format()
+ });
 
 };
 // add pret for client
 export async function asKedpretpart(prix) {
-  const washingtonRef = doc(db, "pret", JSON.parse(window.localStorage.getItem('USER')));
+ const washingtonRef = doc(db, "pret", secureLocalStorage.getItem("USER"));
 
-  // Set the "capital" field of the city 'DC'
-  await updateDoc(washingtonRef, {
-    usd: prix,
-    pretusd: prix,
-    date: moment().format()
-  });
+ // Set the "capital" field of the city 'DC'
+ await updateDoc(washingtonRef, {
+  usd: prix,
+  pretusd: prix,
+  date: moment().format()
+ });
 
 };
-
 export async function asKedDecrimentpret(prix) {
 
-  const washingtonRef = doc(db, "client", JSON.parse(window.localStorage.getItem('USER')));
-  // Set the "capital" field of the city 'DC'
-  await updateDoc(washingtonRef, {
-    usd: increment(-prix)
-  });
+ const washingtonRef = doc(db, "client", secureLocalStorage.getItem("USER"));
+ // Set the "capital" field of the city 'DC'
+ await updateDoc(washingtonRef, {
+  usd: increment(-prix)
+ });
 
 };
 // add pret for client active
 export async function asKedpretActive() {
-  const washingtonRef = doc(db, "client", JSON.parse(window.localStorage.getItem('USER')));
-  // Set the "capital" field of the city 'DC'
-  await updateDoc(washingtonRef, {
-    pret: false,
-    pretactive: false,
-    pretregister: false
-  });
+ const washingtonRef = doc(db, "client", secureLocalStorage.getItem("USER"));
+ // Set the "capital" field of the city 'DC'
+ await updateDoc(washingtonRef, {
+  pret: false,
+  pretactive: false,
+  pretregister: false
+ });
 
 };
 
 // view pret 
 export async function collectionPret(userCollection, userDocs, current, pret, reimburse) {
 
-  let obj = { pret: pret, reimburse: reimburse, current: current, devise: false };
-  await setDoc(doc(db, userCollection, userDocs), { date: moment().format(), data: arrayUnion(obj), devise: true }, { merge: true });
+ let obj = { pret: pret, reimburse: reimburse, current: current, devise: false };
+ await setDoc(doc(db, userCollection, userDocs), { date: moment().format(), data: arrayUnion(obj), devise: true }, { merge: true });
 
 };
 

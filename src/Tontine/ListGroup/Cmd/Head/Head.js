@@ -15,7 +15,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 import { useNavigate } from 'react-router-dom';
 import { HiArrowLeft } from 'react-icons/hi';
-
+import secureLocalStorage from "react-secure-storage";
 
 let Acces = true;
 let listRising = new Array();
@@ -56,7 +56,7 @@ function DrawerAppBar() {
 
   try {
 
-   const unsub = onSnapshot(doc(db, "client", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   const unsub = onSnapshot(doc(db, "client", secureLocalStorage.getItem("USER")), (doc) => {
 
     setMoney(doc.data().grouptontinemoney === undefined ? [] : doc.data().grouptontinemoney);
     setDevise(doc.data().grouptontinedevise === undefined ? [] : doc.data().grouptontinedevise);
@@ -113,7 +113,13 @@ function DrawerAppBar() {
          [...Array(pushDocs.length).keys()].map(index => {
 
           let argent = '';
-          argent = (devise[index]) === undefined ? 'USD' : 'CDF';
+
+          if ((devise[index]) === undefined) {
+           window.console.log('nothing !!!');
+          } else {
+           argent = (devise[index]);
+          }
+
 
           return (
            <div onClick={async () => {

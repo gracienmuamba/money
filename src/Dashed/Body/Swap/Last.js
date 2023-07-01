@@ -14,7 +14,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContentText from '@mui/material/DialogContentText';
-
+import secureLocalStorage from "react-secure-storage";
 import PrinT from './Print/Main';
 
 
@@ -40,8 +40,8 @@ export default function ReturnLasT() {
    pushDocs.push(doc.id);
   });
 
-  var verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
-  const docRef = doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+  var verifierCollection = pushDocs.some((value) => value == secureLocalStorage.getItem("USER"));
+  const docRef = doc(db, verifierCollection ? "client" : "agent", secureLocalStorage.getItem("USER"));
   // Get a document, forcing the SDK to fetch from the offline cache.
   try {
    const doc = await getDocFromCache(docRef);
@@ -53,7 +53,7 @@ export default function ReturnLasT() {
 
  }, []);
 
- let col = pushDocs.includes(JSON.parse(window.localStorage.getItem('USER')));
+ let col = pushDocs.includes(secureLocalStorage.getItem("USER"));
  const handleClose = () => {
   setOpen(false);
  };

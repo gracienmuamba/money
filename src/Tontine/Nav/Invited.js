@@ -15,8 +15,9 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContentText from '@mui/material/DialogContentText';
+import secureLocalStorage from "react-secure-storage";
 
-// view invite component
+// View invite component
 export default function ReturnInvited() {
 
  const navigation = useNavigate();
@@ -53,7 +54,7 @@ export default function ReturnInvited() {
 
  React.useEffect(async () => {
 
-  const docRef = doc(db, "client", JSON.parse(window.localStorage.getItem('USER')));
+  const docRef = doc(db, "client", secureLocalStorage.getItem("USER"));
   // Get a document, forcing the SDK to fetch from the offline cache.
   try {
    const doc = await getDocFromCache(docRef);
@@ -69,7 +70,7 @@ export default function ReturnInvited() {
 
   // Get a document, forcing the SDK to fetch from the offline cache.
   try {
-   await onSnapshot(doc(db, "client", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   await onSnapshot(doc(db, "client", secureLocalStorage.getItem("USER")), (doc) => {
     // Document was found in the cache. If no cached document exists,
     setTable(doc.data().grouptontinename);
     setOther(doc.data().grouptontine);

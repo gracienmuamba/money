@@ -2,7 +2,7 @@ import React from 'react';
 import Media from 'react-media';
 import { useForm, Controller } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { doc, setDoc, updateDoc, increment, onSnapshot, getDocs, collection } from 'firebase/firestore';
+import { doc, setDoc, updateDoc, onSnapshot, getDocs, collection } from 'firebase/firestore';
 import moment from 'moment';
 import "moment/locale/fr";
 
@@ -29,6 +29,8 @@ import FormControl from '@mui/material/FormControl';
 import { IMaskInput } from 'react-imask';
 import { NumericFormat } from 'react-number-format';
 import TextField from '@mui/material/TextField';
+import secureLocalStorage from "react-secure-storage";
+
 
 
 export let nowField = moment().date();
@@ -186,9 +188,9 @@ export const FormInput = () => {
    pushPieces.push(doc.id);
   });
 
-  // const toCollection = pushPieces.includes(JSON.parse(window.localStorage.getItem('USER')));
+  // const toCollection = pushPieces.includes(secureLocalStorage.getItem("USER"));
 
-  const unsub = onSnapshot(doc(db, "client", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+  const unsub = onSnapshot(doc(db, "client", secureLocalStorage.getItem("USER")), (doc) => {
    setProfil(doc.data().pretprofile);
    setExten(doc.data().pretexten);
   });
@@ -230,8 +232,8 @@ export const FormInput = () => {
      })
 
     setUrl(url);
-    const collect = pushPieces.includes(JSON.parse(window.localStorage.getItem('USER')));
-    const washingtonRef = doc(db, collect ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER')));
+    const collect = pushPieces.includes(secureLocalStorage.getItem("USER"));
+    const washingtonRef = doc(db, collect ? "client" : "agent", secureLocalStorage.getItem("USER"));
     // Set the "capital" field of the city 'DC'
     updateDoc(washingtonRef, {
      pretprofile: url,
@@ -571,12 +573,12 @@ export const FormInput = () => {
 
 // Add Document Pret
 export async function documentPret(data) {
- await setDoc(doc(db, "pret", JSON.parse(window.localStorage.getItem('USER'))), data);
+ await setDoc(doc(db, "pret", secureLocalStorage.getItem("USER")), data);
 };
 // Update docs register
 export async function updateRegister() {
 
- const washingtonRef = doc(db, "client", JSON.parse(window.localStorage.getItem('USER')));
+ const washingtonRef = doc(db, "client", secureLocalStorage.getItem("USER"));
  // Set the "capital" field of the city 'DC'
  await updateDoc(washingtonRef, {
   pretregister: true
@@ -586,7 +588,7 @@ export async function updateRegister() {
 // Update docs register
 export async function percentageClient() {
 
- const cityRef = doc(db, 'client', JSON.parse(window.localStorage.getItem('USER')));
+ const cityRef = doc(db, 'client', secureLocalStorage.getItem("USER"));
  setDoc(cityRef, { percentage: 0.6 }, { merge: true });
 
 };

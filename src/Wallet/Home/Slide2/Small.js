@@ -3,7 +3,7 @@ import './Small.css';
 import Media from 'react-media';
 import { db } from '../../../firebase';
 import { collection, getDocs, doc, onSnapshot } from "firebase/firestore";
-
+import secureLocalStorage from "react-secure-storage";
 
 // Return CDF Components
 export default function ReturnCDF() {
@@ -51,10 +51,10 @@ export const View = () => {
    pushDocs.push(doc.id);
   });
 
-  var verifierCollection = pushDocs.some((value) => value == JSON.parse(window.localStorage.getItem('USER')));
+  var verifierCollection = pushDocs.some((value) => value == secureLocalStorage.getItem("USER"));
 
   try {
-   await onSnapshot(doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   await onSnapshot(doc(db, verifierCollection ? "client" : "agent", secureLocalStorage.getItem("USER")), (doc) => {
     setCdf(doc.data().thriftcdf);
    });
   } catch {

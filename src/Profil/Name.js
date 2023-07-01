@@ -6,6 +6,8 @@ import Media from 'react-media';
 import { collection, getDocs, doc, onSnapshot } from "firebase/firestore";
 import { db } from '../firebase';
 
+import secureLocalStorage from "react-secure-storage";
+
 // This is Name view 
 export default function ReturnName() {
  return (
@@ -57,10 +59,10 @@ export const ReturnPeople = () => {
    arrayClient.push(doc.id);
   });
 
-  let collections = arrayClient.some(x => x == JSON.parse(window.localStorage.getItem('USER')));
+  let collections = arrayClient.some(x => x == secureLocalStorage.getItem("USER"));
 
   try {
-   await onSnapshot(doc(db, collections ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   await onSnapshot(doc(db, collections ? "client" : "agent", secureLocalStorage.getItem("USER")), (doc) => {
     setFirst(doc.data().firstname);
     setLast(doc.data().lastname);
    });

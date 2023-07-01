@@ -22,7 +22,7 @@ import { IMaskInput } from 'react-imask';
 import { NumericFormat } from 'react-number-format';
 import TextField from '@mui/material/TextField';
 
-
+import secureLocalStorage from "react-secure-storage";
 
 export let money = 0;
 export let count = 0;
@@ -192,11 +192,11 @@ export const FormInputValue = () => {
   });
 
 
-  verifierCollection = pushUser.some(value => value == JSON.parse(window.localStorage.getItem('USER')));
+  verifierCollection = pushUser.some(value => value == secureLocalStorage.getItem("USER"));
   verifierOther = pushOther.some(value => value == JSON.parse(window.localStorage.getItem('A@@ph$$&-@#')));
 
   try {
-   const unsub = onSnapshot(doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
+   const unsub = onSnapshot(doc(db, verifierCollection ? "client" : "agent", secureLocalStorage.getItem("USER")), (doc) => {
     setPrix(doc.data().cdf);
     setStatus(doc.data().state);
    });

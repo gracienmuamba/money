@@ -3,33 +3,33 @@
  --grey-asked-tontine: #343a40;
 }
 
-.wrp-prix-quote-withdraw {
+.wrp-prix-quote-withdraw-get-tontine {
  display: flex;
  margin-top: 5vh;
  color: var(--blue-asked-tontine);
 }
-.wrp-prix-quote-withdraw p {
+.wrp-prix-quote-withdraw-get-tontine p {
  display: flex;
- font-size: 2.683em;
+ font-size: 3.133em;
  font-weight: 300;
  line-height: 1.2;
  text-align: center;
- letter-spacing: -1px;
+ letter-spacing: -3px;
  font-family: var(--text-family);
 }
 
 /* Small prix widthdraw */
-.wrp-prix-quote-withdraw-sm {
+.wrp-prix-quote-withdraw-get-tontine-sm {
  display: flex;
  margin-top: 5vh;
  color: var(--blue-asked-tontine);
 }
-.wrp-prix-quote-withdraw-sm p {
+.wrp-prix-quote-withdraw-get-tontine-sm p {
  display: flex;
- font-size: 9.183vw;
+ font-size: 2.133em;
  font-weight: 300;
  line-height: 1.2;
  text-align: center;
- letter-spacing: 0px;
+ letter-spacing: -2px;
  font-family: var(--text-family);
 }

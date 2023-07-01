@@ -13,6 +13,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContentText from '@mui/material/DialogContentText';
 
+import secureLocalStorage from "react-secure-storage";
+
 
 // View all 
 export default function ReturnAll() {
@@ -40,7 +42,7 @@ export default function ReturnAll() {
  }, []);
 
 
- let colpret = 'pret' + JSON.parse(window.localStorage.getItem('USER'));
+ let colpret = 'pret' + secureLocalStorage.getItem("USER");
 
  React.useEffect(async () => {
 
