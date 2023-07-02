@@ -50,7 +50,7 @@ export const PhoneAuth = () => {
      window.setTimeout(() => {
       // window.location.href = 'http://localhost:3000/dash';
       window.location.href = 'https://muungano-money.netlify.app/dash';
-     }, 1000);
+     }, 1200);
 
     } else {
 
@@ -62,7 +62,7 @@ export const PhoneAuth = () => {
      window.setTimeout(() => {
       // window.location.href = 'http://localhost:3000/';
       window.location.href = 'https://muungano-money.netlify.app/'
-     }, 1000);
+     }, 1200);
 
     }
     console.log("sign in success");

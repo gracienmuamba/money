@@ -349,7 +349,6 @@ export const FormDataInput = () => {
  );
 };
 
-
 // input Recaptcha  verifier!
 export const InputCodeRecaptcha = (props) => {
 
@@ -380,7 +379,7 @@ export const InputCodeRecaptcha = (props) => {
 
  React.useEffect(async () => {
   const unsub = onSnapshot(doc(db, isInDataPhone ? "client" : "agent", secureLocalStorage.getItem("USER")), (doc) => {
-   setIpUid(doc.data().ip);
+   setIpUid(doc.data().ip === undefined ? '' : doc.data().ip);
   });
 
  }, []);
@@ -456,7 +455,6 @@ export const InputCodeRecaptcha = (props) => {
       // window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
       // navigation('/dash');
 
-
       window.setTimeout(() => {
 
        if (uid === ipUid && secureLocalStorage.getItem("USER") === ls.get('last##73**++Phone &&*@&&@@Number', { decrypt: true, secret: 500 })) {
@@ -485,7 +483,6 @@ export const InputCodeRecaptcha = (props) => {
         navigation('/auth/redirect/token');
        }
       }, 750);
-
 
      } else {
 

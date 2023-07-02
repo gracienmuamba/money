@@ -56,6 +56,23 @@ export function View() {
  const [list, setList] = React.useState([0]);
  const [other, setOther] = React.useState([0]);
 
+ React.useEffect(async () => {
+
+  // Get a document, forcing the SDK to fetch from the offline cache.
+  try {
+   await onSnapshot(doc(db, "client", secureLocalStorage.getItem("USER")), (doc) => {
+    // Document was found in the cache. If no cached document exists,
+    setList(doc.data().grouptontinename);
+    setOther(doc.data().grouptontine);
+   });
+
+  } catch (e) {
+   console.log("Error getting cached document:", e);
+  };
+
+ }, []);
+
+
  const [fullWidth, setFullWidth] = React.useState(true);
  const [maxWidth, setMaxWidth] = React.useState('sm');
 
@@ -69,27 +86,12 @@ export function View() {
    [event.target.name]: event.target.value,
   });
  };
-
  const handleClose = () => {
   setOpen(false);
  };
 
- React.useEffect(async () => {
 
-  // Get a document, forcing the SDK to fetch from the offline cache.
-  try {
-   await onSnapshot(doc(db, "client", JSON.parse(window.localStorage.getItem('USER'))), (doc) => {
-    // Document was found in the cache. If no cached document exists,
-    setList(doc.data().grouptontinename);
-    setOther(doc.data().grouptontine);
-   });
-
-  } catch (e) {
-   setOpen(true);
-   console.log("Error getting cached document:", e);
-  };
-
- }, []);
+ window.console.log(list.length)
 
  const handlepath = (event) => {
 
@@ -98,8 +100,7 @@ export function View() {
   window.localStorage.setItem('^^add&&@!!**', JSON.parse(false));
   window.localStorage.setItem('??next^^**$$', JSON.parse(false));
 
-
-  if (list === undefined || !list.length === true) {
+  if (list === undefined || list.length == 0) {
    setOpen(true);
   } else {
 
@@ -113,10 +114,10 @@ export function View() {
 
  };
 
-
  return (
   <>
    <button onClick={handlepath}>Continue sur Tontine</button>
+
    <Dialog
     fullWidth={fullWidth}
     maxWidth={maxWidth}

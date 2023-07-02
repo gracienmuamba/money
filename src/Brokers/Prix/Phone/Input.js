@@ -485,8 +485,8 @@ export const ViewInpuT = () => {
   if (AcessOperator === Operator) {
 
    // Section no disponiblie 
-   setDialog(true);
-   // setOpen(true);
+   setDialog(false);
+   setOpen(true);
   } else {
    setDialog(false);
   }
