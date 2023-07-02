@@ -17,15 +17,9 @@
 }
 .flex-head-list-cmds header .navbar {
  display: flex;
- width: 100%;
- position: absolute;
- top: 1.5vh;
- z-index: 10;
-
- padding: 0 5%;
-
  justify-content: space-between;
  align-items: center;
+ width: 100%;
 }
 .flex-head-list-cmds header .navbar span {
  display: flex;
@@ -41,7 +35,7 @@
  flex-direction: column;
  margin-top: 10vh;
  width: 100%;
- padding: 1em;
+ padding: 10em;
 }
 .flex-head-list-cmds section ul {
  list-style: none;

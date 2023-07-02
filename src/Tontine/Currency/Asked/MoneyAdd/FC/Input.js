@@ -27,51 +27,51 @@ import REturnPriX from './Prix';
 
 
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
-  const { onChange, ...other } = props;
-  return (
-    <IMaskInput
-      {...other}
-      mask="(#00) 000-0000"
-      definitions={{
-        '#': /[1-9]/,
-      }}
-      inputRef={ref}
-      onAccept={(value) => onChange({ target: { name: props.name, value } })}
-      overwrite
-    />
-  );
+ const { onChange, ...other } = props;
+ return (
+  <IMaskInput
+   {...other}
+   mask="(#00) 000-0000"
+   definitions={{
+    '#': /[1-9]/,
+   }}
+   inputRef={ref}
+   onAccept={(value) => onChange({ target: { name: props.name, value } })}
+   overwrite
+  />
+ );
 });
 TextMaskCustom.propTypes = {
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+ name: PropTypes.string.isRequired,
+ onChange: PropTypes.func.isRequired,
 };
 const NumericFormatCustom = React.forwardRef(function NumericFormatCustom(
-  props,
-  ref,
+ props,
+ ref,
 ) {
-  const { onChange, ...other } = props;
+ const { onChange, ...other } = props;
 
-  return (
-    <NumericFormat
-      {...other}
-      getInputRef={ref}
-      onValueChange={(values) => {
-        onChange({
-          target: {
-            name: props.name,
-            value: values.value,
-          },
-        });
-      }}
-      thousandSeparator
-      valueIsNumericString
-      prefix=""
-    />
-  );
+ return (
+  <NumericFormat
+   {...other}
+   getInputRef={ref}
+   onValueChange={(values) => {
+    onChange({
+     target: {
+      name: props.name,
+      value: values.value,
+     },
+    });
+   }}
+   thousandSeparator
+   valueIsNumericString
+   prefix=""
+  />
+ );
 });
 NumericFormatCustom.propTypes = {
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+ name: PropTypes.string.isRequired,
+ onChange: PropTypes.func.isRequired,
 };
 
 
@@ -79,164 +79,164 @@ NumericFormatCustom.propTypes = {
 
 // Return Phone input component
 export default function REturnInputPhone() {
-  return (
-    <>
-      <Media
-        queries={{
-          small: '(max-width: 599px)',
-          medium: '(min-width: 600px) and (max-width:1199px)',
-          large: '(min-width: 1200px)',
-        }}>
-        {matches => (
-          <>
-            {matches.small && <ScreenSmall />}
-            {matches.medium && <ScreenLarge />}
-            {matches.large && <ScreenLarge />}
-          </>
-        )}
-      </Media>
-    </>
-  );
+ return (
+  <>
+   <Media
+    queries={{
+     small: '(max-width: 599px)',
+     medium: '(min-width: 600px) and (max-width:1199px)',
+     large: '(min-width: 1200px)',
+    }}>
+    {matches => (
+     <>
+      {matches.small && <ScreenSmall />}
+      {matches.medium && <ScreenLarge />}
+      {matches.large && <ScreenLarge />}
+     </>
+    )}
+   </Media>
+  </>
+ );
 };
 export const ScreenLarge = () => {
-  return (
-    <div className='solde-input-asked'>
-      <FormInputValue />
-    </div>
-  );
+ return (
+  <div className='solde-input-asked'>
+   <FormInputValue />
+  </div>
+ );
 };
 export const ScreenSmall = () => {
-  return (
-    <div className='solde-input-asked'>
-      <FormInputValue />
-    </div>
-  )
+ return (
+  <div className='solde-input-asked'>
+   <FormInputValue />
+  </div>
+ )
 };
 export const FormInputValue = () => {
 
-  const navigation = useNavigate();
-  const { handleSubmit, control, watch } = useForm({});
-  const [load, setLoad] = React.useState(false);
+ const navigation = useNavigate();
+ const { handleSubmit, control, watch } = useForm({});
+ const [load, setLoad] = React.useState(false);
 
-  const [usd, setUsd] = React.useState(0.00);
-  const [open, setOpen] = React.useState(false);
-  const [fullWidth, setFullWidth] = React.useState(true);
-  const [maxWidth, setMaxWidth] = React.useState('sm');
+ const [usd, setUsd] = React.useState(0.00);
+ const [open, setOpen] = React.useState(false);
+ const [fullWidth, setFullWidth] = React.useState(true);
+ const [maxWidth, setMaxWidth] = React.useState('sm');
 
 
-  let prixUsd = watch('count');
-  let money = prixUsd == undefined ? Number(usd) : Number(usd) - Number(prixUsd);
+ let prixUsd = watch('count');
+ let money = prixUsd == undefined ? Number(usd) : Number(usd) - Number(prixUsd);
 
-  React.useEffect(async () => {
+ React.useEffect(async () => {
 
-    try {
-      await onSnapshot(doc(db, "client", secureLocalStorage.getItem("USER")), (doc) => {
-        setUsd(doc.data().usd);
-      });
-    } catch {
-      window.console.log(`Erreur`);
-    }
+  try {
+   await onSnapshot(doc(db, "client", secureLocalStorage.getItem("USER")), (doc) => {
+    setUsd(doc.data().usd);
+   });
+  } catch {
+   window.console.log(`Erreur`);
+  }
 
-  }, []);
+ }, []);
 
-  const [values, setValues] = React.useState({
-    textmask: '(100) 000-0000',
-    numberformat: '1320',
+ const [values, setValues] = React.useState({
+  textmask: '(100) 000-0000',
+  numberformat: '1320',
+ });
+
+ const handleChange = (event) => {
+  setValues({
+   ...values,
+   [event.target.name]: event.target.value,
   });
+ };
+ const handleClose = () => {
+  setOpen(false);
+ };
 
-  const handleChange = (event) => {
-    setValues({
-      ...values,
-      [event.target.name]: event.target.value,
-    });
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
+ const onSubmit = async (data) => {
 
-  const onSubmit = async (data) => {
+  setLoad(true);
+  if (data.count === undefined || data.count === '' || money < 1) {
+   setOpen(true);
+   setLoad(false);
+  } else {
 
-    setLoad(true);
-    if (data.count === undefined || data.count === '' || money < 1) {
-      setOpen(true);
-      setLoad(false);
-    } else {
-
-      window.localStorage.setItem('**tont>>count??', JSON.stringify(data.count));
-      window.setTimeout(() => {
-        navigation('/tontine/form/info');
-      }, 1000);
+   window.localStorage.setItem('**tont>>count??', JSON.stringify(data.count));
+   window.setTimeout(() => {
+    navigation('/tontine/form/info');
+   }, 1000);
 
 
 
-    }
+  }
 
-  };
+ };
 
-  return (
-    <>
-      <div className='zindex-theme'>
-        <Backdrop
-          sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-          open={load}>
+ return (
+  <>
+   <div className='zindex-theme'>
+    <Backdrop
+     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+     open={load}>
 
-          <CircularProgress color="inherit" />
-        </Backdrop>
-      </div>
+     <CircularProgress color="inherit" />
+    </Backdrop>
+   </div>
 
-      <REturnPriX count={money} />
-      <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
+   <REturnPriX count={money} />
+   <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
 
-        <Controller
-          name="count"
-          control={control}
-          render={({ field }) =>
+    <Controller
+     name="count"
+     control={control}
+     render={({ field }) =>
 
-            <TextField
-              label={<h2>Montant</h2>}
-              value={values.numberformat}
-              onChange={handleChange}
-              {...field}
-              name="count"
-              id="formatted-numberformat-input"
+      <TextField
+       label={<h2>Montant</h2>}
+       value={values.numberformat}
+       onChange={handleChange}
+       {...field}
+       name="count"
+       id="formatted-numberformat-input"
 
-              inputProps={{
-                autoComplete: "off", inputMode: 'decimal'
-              }}
+       inputProps={{
+        autoComplete: "off", inputMode: 'decimal'
+       }}
 
-              InputProps={{
-                inputComponent: NumericFormatCustom,
-              }}
-              variant="standard"
-              placeholder='0'
-            />
+       InputProps={{
+        inputComponent: NumericFormatCustom,
+       }}
+       variant="standard"
+       placeholder='0'
+      />
 
-          }
-        />
+     }
+    />
 
-        <Dialog
-          fullWidth={fullWidth}
-          maxWidth={maxWidth}
-          open={open}
-          onClose={handleClose}>
-          <DialogTitle><span className='pop-up'>MuunganoMoney</span></DialogTitle>
-          <DialogContent>
+    <Dialog
+     fullWidth={fullWidth}
+     maxWidth={maxWidth}
+     open={open}
+     onClose={handleClose}>
+     <DialogTitle><span className='pop-up'>MuunganoMoney</span></DialogTitle>
+     <DialogContent>
 
-            <DialogContentText>
-              <p className='pop-up'>
-                La valeur demandée n'est pas disponible, veuillez vérifier.
+      <DialogContentText>
+       <p className='pop-up'>
+        La valeur demandée n'est pas disponible, veuillez vérifier.
       </p>
 
-            </DialogContentText>
+      </DialogContentText>
 
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
-          </DialogActions>
-        </Dialog>
+     </DialogContent>
+     <DialogActions>
+      <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
+     </DialogActions>
+    </Dialog>
 
-        {money >= 1 && <button className='Btn'>Avancer</button>}
-      </form>
-    </>
-  );
+    {money >= 1 && <button className='Btn'>Avancer</button>}
+   </form>
+  </>
+ );
 };

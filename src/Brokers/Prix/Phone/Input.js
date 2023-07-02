@@ -133,9 +133,9 @@ export const ViewInpuT = () => {
  };
  const dialogConfirm = () => {
 
-  window.console.log('unite simple');
-  // navigation('/brokers/unite/pin');
-  // window.localStorage.setItem('^*$#path**', JSON.stringify(true));
+  // window.console.log('unite simple');
+  navigation('/brokers/unite/pin');
+  window.localStorage.setItem('^*$#path**', JSON.stringify(true));
 
  };
 
@@ -485,9 +485,8 @@ export const ViewInpuT = () => {
   if (AcessOperator === Operator) {
 
    // Section no disponiblie 
-
-   // setDialog(true);  // ********
-   setOpen(true);
+   setDialog(true);
+   // setOpen(true);
   } else {
    setDialog(false);
   }

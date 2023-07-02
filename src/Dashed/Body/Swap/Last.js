@@ -63,8 +63,8 @@ export default function ReturnLasT() {
   setLoad(true);
   window.localStorage.setItem('&&$$!@lis::**swap++', JSON.stringify(list.reverse()));
 
-  if (list.length > 5) {
-   window.localStorage.setItem('&&lis++$$!@lis::**||{}', JSON.stringify(5));
+  if (list.length > 10) {
+   window.localStorage.setItem('&&lis++$$!@lis::**||{}', JSON.stringify(10));
   } else {
    window.localStorage.setItem('&&lis++$$!@lis::**||{}', JSON.stringify(list.length));
   }

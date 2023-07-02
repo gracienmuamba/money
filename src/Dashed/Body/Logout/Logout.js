@@ -23,7 +23,6 @@ export default function ReturnLogOuT() {
  );
 };
 
-
 export const ScreenLarge = () => (
  <div className='wrp-logout'>
   <View />

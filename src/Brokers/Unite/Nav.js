@@ -9,6 +9,9 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { HiArrowLeft } from 'react-icons/hi';
 import secureLocalStorage from "react-secure-storage";
 
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+
 
 export async function getSearchColumn(col) {
 
@@ -24,13 +27,12 @@ export async function getSearchColumn(col) {
  window.localStorage.setItem('%%docs&&col**unite', JSON.stringify(arr.reverse()));
 
 };
-
 export function BacK() {
  const navigation = useNavigate();
  return (
   <div className='wrp-back-brokers'>
    <div onClick={() => navigation(-1)} className='wrp-back-box-brokers'>
-    <HiArrowLeft size={'1.6em'} color={'grey'} />
+    <HiArrowLeft size={'1.3em'} color={'grey'} />
    </div>
   </div>
  );
@@ -85,7 +87,13 @@ export default function ReturnNavBaR() {
 
    <div className='navbar-top-broker'>
     <nav>
-     <BacK />
+
+     <Tooltip title="Retour">
+      <IconButton>
+       <BacK />
+      </IconButton>
+     </Tooltip>
+
      <img src={'/img/caise.png'} onClick={handlepath} />
 
     </nav>

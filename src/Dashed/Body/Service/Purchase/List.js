@@ -16,7 +16,6 @@ import DialogContentText from '@mui/material/DialogContentText';
 
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-
 import secureLocalStorage from "react-secure-storage";
 
 
@@ -63,7 +62,6 @@ export const ScreenSmall = () => (
 );
 export const View = () => {
 
-
  var navigatorInfo = window.navigator;
  var navigatorScreen = window.screen;
 
@@ -94,6 +92,8 @@ export const View = () => {
  const [maxWidth, setMaxWidth] = React.useState('sm');
 
  const [confirm, setConfirm] = React.useState(false);
+
+
  React.useEffect(async () => {
 
   const querySnapshot = await getDocs(collection(db, "client"));

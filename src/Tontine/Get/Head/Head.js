@@ -151,6 +151,6 @@ function DrawerAppBar() {
 			</div>
 		</>
 	);
-}
+};
 
 export default DrawerAppBar;

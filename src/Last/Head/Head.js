@@ -4,7 +4,6 @@ import ReturnProfil from './Profil';
 import { HiArrowLeft } from 'react-icons/hi';
 import { useNavigate } from 'react-router-dom';
 
-
 let Acces = true;
 
 function DrawerAppBar() {
@@ -88,6 +87,6 @@ function DrawerAppBar() {
 
   </div>
  );
-}
+};
 
 export default DrawerAppBar;

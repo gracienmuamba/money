@@ -47,8 +47,8 @@ export const PhoneAuth = () => {
      window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
      ls.set('last##73**++Phone &&*@&&@@Number', secureLocalStorage.getItem("USER"), { encrypt: true, secret: 500 });
 
-     // window.location.href = 'http://localhost:3000/dash';
      window.setTimeout(() => {
+      // window.location.href = 'http://localhost:3000/dash';
       window.location.href = 'https://muungano-money.netlify.app/dash';
      }, 1000);
 
@@ -59,8 +59,8 @@ export const PhoneAuth = () => {
      reactLocalStorage.remove('USER');
      reactLocalStorage.remove('@expire˚˚ø');
 
-     // window.location.href = 'http://localhost:3000/';
      window.setTimeout(() => {
+      // window.location.href = 'http://localhost:3000/';
       window.location.href = 'https://muungano-money.netlify.app/'
      }, 1000);
 

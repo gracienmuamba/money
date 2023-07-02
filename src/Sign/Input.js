@@ -148,6 +148,11 @@ export const FormDataInput = () => {
  const [loading, setLoading] = React.useState(false);
  const [codepin, setCodepin] = React.useState();
 
+
+ const [listAgent, setListAgent] = React.useState([]);
+ const [listClient, setListClient] = React.useState([]);
+
+
  const inputRef = React.useRef();
  const [searchTerm, setSearchTerm] = React.useState('');
 
@@ -164,6 +169,8 @@ export const FormDataInput = () => {
  const handleClose = () => {
   setOpen(false);
  };
+
+
  React.useEffect(async () => {
 
   const querySnapshot = await getDocs(collection(db, "client"));
@@ -178,11 +185,15 @@ export const FormDataInput = () => {
    pushAgent.push(doc.id);
   });
 
+  setListAgent(pushAgent);
+
   const clientSnapshot = await getDocs(collection(db, "client"));
   clientSnapshot.forEach((doc) => {
    // doc.data() is never undefined for query doc snapshots
    pushClient.push(doc.id);
   });
+
+  setListClient(pushClient);
 
  }, []);
 
@@ -214,9 +225,9 @@ export const FormDataInput = () => {
 
    } else {
 
-    const isExistClient = pushClient.some(value => value == numPhone);
-    const isExistAgent = pushAgent.some(value => value == numPhone);
-    const isInDataPhone = pushDocs.some(value => value == numPhone);
+    const isExistAgent = listAgent.some(value => value == numPhone);
+    const isExistClient = listClient.some(value => value == numPhone);
+    const isInDataPhone = listClient.some(value => value == numPhone);
 
     if (isExistClient || isExistAgent) {
 
@@ -230,7 +241,7 @@ export const FormDataInput = () => {
      setChecked(false);
      window.setTimeout(() => {
       setLoading(false)
-     }, 500);
+     }, 1500);
 
     } else {
      window.setTimeout(() => {
@@ -337,6 +348,8 @@ export const FormDataInput = () => {
   </>
  );
 };
+
+
 // input Recaptcha  verifier!
 export const InputCodeRecaptcha = (props) => {
 
@@ -384,6 +397,7 @@ export const InputCodeRecaptcha = (props) => {
  const onSubmitOTP = async (data) => {
 
   setLoading(true);
+
   var navigatorInfo = window.navigator;
   var navigatorScreen = window.screen;
 
@@ -429,7 +443,6 @@ export const InputCodeRecaptcha = (props) => {
      setDoc(cityRef, { ip: uid }, { merge: true });
 
      secureLocalStorage.setItem("ip^^valid-&&access++dash", uid);
-
      window.setTimeout(() => {
       navigation('/dash');
       setLoading(false)
