@@ -35,6 +35,7 @@ export const PhoneAuth = () => {
  phone = '+243' + phone;
 
  var uiConfig = {
+
   callbacks: {
    signInSuccessWithAuthResult: async function (authResult, redirectUrl) {
 
@@ -48,8 +49,8 @@ export const PhoneAuth = () => {
      ls.set('last##73**++Phone &&*@&&@@Number', secureLocalStorage.getItem("USER"), { encrypt: true, secret: 500 });
 
      window.setTimeout(() => {
-      // window.location.href = 'http://localhost:3000/dash';
-      window.location.href = 'https://muungano-money.netlify.app/dash';
+      window.location.href = 'http://localhost:3000/dash';
+      // window.location.href = 'https://muungano-money.netlify.app/dash';
      }, 1200);
 
     } else {
@@ -60,8 +61,8 @@ export const PhoneAuth = () => {
      reactLocalStorage.remove('@expire˚˚ø');
 
      window.setTimeout(() => {
-      // window.location.href = 'http://localhost:3000/';
-      window.location.href = 'https://muungano-money.netlify.app/'
+      window.location.href = 'http://localhost:3000/';
+      // window.location.href = 'https://muungano-money.netlify.app/'
      }, 1200);
 
     }
@@ -75,8 +76,7 @@ export const PhoneAuth = () => {
   signInOptions: [
    // Leave the lines as is for the providers you want to offer your users.
    // firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-   // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-   // firebase.auth.EmailAuthProvider.PROVIDER_ID,
+
    {
     provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
     defaultCountry: 'CD',
@@ -135,10 +135,5 @@ export const PhoneAuth = () => {
   <div id='firebaseui-auth-container'></div>
  );
 };
-
-// export async function updateIpForDocFirestore(check, uid) {
-//  const cityRef = doc(db, check ? 'client' : 'agent', secureLocalStorage.getItem("USER"));
-//  setDoc(cityRef, { ip: uid }, { merge: true });
-// };
 
 export default PhoneAuth;

@@ -11,7 +11,7 @@ export default function ReturnQuote() {
      notre site MuunganoMoney.com Car la
      réclamation d’une transaction est permise
      Endéans 30 jours. En date d’une opération.
-   </p>
+        </p>
    </div>
   </>
  );

@@ -19,7 +19,7 @@ import ReturnContry from './Contry';
 // Msg React from Component !!!
 export default function ReturnMsg() {
  return (
-  <div className='wrp-msg-output-ticked' id='element-to-download-as-pdf'>
+  <div className='wrp-msg-output-ticked'>
    <ReturnLine />
 
    <ReturnLogo />
@@ -38,6 +38,7 @@ export default function ReturnMsg() {
    <ReturnQuote />
    <ReturnThanKs />
    {/* <ReturnQRcode /> */}
+
 
    <ReturnLine />
 

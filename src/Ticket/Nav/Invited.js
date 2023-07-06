@@ -23,7 +23,7 @@ let pushDocs = new Array();
 // view invite component
 export default function ReturnInvited() {
 
-  const [dimensions, setDimensions] = React.useState({ width: 55, height: 190 });
+  const [dimensions, setDimensions] = React.useState({ width: 60, height: 180 });
   const [open, setOpen] = React.useState(false);
   const [list, setList] = React.useState([]);
 

@@ -4,10 +4,10 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@800&display=swap");
 
-@import url("https://fonts.googleapis.com/css2?family=Agdasima&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@200&display=swap");
 
 :root {
- --font-condensed: "Agdasima", sans-serif;
+ --font-condensed: "Saira Condensed", sans-serif;
  --font-title-name: "Rubik Vinyl", cursive;
  --font-quote-name: "Nunito Sans", sans-serif;
 }

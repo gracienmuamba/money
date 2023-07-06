@@ -8,19 +8,22 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContentText from '@mui/material/DialogContentText';
 
+import secureLocalStorage from "react-secure-storage";
 import { db } from '../../firebase';
 import { doc, collection, getDocs, getDocFromCache } from "firebase/firestore";
 import ReturnMsg from './Msg';
 
 import { useReactToPrint } from 'react-to-print';
-import secureLocalStorage from "react-secure-storage";
+
+
+
 let pushDocs = new Array();
 
 
 // view invite component
 export default function ReturnInvited() {
 
-  const [dimensions, setDimensions] = React.useState({ width: 55, height: 190 });
+  const [dimensions, setDimensions] = React.useState({ width: 60, height: 180 });
   const [open, setOpen] = React.useState(false);
   const [list, setList] = React.useState([]);
 
@@ -28,10 +31,12 @@ export default function ReturnInvited() {
   const [maxWidth, setMaxWidth] = React.useState('sm');
 
   const componentRef = React.useRef();
+
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
     documentTitle: 'emp-data',
     onAfterPrint: () => window.console.log('print success'),
+
     pageStyle: `@media print {
       @page {
        size: ${dimensions.width}mm ${dimensions.height}mm;
@@ -78,7 +83,7 @@ export default function ReturnInvited() {
 
   return (
     <>
-      <div ref={componentRef} style={{ height: window.innerHeight }}>
+      <div ref={componentRef}>
         <ReturnMsg />
       </div>
 

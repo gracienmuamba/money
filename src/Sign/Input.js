@@ -449,37 +449,41 @@ export const InputCodeRecaptcha = (props) => {
 
      if (props.pin == data.code) {
 
-      // secureLocalStorage.setItem("ACTIVE_M_USER", true);
-      // window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
-      // navigation('/dash');
+      secureLocalStorage.setItem("ACTIVE_M_USER", true);
+      window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
+      navigation('/dash');
 
-      window.setTimeout(() => {
 
-       if (uid === ipUid && secureLocalStorage.getItem("USER") === ls.get('last##73**++Phone &&*@&&@@Number', { decrypt: true, secret: 500 })) {
 
-        secureLocalStorage.setItem("ip^^valid-&&access++dash", uid);
-        secureLocalStorage.setItem("ACTIVE_M_USER", true);
+      // window.setTimeout(() => {
 
-        window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
-        ls.set('last##73**++Phone &&*@&&@@Number', secureLocalStorage.getItem("USER"), { encrypt: true, secret: 500 });
+      //  if (uid === ipUid && secureLocalStorage.getItem("USER") === ls.get('last##73**++Phone &&*@&&@@Number', { decrypt: true, secret: 500 })) {
 
-        let verifierCollection = pushDocs.some((value) => value == secureLocalStorage.getItem("USER"));
-        const cityRef = doc(db, verifierCollection ? 'client' : 'agent', secureLocalStorage.getItem("USER"));
-        setDoc(cityRef, { ip: uid }, { merge: true });
+      //   secureLocalStorage.setItem("ip^^valid-&&access++dash", uid);
+      //   secureLocalStorage.setItem("ACTIVE_M_USER", true);
 
-        secureLocalStorage.setItem("ip^^valid-&&access++dash", uid);
+      //   window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
+      //   ls.set('last##73**++Phone &&*@&&@@Number', secureLocalStorage.getItem("USER"), { encrypt: true, secret: 500 });
 
-        window.setTimeout(() => {
-         navigation('/dash');
-         setLoading(false)
-        }, 950);
+      //   let verifierCollection = pushDocs.some((value) => value == secureLocalStorage.getItem("USER"));
+      //   const cityRef = doc(db, verifierCollection ? 'client' : 'agent', secureLocalStorage.getItem("USER"));
+      //   setDoc(cityRef, { ip: uid }, { merge: true });
 
-       } else {
+      //   secureLocalStorage.setItem("ip^^valid-&&access++dash", uid);
 
-        secureLocalStorage.setItem("ip^^valid-&&access++dash", uid);
-        navigation('/auth/redirect/token');
-       }
-      }, 750);
+      //   window.setTimeout(() => {
+      //    navigation('/dash');
+      //    setLoading(false)
+      //   }, 950);
+
+      //  } else {
+
+      //   secureLocalStorage.setItem("ip^^valid-&&access++dash", uid);
+      //   navigation('/auth/redirect/token');
+      //  }
+      // }, 750);
+
+
 
      } else {
 

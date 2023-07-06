@@ -9,8 +9,8 @@ export default function ReturnNameAgent() {
  let pushDocs = new Array();
  let pushDocsAgent = new Array();
 
- const [firstAgent, setFirstAgent] = React.useState(' ');
- const [lastAgent, setLastAgent] = React.useState(' ');
+ const [firstAgent, setFirstAgent] = React.useState('');
+ const [lastAgent, setLastAgent] = React.useState('');
 
  React.useEffect(async () => {
 
