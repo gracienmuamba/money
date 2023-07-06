@@ -4,12 +4,18 @@ import moment from 'moment';
 import { VscCheck, VscCheckAll } from "react-icons/vsc";
 import ReturnProfil from './Profil';
 import currency from 'currency.js';
+import secureLocalStorage from "react-secure-storage";
+import { HiArrowLeft } from 'react-icons/hi';
+import { useNavigate } from 'react-router-dom';
 
 
 let Acces = true;
 
+
 function DrawerAppBar() {
- const pushDocs = JSON.parse(window.localStorage.getItem('%%docs&&col**pret'));
+
+ const navigation = useNavigate();
+ const pushDocs = secureLocalStorage.getItem("%%docs&&col**pret")
 
  if (Array.isArray(pushDocs) && pushDocs.length) {
   Acces = true;
@@ -17,18 +23,24 @@ function DrawerAppBar() {
   Acces = false;
  }
 
+ const handlepath = (event) => {
+  event.preventDefault();
+  navigation(-1);
+ };
+
  return (
   <div className='flex-head-list-reimburse'>
 
    <header>
     <div className='container'>
      <nav className='navbar'>
+
+      <HiArrowLeft onClick={handlepath} size={'1.6em'} color={'white'} className={'array-static-navbar'} />
       <ReturnProfil />
 
      </nav>
     </div>
    </header>
-
    <section>
 
     {Acces ?

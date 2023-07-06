@@ -94,6 +94,7 @@ export const FormInputValue = () => {
  }, []);
 
  const handleIncrementMoney = (event) => {
+
   event.preventDefault();
 
   if (pret === false) {
@@ -101,15 +102,11 @@ export const FormInputValue = () => {
   } else {
 
    if (pret === true && pretregister === false) {
-
-    // navigation('/pret/register');
     navigation('/pret/devise');
-    window.localStorage.setItem('@!pret&*access*^^', JSON.stringify(true));
-
+    secureLocalStorage.setItem("@!pret&*access*^^", true);
    } else if (pret === true && pretregister == true) {
-
     navigation('/pret/send');
-    window.localStorage.setItem('@!pret&*access*^^', JSON.stringify(true));
+    secureLocalStorage.setItem("@!pret&*access*^^", true);
    } else {
     window.console.log('valid pret');
    }

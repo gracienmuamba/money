@@ -58,8 +58,7 @@ export default function ReturnLogouTButton() {
 
   window.setTimeout(() => {
 
-   reactLocalStorage.remove('USER');
-   reactLocalStorage.remove('ACTIVE_M_USER');
+
    reactLocalStorage.remove('@expire˚˚ø');
    reactLocalStorage.remove('expireTime');
 
@@ -79,7 +78,35 @@ export default function ReturnLogouTButton() {
    reactLocalStorage.remove('');
 
 
+
    secureLocalStorage.removeItem("ip^^valid-&&access++dash");
+   secureLocalStorage.removeItem("ACTIVE_M_USER");
+   secureLocalStorage.removeItem("USER");
+   secureLocalStorage.removeItem("^^&&register__pret");
+   secureLocalStorage.removeItem("@!pret&*access*^^");
+   secureLocalStorage.removeItem("%%docs&&col**pret");
+   secureLocalStorage.removeItem("%%docs&&col**pret");
+   secureLocalStorage.removeItem("solde&&%%¢pret");
+   secureLocalStorage.removeItem("^^snack->");
+   secureLocalStorage.removeItem("^^&&register__pret");
+   secureLocalStorage.removeItem("@!pret&*access*^^");
+   secureLocalStorage.removeItem("&&money::pret__");
+   secureLocalStorage.removeItem("&&money::wallet__");
+   secureLocalStorage.removeItem("&&money::unite__");
+   secureLocalStorage.removeItem("^^pret->count");
+   secureLocalStorage.removeItem("^^pret->part");
+   secureLocalStorage.removeItem("^^pret->ok");
+   secureLocalStorage.removeItem("^^pret->");
+   secureLocalStorage.removeItem("^^pret->value");
+   secureLocalStorage.removeItem("^^add&&@!!**");
+   secureLocalStorage.removeItem("??next^^**$$");
+   secureLocalStorage.removeItem("prix^^&&not**");
+   secureLocalStorage.removeItem("%%docs&&col**unite");
+   secureLocalStorage.removeItem("^^pret->");
+   secureLocalStorage.removeItem("");
+   secureLocalStorage.removeItem("");
+
+
 
   }, 1000);
 

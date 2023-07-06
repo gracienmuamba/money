@@ -1,5 +1,6 @@
 import React from 'react';
 import Media from 'react-media';
+import currency from 'currency.js';
 
 
 // REturn view Prix available
@@ -36,7 +37,9 @@ export const WithdrawBalance = (props) => {
 
  let number = props.count;
  number = (Math.abs(number)).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&, ');
+ var euro = value => currency(value, { separator: ' ', decimal: '.', symbol: '' });
+
  return (
-  <p style={{ color: `${props.count < 1 ? '#eff1ed' : '#000'}` }}>{number}</p>
+  <p style={{ color: `${props.count < 1 ? '#eff1ed' : '#000'}` }}>{euro(number).format()}</p>
  );
 };

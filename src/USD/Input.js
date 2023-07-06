@@ -3,7 +3,7 @@ import REturnPriX from './Prix';
 import Media from 'react-media';
 import { useForm, Controller } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { Fc } from '../Money';
+// import { Fc } from '../Money';
 
 import { doc, getDocs, collection, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase';
@@ -20,7 +20,6 @@ import { IMaskInput } from 'react-imask';
 import { NumericFormat } from 'react-number-format';
 import TextField from '@mui/material/TextField';
 import secureLocalStorage from "react-secure-storage";
-
 
 
 export let money = 0;
@@ -102,7 +101,6 @@ export default function REturnInputPhone() {
  );
 };
 
-
 export const ScreenLarge = () => {
  return (
   <div className='input-withdraw'>
@@ -122,7 +120,7 @@ export const FormInputValue = () => {
 
  const navigation = useNavigate();
  const { handleSubmit, watch, reset, control } = useForm({});
- const [prix, setPrix] = React.useState(Fc);
+ const [prix, setPrix] = React.useState(0);
 
  const [values, setValues] = React.useState({
   textmask: '(100) 000-0000',
@@ -197,7 +195,6 @@ export const FormInputValue = () => {
   verifierOther = pushOther.some(value => value == JSON.parse(window.localStorage.getItem('A@@ph$$&-@#')));
 
 
-
   try {
    const unsub = onSnapshot(doc(db, verifierCollection ? "client" : "agent", secureLocalStorage.getItem("USER")), (doc) => {
     setPrix(doc.data().usd);
@@ -220,15 +217,14 @@ export const FormInputValue = () => {
 
  }, []);
 
- let prixValue = 0;
- //  const prixValue = statusOther === 'client' && status === 'agent' ? (Number(prix)) - Number(watch('count')) : (Number(value)) - (Number(frais));
+ // let prixValue = 0;
+ const prixValue = statusOther === 'client' && status === 'agent' ? (Number(prix)) - Number(watch('count')) : (Number(value)) - (Number(frais));
 
- if (statusOther === 'client' && status === 'agent') {
-  prixValue = Math.floor(Number(prix)) - Number(watch('count'));
- } else if (statusOther === 'agent' && status === 'agent') {
-  prixValue = Math.floor(Number(prix)) - Number(watch('count'));
- }
-
+ // if (statusOther === 'client' && status === 'agent') {
+ //  prixValue = Math.floor(Number(prix)) - Number(watch('count'));
+ // } else if (statusOther === 'agent' && status === 'agent') {
+ //  prixValue = Math.floor(Number(prix)) - Number(watch('count'));
+ // }else {}
 
  const onSubmit = async (data) => {
 

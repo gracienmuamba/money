@@ -63,7 +63,6 @@ export const ScreenSmall = () => (
 );
 export const View = () => {
 
-
   var navigatorInfo = window.navigator;
   var navigatorScreen = window.screen;
 
@@ -94,6 +93,7 @@ export const View = () => {
   const [maxWidth, setMaxWidth] = React.useState('sm');
 
   const [confirm, setConfirm] = React.useState(false);
+
   React.useEffect(async () => {
 
     const querySnapshot = await getDocs(collection(db, "client"));
@@ -107,14 +107,12 @@ export const View = () => {
 
   }, []);
 
-
   const handleClose = () => {
     setOpen(false);
   };
   const handlePretClose = () => {
     setPretOpen(false);
   };
-
 
   React.useEffect(async () => {
 
@@ -132,7 +130,6 @@ export const View = () => {
       setPretregister(doc.data().pretregister);
       setPretactive(doc.data().pretactive);
     });
-
 
   }, []);
 
@@ -230,26 +227,23 @@ export const View = () => {
 
     event.preventDefault();
     setLoad(true);
-
     const frankDocRef = doc(db, confirm ? "client" : "agent", secureLocalStorage.getItem("USER"));
     // To update age and favorite color:
     await updateDoc(frankDocRef, {
       ip: uid
     });
 
-    // window.localStorage.setItem('%%pret-*%', JSON.stringify(0.6));
-
     if (pret === true && pretregister === true && pretactive === true) {
       navigation('/pret/dash');
-      window.localStorage.setItem('^^snack->', JSON.stringify(false));
+
+      secureLocalStorage.setItem("^^snack->", false);
 
     } else if (pret === true && pretregister === true) {
       navigation('/pret/send');
-    } else if (pret === true) {
-      navigation('/pret');
     } else {
       navigation('/pret');
     }
+
 
   };
   const handlepathtontine = async (event) => {
@@ -265,12 +259,6 @@ export const View = () => {
     secureLocalStorage.setItem("^^add&&@!!**", false);
     secureLocalStorage.setItem("??next^^**$$", false);
     secureLocalStorage.setItem("prix^^&&not**", false);
-
-
-    window.localStorage.setItem('^^add&&@!!**', JSON.parse(false));
-    window.localStorage.setItem('??next^^**$$', JSON.parse(false));
-    window.localStorage.setItem('prix^^&&not**', JSON.stringify(false));
-
 
     navigation('/tontine');
   }

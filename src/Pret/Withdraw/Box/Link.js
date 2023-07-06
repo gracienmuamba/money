@@ -1,9 +1,8 @@
-
 import './Link.css';
 import Media from 'react-media';
 import { useNavigate } from 'react-router-dom';
 import { ReturnFrAnc, ReturnDollArs } from './IMA';
-
+import secureLocalStorage from "react-secure-storage";
 
 
 //  REturn link withdraw
@@ -39,14 +38,13 @@ export const ScreenSmall = () => (
  </div>
 );
 
-
 export const Fran = (props) => {
 
  const navigation = useNavigate();
  const handlepath = (event) => {
 
   event.preventDefault();
-  window.localStorage.setItem('^^pret->', JSON.stringify(true));
+  secureLocalStorage.setItem("^^pret->", true);
   navigation('/pret/costs/asked/cdf');
  };
 
@@ -61,7 +59,8 @@ export const Dollars = (props) => {
  const navigation = useNavigate();
  const handlepath = (event) => {
   event.preventDefault();
-  window.localStorage.setItem('^^pret->', JSON.stringify(true));
+
+  secureLocalStorage.setItem("^^pret->", true);
   navigation('/pret/costs/asked/usd');
  };
 
@@ -70,4 +69,4 @@ export const Dollars = (props) => {
    <span>{props.Text}</span><ReturnDollArs />
   </buttton>
  );
-}
+};

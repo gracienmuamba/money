@@ -24,7 +24,8 @@ export async function getSearchColumn(col) {
  });
 
  let arr = pushDoc.sort((a, b) => { return a.date - b.date })
- window.localStorage.setItem('%%docs&&col**unite', JSON.stringify(arr.reverse()));
+
+ secureLocalStorage.setItem('%%docs&&col**unite', arr.reverse());
 
 };
 export function BacK() {
@@ -67,7 +68,7 @@ export default function ReturnNavBaR() {
   setLoad(true);
 
   let arr = unite.sort((a, b) => { return a.date - b.date })
-  window.localStorage.setItem('%%docs&&col**unite', JSON.stringify(arr.reverse()));
+  secureLocalStorage.setItem('%%docs&&col**unite', arr.reverse());
 
   window.setTimeout(() => {
    navigation('/brokers/unite/cmd');

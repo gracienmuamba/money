@@ -9,6 +9,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../../firebase';
 import moment from 'moment';
+import secureLocalStorage from "react-secure-storage";
 
 
 // Export View SignIn
@@ -19,8 +20,8 @@ export default function RegisterPreT() {
 
  React.useEffect(() => {
 
-  JSON.parse(window.localStorage.getItem('^^&&register__pret')) !== true && navigation('/dash');
-  JSON.parse(window.localStorage.getItem('ACTIVE_M_USER')) !== true && navigation('/sign');
+  secureLocalStorage.getItem("ACTIVE_M_USER") !== true && navigation('/sign');
+  secureLocalStorage.getItem("^^&&register__pret") !== true && navigation('/dash');
 
   window.setTimeout(() => {
    gsap.to('.App-loading-blank', 0, { delay: 0, x: '-1000%', opacity: 0, ease: Expo.easeIn })
@@ -30,7 +31,7 @@ export default function RegisterPreT() {
 
  React.useEffect(() => {
 
-  JSON.parse(window.localStorage.getItem('@!pret&*access*^^')) != true && navigation('/dash');
+  secureLocalStorage.getItem("@!pret&*access*^^") != true && navigation('/dash');
   window.setTimeout(() => {
    setOpen(false);
   }, 5600);
@@ -50,7 +51,7 @@ export default function RegisterPreT() {
    window.console.log('log Out!');
    setLoggedIn(false);
 
-   window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(false));
+   secureLocalStorage.setItem("ACTIVE_M_USER", false);
    window.localStorage.setItem('USER', JSON.stringify(null));
 
    signOut(auth);

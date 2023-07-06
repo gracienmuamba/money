@@ -8,6 +8,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../../firebase';
 import moment from 'moment';
+import secureLocalStorage from "react-secure-storage";
+
 
 // Return Now Component 
 export default function TonTinePin() {
@@ -18,8 +20,8 @@ export default function TonTinePin() {
 
  React.useEffect(() => {
 
-  JSON.parse(window.localStorage.getItem('??next^^**$$')) !== false && navigation('/tontine');
-  JSON.parse(window.localStorage.getItem('ACTIVE_M_USER')) != true && navigation('/sign');
+  secureLocalStorage.getItem("ACTIVE_M_USER") !== true && navigation('/sign');
+  secureLocalStorage.getItem("??next^^**$$") !== false && navigation('/tontine');
 
   window.setTimeout(() => {
    gsap.to('.App-loading-blank', 0, { delay: .1, x: '-1000%', opacity: 0, ease: Expo.easeIn })
@@ -29,7 +31,6 @@ export default function TonTinePin() {
 
  React.useEffect(() => {
 
-  JSON.parse(window.localStorage.getItem('ACTIVE_M_USER')) !== true && navigation('/sign');
   window.setTimeout(() => {
    setOpen(false);
   }, 3600);
@@ -49,8 +50,12 @@ export default function TonTinePin() {
    window.console.log('log Out!');
    setLoggedIn(false);
 
-   window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(false));
-   window.localStorage.setItem('USER', JSON.stringify(null));
+   secureLocalStorage.setItem("ACTIVE_M_USER", true);
+   secureLocalStorage.setItem("USER", false);
+
+   // window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(false));
+   // window.localStorage.setItem('USER', JSON.stringify(null));
+
 
    signOut(auth);
    window.location.href = "/sign";

@@ -25,7 +25,6 @@ import CircularProgress from '@mui/material/CircularProgress';
 import REturnPriX from './Prix';
 
 
-
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
  const { onChange, ...other } = props;
  return (
@@ -75,8 +74,6 @@ NumericFormatCustom.propTypes = {
 };
 
 
-
-
 // Return Phone input component
 export default function REturnInputPhone() {
  return (
@@ -123,8 +120,8 @@ export const FormInputValue = () => {
  const [fullWidth, setFullWidth] = React.useState(true);
  const [maxWidth, setMaxWidth] = React.useState('sm');
 
-
- let moneyPret = JSON.parse(window.localStorage.getItem('&&money::pret__'));
+ //  let moneyPret = JSON.parse(window.localStorage.getItem('&&money::pret__'));
+ let moneyPret = secureLocalStorage.getItem("&&money::pret__");
  let prixUsd = watch('count');
 
  React.useEffect(async () => {
@@ -179,10 +176,9 @@ export const FormInputValue = () => {
 
    else {
 
-    window.localStorage.setItem('^^pret->value', JSON.stringify(Number(value)));
-    window.localStorage.setItem('^^pret->count', JSON.stringify(Number(data.count)));
-    window.localStorage.setItem('^^pret->part', JSON.stringify(true));
-
+    secureLocalStorage.setItem('^^pret->value', Number(value));
+    secureLocalStorage.setItem("^^pret->count", Number(data.count));
+    secureLocalStorage.setItem("^^pret->part", true);
 
     let before = parseInt(moneyPret);
     let after = moneyPret.toFixed(3);
@@ -224,6 +220,7 @@ export const FormInputValue = () => {
    </div>
 
    <REturnPriX count={money} />
+
    <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
 
     <Controller

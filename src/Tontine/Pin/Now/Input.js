@@ -27,6 +27,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 import secureLocalStorage from "react-secure-storage";
 
+
 // View Form Update view
 export default function ReturnFormUpdate() {
  return (
@@ -167,7 +168,8 @@ export const FormInputField = () => {
      });
 
      createTontine(docTon, rising, rising, listgroup.length, currencygroup, listgroup);
-     window.localStorage.setItem('??next^^**$$', JSON.stringify(true));
+
+     secureLocalStorage.setItem("??next^^**$$", true);
      window.setTimeout(() => {
       navigation('/tontine');
      }, 5450);

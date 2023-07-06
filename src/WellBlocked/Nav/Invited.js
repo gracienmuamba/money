@@ -16,13 +16,14 @@ import ReturnMsg from './Msg';
 import secureLocalStorage from "react-secure-storage";
 import { useReactToPrint } from 'react-to-print';
 
+
 let pushDocs = new Array();
 
 // view invite component
 export default function ReturnInvited() {
 
  const [open, setOpen] = React.useState(false);
- const [dimensions, setDimensions] = React.useState({ width: 80, height: 190 });
+ const [dimensions, setDimensions] = React.useState({ width: 55, height: 190 });
  const [list, setList] = React.useState([]);
 
  const [fullWidth, setFullWidth] = React.useState(true);

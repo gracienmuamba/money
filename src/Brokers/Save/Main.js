@@ -9,6 +9,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
 import moment from 'moment';
+import secureLocalStorage from "react-secure-storage";
 
 
 // Home Component Brokers
@@ -31,7 +32,7 @@ export default function SAveBroKers() {
 
  React.useEffect(() => {
 
-  JSON.parse(window.localStorage.getItem('ACTIVE_M_USER')) !== true && navigation('/sign');
+  secureLocalStorage.getItem("ACTIVE_M_USER") !== true && navigation('/sign');
   window.setTimeout(() => {
    setOpen(false);
   }, 7600);
@@ -51,7 +52,7 @@ export default function SAveBroKers() {
    window.console.log('log Out!');
    setLoggedIn(false);
 
-   window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(false));
+   secureLocalStorage.setItem("ACTIVE_M_USER", false);
    window.localStorage.setItem('USER', JSON.stringify(null));
 
    signOut(auth);

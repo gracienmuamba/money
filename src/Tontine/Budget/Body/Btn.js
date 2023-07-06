@@ -151,6 +151,7 @@ export function View() {
 	return (
 		<>
 			{active || Number(askedPosition) === Number(count) ? <div></div> : <button onClick={handlepath}>Accumulation <img src={'/img/customer.png'} /></button>}
+
 			<Dialog
 				fullWidth={fullWidth}
 				maxWidth={maxWidth}

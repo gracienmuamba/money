@@ -188,7 +188,6 @@ export default function ReturRnURI() {
    <Route path='/stock/pin' element={<PinStocK />} />
    <Route path='/stock/thank' element={<StocKThanK />} />
 
-
    <Route path='/tontine' element={<TonTine />} />
    <Route path='/tontine/get' element={<LisTgrOupGet />} />
    <Route path='/tontine/get/widthdraw' element={<LisTgrOupWithdrAw />} />

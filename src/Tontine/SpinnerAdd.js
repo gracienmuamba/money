@@ -2,6 +2,7 @@ import React from 'react';
 import Stack from '@mui/material/Stack';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import secureLocalStorage from "react-secure-storage";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -9,7 +10,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 export default function ReturnSpinnerAdd() {
 
- const [open, setOpen] = React.useState(JSON.parse(window.localStorage.getItem('^^add&&@!!**')));
+ const [open, setOpen] = React.useState(secureLocalStorage.getItem("^^add&&@!!**"));
  const handleClose = (event, reason) => {
   if (reason === 'clickaway') {
    return;

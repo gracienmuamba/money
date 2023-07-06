@@ -80,7 +80,7 @@ export default function RetuRnBtn() {
 
     </DialogContent>
     <DialogActions>
-     <Button onClick={handleClose}>Fermer</Button>
+     <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
     </DialogActions>
    </Dialog>
 

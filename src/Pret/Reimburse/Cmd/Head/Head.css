@@ -14,12 +14,10 @@
 }
 .flex-head-list-reimburse header .container {
  width: 100%;
- margin: auto;
 }
 .flex-head-list-reimburse header .navbar {
  display: flex;
- width: 100%;
- justify-content: center;
+ justify-content: space-between;
  align-items: center;
  width: 100%;
 }

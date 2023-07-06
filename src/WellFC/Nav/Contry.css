@@ -18,7 +18,7 @@
 }
 .wrp-contry-print-overview p {
  display: flex;
- font-size: 0.2em;
+ font-size: 1em;
  font-weight: 300;
  text-align: center;
  font-family: var(--font-condensed);
@@ -27,7 +27,7 @@
 }
 .wrp-contry-print-overview span {
  display: flex;
- font-size: 0.2em;
+ font-size: 1em;
  font-weight: 300;
  text-align: center;
  font-family: var(--font-condensed);

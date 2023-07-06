@@ -1,10 +1,11 @@
 /* logo available */
 
-@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chathura:wght@300;400;800&display=swap");
+
 @import url("https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap");
 
 :root {
- --font-condensed: "Dosis", sans-serif;
+ --font-condensed: "Chathura", sans-serif;
  --font-title-name: "Rubik Vinyl", cursive;
 }
 

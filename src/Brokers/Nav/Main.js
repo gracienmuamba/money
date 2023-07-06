@@ -8,8 +8,8 @@ import moment from 'moment';
 
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-
 import ReturnBacK from './Back';
+import secureLocalStorage from "react-secure-storage";
 
 
 // View Nav component 
@@ -21,7 +21,7 @@ export default function FiatLisT() {
 
  React.useEffect(() => {
 
-  JSON.parse(window.localStorage.getItem('ACTIVE_M_USER')) !== true && navigation('/sign');
+  secureLocalStorage.getItem("ACTIVE_M_USER") !== true && navigation('/sign');
   window.setTimeout(() => {
    setOpen(false);
   }, 12600);
@@ -42,7 +42,8 @@ export default function FiatLisT() {
    window.console.log('log Out!');
    setLoggedIn(false);
 
-   window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(false));
+   secureLocalStorage.setItem("ACTIVE_M_USER", false);
+   // window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(false));
    window.localStorage.setItem('USER', JSON.stringify(null));
 
    signOut(auth);

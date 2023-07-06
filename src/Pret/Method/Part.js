@@ -1,11 +1,13 @@
 import React from 'react';
 import { TweenMax, Expo } from 'gsap';
 import { useNavigate } from 'react-router-dom';
+import secureLocalStorage from "react-secure-storage";
+
 
 // View all 
 export default function ReturnPart() {
 
- let link = JSON.parse(window.localStorage.getItem('solde&&%%¢pret'));
+ let link = secureLocalStorage.getItem("solde&&%%¢pret");
  const navigation = useNavigate();
 
  React.useEffect(() => {

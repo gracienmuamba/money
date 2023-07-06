@@ -1,6 +1,5 @@
 import React from 'react';
 import ReturnRegisterSuccess from './RegisterSuccess';
-import FadeLoader from 'react-spinners/FadeLoader';
 import { useNavigate } from 'react-router-dom';
 import { gsap, Expo } from 'gsap';
 
@@ -10,6 +9,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
 import moment from 'moment';
+import secureLocalStorage from "react-secure-storage";
 
 
 // Register Full Success
@@ -28,7 +28,7 @@ export default function RegisterSuccess() {
 
  React.useEffect(() => {
 
-  JSON.parse(window.localStorage.getItem('ACTIVE_M_USER')) !== true && navigation('/sign');
+  secureLocalStorage.getItem("ACTIVE_M_USER") !== true && navigation('/sign');
   window.setTimeout(() => {
    setOpen(false);
   }, 3600);
@@ -48,7 +48,8 @@ export default function RegisterSuccess() {
    window.console.log('log Out!');
    setLoggedIn(false);
 
-   window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(false));
+   secureLocalStorage.setItem("ACTIVE_M_USER", false);
+   // window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(false));
    window.localStorage.setItem('USER', JSON.stringify(null));
 
    signOut(auth);

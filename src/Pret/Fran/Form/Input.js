@@ -40,8 +40,6 @@ import TextField from '@mui/material/TextField';
 
 // import DateFnsUtils from '@date-io/date-fns'; // choose your lib
 
-
-
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
  const { onChange, ...other } = props;
  return (
@@ -96,6 +94,7 @@ export let pushDocs = new Array();
 
 
 let pushPieces = new Array();
+
 function CircularProgressWithLabel(props) {
  return (
   <Box sx={{ position: 'relative', display: 'inline-flex' }}>
@@ -162,6 +161,7 @@ export const ScreenSmall = () => {
   </div>
  )
 };
+
 export const FormInput = () => {
 
  const [imageUpload, setImageUpload] = React.useState(null);
@@ -215,6 +215,8 @@ export const FormInput = () => {
   };
 
  }, []);
+
+
  const handleButtonClick = () => {
   if (!loading) {
    setSuccess(false);
@@ -225,6 +227,7 @@ export const FormInput = () => {
    }, 2000);
   }
  };
+
  const uploadImage = async () => {
 
   if (imageUpload == null)
@@ -292,8 +295,7 @@ export const FormInput = () => {
  // Ref collection database!
  const onSubmit = async (data) => {
 
-  window.localStorage.setItem('@!pret&*access*^^', JSON.stringify(false));
-  window.localStorage.setItem('^^&&register__pret', JSON.stringify(false));
+  secureLocalStorage.setItem("@!pret&*access*^^", false);
 
   let money = {
 
@@ -312,7 +314,7 @@ export const FormInput = () => {
    ...money,
    ...data
 
-  }
+  };
 
   documentPret(clone);
   updateRegister();

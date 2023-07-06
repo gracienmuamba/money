@@ -131,43 +131,47 @@ export default function ReturnBTn() {
 
  const handlepathcdf = (event) => {
   event.preventDefault();
-  window.localStorage.setItem('&&money::pret__', JSON.stringify(pretCdf));
 
-  window.localStorage.setItem('&&money::wallet__', JSON.stringify(walletcdf));
-  window.localStorage.setItem('&&money::unite__', JSON.stringify('cdf'));
-  window.localStorage.setItem('^^pret->', JSON.stringify(true));
+  secureLocalStorage.setItem("&&money::pret__", pretCdf);
+
+  secureLocalStorage.setItem("&&money::wallet__", walletcdf);
+  secureLocalStorage.setItem("&&money::unite__", 'cdf');
+  secureLocalStorage.setItem("^^pret->", true);
+
 
   if (solde <= 0 && Comma <= 10) {
-   window.localStorage.setItem('^^pret->ok', JSON.stringify(true));
+
+   secureLocalStorage.setItem("^^pret->ok", true);
+
    asKedpret();
   } else {
    window.console.log('continue');
   }
 
-  // navigation('/pret/costs/asked/cdf');
-  window.localStorage.setItem('solde&&%%¢pret', JSON.stringify('/pret/costs/asked/cdf'));
+  secureLocalStorage.setItem("solde&&%%¢pret", '/pret/costs/asked/cdf');
   navigation('/pret/method');
-
  }
+
  const handlepathusd = (event) => {
 
   event.preventDefault();
-  window.localStorage.setItem('&&money::pret__', JSON.stringify(pretUsd));
-  window.localStorage.setItem('&&money::wallet__', JSON.stringify(walletusd));
-  window.localStorage.setItem('&&money::unite__', JSON.stringify('usd'));
+  secureLocalStorage.setItem("&&money::pret__", pretUsd);
 
-  window.localStorage.setItem('^^pret->', JSON.stringify(true))
+  secureLocalStorage.setItem("&&money::wallet__", walletusd);
+  secureLocalStorage.setItem("&&money::unite__", 'usd');
+  secureLocalStorage.setItem("^^pret->", true);
+
 
   if (solde <= 0 && Comma <= 10) {
-   window.localStorage.setItem('^^pret->ok', JSON.stringify(true));
+
+   secureLocalStorage.setItem("^^pret->ok", true);
    asKedpret();
   } else {
    window.console.log('continue');
 
   }
 
-  // navigation('/pret/costs/asked/usd');
-  window.localStorage.setItem('solde&&%%¢pret', JSON.stringify('/pret/costs/asked/usd'));
+  secureLocalStorage.setItem("solde&&%%¢pret", '/pret/costs/asked/usd');
   navigation('/pret/method');
 
  };

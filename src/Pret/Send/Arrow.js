@@ -3,6 +3,9 @@ import Media from 'react-media';
 import { useNavigate } from 'react-router-dom';
 import { HiArrowLeft } from 'react-icons/hi';
 
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+
 
 // REturn Arrow component 
 export default function REturnArroW() {
@@ -57,8 +60,13 @@ export function BacK() {
  return (
   <div className='wrp-back-brokers'>
    <div onClick={handlepath} className='wrp-back-box-brokers'>
-    <HiArrowLeft size={'1.6em'} color={'grey'} />
-    <span>Portefeuille</span>
+
+    <Tooltip title="Retour">
+     <IconButton>
+      <HiArrowLeft size={'1.3em'} color={'grey'} />
+     </IconButton>
+    </Tooltip>
+
    </div>
   </div>
  );

@@ -10,6 +10,8 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../../firebase';
 import moment from 'moment';
 import PretNav from './Nav/Main';
+import secureLocalStorage from "react-secure-storage";
+
 
 // View Aeked 
 export default function CuRRencyUsd() {
@@ -19,10 +21,7 @@ export default function CuRRencyUsd() {
  const [open, setOpen] = React.useState(true);
 
  React.useEffect(() => {
-
-  JSON.parse(window.localStorage.getItem('ACTIVE_M_USER')) !== true && navigation('/sign');
-  // JSON.parse(window.localStorage.getItem('^^pret->')) !== true && navigation('/pret/dash');
-
+  secureLocalStorage.getItem("ACTIVE_M_USER") !== true && navigation('/sign');
   window.setTimeout(() => {
    gsap.to('.App-loading-blank', .1, { delay: .1, x: '-1000%', opacity: 0, ease: Expo.easeIn })
   }, 100);
@@ -50,7 +49,7 @@ export default function CuRRencyUsd() {
    window.console.log('log Out!');
    setLoggedIn(false);
 
-   window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(false));
+   secureLocalStorage.setItem("ACTIVE_M_USER", false);
    window.localStorage.setItem('USER', JSON.stringify(null));
 
    signOut(auth);

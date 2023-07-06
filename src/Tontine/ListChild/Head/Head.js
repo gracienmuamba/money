@@ -22,6 +22,7 @@ import secureLocalStorage from "react-secure-storage";
 import { HiArrowLeft } from 'react-icons/hi';
 
 
+
 function DrawerAppBar() {
 
  const navigation = useNavigate();
@@ -38,7 +39,6 @@ function DrawerAppBar() {
  React.useEffect(async () => {
 
   try {
-
    [...listPush].map(async (item) => {
 
     await onSnapshot(doc(db, colTonPush, item), (doc) => {
@@ -56,9 +56,7 @@ function DrawerAppBar() {
 
  }, []);
  React.useEffect(async () => {
-
   try {
-
    const unsub = onSnapshot(doc(db, "tontine", colTonPush), (doc) => {
     setCurrency(doc.data().currency);
    });
@@ -69,7 +67,6 @@ function DrawerAppBar() {
 
 
  }, []);
-
  const handlepath = (event) => {
   event.preventDefault();
   navigation(-1);
@@ -163,6 +160,6 @@ function DrawerAppBar() {
    </div>
   </>
  );
-}
+};
 
 export default DrawerAppBar;

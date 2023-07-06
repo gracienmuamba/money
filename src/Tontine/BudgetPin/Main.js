@@ -1,38 +1,25 @@
 import React from 'react';
 import ReturnPinNoW from './Now';
 import { useNavigate } from 'react-router-dom';
-import { gsap, Expo } from 'gsap';
+
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
 import moment from 'moment';
+import secureLocalStorage from "react-secure-storage";
 
 
-// Return Now Component 
+// View Wallet Component
 export default function BudGeTPin() {
 
  const navigation = useNavigate();
  const [open, setOpen] = React.useState(true);
 
-
  React.useEffect(() => {
 
-
-  JSON.parse(window.localStorage.getItem('ACTIVE_M_USER')) !== true && navigation('/sign');
-  JSON.parse(window.localStorage.getItem('***#$$view..<<valid++')) !== true && navigation('/tontine');
-
-
-  window.setTimeout(() => {
-   gsap.to('.App-loading-blank', 0, { delay: .1, x: '-1000%', opacity: 0, ease: Expo.easeIn })
-  }, 50);
-
- }, []);
-
- React.useEffect(() => {
-
-  JSON.parse(window.localStorage.getItem('ACTIVE_M_USER')) !== true && navigation('/sign');
+  secureLocalStorage.getItem("ACTIVE_M_USER") !== true && navigation('/sign');
   window.setTimeout(() => {
    setOpen(false);
   }, 3600);
@@ -52,13 +39,14 @@ export default function BudGeTPin() {
    window.console.log('log Out!');
    setLoggedIn(false);
 
-   window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(false));
+   secureLocalStorage.setItem("ACTIVE_M_USER", false);
    window.localStorage.setItem('USER', JSON.stringify(null));
 
    signOut(auth);
    window.location.href = "/sign";
 
   }
+
  }
  // function to update expire time
  const updateExpireTime = () => {
@@ -75,7 +63,6 @@ export default function BudGeTPin() {
   return () => clearInterval(interval);
 
  }, []);
-
  React.useEffect(() => {
 
   // set Initial Expire Time
@@ -100,17 +87,17 @@ export default function BudGeTPin() {
 
  return (
   <>
-   <div className='App-loading-blank'></div>
+   <ReturnPinNoW />
+
    <div className='zindex-theme'>
     <Backdrop
      sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
      open={open}>
-
      <CircularProgress color="inherit" />
+
     </Backdrop>
    </div>
 
-   <ReturnPinNoW />
   </>
  );
 };

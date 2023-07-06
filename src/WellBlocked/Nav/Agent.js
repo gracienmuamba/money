@@ -34,7 +34,7 @@ export default function ReturnNameAgent() {
  return (
   <div className='wrp-title-print-tickets-client'>
    <h2>Agent : </h2>
-   <h2>{`${firstAgent.toUpperCase()} ${lastAgent.toUpperCase()}`}</h2>
+   <h2> {`${firstAgent.toUpperCase()} ${lastAgent.toUpperCase()}`}</h2>
   </div>
  );
 };

@@ -12,7 +12,7 @@ import ReturnQuote from './Quote';
 import ReturnThanKs from './Thank';
 import ReturnLine from './Line';
 import ReturnDateClienT from './Date';
-import ReturnQRcode from './Qrcode';
+// import ReturnQRcode from './Qrcode';
 
 import ReturnContry from './Contry';
 
@@ -20,6 +20,8 @@ import ReturnContry from './Contry';
 export default function ReturnMsg() {
  return (
   <div className='wrp-msg-output-ticked'>
+
+
    <ReturnLine />
 
    <ReturnLogo />
@@ -38,7 +40,7 @@ export default function ReturnMsg() {
 
    <ReturnQuote />
    <ReturnThanKs />
-   <ReturnQRcode />
+   {/* <ReturnQRcode /> */}
 
 
    <ReturnLine />

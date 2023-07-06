@@ -28,25 +28,24 @@ import CircularProgress from '@mui/material/CircularProgress';
 import secureLocalStorage from "react-secure-storage";
 
 
-
 // View Form Update view
 export default function ReturnFormUpdate() {
- return (
-  <Media
-   queries={{
-    small: '(max-width: 599px)',
-    medium: '(min-width: 600px) and (max-width:1199px)',
-    large: '(min-width: 1200px)',
-   }}>
-   {matches => (
-    <>
-     {matches.small && <ScreenSmall />}
-     {matches.medium && <ScreenLarge />}
-     {matches.large && <ScreenLarge />}
-    </>
-   )}
-  </Media>
- );
+   return (
+      <Media
+         queries={{
+            small: '(max-width: 599px)',
+            medium: '(min-width: 600px) and (max-width:1199px)',
+            large: '(min-width: 1200px)',
+         }}>
+         {matches => (
+            <>
+               {matches.small && <ScreenSmall />}
+               {matches.medium && <ScreenLarge />}
+               {matches.large && <ScreenLarge />}
+            </>
+         )}
+      </Media>
+   );
 };
 
 
@@ -54,379 +53,384 @@ let userDevise = JSON.parse(window.localStorage.getItem('##!!devi&&*>>'));
 let listPush = JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘˚˚'));
 let lastChild = JSON.parse(window.localStorage.getItem('&&**++<///last{}'));
 
-
-
 export const ScreenLarge = () => (
- <div className='wrp-form-input-nows'>
-  <FormInputField />
- </div>
+   <div className='wrp-form-input-nows'>
+      <FormInputField />
+   </div>
 );
 export const ScreenSmall = () => (
- <div className='wrp-form-input-nows'>
-  <FormInputField />
- </div>
+   <div className='wrp-form-input-nows'>
+      <FormInputField />
+   </div>
 );
-
 export const FormInputField = () => {
 
- let regular = /[a-z]+/;
- const navigation = useNavigate();
- const { handleSubmit, reset, control } = useForm({});
- const [load, setLoad] = React.useState(false);
+   let regular = /[a-z]+/;
+   const navigation = useNavigate();
+   const { handleSubmit, reset, control } = useForm({});
+   const [load, setLoad] = React.useState(false);
 
- const [pin, setPin] = React.useState(null);
- const [cdf, setCdf] = React.useState(0);
- const [usd, setUsd] = React.useState(0);
+   const [pin, setPin] = React.useState(null);
+   const [cdf, setCdf] = React.useState(0);
+   const [usd, setUsd] = React.useState(0);
 
- const [rising, setRising] = React.useState(0);
- const [asked, setAsked] = React.useState(0);
+   const [rising, setRising] = React.useState(0);
+   const [asked, setAsked] = React.useState(0);
 
- const [fullWidth, setFullWidth] = React.useState(true);
- const [maxWidth, setMaxWidth] = React.useState('sm');
+   const [fullWidth, setFullWidth] = React.useState(true);
+   const [maxWidth, setMaxWidth] = React.useState('sm');
 
- const [nothing, setNothing] = React.useState(false);
- const [open, setOpen] = React.useState(false);
+   const [nothing, setNothing] = React.useState(false);
+   const [open, setOpen] = React.useState(false);
 
- const [showPassword, setShowPassword] = React.useState(false);
+   const [showPassword, setShowPassword] = React.useState(false);
 
- const handleClickShowPassword = () => setShowPassword((show) => !show);
- const handleMouseDownPassword = (event) => {
-  event.preventDefault();
- };
-
- const handleClose = () => {
-  setOpen(false);
- };
- const handleNothing = () => {
-  setNothing(false);
- };
-
- React.useEffect(async () => {
-
-  try {
-   await onSnapshot(doc(db, "client", secureLocalStorage.getItem("USER")), (doc) => {
-    setPin(doc.data().code);
-    setCdf(doc.data().cdf);
-    setUsd(doc.data().usd);
-   });
-  } catch {
-   window.console.log(`Erreur`);
-  }
-
- }, []);
- React.useEffect(async () => {
-
-  try {
-   await onSnapshot(doc(db, "tontine", JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil'))), (doc) => {
-    setRising(doc.data().rising);
-    setAsked(doc.data().asked);
-   });
-  } catch {
-   window.console.log(`Erreur`);
-  }
-
- }, []);
-
- const onSubmit = async (data) => {
-
-  setLoad(true);
-  if (data.code === undefined) {
-   setOpen(true);
-   setLoad(false);
-   reset();
-
-  } else {
-
-   if (data.code.length != 6 || regular.test(data.code)) {
-    setOpen(true);
-    setLoad(false);
-    reset();
-
-   } else {
-
-    if (pin != data.code) {
-     setOpen(true);
-     setLoad(false);
-     reset();
-    } else {
-
-     if (userDevise === 'USD') {
-      if (parseInt(Number(usd)) <= parseInt(Number(rising))) {
-
-       setNothing(true);
-       setLoad(false);
-      } else {
-
-       decrementMoneyClientDollar(Number(rising));
-       updateBasket(Number(rising));
-       accretionChildUpdate(Number(rising));
-       window.localStorage.setItem('^^add&&@!!**', JSON.parse(true));
-
-       if (lastChild === true) {
-        accretionAskedTontineAll();
-       } else if (lastChild === false) {
-        accretionAskedTontineAll();
-       } else {
-        window.console.log('nothing!');
-       };
-
-       if (secureLocalStorage.getItem("USER") === JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'))) {
-        accretionAddUpdate(Number(rising));
-       }
-
-       [...listPush].map(item => {
-
-        window.setTimeout(() => {
-         if (item === secureLocalStorage.getItem("USER") || item === JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'))) {
-          window.console.log('nothing');
-         } else {
-          const cityRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), item);
-          setDoc(cityRef, { solde: 0, soldeactive: false }, { merge: true });
-         }
-
-        }, 2000);
-
-       });
-       window.setTimeout(() => {
-        window.localStorage.setItem('***#$$view..<<valid++', JSON.stringify(false));
-        navigation('/tontine');
-       }, 9820);
-      }
-
-     }
-
-     if (userDevise === 'CDF') {
-
-      if (parseInt(Number(cdf)) <= parseInt(Number(rising))) {
-
-       setNothing(true);
-       setLoad(false);
-
-      } else {
-
-       decrementMoneyClientFran(Number(rising));
-       updateBasket(Number(rising));
-       accretionChildUpdate(Number(rising));
-       window.localStorage.setItem('^^add&&@!!**', JSON.parse(true));
-
-       if (lastChild === true) {
-        accretionAskedTontineAll();
-       } else if (lastChild === false) {
-        accretionAskedTontineAll();
-       } else {
-        window.console.log('nothing!');
-       };
-
-       if (secureLocalStorage.getItem("USER") === JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'))) {
-        accretionAddUpdate(Number(rising));
-       }
-
-       [...listPush].map(item => {
-
-        window.setTimeout(() => {
-         if (item === secureLocalStorage.getItem("USER") || item === JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'))) {
-          window.console.log('nothing');
-         } else {
-          const cityRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), item);
-          setDoc(cityRef, { solde: 0, soldeactive: false }, { merge: true });
-         }
-
-        }, 2000);
-
-       });
-
-       window.setTimeout(() => {
-        window.localStorage.setItem('***#$$view..<<valid++', JSON.stringify(false));
-        navigation('/tontine');
-       }, 9820);
-
-      }
-
-
-     }
-
-    }
+   const handleClickShowPassword = () => setShowPassword((show) => !show);
+   const handleMouseDownPassword = (event) => {
+      event.preventDefault();
    };
-  }
 
- };
+   const handleClose = () => {
+      setOpen(false);
+   };
+   const handleNothing = () => {
+      setNothing(false);
+   };
 
- return (
-  <>
-   <div className='zindex-theme'>
-    <Backdrop
-     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-     open={load}>
+   React.useEffect(async () => {
 
-     <CircularProgress color="inherit" />
-    </Backdrop>
-   </div>
+      try {
+         await onSnapshot(doc(db, "client", secureLocalStorage.getItem("USER")), (doc) => {
+            setPin(doc.data().code);
+            setCdf(doc.data().cdf);
+            setUsd(doc.data().usd);
+         });
+      } catch {
+         window.console.log(`Erreur`);
+      }
 
-   <form onSubmit={handleSubmit(onSubmit)}>
-    <FormControl
-     sx={{ width: '100%' }}
+   }, []);
+   React.useEffect(async () => {
 
-     variant="standard">
-     <InputLabel htmlFor="standard-adornment-password"><span className='pop-up'>Pin actuel</span></InputLabel>
+      try {
+         await onSnapshot(doc(db, "tontine", JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil'))), (doc) => {
+            setRising(doc.data().rising);
+            setAsked(doc.data().asked);
+         });
+      } catch {
+         window.console.log(`Erreur`);
+      }
 
-     <Controller
-      name="code"
-      control={control}
-      render={({ field }) =>
-
-       <Input
-        id="standard-adornment-password"
-        {...field}
-        type={showPassword ? 'numeric' : 'password'}
-        inputProps={{
-         autoComplete: "off", inputMode: 'numeric'
-        }}
-
-        endAdornment={
-         <InputAdornment position="end">
-
-          <IconButton
-           aria-label="toggle password visibility"
-           onClick={handleClickShowPassword}
-           onMouseDown={handleMouseDownPassword}
-          >
-           {showPassword ? <VisibilityOff /> : <Visibility />}
-          </IconButton>
-
-         </InputAdornment>
-        }
-
-       />}
-     />
-
-    </FormControl>
+   }, []);
 
 
-    <Dialog
-     fullWidth={fullWidth}
-     maxWidth={maxWidth}
-     open={open}
-     onClose={handleClose}>
+   const onSubmit = async (data) => {
 
-     <DialogTitle><h1 className='pop-up'>MuunganoMoney</h1></DialogTitle>
-     <DialogContent>
+      setLoad(true);
 
-      <DialogContentText>
-       <p className='pop-up'>
-        Code pin Incorrect
+      if (data.code === undefined) {
+         setOpen(true);
+         setLoad(false);
+         reset();
+
+      } else {
+
+         if (data.code.length != 6 || regular.test(data.code)) {
+            setOpen(true);
+            setLoad(false);
+            reset();
+
+         } else {
+
+            if (pin != data.code) {
+               setOpen(true);
+               setLoad(false);
+               reset();
+            } else {
+
+               if (userDevise == 'USD') {
+
+                  if (parseInt(Number(usd)) <= parseInt(Number(rising))) {
+
+                     setNothing(true);
+                     setLoad(false);
+
+                  } else {
+
+                     decrementMoneyClientDollar(Number(rising));
+                     updateBasket(Number(rising));
+                     accretionChildUpdate(Number(rising));
+
+                     secureLocalStorage.setItem("^^add&&@!!**", true);
+
+                     if (lastChild === true) {
+                        accretionAskedTontineAll();
+                     } else if (lastChild === false) {
+                        accretionAskedTontineAll();
+                     } else {
+                        window.console.log('nothing!');
+                     };
+
+                     if (secureLocalStorage.getItem("USER") === JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'))) {
+                        accretionAddUpdate(Number(rising));
+                     }
+
+                     [...listPush].map(item => {
+
+                        window.setTimeout(() => {
+                           if (item === secureLocalStorage.getItem("USER") || item === JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'))) {
+                              window.console.log('nothing');
+                           } else {
+                              const cityRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), item);
+                              setDoc(cityRef, { solde: 0, soldeactive: false }, { merge: true });
+                           }
+
+                        }, 2000);
+
+                     });
+
+                     window.setTimeout(() => {
+                        window.localStorage.setItem('***#$$view..<<valid++', JSON.stringify(false));
+                        navigation('/tontine');
+                     }, 9820);
+                  }
+
+               }
+
+               if (userDevise == 'CDF') {
+
+                  if (parseInt(Number(cdf)) <= parseInt(Number(rising))) {
+
+                     setNothing(true);
+                     setLoad(false);
+
+                  } else {
+
+                     decrementMoneyClientFran(Number(rising));
+                     updateBasket(Number(rising));
+                     accretionChildUpdate(Number(rising));
+
+                     secureLocalStorage.setItem("^^add&&@!!**", false);
+
+                     if (lastChild === true) {
+                        accretionAskedTontineAll();
+                     } else if (lastChild === false) {
+                        accretionAskedTontineAll();
+                     } else {
+                        window.console.log('nothing!');
+                     };
+
+
+                     if (secureLocalStorage.getItem("USER") === JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'))) {
+                        accretionAddUpdate(Number(rising));
+                     };
+
+                     [...listPush].map(item => {
+
+                        window.setTimeout(() => {
+                           if (item === secureLocalStorage.getItem("USER") || item === JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++'))) {
+                              window.console.log('nothing');
+                           } else {
+                              const cityRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), item);
+                              setDoc(cityRef, { solde: 0, soldeactive: false }, { merge: true });
+                           }
+
+                        }, 2000);
+
+                     });
+
+                     window.setTimeout(() => {
+                        window.localStorage.setItem('***#$$view..<<valid++', JSON.stringify(false));
+                        navigation('/tontine');
+                     }, 9820);
+
+                  }
+
+
+               }
+
+            }
+         };
+      }
+
+   };
+
+   return (
+      <>
+         <div className='zindex-theme'>
+            <Backdrop
+               sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+               open={load}>
+
+               <CircularProgress color="inherit" />
+            </Backdrop>
+         </div>
+
+         <form onSubmit={handleSubmit(onSubmit)}>
+            <FormControl
+               sx={{ width: '100%' }}
+
+               variant="standard">
+               <InputLabel htmlFor="standard-adornment-password"><span className='pop-up'>Pin actuel</span></InputLabel>
+
+               <Controller
+                  name="code"
+                  control={control}
+                  render={({ field }) =>
+
+                     <Input
+                        id="standard-adornment-password"
+                        {...field}
+                        type={showPassword ? 'numeric' : 'password'}
+                        inputProps={{
+                           autoComplete: "off", inputMode: 'numeric'
+                        }}
+
+                        endAdornment={
+                           <InputAdornment position="end">
+
+                              <IconButton
+                                 aria-label="toggle password visibility"
+                                 onClick={handleClickShowPassword}
+                                 onMouseDown={handleMouseDownPassword}
+                              >
+                                 {showPassword ? <VisibilityOff /> : <Visibility />}
+                              </IconButton>
+
+                           </InputAdornment>
+                        }
+
+                     />}
+               />
+
+            </FormControl>
+
+
+            <Dialog
+               fullWidth={fullWidth}
+               maxWidth={maxWidth}
+               open={open}
+               onClose={handleClose}>
+
+               <DialogTitle><h1 className='pop-up'>MuunganoMoney</h1></DialogTitle>
+               <DialogContent>
+
+                  <DialogContentText>
+                     <p className='pop-up'>
+                        Code pin Incorrect
      </p>
-      </DialogContentText>
+                  </DialogContentText>
 
-     </DialogContent>
-     <DialogActions>
-      <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
-     </DialogActions>
-    </Dialog>
+               </DialogContent>
+               <DialogActions>
+                  <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
+               </DialogActions>
+            </Dialog>
 
-    <Dialog
-     fullWidth={fullWidth}
-     maxWidth={maxWidth}
-     open={nothing}
-     onClose={handleNothing}>
+            <Dialog
+               fullWidth={fullWidth}
+               maxWidth={maxWidth}
+               open={nothing}
+               onClose={handleNothing}>
 
-     <DialogTitle><h1 className='pop-up'>MuunganoMoney</h1></DialogTitle>
-     <DialogContent>
+               <DialogTitle><h1 className='pop-up'>MuunganoMoney</h1></DialogTitle>
+               <DialogContent>
 
-      <DialogContentText>
-       <p className='pop-up'>
-        Votre portefeuille n'a pas le montant minimum pour cette transaction
+                  <DialogContentText>
+                     <p className='pop-up'>
+                        Votre portefeuille n'a pas le montant minimum pour cette transaction
      </p>
-      </DialogContentText>
+                  </DialogContentText>
 
-     </DialogContent>
-     <DialogActions>
-      <Button onClick={handleNothing}><span className='pop-up'>Fermer</span></Button>
-     </DialogActions>
-    </Dialog>
+               </DialogContent>
+               <DialogActions>
+                  <Button onClick={handleNothing}><span className='pop-up'>Fermer</span></Button>
+               </DialogActions>
+            </Dialog>
 
-    <button className='Btn-Broker'>Ajouter au panier</button>
-   </form>
-  </>
- );
+            <button className='Btn-Broker'>Ajouter au panier</button>
+         </form>
+      </>
+   );
 };
 
 
 export async function decrementMoneyClientDollar(money) {
 
- const washingtonRef = doc(db, "client", secureLocalStorage.getItem("USER"));
+   const washingtonRef = doc(db, "client", secureLocalStorage.getItem("USER"));
 
- // Set the "capital" field of the city 'DC'
- await updateDoc(washingtonRef, {
-  usd: increment(-money)
- });
+   // Set the "capital" field of the city 'DC'
+   await updateDoc(washingtonRef, {
+      usd: increment(-money)
+   });
 
 };
 export async function decrementMoneyClientFran(money) {
 
- const washingtonRef = doc(db, "client", secureLocalStorage.getItem("USER"));
+   const washingtonRef = doc(db, "client", secureLocalStorage.getItem("USER"));
 
- // Set the "capital" field of the city 'DC'
- await updateDoc(washingtonRef, {
-  cdf: increment(-money)
- });
+   // Set the "capital" field of the city 'DC'
+   await updateDoc(washingtonRef, {
+      cdf: increment(-money)
+   });
 
 };
 export async function updateBasket(money) {
 
- const washingtonRef = doc(db, "tontine", JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')));
+   const washingtonRef = doc(db, "tontine", JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')));
 
- // Set the "capital" field of the city 'DC'
- await updateDoc(washingtonRef, {
-  asked: money,
-  askedposition: increment(1),
-  position: 1
- });
+   // Set the "capital" field of the city 'DC'
+   await updateDoc(washingtonRef, {
+      asked: money,
+      askedposition: increment(1),
+      position: 1
+   });
 
 };
 
 export async function accretionChildUpdate(rising) {
 
- const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++')));
- let obj = { asked: 0, date: moment().format(), solde: rising }
- // Set the "capital" field of the city 'DC'
- await updateDoc(washingtonRef, {
-  date: moment().format(),
-  solde: Number(rising),
-  soldeactive: true,
-  activity: arrayUnion(obj)
- });
+   const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++')));
+   let obj = { asked: 0, date: moment().format(), solde: rising }
+   // Set the "capital" field of the city 'DC'
+   await updateDoc(washingtonRef, {
+      date: moment().format(),
+      solde: Number(rising),
+      soldeactive: true,
+      activity: arrayUnion(obj)
+   });
 
 };
 export async function accretionAskedTontine(asked) {
 
- const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++')));
- // Set the "capital" field of the city 'DC'
- await updateDoc(washingtonRef, {
-  date: moment().format(),
-  asked: increment(asked)
- });
+   const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++')));
+   // Set the "capital" field of the city 'DC'
+   await updateDoc(washingtonRef, {
+      date: moment().format(),
+      asked: increment(asked)
+   });
 
 };
 export async function accretionAddUpdate(rising) {
 
- const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), secureLocalStorage.getItem("USER"));
- let obj = { asked: 0, date: moment().format(), solde: rising }
- // Set the "capital" field of the city 'DC'
- await updateDoc(washingtonRef, {
-  date: moment().format(),
-  solde: Number(rising),
-  soldeactive: true,
-  activity: arrayUnion(obj)
- });
+   const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), secureLocalStorage.getItem("USER"));
+   let obj = { asked: 0, date: moment().format(), solde: rising }
+   // Set the "capital" field of the city 'DC'
+   await updateDoc(washingtonRef, {
+      date: moment().format(),
+      solde: Number(rising),
+      soldeactive: true,
+      activity: arrayUnion(obj)
+   });
 
 };
 export async function accretionAskedTontineAll() {
 
- const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++')));
- // Set the "capital" field of the city 'DC'
- await updateDoc(washingtonRef, {
-  date: moment().format(),
-  asked: Number(JSON.parse(window.localStorage.getItem('!@@++baskte&&++')))
- });
+   const washingtonRef = doc(db, JSON.parse(window.localStorage.getItem('¥¥˙´¸list˘˘22˚˚fil')), JSON.parse(window.localStorage.getItem('***#$$pso..<<askedpos**++')));
+   // Set the "capital" field of the city 'DC'
+   await updateDoc(washingtonRef, {
+      date: moment().format(),
+      asked: Number(JSON.parse(window.localStorage.getItem('!@@++baskte&&++')))
+   });
 
 };

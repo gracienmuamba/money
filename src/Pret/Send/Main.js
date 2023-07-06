@@ -1,17 +1,17 @@
 import React from 'react';
+
 import ReturnSend from './Send';
 import { useNavigate } from 'react-router-dom';
-import { gsap, Expo } from 'gsap';
-
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
 import moment from 'moment';
+import secureLocalStorage from "react-secure-storage";
 
 
-// Send Main
+// View Wallet Component
 export default function SendPreT() {
 
  const navigation = useNavigate();
@@ -19,19 +19,10 @@ export default function SendPreT() {
 
  React.useEffect(() => {
 
-  JSON.parse(window.localStorage.getItem('ACTIVE_M_USER')) !== true && navigation('/sign');
-
-  window.setTimeout(() => {
-   gsap.to('.App-loading-blank', 0, { delay: 0, x: '-1000%', opacity: 0, ease: Expo.easeIn })
-  }, 100);
-
- }, []);
-
-
- React.useEffect(() => {
+  secureLocalStorage.getItem("ACTIVE_M_USER") !== true && navigation('/sign');
   window.setTimeout(() => {
    setOpen(false);
-  }, 5600);
+  }, 6600);
 
  }, []);
 
@@ -48,7 +39,7 @@ export default function SendPreT() {
    window.console.log('log Out!');
    setLoggedIn(false);
 
-   window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(false));
+   secureLocalStorage.setItem("ACTIVE_M_USER", false);
    window.localStorage.setItem('USER', JSON.stringify(null));
 
    signOut(auth);
@@ -72,7 +63,6 @@ export default function SendPreT() {
   return () => clearInterval(interval);
 
  }, []);
-
  React.useEffect(() => {
 
   // set Initial Expire Time
@@ -95,10 +85,8 @@ export default function SendPreT() {
 
  }, []);
 
-
  return (
   <>
-   <div className='App-loading-blank'></div>
    <ReturnSend />
 
    <div className='zindex-theme'>
@@ -109,7 +97,6 @@ export default function SendPreT() {
 
     </Backdrop>
    </div>
-
 
   </>
  );

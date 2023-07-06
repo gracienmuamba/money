@@ -7,6 +7,8 @@ import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../firebase';
 import moment from 'moment';
+import secureLocalStorage from "react-secure-storage";
+
 
 // Main Component Fiat
 export default function FiAt() {
@@ -17,7 +19,7 @@ export default function FiAt() {
 
  React.useEffect(() => {
 
-  JSON.parse(window.localStorage.getItem('ACTIVE_M_USER')) !== true && navigation('/sign');
+  secureLocalStorage.getItem("ACTIVE_M_USER") !== true && navigation('/sign');
   window.setTimeout(() => {
    setOpen(false);
   }, 7600);
@@ -37,7 +39,7 @@ export default function FiAt() {
    window.console.log('log Out!');
    setLoggedIn(false);
 
-   window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(false));
+   secureLocalStorage.setItem("ACTIVE_M_USER", false);
    window.localStorage.setItem('USER', JSON.stringify(null));
 
    signOut(auth);

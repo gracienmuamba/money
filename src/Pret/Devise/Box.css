@@ -1,4 +1,5 @@
-.box-devise-pret {
+.box-devise-pret-currency {
  display: flex;
  flex-direction: column;
+ margin-top: 10ch;
 }

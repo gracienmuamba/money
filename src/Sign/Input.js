@@ -11,7 +11,6 @@ import { useForm, Controller } from 'react-hook-form';
 import { db, auth } from '../firebase';
 import { doc, updateDoc, onSnapshot, collection, getDocs, setDoc } from "firebase/firestore";
 
-
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -37,9 +36,7 @@ import ls from 'localstorage-slim';
 import secureLocalStorage from "react-secure-storage";
 
 
-
 ls.config.encrypt = true;
-
 
 
 let expireNum = 10;
@@ -106,6 +103,7 @@ let pushClient = new Array();
 let pushDocs = new Array();
 
 
+
 // Input Field Form
 export default function REturnInPutConnexIon() {
  return (
@@ -169,7 +167,6 @@ export const FormDataInput = () => {
  const handleClose = () => {
   setOpen(false);
  };
-
 
  React.useEffect(async () => {
 
@@ -237,6 +234,7 @@ export const FormDataInput = () => {
 
      phoneX = numPhone;
      secureLocalStorage.setItem('USER', numPhone);
+     window.localStorage.setItem('USER', JSON.stringify(numPhone));
 
      setChecked(false);
      window.setTimeout(() => {
@@ -392,7 +390,6 @@ export const InputCodeRecaptcha = (props) => {
   setCancel(false);
  };
 
-
  const onSubmitOTP = async (data) => {
 
   setLoading(true);
@@ -433,7 +430,8 @@ export const InputCodeRecaptcha = (props) => {
       pin: data.code
      });
 
-     window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(true));
+     secureLocalStorage.setItem("ACTIVE_M_USER", true);
+
      window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
      ls.set('last##73**++Phone &&*@&&@@Number', secureLocalStorage.getItem("USER"), { encrypt: true, secret: 500 });
 
@@ -451,7 +449,7 @@ export const InputCodeRecaptcha = (props) => {
 
      if (props.pin == data.code) {
 
-      // window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(true));
+      // secureLocalStorage.setItem("ACTIVE_M_USER", true);
       // window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
       // navigation('/dash');
 
@@ -460,10 +458,9 @@ export const InputCodeRecaptcha = (props) => {
        if (uid === ipUid && secureLocalStorage.getItem("USER") === ls.get('last##73**++Phone &&*@&&@@Number', { decrypt: true, secret: 500 })) {
 
         secureLocalStorage.setItem("ip^^valid-&&access++dash", uid);
+        secureLocalStorage.setItem("ACTIVE_M_USER", true);
 
-        window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(true));
         window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
-
         ls.set('last##73**++Phone &&*@&&@@Number', secureLocalStorage.getItem("USER"), { encrypt: true, secret: 500 });
 
         let verifierCollection = pushDocs.some((value) => value == secureLocalStorage.getItem("USER"));

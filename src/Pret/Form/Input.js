@@ -152,6 +152,7 @@ export const ScreenSmall = () => {
   </div>
  )
 };
+
 export const FormInput = () => {
 
  const [imageUpload, setImageUpload] = React.useState(null);
@@ -187,8 +188,6 @@ export const FormInput = () => {
    // doc.data() is never undefined for query doc snapshots
    pushPieces.push(doc.id);
   });
-
-  // const toCollection = pushPieces.includes(secureLocalStorage.getItem("USER"));
 
   const unsub = onSnapshot(doc(db, "client", secureLocalStorage.getItem("USER")), (doc) => {
    setProfil(doc.data().pretprofile);
@@ -284,8 +283,8 @@ export const FormInput = () => {
  // Ref collection database!
  const onSubmit = async (data) => {
 
-  window.localStorage.setItem('@!pret&*access*^^', JSON.stringify(false));
-  window.localStorage.setItem('^^&&register__pret', JSON.stringify(false));
+  secureLocalStorage.setItem("@!pret&*access*^^", false);
+  secureLocalStorage.setItem("^^&&register__pret", false);
 
   let money = {
 

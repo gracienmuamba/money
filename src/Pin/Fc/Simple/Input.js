@@ -188,6 +188,8 @@ export const FormInput = () => {
 		window.localStorage.setItem('@dateª©#&&++#', JSON.stringify(moment().format('LLLL')));
 		reactLocalStorage.set('##^^@@%^***^^++=$', true);
 
+		window.localStorage.setItem('@!vew*%%%!!!@@@', JSON.stringify(parseInt(Number(price))));
+
 		// Checked if value code is length valid
 		if (data.code.length != 6 || pin != data.code || pin == '000000' || soldeMain <= 2000) {
 

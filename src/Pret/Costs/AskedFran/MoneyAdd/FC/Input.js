@@ -93,6 +93,8 @@ export default function REturnInputPhone() {
   </>
  );
 };
+
+
 export const ScreenLarge = () => {
  return (
   <div className='solde-input-asked'>
@@ -119,8 +121,8 @@ export const FormInputValue = () => {
  const [fullWidth, setFullWidth] = React.useState(true);
  const [maxWidth, setMaxWidth] = React.useState('sm');
 
-
- let moneyPret = JSON.parse(window.localStorage.getItem('&&money::pret__'));
+ let moneyPret = secureLocalStorage.getItem("&&money::pret__");
+ //  let moneyPret = JSON.parse(window.localStorage.getItem('&&money::pret__'));
  let prixCdf = watch('count');
 
  React.useEffect(async () => {
@@ -169,16 +171,16 @@ export const FormInputValue = () => {
   }
   else {
 
-
    if (Number(data.count) > Number(cdf)) {
     setOpen(true);
     setLoad(false);
 
    } else {
 
-    window.localStorage.setItem('^^pret->value', JSON.stringify(Number(value)));
-    window.localStorage.setItem('^^pret->count', JSON.stringify(Number(data.count)));
-    window.localStorage.setItem('^^pret->part', JSON.stringify(true));
+    secureLocalStorage.setItem('^^pret->value', Number(value));
+    secureLocalStorage.setItem("^^pret->count", Number(data.count));
+    secureLocalStorage.setItem("^^pret->part", true);
+
 
     let before = parseInt(moneyPret);
     let after = moneyPret.toFixed(3);

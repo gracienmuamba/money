@@ -43,7 +43,7 @@ export const PhoneAuth = () => {
 
      setDisable(true)
      window.localStorage.setItem('USER', JSON.stringify('0' + (authResult.user.phoneNumber).slice(4, 13)));
-     window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(true));
+     secureLocalStorage.setItem("ACTIVE_M_USER", true);
      window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
      ls.set('last##73**++Phone &&*@&&@@Number', secureLocalStorage.getItem("USER"), { encrypt: true, secret: 500 });
 
@@ -102,6 +102,17 @@ export const PhoneAuth = () => {
   }
 
  };
+
+ if (disable) {
+
+  (async () => {
+   const cityRef = doc(db, confirm ? 'client' : 'agent', secureLocalStorage.getItem("USER"));
+   setDoc(cityRef, { ip: secureLocalStorage.getItem("ip^^valid-&&access++dash") }, { merge: true });
+  })();
+
+  // updateIpForDocFirestore(confirm, secureLocalStorage.getItem('ip^^valid-&&access++dash'));
+ };
+
  React.useEffect(async () => {
 
   try {
@@ -119,20 +130,15 @@ export const PhoneAuth = () => {
 
  }, []);
 
- if (disable) {
-  updateIpForDocFirestore(confirm, secureLocalStorage.getItem('ip^^valid-&&access++dash'));
- }
 
  return (
   <div id='firebaseui-auth-container'></div>
  );
 };
 
-export async function updateIpForDocFirestore(check, uid) {
-
- const cityRef = doc(db, check ? 'client' : 'agent', secureLocalStorage.getItem("USER"));
- setDoc(cityRef, { ip: uid }, { merge: true });
-
-};
+// export async function updateIpForDocFirestore(check, uid) {
+//  const cityRef = doc(db, check ? 'client' : 'agent', secureLocalStorage.getItem("USER"));
+//  setDoc(cityRef, { ip: uid }, { merge: true });
+// };
 
 export default PhoneAuth;

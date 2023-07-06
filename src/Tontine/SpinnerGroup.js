@@ -2,14 +2,17 @@ import React from 'react';
 import Stack from '@mui/material/Stack';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import secureLocalStorage from "react-secure-storage";
+
 
 const Alert = React.forwardRef(function Alert(props, ref) {
  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
+
 export default function ReturnSpinnerGroup() {
 
- const [open, setOpen] = React.useState(JSON.parse(window.localStorage.getItem('??next^^**$$')));
+ const [open, setOpen] = React.useState(secureLocalStorage.getItem("??next^^**$$"));
  const handleClose = (event, reason) => {
   if (reason === 'clickaway') {
    return;

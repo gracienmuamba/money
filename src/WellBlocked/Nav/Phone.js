@@ -7,8 +7,8 @@ export default function ReturnPhoneClienT() {
 
  return (
   <div className='wrp-title-print-tickets-client'>
-   <h2>ID :</h2>
-   <h2>****************{phone.slice(-3)}</h2>
+   <h2>ID : </h2>
+   <h2> ****************{phone.slice(-3)}</h2>
   </div>
  );
 };

@@ -205,7 +205,7 @@ export const FormInputValue = () => {
 
     </DialogContent>
     <DialogActions>
-     <Button onClick={handleClose}>Fermer</Button>
+     <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
     </DialogActions>
    </Dialog>
 
@@ -225,7 +225,7 @@ export const FormInputValue = () => {
 
     </DialogContent>
     <DialogActions>
-     <Button onClick={handleAdd}>Fermer</Button>
+     <Button onClick={handleAdd}><span className='pop-up'>Fermer</span></Button>
     </DialogActions>
    </Dialog>
 

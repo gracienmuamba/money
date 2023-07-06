@@ -13,6 +13,8 @@ import { CiWallet } from "react-icons/ci";
 import Backdrop from '@mui/material/Backdrop';
 import secureLocalStorage from "react-secure-storage";
 
+
+
 export default function ReturnAskedWallet() {
 
  const [load, setLoad] = React.useState(false);
@@ -71,6 +73,8 @@ export default function ReturnAskedWallet() {
   }
 
  }, []);
+
+
  React.useEffect(async () => {
   try {
    const unsub = onSnapshot(doc(db, "client", secureLocalStorage.getItem("USER")), (doc) => {
@@ -83,13 +87,10 @@ export default function ReturnAskedWallet() {
   }
  }, []);
 
-
- window.console.log(devise);
-
  const handleButtonClick = async () => {
 
   setLoad(true);
-  window.localStorage.setItem('prix^^&&not**', JSON.stringify(true));
+  secureLocalStorage.setItem("prix^^&&not**", true);
 
   window.setTimeout(async () => {
 

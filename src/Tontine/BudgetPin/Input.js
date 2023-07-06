@@ -47,7 +47,6 @@ export default function ReturnFormUpdate() {
  );
 };
 
-
 let userDevise = JSON.parse(window.localStorage.getItem('##!!devi&&*>>'));
 
 export const ScreenLarge = () => (
@@ -60,7 +59,6 @@ export const ScreenSmall = () => (
   <FormInputField />
  </div>
 );
-
 
 export const FormInputField = () => {
 
@@ -110,6 +108,8 @@ export const FormInputField = () => {
   }
 
  }, []);
+
+
  React.useEffect(async () => {
 
   try {
@@ -157,7 +157,8 @@ export const FormInputField = () => {
        addBasket(Number(rising));
        accretionChildUpdate(Number(rising));
 
-       window.localStorage.setItem('^^add&&@!!**', JSON.parse(true));
+       secureLocalStorage.setItem("^^add&&@!!**", false);
+
        window.setTimeout(() => {
         window.localStorage.setItem('***#$$view..<<valid++', JSON.stringify(false));
         navigation('/tontine');
@@ -177,7 +178,8 @@ export const FormInputField = () => {
        addBasket(Number(rising));
        accretionChildUpdate(Number(rising));
 
-       window.localStorage.setItem('^^add&&@!!**', JSON.parse(true));
+       secureLocalStorage.setItem("^^add&&@!!**", false);
+
        window.setTimeout(() => {
         window.localStorage.setItem('***#$$view..<<valid++', JSON.stringify(false));
         navigation('/tontine');
@@ -315,7 +317,6 @@ export async function decrementMoneyClientFran(money) {
  });
 
 };
-
 
 export async function addBasket(money) {
 

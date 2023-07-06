@@ -2,6 +2,10 @@ import './Back.css';
 import { useNavigate } from 'react-router';
 import { HiArrowLeft } from 'react-icons/hi';
 
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+
+
 export function BacK() {
 
  const navigation = useNavigate();
@@ -13,7 +17,13 @@ export function BacK() {
  return (
   <div className='wrp-back-brokers'>
    <div onClick={handlepath} className='wrp-back-box-brokers'>
-    <HiArrowLeft size={'2em'} color={'grey'} />
+
+    <Tooltip title="Retour">
+     <IconButton>
+      <HiArrowLeft size={'1.3em'} color={'grey'} />
+     </IconButton>
+    </Tooltip>
+
    </div>
   </div>
  );

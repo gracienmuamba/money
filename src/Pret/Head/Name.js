@@ -36,6 +36,8 @@ export const ScreenSmall = () => (
   <ReturnPeople />
  </div>
 );
+
+
 export const ReturnPeople = () => {
 
  let pushDocsA = new Array();
@@ -62,6 +64,6 @@ export const ReturnPeople = () => {
  }, []);
 
  return (
-  <h2>{last.toLowerCase()}</h2>
+  <h2>{last.charAt(0).toUpperCase() + last.slice(1)}</h2>
  )
 };

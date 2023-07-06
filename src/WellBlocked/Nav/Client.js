@@ -32,7 +32,7 @@ export default function ReturnNameClienT() {
  return (
   <div className='wrp-title-print-tickets-client'>
    <h2>Client : </h2>
-   <h2>{`${first.toUpperCase()} ${last.toUpperCase()}`}</h2>
+   <h2> {`${first.toUpperCase()} ${last.toUpperCase()}`}</h2>
   </div>
  );
 };

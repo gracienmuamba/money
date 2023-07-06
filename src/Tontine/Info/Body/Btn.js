@@ -39,7 +39,8 @@ export const View = () => {
 
  const handlepath = (event) => {
   event.preventDefault();
-  window.localStorage.setItem('??next^^**$$', JSON.stringify(false));
+
+  secureLocalStorage.setItem("??next^^**$$", false);
   window.localStorage.setItem('@@xi^^,view**++', JSON.stringify([secureLocalStorage.getItem("USER")]));
   navigation('/tontine/group/child');
  };

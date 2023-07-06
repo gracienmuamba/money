@@ -3,9 +3,8 @@ import './Balance.css';
 import { collection, getDocs, doc, onSnapshot } from "firebase/firestore";
 import { db } from '../../../firebase';
 import Media from 'react-media';
-
 import secureLocalStorage from "react-secure-storage";
-
+import currency from 'currency.js';
 
 // Prix HeAd 
 export default function ReturnBalance() {
@@ -70,10 +69,12 @@ export const View = () => {
 
  }, []);
 
+ var euro = value => currency(value, { separator: ' ', decimal: '.', symbol: '' });
+
  return (
   <>
-   <span>{(usd).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&, ')} USD</span>
-   <span>{(fc).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&, ')} CDF</span>
+   <span>{euro(usd).format()} USD</span>
+   <span>{euro(fc).format()} CDF</span>
   </>
  )
 }

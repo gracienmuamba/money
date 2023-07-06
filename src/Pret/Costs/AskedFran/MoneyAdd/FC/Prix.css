@@ -10,7 +10,7 @@
  font-family: var(--text-family);
  font-weight: 500;
  white-space: nowrap;
- letter-spacing: 0px;
+ letter-spacing: -4px;
 }
 
 .prix-withdraw-pret-asked-sm {

@@ -90,15 +90,13 @@ export function View() {
   setOpen(false);
  };
 
-
- window.console.log(list.length)
-
  const handlepath = (event) => {
 
   event.preventDefault();
-  window.localStorage.setItem('prix^^&&not**', JSON.stringify(false));
-  window.localStorage.setItem('^^add&&@!!**', JSON.parse(false));
-  window.localStorage.setItem('??next^^**$$', JSON.parse(false));
+
+  secureLocalStorage.setItem("^^add&&@!!**", false);
+  secureLocalStorage.setItem("??next^^**$$", false);
+  secureLocalStorage.setItem("prix^^&&not**", false);
 
   if (list === undefined || list.length == 0) {
    setOpen(true);

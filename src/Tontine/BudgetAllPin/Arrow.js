@@ -3,6 +3,9 @@ import { HiArrowLeft } from 'react-icons/hi';
 import Media from 'react-media';
 import { useNavigate } from 'react-router-dom';
 
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+
 
 
 // REturn Arrow component 
@@ -38,6 +41,7 @@ export const ScreenSmall = () => (
 
  </div>
 );
+
 export const Arrow = () => {
  const navigation = useNavigate();
  const handlepath = (event) => {
@@ -47,7 +51,13 @@ export const Arrow = () => {
 
  return (
   <div onClick={handlepath}>
-   <HiArrowLeft size={'1.8em'} />
+
+   <Tooltip title="Retour">
+    <IconButton>
+     <HiArrowLeft size={'1.3em'} color={'grey'} />
+    </IconButton>
+   </Tooltip>
+
   </div>
  );
 }

@@ -56,6 +56,7 @@ export const ScreenSmall = () => (
   <FormInputField />
  </div>
 );
+
 export const FormInputField = () => {
 
  let regular = /[a-z]+/;
@@ -112,32 +113,34 @@ export const FormInputField = () => {
     } else {
 
 
-     let valuepret = JSON.parse(window.localStorage.getItem('^^pret->value'));
-     let countpret = JSON.parse(window.localStorage.getItem('&&money::pret__'));
-     let datacount = JSON.parse(window.localStorage.getItem('^^pret->count'));
+     let valuepret = secureLocalStorage.getItem("^^pret->value");
+     let countpret = secureLocalStorage.getItem("&&money::pret__");
+     let datacount = secureLocalStorage.getItem("^^pret->count");
 
+     if (secureLocalStorage.getItem("^^pret->ok")) {
 
-     if (JSON.parse(window.localStorage.getItem('^^pret->ok'))) {
       asKedpretActive();
+      asKedpret(secureLocalStorage.getItem("^^pret->value"));
+      asKedDecrimentpret(secureLocalStorage.getItem("^^pret->count"));
+      secureLocalStorage.getItem("^^pret->part") && asKedpretpart(valuepret);
 
-      asKedpret(JSON.parse(window.localStorage.getItem('^^pret->value')));
-      asKedDecrimentpret(JSON.parse(window.localStorage.getItem('^^pret->count')));
-      JSON.parse(window.localStorage.getItem('^^pret->part')) && asKedpretpart(valuepret);
      } else {
 
-      asKedpret(JSON.parse(window.localStorage.getItem('^^pret->value')));
-      asKedDecrimentpret(JSON.parse(window.localStorage.getItem('^^pret->count')));
+      asKedpret(secureLocalStorage.getItem("^^pret->value"));
+      asKedDecrimentpret(secureLocalStorage.getItem("^^pret->count"));
 
       let pretInfo = 'pret' + secureLocalStorage.getItem("USER");
       collectionPret(pretInfo, moment().format(), Number(valuepret), Number(countpret), datacount);
+      secureLocalStorage.getItem("^^pret->part") && asKedpretpart(valuepret);
 
-      JSON.parse(window.localStorage.getItem('^^pret->part')) && asKedpretpart(valuepret);
+
      }
 
-     window.localStorage.setItem('^^pret->ok', JSON.stringify(false));
-     window.localStorage.setItem('^^pret->', JSON.stringify(false));
-     window.localStorage.setItem('^^snack->', JSON.stringify(true));
-     window.localStorage.setItem('^^pret->part', JSON.stringify(false));
+
+     secureLocalStorage.setItem("^^pret->", false);
+     secureLocalStorage.setItem("^^pret->ok", false);
+     secureLocalStorage.setItem("^^snack->", true);
+     secureLocalStorage.setItem("^^pret->part", false);
 
      window.setTimeout(() => {
       navigation('/pret/dash');
@@ -219,7 +222,6 @@ export const FormInputField = () => {
  );
 };
 
-
 // add pret for client
 export async function asKedpret(prix) {
  const washingtonRef = doc(db, "pret", secureLocalStorage.getItem("USER"));
@@ -264,7 +266,6 @@ export async function asKedpretActive() {
  });
 
 };
-
 // view pret 
 export async function collectionPret(userCollection, userDocs, current, pret, reimburse) {
 

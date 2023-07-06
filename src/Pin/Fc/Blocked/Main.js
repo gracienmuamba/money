@@ -9,6 +9,7 @@ import moment from 'moment';
 
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+import secureLocalStorage from "react-secure-storage";
 
 
 // Simple Main 
@@ -28,7 +29,7 @@ export default function SendSimple() {
 
  React.useEffect(() => {
 
-  JSON.parse(window.localStorage.getItem('ACTIVE_M_USER')) != true && navigation('/sign');
+  secureLocalStorage.getItem("ACTIVE_M_USER") !== true && navigation('/sign');
   window.setTimeout(() => {
    gsap.to('.App-loading-blank', 0, { delay: .1, x: '-1000%', opacity: 0, ease: Expo.easeIn })
   }, 50);
@@ -56,8 +57,7 @@ export default function SendSimple() {
 
    window.console.log('log Out!');
    setLoggedIn(false);
-
-   window.localStorage.setItem('ACTIVE_M_USER', JSON.stringify(false));
+   secureLocalStorage.setItem("ACTIVE_M_USER", false);
    window.localStorage.setItem('USER', JSON.stringify(null));
 
    signOut(auth);

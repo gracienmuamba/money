@@ -6,6 +6,7 @@ import MuiAlert from '@mui/material/Alert';
 import './Head.css';
 import PretNav from './Nav/Main';
 import PrIx from './Prix/Main';
+import secureLocalStorage from "react-secure-storage";
 
 
 const Alert = React.forwardRef(function Alert(props, ref) {
@@ -15,7 +16,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 // Return View COmponent 
 export default function ReturnHeAd() {
 
- const [open, setOpen] = React.useState(JSON.parse(window.localStorage.getItem('^^snack->')));
+ const [open, setOpen] = React.useState(secureLocalStorage.getItem("^^snack->"));
  const handleClose = (event, reason) => {
   if (reason === 'clickaway') {
    return;
@@ -34,8 +35,9 @@ export default function ReturnHeAd() {
 
     <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
      <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-      {/* <p className='pop-up'></p> */}
-       Remboursement effectué
+
+      <p className='pop-up'>Remboursement effectué</p>
+
      </Alert>
     </Snackbar>
 
