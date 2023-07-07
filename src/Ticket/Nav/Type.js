@@ -6,7 +6,7 @@ export default function ReturnType() {
 
  return (
   <div className='wrp-title-print-tickets-client'>
-   <h2>Compte : </h2>
+   <h2>COMPTE : </h2>
    <h2>{type}</h2>
   </div>
  );

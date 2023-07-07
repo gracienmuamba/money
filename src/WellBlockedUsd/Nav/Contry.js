@@ -1,5 +1,4 @@
 
-import './Contry.css';
 import ReturnLine from './Line';
 
 // Contry Component View

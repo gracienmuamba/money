@@ -18,6 +18,12 @@
  font-family: "Alata";
  src: url("./Alata-Regular.ttf");
 }
+
+@font-face {
+ font-family: "homizio";
+ src: url("./Klik-Light.otf");
+}
+
 a {
  text-decoration: underline;
  color: black;

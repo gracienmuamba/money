@@ -1,6 +1,5 @@
 import React from 'react';
 import Media from 'react-media';
-import { prixHash } from '../Pin/Fc/Blocked/Input';
 import ReturnIMAFlags from './Flags';
 
 // Name withdraw sign
@@ -34,10 +33,13 @@ export const ScreenSmall = () => (
  </div>
 );
 export const ViewLogo = () => {
+
+ let prix = JSON.parse(window.localStorage.getItem('@solde!#!'));
+
  return (
   <>
    <ReturnIMAFlags IMA={'/img/franc.png'} />
-   <h2>{prixHash.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&, ')}</h2>
+   <h2>{(prix).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&, ')}</h2>
   </>
  );
 };

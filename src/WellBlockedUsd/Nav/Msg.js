@@ -37,10 +37,6 @@ export default function ReturnMsg() {
 
    <ReturnQuote />
    <ReturnThanKs />
-   {/* <ReturnQRcode /> */}
-
-
-   <ReturnLine />
 
   </div>
 

@@ -9,8 +9,8 @@ export default function ReturnNameAgent() {
  let pushDocs = new Array();
  let pushDocsAgent = new Array();
 
- const [firstAgent, setFirstAgent] = React.useState(' ');
- const [lastAgent, setLastAgent] = React.useState(' ');
+ const [firstAgent, setFirstAgent] = React.useState('');
+ const [lastAgent, setLastAgent] = React.useState('');
 
  React.useEffect(async () => {
 
@@ -24,15 +24,15 @@ export default function ReturnNameAgent() {
 
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
-   setFirstAgent(docSnap.data().firstname);
-   setLastAgent(docSnap.data().lastname);
+   setFirstAgent(docSnap.data().firstname === undefined ? '' : docSnap.data().firstname);
+   setLastAgent(docSnap.data().lastname === undefined ? '' : docSnap.data().lastname);
   }
 
  }, []);
 
  return (
   <div className='wrp-title-print-tickets-client'>
-   <h2>Agent : </h2>
+   <h2>AGENT : </h2>
    <h2>{`${firstAgent.toUpperCase()} ${lastAgent.toUpperCase()}`}</h2>
   </div>
  );

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import ReturnLogo from './Logo';
 import ReturnNameClienT from './Client';
 import ReturnPhoneClienT from './Phone';
@@ -11,8 +10,6 @@ import ReturnQuote from './Quote';
 import ReturnThanKs from './Thank';
 import ReturnLine from './Line';
 import ReturnDateClienT from './Date';
-// import ReturnQRcode from './Qrcode';
-
 import ReturnContry from './Contry';
 
 
@@ -37,10 +34,6 @@ export default function ReturnMsg() {
 
    <ReturnQuote />
    <ReturnThanKs />
-   {/* <ReturnQRcode /> */}
-
-
-   <ReturnLine />
 
   </div>
 
