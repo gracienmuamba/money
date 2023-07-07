@@ -22,7 +22,6 @@ export default function WithdrawSuccess() {
  }, []);
 
  const [view, setView] = React.useState(true);
-
  React.useEffect(() => {
 
   secureLocalStorage.getItem("ACTIVE_M_USER") !== true && navigation('/sign');
