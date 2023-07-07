@@ -4,10 +4,10 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@800&display=swap");
 
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;500&display=swap");
 
 :root {
- --font-condensed: "Noto Sans JP", sans-serif;
+ --font-condensed: "Overpass", sans-serif;
  --font-title-name: "Rubik Vinyl", cursive;
  --font-quote-name: "Nunito Sans", sans-serif;
 }
@@ -26,7 +26,7 @@
 }
 .wrp-logo-print-tickets h2 {
  display: flex;
- font-size: 1.6em;
+ font-size: 1.4em;
  font-weight: 500;
  font-family: var(--font-title-name);
  line-height: 1;

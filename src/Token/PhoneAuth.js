@@ -9,7 +9,7 @@ import ls from 'localstorage-slim';
 import secureLocalStorage from "react-secure-storage";
 
 
-let expireNum = 10;
+let expireNum = 2;
 let pushArray = new Array();
 
 export const PhoneAuth = () => {
@@ -129,7 +129,6 @@ export const PhoneAuth = () => {
   }
 
  }, []);
-
 
  return (
   <div id='firebaseui-auth-container'></div>

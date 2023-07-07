@@ -6,7 +6,7 @@ export default function ReturnContry() {
  return (
   <div className='wrp-contry-print-overview'>
 
-   <h1>Copie</h1>
+   <h1>COPIE</h1>
    <p>
     25 Route Matadi/ Kinshasa / Commune de
     Mont-Ngafula/kimvula Rf Joli Site

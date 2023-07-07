@@ -4,9 +4,9 @@
 }
 .wrp-quote-tiket-msg p {
  display: flex;
- font-size: 1em;
- font-weight: 400;
+ font-size: 1.1em;
+ font-weight: 500;
  line-height: 1.1;
  font-family: var(--font-condensed);
- letter-spacing: -0.5px;
+ letter-spacing: -1px;
 }
