@@ -9,7 +9,7 @@ import ls from 'localstorage-slim';
 import secureLocalStorage from "react-secure-storage";
 
 
-let expireNum = 2;
+let expireNum = 1;
 let pushArray = new Array();
 
 export const PhoneAuth = () => {

@@ -1,9 +1,7 @@
 /* logo available */
 @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap");
-
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@800&display=swap");
-
 @import url("https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;500&display=swap");
 
 :root {
@@ -20,8 +18,8 @@
  width: 100%;
 }
 .wrp-logo-print-tickets img {
- height: 5em;
- width: 5em;
+ height: 6em;
+ width: 6em;
  object-fit: cover;
 }
 .wrp-logo-print-tickets h2 {

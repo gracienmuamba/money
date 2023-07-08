@@ -6,7 +6,7 @@ import ReturnTitle from './Title';
 export default function ReturnLogo() {
  return (
   <div className='wrp-logo-print-tickets'>
-   <img src={'/img/logo.png'} />
+   <img src={'/img/MUUNGANO4.png'} />
    <ReturnTitle />
   </div>
  );
