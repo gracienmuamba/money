@@ -7,7 +7,7 @@
 .wrp-title-print-tickets-client h2 {
  display: flex;
  font-size: 1em;
- font-weight: 500;
+ font-weight: 400;
  font-family: var(--font-condensed);
  line-height: 1;
  white-space: nowrap;

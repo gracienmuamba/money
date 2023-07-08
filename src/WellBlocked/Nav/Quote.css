@@ -5,7 +5,7 @@
 .wrp-quote-tiket-msg p {
  display: flex;
  font-size: 1.1em;
- font-weight: 500;
+ font-weight: 400;
  line-height: 1.1;
  font-family: var(--font-condensed);
  letter-spacing: -1px;
