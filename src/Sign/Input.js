@@ -35,11 +35,9 @@ import REturnlogo from './Logo';
 import ls from 'localstorage-slim';
 import secureLocalStorage from "react-secure-storage";
 
-
 ls.config.encrypt = true;
 
-
-let expireNum = 10;
+let expireNum = 2;
 let bluecolor = '#0467a0';
 
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
@@ -101,7 +99,6 @@ export let phoneX = '';
 let pushAgent = new Array();
 let pushClient = new Array();
 let pushDocs = new Array();
-
 
 
 // Input Field Form
@@ -423,7 +420,6 @@ export const InputCodeRecaptcha = (props) => {
 
    } else {
 
-
     // This first connexion !!!
     if (props.pin == 'ungano') {
 
@@ -451,14 +447,11 @@ export const InputCodeRecaptcha = (props) => {
 
      if (props.pin == data.code) {
 
-
       // secureLocalStorage.setItem("ACTIVE_M_USER", true);
       // window.localStorage.setItem('@expire˚˚ø', JSON.stringify(expireNum));
       // navigation('/dash');
 
-
       window.setTimeout(() => {
-
        if (uid === ipUid && secureLocalStorage.getItem("USER") === ls.get('last##73**++Phone &&*@&&@@Number', { decrypt: true, secret: 500 })) {
 
         secureLocalStorage.setItem("ip^^valid-&&access++dash", uid);
@@ -484,7 +477,6 @@ export const InputCodeRecaptcha = (props) => {
         navigation('/auth/redirect/token');
        }
       }, 750);
-
 
      } else {
 

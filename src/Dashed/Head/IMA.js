@@ -47,9 +47,11 @@ export default function ReturnIMA() {
  uid += secureLocalStorage.getItem("USER");
 
  const handlePath = async (event) => {
+
   event.preventDefault();
   setLoad(true);
   secureLocalStorage.setItem("^^pret%%finish->ok", false);
+  secureLocalStorage.setItem("&&837$$commi@*#())", false);
 
   const frankDocRef = doc(db, confirm ? "client" : "agent", secureLocalStorage.getItem("USER"));
   // To update age and favorite color:

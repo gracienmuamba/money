@@ -61,7 +61,6 @@ export const ScreenSmall = () => (
 		<FormInputField />
 	</div>
 );
-
 export const FormInputField = () => {
 
 	let regular = /[a-z]+/;
@@ -142,10 +141,14 @@ export const FormInputField = () => {
 						historypretRemove(colpret, index);
 					});
 
-					asKedpretActive();
-					asKedpret(secureLocalStorage.getItem("^^pret->value"));
-					asKedDecrimentpret(secureLocalStorage.getItem("^^pret->count"));
-					historypretRemove('pret', secureLocalStorage.getItem("USER"));
+					window.setTimeout(() => {
+
+						asKedpretActive();
+						asKedpret(secureLocalStorage.getItem("^^pret->value"));
+						asKedDecrimentpret(secureLocalStorage.getItem("^^pret->count"));
+						historypretRemove('pret', secureLocalStorage.getItem("USER"));
+
+					}, 500);
 
 					if (secureLocalStorage.getItem("^^pret->part")) {
 						asKedpretpart(valuepret);

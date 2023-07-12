@@ -4,8 +4,8 @@ import Media from 'react-media';
 import { collection, getDocs, doc, onSnapshot } from "firebase/firestore";
 import { db } from '../../firebase';
 import ReturnName from './Name';
-
 import secureLocalStorage from "react-secure-storage";
+
 
 // Avatar IMAGE VIew
 export default function ReturnProfil() {
@@ -41,6 +41,7 @@ export const ScreenSmall = () => (
   <ReturnName />
  </div>
 );
+
 export const View = () => {
 
  let arrayClient = new Array();

@@ -12,7 +12,6 @@ import DialogContentText from '@mui/material/DialogContentText';
 
 import secureLocalStorage from "react-secure-storage";
 
-
 // View all 
 export default function ReturnAll() {
 
@@ -22,7 +21,6 @@ export default function ReturnAll() {
  let pret = secureLocalStorage.getItem("&&money::pret__");
  let wallet = secureLocalStorage.getItem("&&money::wallet__");
  let unite = secureLocalStorage.getItem("&&money::unite__");
-
 
  const handleClose = () => {
   setOpen(false);
@@ -44,10 +42,22 @@ export default function ReturnAll() {
     setOpen(true);
    } else {
 
-    // secureLocalStorage.setItem('^^pret->value', Number(pret));
-    // secureLocalStorage.setItem("^^pret->count", Number(pret));
-    // secureLocalStorage.setItem("^^pret->ok", true);
-    // secureLocalStorage.setItem("^^pret->value", Number(pret));
+    secureLocalStorage.setItem('^^pret->value', Number(pret));
+    secureLocalStorage.setItem("^^pret->count", Number(pret));
+    secureLocalStorage.setItem("^^pret->ok", true);
+
+    window.setTimeout(() => {
+     navigation('/pret/pin/dollar/all');
+    }, 200);
+
+   }
+
+
+  } else if (unite === 'usd') {
+
+   if (wallet <= 1 || wallet < pret || parseInt(wallet) - parseInt(pret) <= 1) {
+    setOpen(true);
+   } else {
 
     secureLocalStorage.setItem('^^pret->value', Number(pret));
     secureLocalStorage.setItem("^^pret->count", Number(pret));
@@ -60,6 +70,7 @@ export default function ReturnAll() {
    }
 
   } else {
+
    if (wallet <= 2000 || wallet < pret || parseInt(wallet) - parseInt(pret) <= 2000) {
     setOpen(true);
    } else {

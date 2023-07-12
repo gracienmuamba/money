@@ -31,6 +31,8 @@ import { NumericFormat } from 'react-number-format';
 import TextField from '@mui/material/TextField';
 import secureLocalStorage from "react-secure-storage";
 
+import Backdrop from '@mui/material/Backdrop';
+
 
 
 export let nowField = moment().date();
@@ -155,6 +157,8 @@ export const ScreenSmall = () => {
 
 export const FormInput = () => {
 
+
+ const [load, setLoad] = React.useState(false);
  const [imageUpload, setImageUpload] = React.useState(null);
  const [url, setUrl] = React.useState(null);
  const [profil, setProfil] = React.useState(null);
@@ -283,6 +287,10 @@ export const FormInput = () => {
  // Ref collection database!
  const onSubmit = async (data) => {
 
+  window.setTimeout(() => {
+   setLoad(true);
+  }, 2500)
+
   secureLocalStorage.setItem("@!pret&*access*^^", false);
   secureLocalStorage.setItem("^^&&register__pret", false);
 
@@ -313,260 +321,272 @@ export const FormInput = () => {
  };
 
  return (
-  <form autocomplete="off" onSubmit={handleSubmit(onSubmit)}>
+  <>
+   <div className='zindex-theme'>
+    <Backdrop
+     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+     open={load}>
 
-   <FormControl sx={{ width: '100%' }} variant="standard">
-    <InputLabel htmlFor="formatted-text-mask-input"><h1 className='pop-up'>Nom</h1></InputLabel>
-
-    <Controller
-     name="name"
-     control={control}
-     render={({ field }) =>
-
-      <Input
-       inputProps={{ autoComplete: "off" }}
-       name="name"
-       {...field}
-      />
-
-     }
-    />
-   </FormControl>
-   <FormControl sx={{ width: '100%' }} variant="standard">
-    <InputLabel htmlFor="formatted-text-mask-input"><h1 className='pop-up'>Adresse domiciliaire actuelle</h1></InputLabel>
-
-    <Controller
-     name="address"
-     control={control}
-     render={({ field }) =>
-
-      <Input
-       inputProps={{ autoComplete: "off" }}
-       name="address"
-       {...field}
-      />
-
-     }
-    />
-   </FormControl>
-   <FormControl sx={{ width: '100%' }} variant="standard">
-    <InputLabel htmlFor="formatted-text-mask-input"><h1 className='pop-up'>Spécifiez le projet</h1></InputLabel>
-
-    <Controller
-     name="specify"
-     control={control}
-     render={({ field }) =>
-
-      <Input
-       inputProps={{ autoComplete: "off" }}
-       name="specify"
-       {...field}
-      />
-
-     }
-    />
-   </FormControl>
-
-
-   <Controller
-    name="costs"
-    defaultValue=''
-    control={control}
-    render={({ field }) =>
-
-     <TextField
-      label={<h2 className='pop-up'>Le cout de mon Projet est estimé à USD</h2>}
-      value={values.numberformat}
-      onChange={handleChange}
-
-      inputProps={{
-       autoComplete: "off", inputMode: 'decimal'
-      }}
-
-      {...field}
-      name="costs"
-      placeholder="0"
-      id="formatted-numberformat-input"
-      InputProps={{
-       inputComponent: NumericFormatCustom,
-      }}
-
-      variant="standard"
-     />
-
-    }
-   />
-   <Controller
-    name="revenu"
-    defaultValue=''
-    control={control}
-    render={({ field }) =>
-
-     <TextField
-      label={<h2 className='pop-up'>Mon revenu mensuel estimé à USD</h2>}
-      value={values.numberformat}
-      onChange={handleChange}
-
-      inputProps={{
-       autoComplete: "off", inputMode: 'decimal'
-      }}
-
-      {...field}
-      name="revenu"
-      placeholder="0"
-      id="formatted-numberformat-input"
-      InputProps={{
-       inputComponent: NumericFormatCustom,
-      }}
-
-      variant="standard"
-     />
-
-    }
-   />
-
-   <Controller
-    name="apport"
-    defaultValue=''
-    control={control}
-    render={({ field }) =>
-
-     <TextField
-      label={<h2 className='pop-up'>Un Apport estimé à USD</h2>}
-      value={values.numberformat}
-      onChange={handleChange}
-
-      inputProps={{
-       autoComplete: "off", inputMode: 'decimal'
-      }}
-
-      {...field}
-      name="apport"
-      placeholder="0"
-      id="formatted-numberformat-input"
-      InputProps={{
-       inputComponent: NumericFormatCustom,
-      }}
-
-      variant="standard"
-     />
-
-    }
-   />
-
-   <FormControl sx={{ width: '100%' }} variant="standard">
-    <InputLabel htmlFor="formatted-text-mask-input"><h1 className='pop-up'>Montant demander en lettre</h1></InputLabel>
-
-    <Controller
-     name="letter"
-     control={control}
-     render={({ field }) =>
-
-      <Input
-       inputProps={{ autoComplete: "off" }}
-       name="letter"
-       {...field}
-      />
-
-     }
-    />
-   </FormControl>
-
-   <Controller
-    name="digit"
-    defaultValue=''
-    control={control}
-    render={({ field }) =>
-
-     <TextField
-      label={<h2 className='pop-up'>Montant demander en chiffre</h2>}
-      value={values.numberformat}
-      onChange={handleChange}
-
-      inputProps={{
-       autoComplete: "off", inputMode: 'decimal'
-      }}
-
-      {...field}
-      name="digit"
-      placeholder="0"
-      id="formatted-numberformat-input"
-      InputProps={{
-       inputComponent: NumericFormatCustom,
-      }}
-
-      variant="standard"
-     />
-
-    }
-   />
-
-
-   <div className='import-pieces'>
-    <p>Importer pièces justificatives</p>
-
-    <div className='wrp-pieces-avatar-user'>
-
-     <IconButton color="primary" aria-label="upload picture" component="label">
-      <div className='profile-user'>
-
-       <img src={'/img/uploadpret.png'} alt={'upload file'} />
-       <input
-        hidden
-        type="file"
-        onChange={(event) => {
-         setImageUpload(event.target.files[0]);
-         setViewBtn(true);
-        }}
-       />
-      </div>
-     </IconButton>
-
-     <CircularProgressWithLabel value={progress} />
-     {viewBtn &&
-      <div onClick={uploadImage}>
-       <Box sx={{ display: 'flex', alignItems: 'center' }}>
-
-        <Box sx={{ position: 'relative' }}>
-
-         <Fab
-
-          aria-label="save"
-          color="primary"
-          sx={buttonSx}
-          onClick={handleButtonClick}
-         >
-          {success ? <CheckIcon /> : <SaveIcon />}
-         </Fab>
-
-         {loading && (
-          <CircularProgress
-           size={45}
-           sx={{
-            color: green[500],
-            position: 'absolute',
-            top: -6,
-            left: -6,
-            zIndex: 1,
-           }}
-          />
-         )}
-        </Box>
-
-       </Box>
-
-      </div>
-     }
-
-
-    </div>
+     <CircularProgress color="inherit" />
+    </Backdrop>
    </div>
 
-   {progress > 95 &&
-    <button className='Btn'>Envoyer Formulaire</button>
-   }
+   <form autocomplete="off" onSubmit={handleSubmit(onSubmit)}>
 
-  </form>
+    <FormControl sx={{ width: '100%' }} variant="standard">
+     <InputLabel htmlFor="formatted-text-mask-input"><h1 className='pop-up'>Nom</h1></InputLabel>
+
+     <Controller
+      name="name"
+      control={control}
+      render={({ field }) =>
+
+       <Input
+        inputProps={{ autoComplete: "off" }}
+        name="name"
+        {...field}
+       />
+
+      }
+     />
+    </FormControl>
+    <FormControl sx={{ width: '100%' }} variant="standard">
+     <InputLabel htmlFor="formatted-text-mask-input"><h1 className='pop-up'>Adresse domiciliaire actuelle</h1></InputLabel>
+
+     <Controller
+      name="address"
+      control={control}
+      render={({ field }) =>
+
+       <Input
+        inputProps={{ autoComplete: "off" }}
+        name="address"
+        {...field}
+       />
+
+      }
+     />
+    </FormControl>
+    <FormControl sx={{ width: '100%' }} variant="standard">
+     <InputLabel htmlFor="formatted-text-mask-input"><h1 className='pop-up'>Spécifiez le projet</h1></InputLabel>
+
+     <Controller
+      name="specify"
+      control={control}
+      render={({ field }) =>
+
+       <Input
+        inputProps={{ autoComplete: "off" }}
+        name="specify"
+        {...field}
+       />
+
+      }
+     />
+    </FormControl>
+
+
+    <Controller
+     name="costs"
+     defaultValue=''
+     control={control}
+     render={({ field }) =>
+
+      <TextField
+       label={<h2 className='pop-up'>Le cout de mon Projet est estimé à USD</h2>}
+       value={values.numberformat}
+       onChange={handleChange}
+
+       inputProps={{
+        autoComplete: "off", inputMode: 'decimal'
+       }}
+
+       {...field}
+       name="costs"
+       placeholder="0"
+       id="formatted-numberformat-input"
+       InputProps={{
+        inputComponent: NumericFormatCustom,
+       }}
+
+       variant="standard"
+      />
+
+     }
+    />
+    <Controller
+     name="revenu"
+     defaultValue=''
+     control={control}
+     render={({ field }) =>
+
+      <TextField
+       label={<h2 className='pop-up'>Mon revenu mensuel estimé à USD</h2>}
+       value={values.numberformat}
+       onChange={handleChange}
+
+       inputProps={{
+        autoComplete: "off", inputMode: 'decimal'
+       }}
+
+       {...field}
+       name="revenu"
+       placeholder="0"
+       id="formatted-numberformat-input"
+       InputProps={{
+        inputComponent: NumericFormatCustom,
+       }}
+
+       variant="standard"
+      />
+
+     }
+    />
+
+    <Controller
+     name="apport"
+     defaultValue=''
+     control={control}
+     render={({ field }) =>
+
+      <TextField
+       label={<h2 className='pop-up'>Un Apport estimé à USD</h2>}
+       value={values.numberformat}
+       onChange={handleChange}
+
+       inputProps={{
+        autoComplete: "off", inputMode: 'decimal'
+       }}
+
+       {...field}
+       name="apport"
+       placeholder="0"
+       id="formatted-numberformat-input"
+       InputProps={{
+        inputComponent: NumericFormatCustom,
+       }}
+
+       variant="standard"
+      />
+
+     }
+    />
+
+    <FormControl sx={{ width: '100%' }} variant="standard">
+     <InputLabel htmlFor="formatted-text-mask-input"><h1 className='pop-up'>Montant demander en lettre</h1></InputLabel>
+
+     <Controller
+      name="letter"
+      control={control}
+      render={({ field }) =>
+
+       <Input
+        inputProps={{ autoComplete: "off" }}
+        name="letter"
+        {...field}
+       />
+
+      }
+     />
+    </FormControl>
+
+    <Controller
+     name="digit"
+     defaultValue=''
+     control={control}
+     render={({ field }) =>
+
+      <TextField
+       label={<h2 className='pop-up'>Montant demander en chiffre</h2>}
+       value={values.numberformat}
+       onChange={handleChange}
+
+       inputProps={{
+        autoComplete: "off", inputMode: 'decimal'
+       }}
+
+       {...field}
+       name="digit"
+       placeholder="0"
+       id="formatted-numberformat-input"
+       InputProps={{
+        inputComponent: NumericFormatCustom,
+       }}
+
+       variant="standard"
+      />
+
+     }
+    />
+
+
+    <div className='import-pieces'>
+     <p>Importer pièces justificatives</p>
+
+     <div className='wrp-pieces-avatar-user'>
+
+      <IconButton color="primary" aria-label="upload picture" component="label">
+       <div className='profile-user'>
+
+        <img src={'/img/uploadpret.png'} alt={'upload file'} />
+        <input
+         hidden
+         type="file"
+         onChange={(event) => {
+          setImageUpload(event.target.files[0]);
+          setViewBtn(true);
+         }}
+        />
+       </div>
+      </IconButton>
+
+      <CircularProgressWithLabel value={progress} />
+      {viewBtn &&
+       <div onClick={uploadImage}>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+
+         <Box sx={{ position: 'relative' }}>
+
+          <Fab
+
+           aria-label="save"
+           color="primary"
+           sx={buttonSx}
+           onClick={handleButtonClick}
+          >
+           {success ? <CheckIcon /> : <SaveIcon />}
+          </Fab>
+
+          {loading && (
+           <CircularProgress
+            size={45}
+            sx={{
+             color: green[500],
+             position: 'absolute',
+             top: -6,
+             left: -6,
+             zIndex: 1,
+            }}
+           />
+          )}
+         </Box>
+
+        </Box>
+
+       </div>
+      }
+
+
+     </div>
+    </div>
+
+    {progress > 95 &&
+     <button className='Btn'>Envoyer Formulaire</button>
+    }
+
+   </form>
+
+  </>
  )
 };
 

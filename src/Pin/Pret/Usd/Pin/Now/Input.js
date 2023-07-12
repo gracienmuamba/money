@@ -71,6 +71,8 @@ export const FormInputField = () => {
 
  const [open, setOpen] = React.useState(false);
  const [high, setHigh] = React.useState(false);
+ const [name, setName] = React.useState('');
+ const [usd, setUsd] = React.useState(0);
 
  const { handleSubmit, reset, control } = useForm();
  const [pin, setPin] = React.useState(null);
@@ -107,6 +109,7 @@ export const FormInputField = () => {
 
    const unsub = onSnapshot(doc(db, "pret", secureLocalStorage.getItem("A@@ph$$&-@#")), (doc) => {
     setCurrent(doc.data().usd);
+    setName(doc.data().name === undefined ? '' : doc.data().name);
    });
 
   }
@@ -118,12 +121,19 @@ export const FormInputField = () => {
   try {
    await onSnapshot(doc(db, "agent", secureLocalStorage.getItem("USER")), (doc) => {
     setPin(doc.data().code);
+    setUsd(doc.data().usd)
+
    });
   } catch {
    window.console.log(`Erreur`);
   }
 
  }, []);
+
+
+ let soldepret = Number(secureLocalStorage.getItem("@solde!#!"));
+ const getPhone = secureLocalStorage.getItem("A@@ph$$&-@#");
+
 
  const onSubmit = async (data) => {
 
@@ -165,12 +175,12 @@ export const FormInputField = () => {
      }
      else {
 
+      secureLocalStorage.setItem("&&837$$commi@*#())", true);
       secureLocalStorage.setItem("&&837$$prnt@*#())", false);
       window.localStorage.setItem('@dateª©#&&++#', JSON.stringify(moment().format('LLLL')));
-      let soldepret = secureLocalStorage.getItem("@solde!#!");
 
       asKedpret(secureLocalStorage.getItem("@solde!#!"));
-      asKedDecrimentpret(secureLocalStorage.getItem("@solde!#!"));
+      asKedDecrimentpret(soldepret, soldepret * 0.1 / 100, soldepret, getPhone, name.toLowerCase(), soldepret, usd);
 
       let pretInfo = 'pret' + secureLocalStorage.getItem("A@@ph$$&-@#");
       collectionPret(pretInfo, moment().format(), parseInt(Number(current) - Number(soldepret)), Number(current), Number(soldepret));
@@ -307,7 +317,6 @@ export async function asKedpret(prix) {
  });
 
 };
-// add pret for client
 export async function asKedpretpart(prix) {
  const washingtonRef = doc(db, "pret", secureLocalStorage.getItem("A@@ph$$&-@#"));
 
@@ -319,16 +328,23 @@ export async function asKedpretpart(prix) {
  });
 
 };
-export async function asKedDecrimentpret(prix) {
+export async function asKedDecrimentpret(prix, fraisAgent, money, getPhone, getUser, main, usd) {
+
+ let send = { date: moment().format('LLL'), solde: `${money} USD`, phone: getPhone, user: getUser, type: 'envoyer', price: parseInt(Number(main)), actual: parseInt(Number(usd)) - Number(prix) + ' USD' + ' [DÉPÔT PRÊT]', unite: 'USD' }
 
  const washingtonRef = doc(db, "agent", secureLocalStorage.getItem("USER"));
  // Set the "capital" field of the city 'DC'
  await updateDoc(washingtonRef, {
-  usd: increment(-prix)
+  usd: increment(-prix),
+  swap: arrayUnion(send),
+ });
+
+ const agentFraisRef = doc(db, "agent", secureLocalStorage.getItem("USER"));
+ await updateDoc(agentFraisRef, {
+  thriftusd: increment(fraisAgent),
  });
 
 };
-// add pret for client active
 export async function asKedpretActive() {
  const washingtonRef = doc(db, "client", secureLocalStorage.getItem("A@@ph$$&-@#"));
  // Set the "capital" field of the city 'DC'
@@ -339,7 +355,6 @@ export async function asKedpretActive() {
  });
 
 };
-// view pret 
 export async function collectionPret(userCollection, userDocs, current, pret, reimburse) {
 
  let obj = { pret: pret, reimburse: reimburse, current: current, devise: 'USD' };

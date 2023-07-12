@@ -163,7 +163,7 @@ export const FormInputValue = () => {
    setLoad(false);
   } else {
 
-   if (Number(data.count) > Number(usd)) {
+   if (Number(data.count) > Number(usd) || Number(usd) + 1 >= 1 || Number(usd) === Number(data.count)) {
     setOpen(true);
     setLoad(false);
 

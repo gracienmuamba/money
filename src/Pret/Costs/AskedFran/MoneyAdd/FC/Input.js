@@ -163,7 +163,7 @@ export const FormInputValue = () => {
    setOpen(true);
    setLoad(false);
   }
-  else if (Number(data.count) > Number(moneyPret) || value < 0) {
+  else if (Number(data.count) > Number(moneyPret) || Number(cdf) + 2000 >= 2000 || Number(cdf) === Number(data.count)) {
 
    setOpen(true);
    setLoad(false);
