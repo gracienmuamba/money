@@ -1,0 +1,20 @@
+.pin-arrow-broker {
+ display: flex;
+ flex-direction: column;
+ cursor: pointer;
+
+ position: absolute;
+ top: 5%;
+ left: 5%;
+ transform: translate(-50%, -50%);
+ color: rgba(116, 116, 116, 0.995);
+}
+.pin-arrow-broker-sm {
+ display: flex;
+ cursor: pointer;
+ position: absolute;
+ top: 5%;
+ left: 1.5em;
+ transform: translate(-50%, -50%);
+ color: rgba(116, 116, 116, 0.995);
+}

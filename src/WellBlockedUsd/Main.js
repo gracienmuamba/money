@@ -9,6 +9,9 @@ import moment from 'moment';
 import secureLocalStorage from "react-secure-storage";
 
 
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 // Main Withdraw Sucess
 export default function WithdrawSuccess() {
@@ -94,6 +97,16 @@ export default function WithdrawSuccess() {
 
  return (
   <>
+   <div className='zindex-theme'>
+    <Backdrop
+     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+     open={view}>
+     <CircularProgress color="inherit" />
+
+    </Backdrop>
+   </div>
+
+
    <div className='App-loading-blank'></div>
    <ReturnWithdrAw />
   </>

@@ -61,7 +61,7 @@ export const ViewExchAnge = () => {
 
  }, []);
 
- newExchAnge = JSON.parse(window.localStorage.getItem('@solde!#!'));
+ newExchAnge = secureLocalStorage.getItem("@solde!#!");
  window.localStorage.setItem('@EX##&Bº', JSON.stringify(newExchAnge));
 
  let number = newExchAnge;

@@ -8,7 +8,9 @@ import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import secureLocalStorage from "react-secure-storage";
 
+
 let pushArray = new Array();
+
 
 // Return IMA
 export default function ReturnIMA() {
@@ -47,6 +49,7 @@ export default function ReturnIMA() {
  const handlePath = async (event) => {
   event.preventDefault();
   setLoad(true);
+  secureLocalStorage.setItem("^^pret%%finish->ok", false);
 
   const frankDocRef = doc(db, confirm ? "client" : "agent", secureLocalStorage.getItem("USER"));
   // To update age and favorite color:

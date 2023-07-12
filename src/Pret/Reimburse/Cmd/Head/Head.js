@@ -47,7 +47,7 @@ function DrawerAppBar() {
      <div className='title-pret-reimburse'>
       <>
        <h2>Vos remboursement en</h2>
-       {pushDocs[0].devise ? <h2 className='color'>usd</h2> : <h2 className='color'>cdf</h2>}
+       {pushDocs[0].devise ? <h2 className='color'>Dollar américain</h2> : <h2 className='color'>Franc congolais</h2>}
       </>
      </div>
      :

@@ -2,6 +2,7 @@ import React from 'react';
 import Media from 'react-media';
 import { collection, getDocs, doc, onSnapshot } from "firebase/firestore";
 import { db } from '../firebase';
+import secureLocalStorage from "react-secure-storage";
 
 
 //  Exchange View Name
@@ -48,10 +49,10 @@ export const ReturnPeople = () => {
    pushDocsA.push(doc.id);
   });
 
-  const verifierCollection = pushDocsA.some(value => value == JSON.parse(window.localStorage.getItem('A@@ph$$&-@#')));
+  const verifierCollection = pushDocsA.some(value => value == secureLocalStorage.getItem("A@@ph$$&-@#"));
 
   try {
-   const unsub = onSnapshot(doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('A@@ph$$&-@#'))), (doc) => {
+   const unsub = onSnapshot(doc(db, verifierCollection ? "client" : "agent", secureLocalStorage.getItem("A@@ph$$&-@#")), (doc) => {
     setFirst(doc.data().firstname);
     setLast(doc.data().lastname);
    });

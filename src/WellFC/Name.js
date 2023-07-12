@@ -3,6 +3,10 @@ import './Name.css';
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { db } from '../firebase';
 import Media from 'react-media';
+import secureLocalStorage from "react-secure-storage";
+
+
+
 
 // Name withdraw sign
 export default function ReturnnAme() {
@@ -49,8 +53,8 @@ export const ViewText = () => {
    pushDocs.push(doc.id);
   });
 
-  const verifierCollection = pushDocs.some(value => value == JSON.parse(window.localStorage.getItem('A@@ph$$&-@#')));
-  const docRef = doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('A@@ph$$&-@#')));
+  const verifierCollection = pushDocs.some(value => value == secureLocalStorage.getItem("A@@ph$$&-@#"));
+  const docRef = doc(db, verifierCollection ? "client" : "agent", secureLocalStorage.getItem("A@@ph$$&-@#"));
 
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {

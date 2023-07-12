@@ -128,7 +128,7 @@ export const FormInput = () => {
     });
 
     verifierSend = pushDocs.some(value => value == secureLocalStorage.getItem("USER"));
-    verifierGet = pushDocs.some(value => value == JSON.parse(window.localStorage.getItem('A@@ph$$&-@#')));
+    verifierGet = pushDocs.some(value => value == secureLocalStorage.getItem("A@@ph$$&-@#"));
 
     const unsub = onSnapshot(doc(db, verifierSend ? "client" : "agent", secureLocalStorage.getItem("USER")), (doc) => {
       setPin(doc.data().code);
@@ -138,7 +138,7 @@ export const FormInput = () => {
       setSoldeMain(doc.data().usd);
     });
 
-    const getRef = doc(db, verifierGet ? "client" : "agent", JSON.parse(window.localStorage.getItem('A@@ph$$&-@#')));
+    const getRef = doc(db, verifierGet ? "client" : "agent", secureLocalStorage.getItem("A@@ph$$&-@#"));
     const getSnap = await getDoc(getRef);
 
     if (getSnap.exists()) {
@@ -190,6 +190,7 @@ export const FormInput = () => {
 
     } else {
 
+      secureLocalStorage.setItem("&&837$$prnt@*#())", true);
       const sendUser = first.toLowerCase() + ' ' + last.toLowerCase();
       const getUser = getfirst.toLowerCase() + ' ' + getlast.toLowerCase();
 
@@ -199,11 +200,11 @@ export const FormInput = () => {
         window.localStorage.setItem('@cost##', JSON.stringify(true));
 
         hashTrue = false;
-        prixHash = JSON.parse(window.localStorage.getItem('@solde!#!'));
+        prixHash = secureLocalStorage.getItem("@solde!#!");
 
-        let soldeAgent = Number(tableAgent[nowField]) + JSON.parse(window.localStorage.getItem('@solde!#!'));
-        let soldeUpgrade = Number(tableUpgrade[nowField]) + JSON.parse(window.localStorage.getItem('@solde!#!'));
-        let soldeAdminFrais = Number(tableAdmin[nowField]) + JSON.parse(window.localStorage.getItem('@frais!#!'));
+        let soldeAgent = Number(tableAgent[nowField]) + secureLocalStorage.getItem("@solde!#!");
+        let soldeUpgrade = Number(tableUpgrade[nowField]) + secureLocalStorage.getItem("@solde!#!");
+        let soldeAdminFrais = Number(tableAdmin[nowField]) + secureLocalStorage.getItem("@frais!#!");
 
         let arrayAgent = tableAgent;
         let arrayUpgrade = tableUpgrade;
@@ -217,12 +218,12 @@ export const FormInput = () => {
         };
 
         const sendPhone = secureLocalStorage.getItem("USER");
-        const getPhone = JSON.parse(window.localStorage.getItem('A@@ph$$&-@#'));
-        const prix = JSON.parse(window.localStorage.getItem('@solde!#!'));
-        const unite = JSON.parse(window.localStorage.getItem('@unite!#!'));
-        const money = JSON.parse(window.localStorage.getItem('@solde!#!'));
-        const frais = JSON.parse(window.localStorage.getItem('@frais!#!'));
-        const main = JSON.parse(window.localStorage.getItem('@main!#!'));
+        const getPhone = secureLocalStorage.getItem("A@@ph$$&-@#");
+        const prix = secureLocalStorage.getItem("@solde!#!");
+        const unite = secureLocalStorage.getItem("@unite!#!");
+        const money = secureLocalStorage.getItem("@solde!#!");
+        const frais = secureLocalStorage.getItem("@frais!#!");
+        const main = secureLocalStorage.getItem("@main!#!");
 
         swapInWithDocsAgent(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayAgent, arrayUpgrade, arrayAdmin, price);
 
@@ -238,11 +239,11 @@ export const FormInput = () => {
         window.localStorage.setItem('@ª©##', JSON.stringify(false));
 
         hashTrue = false;
-        prixHash = JSON.parse(window.localStorage.getItem('@solde!#!'));
+        prixHash = secureLocalStorage.getItem("@solde!#!");
 
-        let soldeClient = Number(tableClient[nowField]) + JSON.parse(window.localStorage.getItem('@solde!#!'));
-        let soldeUpgrade = Number(tableUpgrade[nowField]) + JSON.parse(window.localStorage.getItem('@solde!#!'));
-        let soldeAdminFrais = Number(tableAdmin[nowField]) + JSON.parse(window.localStorage.getItem('@frais!#!'));
+        let soldeClient = Number(tableClient[nowField]) + secureLocalStorage.getItem("@solde!#!");
+        let soldeUpgrade = Number(tableUpgrade[nowField]) + secureLocalStorage.getItem("@solde!#!");
+        let soldeAdminFrais = Number(tableAdmin[nowField]) + secureLocalStorage.getItem("@frais!#!");
 
         let arrayClient = tableClient;
         let arrayUpgrade = tableUpgrade;
@@ -256,12 +257,12 @@ export const FormInput = () => {
         };
 
         const sendPhone = secureLocalStorage.getItem("USER");
-        const getPhone = JSON.parse(window.localStorage.getItem('A@@ph$$&-@#'));
-        const money = JSON.parse(window.localStorage.getItem('@solde!#!'));
-        const prix = JSON.parse(window.localStorage.getItem('@solde!#!'));
-        const unite = JSON.parse(window.localStorage.getItem('@unite!#!'));
-        const frais = JSON.parse(window.localStorage.getItem('@frais!#!'));
-        const main = JSON.parse(window.localStorage.getItem('@main!#!'));
+        const getPhone = secureLocalStorage.getItem("A@@ph$$&-@#");
+        const money = secureLocalStorage.getItem("@solde!#!");
+        const prix = secureLocalStorage.getItem("@solde!#!");
+        const unite = secureLocalStorage.getItem("@unite!#!");
+        const frais = secureLocalStorage.getItem("@frais!#!");
+        const main = secureLocalStorage.getItem("@main!#!");
 
         isSwapInWithClientToClient(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayClient, arrayUpgrade, arrayAdmin, price);
 
@@ -277,10 +278,10 @@ export const FormInput = () => {
           window.localStorage.setItem('@ª©##', JSON.stringify(false));
 
           hashTrue = false;
-          prixHash = JSON.parse(window.localStorage.getItem('@solde!#!'));
+          prixHash = secureLocalStorage.getItem("@solde!#!");
 
-          let soldeAgent = Number(tableAgent[nowField]) + JSON.parse(window.localStorage.getItem('@solde!#!'));
-          let soldeUpgrade = Number(tableUpgrade[nowField]) + JSON.parse(window.localStorage.getItem('@solde!#!'));
+          let soldeAgent = Number(tableAgent[nowField]) + secureLocalStorage.getItem("@solde!#!");
+          let soldeUpgrade = Number(tableUpgrade[nowField]) + secureLocalStorage.getItem("@solde!#!");
 
           let arrayAgent = tableAgent;
           let arrayUpgrade = tableUpgrade;
@@ -291,11 +292,11 @@ export const FormInput = () => {
           };
 
           const sendPhone = secureLocalStorage.getItem("USER");
-          const getPhone = JSON.parse(window.localStorage.getItem('A@@ph$$&-@#'));
-          const prix = JSON.parse(window.localStorage.getItem('@solde!#!'));
-          const unite = JSON.parse(window.localStorage.getItem('@unite!#!'));
-          const frais = JSON.parse(window.localStorage.getItem('@frais!#!'));
-          const main = JSON.parse(window.localStorage.getItem('@main!#!'));
+          const getPhone = secureLocalStorage.getItem("A@@ph$$&-@#");
+          const prix = secureLocalStorage.getItem("@solde!#!");
+          const unite = secureLocalStorage.getItem("@unite!#!");
+          const frais = secureLocalStorage.getItem("@frais!#!");
+          const main = secureLocalStorage.getItem("@main!#!");
 
 
           swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUser, main, prix, unite, arrayAgent, arrayUpgrade, price);
@@ -308,12 +309,12 @@ export const FormInput = () => {
           window.localStorage.setItem('@ª©##', JSON.stringify(false));
 
           hashTrue = false;
-          prixHash = JSON.parse(window.localStorage.getItem('@solde!#!'));
+          prixHash = secureLocalStorage.getItem("@solde!#!");
 
-          let soldeClient = Number(tableClient[nowField]) + JSON.parse(window.localStorage.getItem('@solde!#!'));
-          let soldeUpgrade = Number(tableUpgrade[nowField]) + JSON.parse(window.localStorage.getItem('@solde!#!'));
-          let soldeAdminFrais = Number(tableAdmin[nowField]) + ((JSON.parse(window.localStorage.getItem('@frais!#!')) * 70) / 100);
-          let soldeAgentFrais = Number(tableFrais[nowField]) + ((JSON.parse(window.localStorage.getItem('@frais!#!')) * 30) / 100);
+          let soldeClient = Number(tableClient[nowField]) + secureLocalStorage.getItem("@solde!#!");
+          let soldeUpgrade = Number(tableUpgrade[nowField]) + secureLocalStorage.getItem("@solde!#!");
+          let soldeAdminFrais = Number(tableAdmin[nowField]) + ((secureLocalStorage.getItem("@frais!#!") * 70) / 100);
+          let soldeAgentFrais = Number(tableFrais[nowField]) + ((secureLocalStorage.getItem("@frais!#!") * 30) / 100);
 
           let arrayClient = tableClient;
           let arrayUpgrade = tableUpgrade;
@@ -329,11 +330,11 @@ export const FormInput = () => {
           };
 
           const sendPhone = secureLocalStorage.getItem("USER");
-          const getPhone = JSON.parse(window.localStorage.getItem('A@@ph$$&-@#'));
-          const money = JSON.parse(window.localStorage.getItem('@solde!#!'));
-          const unite = JSON.parse(window.localStorage.getItem('@unite!#!'));
-          const frais = JSON.parse(window.localStorage.getItem('@frais!#!'));
-          const main = JSON.parse(window.localStorage.getItem('@main!#!'));
+          const getPhone = secureLocalStorage.getItem("A@@ph$$&-@#");
+          const money = secureLocalStorage.getItem("@solde!#!");
+          const unite = secureLocalStorage.getItem("@unite!#!");
+          const frais = secureLocalStorage.getItem("@frais!#!");
+          const main = secureLocalStorage.getItem("@main!#!");
 
 
           isSwapInWithClientToAgent(sendPhone, getPhone, sendUser, getUser, main, money, frais, unite, arrayClient, arrayUpgrade, arrayAdmin, arrayAgent, price);
@@ -501,7 +502,7 @@ async function swapInWithDocsAgentToClient(sendPhone, getPhone, sendUser, getUse
   let get = { date: time, solde: `${prix} ${unite}`, phone: sendPhone, user: sendUser, type: 'Reçu', actual: parseInt(Number(solde) + Number(prix)) + ' ' + unite, unite: unite }
 
 
-  let comm = prix * 0.3 / 100;
+  let comm = prix * 3 / 100;
 
   const sendRef = doc(db, "agent", sendPhone);
   await updateDoc(sendRef, {
@@ -562,7 +563,7 @@ async function isSwapInWithClientToAgent(sendPhone, getPhone, sendUser, getUser,
 
 
   let fraisAdmin = frais;
-  let fraisAgent = money * 2.7 / 100;
+  let fraisAgent = money * 0.1 / 100;
 
 
   const sendRef = doc(db, "client", sendPhone);

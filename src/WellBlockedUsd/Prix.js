@@ -2,6 +2,7 @@ import React from 'react';
 import Media from 'react-media';
 import { prixHash } from '../Pin/Usd/Blocked/Input';
 import ReturnIMAFlags from './Flags';
+import secureLocalStorage from "react-secure-storage";
 
 // Name withdraw sign
 export default function ReturnSolde() {

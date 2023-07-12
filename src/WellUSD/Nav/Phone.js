@@ -1,9 +1,11 @@
 import React from 'react';
+import secureLocalStorage from "react-secure-storage";
+
 
 // Title Return Compoennt
 export default function ReturnPhoneClienT() {
 
- let phone = JSON.parse(window.localStorage.getItem('A@@ph$$&-@#'));
+ let phone = secureLocalStorage.getItem("A@@ph$$&-@#");
 
  return (
   <div className='wrp-title-print-tickets-client'>

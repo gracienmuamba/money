@@ -2,6 +2,7 @@ import React from 'react';
 import { TweenLite } from 'gsap';
 import Media from 'react-media';
 import ReturnIMAFlags from './Flags';
+import secureLocalStorage from "react-secure-storage";
 
 // Prix View Component 
 export default function ReturnPriX() {
@@ -37,12 +38,11 @@ export const ScreenSmall = () => (
 export const ViewText = () => {
 
  const obj = { value: 0 };
-
  React.useEffect(() => {
 
   let target = document.querySelector('.valueTarget');
   TweenLite.to(obj, 5, {
-   value: Math.floor(JSON.parse(window.localStorage.getItem('@solde!#!'))),
+   value: Math.floor(secureLocalStorage.getItem("@solde!#!")),
    roundProps: { value: 1 },
    onUpdate: () => target.innerHTML = obj.value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&, ')
   })

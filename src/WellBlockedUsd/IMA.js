@@ -2,8 +2,13 @@ import React from 'react';
 import Media from 'react-media';
 import { collection, getDocs, doc, onSnapshot } from "firebase/firestore";
 import { db } from '../firebase';
+import secureLocalStorage from "react-secure-storage";
+
+
 
 let arrayClient = new Array();
+
+
 
 // Avatar IMAGE VIew
 export default function ReturnAvataR() {
@@ -48,8 +53,8 @@ export const FirstLetteR = () => {
    arrayClient.push(doc.id);
   });
 
-  const collections = arrayClient.some(value => value == JSON.parse(window.localStorage.getItem('A@@ph$$&-@#')));
-  const unsub = onSnapshot(doc(db, collections ? "client" : "agent", JSON.parse(window.localStorage.getItem('A@@ph$$&-@#'))), (doc) => {
+  const collections = arrayClient.some(value => value == secureLocalStorage.getItem("A@@ph$$&-@#"));
+  const unsub = onSnapshot(doc(db, collections ? "client" : "agent", secureLocalStorage.getItem("A@@ph$$&-@#")), (doc) => {
    setProfil(doc.data().profile);
   });
 

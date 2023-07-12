@@ -1,0 +1,48 @@
+/* .wrp-form-input-nows {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.wrp-form-input-nows form {
+ display: flex;
+ flex-direction: column;
+ max-width: 25em;
+ padding: 1em;
+ gap: 1em;
+}
+.wrp-form-input-nows input {
+ display: flex;
+ font-size: 1em;
+ font-weight: 400;
+ font-family: "AntipastoPro";
+ line-height: 1;
+ letter-spacing: 1px;
+ text-align: center;
+ padding-left: 2em;
+ width: 100%;
+ border: none;
+ color: black;
+}
+.wrp-form-input-nows form button {
+ display: flex;
+ padding: 0.3em;
+}
+
+.wrp-form-input-nows form .wrp-errors-code {
+ display: flex;
+ font-size: 0.3em;
+ font-weight: 300;
+ line-height: 0;
+ letter-spacing: 0px;
+ margin-top: 2em;
+ width: 100%;
+ color: crimson;
+}
+.wrp-form-input-nows form .wrp-errors-code-transparent {
+ display: flex;
+ font-weight: 300;
+ line-height: 0;
+ letter-spacing: 0px;
+ width: 100%;
+ color: transparent;
+} */

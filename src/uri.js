@@ -67,6 +67,9 @@ import AsKedFrAn from './Pret/Costs/AskedFran/Main';
 import DashPreT from './Pret/Dash/Main';
 import Devise from './Pret/Devise/Main';
 import PretFranPret from './Pret/Pin/Now/Main';
+import RefundedBudGeTPinAll from './Pret/Refunded/All/Main';
+import RefundedBudGeTPinAllUSD from './Pret/Refunded/Usd/Main';
+
 import PretDollarPret from './Pret/Usd/Pin/Now/Main';
 import MeThod from './Pret/Method/Main';
 import ReimBurse from './Pret/Reimburse/Cmd/Main';
@@ -104,6 +107,12 @@ import ListcmdStocK from './Command/List/Main';
 import LastTransacTion from './Last/Main';
 import TicKet from './Ticket/Main';
 import AuthToKen from './Token/Main';
+
+import RefundedPinFran from './Pin/Pret/Pin/Now/Main';
+import RefundedPinDollar from './Pin/Pret/Usd/Pin/Now/Main';
+
+import WELLPretCDFSuccess from './WellPretFC/Main';
+import WELLPretUSDSuccess from './WellPretUSD/Main';
 
 
 // URI viewer component 
@@ -176,8 +185,14 @@ export default function ReturRnURI() {
    <Route path='/pret/costs/devise/asked' element={<Pretdraw />} />
    <Route path='/pret/dash' element={<DashPreT />} />
    <Route path='/pret/devise/' element={<Devise />} />
+
    <Route path='/pret/pin/fran' element={<PretFranPret />} />
    <Route path='/pret/pin/dollar' element={<PretDollarPret />} />
+
+   <Route path='/pret/pin/fran/all' element={<RefundedBudGeTPinAll />} />
+   <Route path='/pret/pin/dollar/all' element={<RefundedBudGeTPinAllUSD />} />
+
+
    <Route path='/pret/view' element={<PretViEw />} />
    <Route path='/pret/method' element={<MeThod />} />
    <Route path='/pret/reimburse' element={<ReimBurse />} />
@@ -215,6 +230,13 @@ export default function ReturRnURI() {
    <Route path='/last/transaction' element={<LastTransacTion />} />
    <Route path='/muungano/print/ticket' element={<TicKet />} />
    <Route path='/auth/redirect/token' element={<AuthToKen />} />
+
+   <Route path='/exchange/refunded/franc' element={<RefundedPinFran />} />
+   <Route path='/exchange/refunded/dollar' element={<RefundedPinDollar />} />
+
+   <Route path='/well/refunded/franc' element={<WELLPretCDFSuccess />} />
+   <Route path='/well/refunded/dollar' element={<WELLPretUSDSuccess />} />
+
 
    <Route path='*' element={<App />} />
   </Routes>

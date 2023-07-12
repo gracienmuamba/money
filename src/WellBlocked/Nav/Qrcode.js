@@ -5,7 +5,7 @@ import secureLocalStorage from "react-secure-storage";
 // Title Return Compoennt
 export default function ReturnQRcode() {
 
- const qrcodeId = secureLocalStorage.getItem("USER") + JSON.parse(window.localStorage.getItem('@solde!#!')) + JSON.parse(window.localStorage.getItem('@dateª©#&&++#'))
+ const qrcodeId = secureLocalStorage.getItem("USER") + secureLocalStorage.getItem("@solde!#!") + JSON.parse(window.localStorage.getItem('@dateª©#&&++#'))
  return (
   <div className='wrp-logo-print-tickets-qrcode'>
 

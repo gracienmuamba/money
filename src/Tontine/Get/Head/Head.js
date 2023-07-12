@@ -17,8 +17,12 @@ import { useNavigate } from 'react-router-dom';
 import { HiArrowLeft } from 'react-icons/hi';
 import secureLocalStorage from "react-secure-storage";
 
+
+
 let Acces = true;
 let listRising = new Array();
+
+
 
 function DrawerAppBar() {
 

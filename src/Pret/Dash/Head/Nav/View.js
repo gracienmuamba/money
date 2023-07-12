@@ -29,7 +29,6 @@ export default function ReturnViEw() {
   window.console.log(pushDoc);
 
  }, []);
-
  const handlepath = async (event) => {
 
   event.preventDefault();
@@ -41,8 +40,7 @@ export default function ReturnViEw() {
   window.setTimeout(() => {
    navigation('/pret/reimburse');
   }, 3000);
- }
-
+ };
  return (
   <>
    <div className='zindex-theme'>

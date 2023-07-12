@@ -39,7 +39,7 @@ import secureLocalStorage from "react-secure-storage";
 ls.config.encrypt = true;
 
 
-let expireNum = 1;
+let expireNum = 10;
 let bluecolor = '#0467a0';
 
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
@@ -234,7 +234,7 @@ export const FormDataInput = () => {
 
      phoneX = numPhone;
      secureLocalStorage.setItem('USER', numPhone);
-     window.localStorage.setItem('USER', JSON.stringify(numPhone));
+     // window.localStorage.setItem('USER', JSON.stringify(numPhone));
 
      setChecked(false);
      window.setTimeout(() => {
@@ -484,6 +484,7 @@ export const InputCodeRecaptcha = (props) => {
         navigation('/auth/redirect/token');
        }
       }, 750);
+
 
      } else {
 

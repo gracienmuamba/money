@@ -36,7 +36,6 @@ export const ScreenSmall = () => (
 
  </div>
 );
-
 export const Arrow = () => {
 
  return (
@@ -44,4 +43,4 @@ export const Arrow = () => {
    <ReturnNavBaR />
   </div>
  );
-}
+};

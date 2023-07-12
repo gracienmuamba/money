@@ -6,8 +6,12 @@ import { db } from '../firebase';
 import ReturnBtnBlocKed from './BtnBlocked';
 import ReturnBtn from './Btn';
 import secureLocalStorage from "react-secure-storage";
+import ReturnBtnPreT from './Btnpret';
+
+
 
 let pushDocs = new Array();
+
 
 // Blocked View Arrow
 export default function ReturnBtnValid() {
@@ -63,6 +67,7 @@ export const ViewBtn = () => {
    {checked == 'client' && <ReturnBtn />}
    {checked == 'agent' &&
     <>
+     <ReturnBtnPreT />
      <ReturnBtn />
      <ReturnBtnBlocKed />
     </>

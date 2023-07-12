@@ -27,8 +27,6 @@ import { IMaskInput } from 'react-imask';
 import { NumericFormat } from 'react-number-format';
 
 
-// let operator = ['081', '082', '083', '084', '085', '089', '099', '097', '091', '090'];
-
 
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
  const { onChange, ...other } = props;
@@ -257,50 +255,51 @@ export const FormInput = () => {
      />
     </FormControl>
 
-    <Dialog
-     fullWidth={fullWidth}
-     maxWidth={maxWidth}
-     open={error}
-     onClose={handleError}
-    >
-     <DialogTitle><p className='pop-up'>MuunganoMoney</p></DialogTitle>
-     <DialogContent>
-
-      <DialogContentText>
-       <p className='pop-up'>
-        Le numéro de téléphone est invalide
-      </p>
-      </DialogContentText>
-
-     </DialogContent>
-     <DialogActions>
-      <Button onClick={handleError}><span className='pop-up'>Fermer</span></Button>
-     </DialogActions>
-    </Dialog>
-
-    <Dialog
-     fullWidth={fullWidth}
-     maxWidth={maxWidth}
-     open={open}
-     onClose={handleClose}
-    >
-     <DialogTitle><p className='pop-up'>MuunganoMoney</p></DialogTitle>
-     <DialogContent>
-
-      <DialogContentText>
-       <p className='pop-up'>
-        Numero de télèphone est déja enregistre chez Muunganomoney
-       </p>
-      </DialogContentText>
-
-     </DialogContent>
-     <DialogActions>
-      <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
-     </DialogActions>
-    </Dialog>
-
     <button className='Btn'>Suivant</button>
    </form>
+
+   <Dialog
+    fullWidth={fullWidth}
+    maxWidth={maxWidth}
+    open={error}
+    onClose={handleError}
+   >
+    <DialogTitle><p className='pop-up'>MuunganoMoney</p></DialogTitle>
+    <DialogContent>
+
+     <DialogContentText>
+      <p className='pop-up'>
+       Le numéro de téléphone est invalide
+      </p>
+     </DialogContentText>
+
+    </DialogContent>
+    <DialogActions>
+     <Button onClick={handleError}><span className='pop-up'>Fermer</span></Button>
+    </DialogActions>
+   </Dialog>
+
+   <Dialog
+    fullWidth={fullWidth}
+    maxWidth={maxWidth}
+    open={open}
+    onClose={handleClose}
+   >
+    <DialogTitle><p className='pop-up'>MuunganoMoney</p></DialogTitle>
+    <DialogContent>
+
+     <DialogContentText>
+      <p className='pop-up'>
+       Numero de télèphone est déja enregistre chez Muunganomoney
+       </p>
+     </DialogContentText>
+
+    </DialogContent>
+    <DialogActions>
+     <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
+    </DialogActions>
+   </Dialog>
+
   </>
  );
 };

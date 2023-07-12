@@ -7,6 +7,7 @@ import currency from 'currency.js';
 import Skeleton from '@mui/material/Skeleton';
 import secureLocalStorage from "react-secure-storage";
 
+
 // Print view Asked
 export default function ReturnPrix() {
  return (
@@ -37,6 +38,7 @@ export const ScreenSmall = () => (
   <View />
  </div>
 );
+
 export const View = () => {
 
  const [asked, setAsked] = React.useState(false);

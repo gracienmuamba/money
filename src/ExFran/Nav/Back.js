@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router';
 import { HiArrowLeft } from 'react-icons/hi';
 import './Back.css';
 
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+
 // Back 
 export default function ReturnBacK() {
 
@@ -14,7 +17,13 @@ export default function ReturnBacK() {
 
  return (
   <div onClick={handlepath} className='tontine-back-exfran'>
-   <HiArrowLeft size={'1.6em'} color={'grey'} />
+
+   <Tooltip title="Retour">
+    <IconButton>
+     <HiArrowLeft size={'1.3em'} color={'grey'} />
+    </IconButton>
+   </Tooltip>
+
   </div>
  );
 };

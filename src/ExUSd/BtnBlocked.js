@@ -42,7 +42,7 @@ export default function ReturnBtnBlocKed() {
  return (
   <button onClick={handlepath} className='Btn-Closed margin-top-btn'>
    <span>
-    {state == "client" ? "Retrait" : "Suivant"}
+    {state == "client" ? "Retrait" : "Envoyé Épargne"}
    </span>
    <div><FcLock size={'1.3em'} /></div>
   </button>

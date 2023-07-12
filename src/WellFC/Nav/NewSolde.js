@@ -1,6 +1,9 @@
 import React from 'react';
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { db } from '../../firebase';
+import secureLocalStorage from "react-secure-storage";
+
+
 
 // Title Return Compoennt
 export default function ReturnNewSolde() {
@@ -15,8 +18,8 @@ export default function ReturnNewSolde() {
    pushDocs.push(doc.id);
   });
 
-  const verifierCollection = pushDocs.some(value => value == JSON.parse(window.localStorage.getItem('A@@ph$$&-@#')));
-  const docRef = doc(db, verifierCollection ? "client" : "agent", JSON.parse(window.localStorage.getItem('A@@ph$$&-@#')));
+  const verifierCollection = pushDocs.some(value => value == secureLocalStorage.getItem("A@@ph$$&-@#"));
+  const docRef = doc(db, verifierCollection ? "client" : "agent", secureLocalStorage.getItem("A@@ph$$&-@#"));
 
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
@@ -28,7 +31,7 @@ export default function ReturnNewSolde() {
  return (
   <div className='wrp-title-print-tickets-client'>
    <h2>NOUVEAU SOLDE :</h2>
-   <h2>{parseInt(Number(solde))} {JSON.parse(window.localStorage.getItem('@unite!#!'))}</h2>
+   <h2>{parseInt(Number(solde))} {secureLocalStorage.getItem("@unite!#!")}</h2>
   </div>
  );
 };

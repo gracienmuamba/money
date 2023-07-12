@@ -46,15 +46,14 @@ export const View = () => {
  const [time, setTime] = React.useState(new Date());
  const [open, setOpen] = React.useState(false);
 
-
  React.useEffect(async () => {
 
   try {
    await onSnapshot(doc(db, "pret", secureLocalStorage.getItem("USER")), (doc) => {
 
-    setCdf(doc.data().pretcdf);
-    setUsd(doc.data().pretusd);
-    setTime(doc.data().date);
+    setCdf(doc.data().pretcdf === undefined ? 0 : doc.data().pretcdf);
+    setUsd(doc.data().pretusd === undefined ? 0 : doc.data().pretusd);
+    setTime(doc.data().date === undefined ? '' : doc.data().date);
    });
   } catch {
    window.console.log(`Erreur`);
@@ -92,7 +91,6 @@ export const View = () => {
   }
 
  };
-
 
  let yearusd = moment(time).get('year');
  let monthsusd = moment(time).get('month');

@@ -2,12 +2,11 @@ import React from 'react';
 import './Loading.css';
 import Hm from './Hm/Main';
 
-
 function App() {
  return (
   <Hm />
  );
 };
 
-// Export component Main
+// Export Component Main
 export default App;

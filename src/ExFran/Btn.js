@@ -1,5 +1,4 @@
 import React from 'react';
-import { IoSend } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { db } from '../firebase';
@@ -39,11 +38,10 @@ export default function ReturnBtn() {
  }, []);
 
  return (
-  <button style={{ paddingLeft: '1.5em' }} onClick={handlepath} className={'Btn'}>
+  <button style={{ padding: '.5em', }} onClick={handlepath} className={'Btn'}>
    <span>
-    {state == "client" ? "Retrait" : "Suivant"}
+    {state == "client" ? "Retrait" : "Envoyé Argent"}
    </span>
-   <div><IoSend size={'1.5em'} color={'transparent'} /></div>
   </button>
  );
 };

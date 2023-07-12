@@ -188,7 +188,8 @@ export const FormDataInput = () => {
      if (secureLocalStorage.getItem("USER") !== numPhone) {
 
       sendPhone = numPhone;
-      window.localStorage.setItem('A@@ph$$&-@#', JSON.stringify(numPhone));
+      secureLocalStorage.setItem("A@@ph$$&-@#", numPhone);
+
       window.setTimeout(() => {
        navigation('/send-money');
        // navigation('/fran');

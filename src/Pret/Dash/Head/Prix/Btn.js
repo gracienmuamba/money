@@ -130,40 +130,35 @@ export default function ReturnBTn() {
 
 
  const handlepathcdf = (event) => {
+
   event.preventDefault();
 
   secureLocalStorage.setItem("&&money::pret__", pretCdf);
-
   secureLocalStorage.setItem("&&money::wallet__", walletcdf);
   secureLocalStorage.setItem("&&money::unite__", 'cdf');
   secureLocalStorage.setItem("^^pret->", true);
 
 
   if (solde <= 0 && Comma <= 10) {
-
    secureLocalStorage.setItem("^^pret->ok", true);
-
    asKedpret();
   } else {
-   window.console.log('continue');
+   window.console.log('next');
   }
 
   secureLocalStorage.setItem("solde&&%%¢pret", '/pret/costs/asked/cdf');
   navigation('/pret/method');
  }
-
  const handlepathusd = (event) => {
 
   event.preventDefault();
-  secureLocalStorage.setItem("&&money::pret__", pretUsd);
 
+  secureLocalStorage.setItem("&&money::pret__", pretUsd);
   secureLocalStorage.setItem("&&money::wallet__", walletusd);
   secureLocalStorage.setItem("&&money::unite__", 'usd');
   secureLocalStorage.setItem("^^pret->", true);
 
-
   if (solde <= 0 && Comma <= 10) {
-
    secureLocalStorage.setItem("^^pret->ok", true);
    asKedpret();
   } else {
@@ -176,7 +171,7 @@ export default function ReturnBTn() {
 
  };
 
- window.console.log(moment(time).format() < moment(time).add(120, 'days').format());
+ // window.console.log(moment(time).format() < moment(time).add(120, 'days').format());
 
  return (
   <>

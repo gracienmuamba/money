@@ -1,0 +1,28 @@
+/* .wrp-quote-now {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+ max-width: 20em;
+}
+.wrp-quote-now p {
+ display: flex;
+ text-align: center;
+ font-size: 1.02em;
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: 0.5px;
+}
+
+Small Screen
+.wrp-quote-now-sm {
+ display: flex;
+ padding: 1em;
+}
+.wrp-quote-now-sm p {
+ display: flex;
+ font-size: 1.02em;
+ font-weight: 300;
+ line-height: 1;
+ letter-spacing: 0.5px;
+} */

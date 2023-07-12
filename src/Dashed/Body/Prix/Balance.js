@@ -36,6 +36,8 @@ export const ScreenSmall = () => (
   <View />
  </div>
 );
+
+
 export const View = () => {
 
  let pushDocs = new Array();

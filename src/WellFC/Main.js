@@ -1,8 +1,6 @@
 import * as React from 'react';
 import ReturnWithdrAw from './Withdraw';
 
-import Button from '@mui/material/Button';
-import MuiAlert from '@mui/material/Alert';
 import { useNavigate } from 'react-router-dom';
 import { gsap, Expo } from 'gsap';
 
@@ -10,6 +8,10 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../firebase';
 import moment from 'moment';
 import secureLocalStorage from "react-secure-storage";
+
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 
 // Main Withdraw Sucess
@@ -102,6 +104,16 @@ export default function WithdrawSuccess() {
    <ReturnWithdrAw />
    <div>
    </div>
+
+   <div className='zindex-theme'>
+    <Backdrop
+     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+     open={view}>
+     <CircularProgress color="inherit" />
+
+    </Backdrop>
+   </div>
+
   </>
  );
 };

@@ -6,6 +6,10 @@ import { db } from '../firebase';
 
 import ReturnBtnBlocKed from './BtnBlocked';
 import ReturnBtn from './Btn';
+import ReturnBtnPreT from './Btnpret';
+
+
+
 import secureLocalStorage from "react-secure-storage";
 
 let pushDocs = new Array();
@@ -64,6 +68,7 @@ export const ViewBtn = () => {
    {checked == 'client' && <ReturnBtn />}
    {checked == 'agent' &&
     <>
+     <ReturnBtnPreT />
      <ReturnBtn />
      <ReturnBtnBlocKed />
     </>

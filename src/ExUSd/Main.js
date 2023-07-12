@@ -10,6 +10,8 @@ import { auth } from '../firebase';
 import moment from 'moment';
 import secureLocalStorage from "react-secure-storage";
 
+import NavBar from './Nav/Main';
+
 
 // Return Transaction view
 export default function RetuRnExUSd() {
@@ -89,6 +91,7 @@ export default function RetuRnExUSd() {
 
  return (
   <>
+   <NavBar />
    <ReturnExchAnge />
 
    <div className='zindex-theme'>

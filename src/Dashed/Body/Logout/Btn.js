@@ -103,7 +103,16 @@ export default function ReturnLogouTButton() {
    secureLocalStorage.removeItem("prix^^&&not**");
    secureLocalStorage.removeItem("%%docs&&col**unite");
    secureLocalStorage.removeItem("^^pret->");
-   secureLocalStorage.removeItem("");
+   secureLocalStorage.removeItem("@unite!#!");
+   secureLocalStorage.removeItem("@frais!#!");
+   secureLocalStorage.removeItem("@solde!#!");
+   secureLocalStorage.removeItem("@main!#!");
+   secureLocalStorage.removeItem("^^snack->");
+   secureLocalStorage.removeItem("^^snack->all");
+   secureLocalStorage.removeItem("A@@ph$$&-@#");
+   secureLocalStorage.removeItem("@money!#!");
+   secureLocalStorage.removeItem("&&837$$prnt@*#())");
+   secureLocalStorage.removeItem("^^pret%%finish->ok");
    secureLocalStorage.removeItem("");
 
 

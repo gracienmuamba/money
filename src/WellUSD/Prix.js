@@ -1,6 +1,8 @@
 import React from 'react';
 import Media from 'react-media';
 import ReturnIMAFlags from './Flags';
+import secureLocalStorage from "react-secure-storage";
+
 
 // Name withdraw sign
 export default function ReturnSolde() {
@@ -36,7 +38,7 @@ export const ViewLogo = () => {
  return (
   <>
    <ReturnIMAFlags IMA={'/img/dollars.png'} />
-   <h2>{(JSON.parse(window.localStorage.getItem('@solde!#!'))).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&, ')}</h2>
+   <h2>{(secureLocalStorage.getItem("@solde!#!")).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&, ')}</h2>
   </>
  );
 };

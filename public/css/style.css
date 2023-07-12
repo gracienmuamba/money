@@ -50,6 +50,28 @@ a {
  border: 0.1px solid var(--bgcolor-btn);
  background: var(--bgcolor-btn);
 }
+.Btn-pret {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+
+ border-radius: 0.7em;
+ font-size: 1em;
+ letter-spacing: 1px;
+ cursor: pointer;
+ white-space: nowrap;
+
+ outline-style: none;
+ font-family: var(--text-family);
+
+ padding: 0.355em;
+ width: 100%;
+
+ color: var(--color-btn);
+ border: 0.1px solid #09bc8a;
+ background: #09bc8a;
+}
+
 .Btn-Disable {
  display: flex;
  justify-content: center;

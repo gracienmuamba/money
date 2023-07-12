@@ -9,6 +9,7 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../firebase';
 import moment from 'moment';
 import secureLocalStorage from "react-secure-storage";
+import NavBar from './Nav/Main';
 
 
 // Return Transaction view
@@ -100,6 +101,7 @@ export default function ExchAnge() {
     </Backdrop>
    </div>
 
+   <NavBar />
    <ReturnExchAnge />
   </>
  );

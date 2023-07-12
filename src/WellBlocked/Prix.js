@@ -1,6 +1,8 @@
 import React from 'react';
 import Media from 'react-media';
 import ReturnIMAFlags from './Flags';
+import secureLocalStorage from "react-secure-storage";
+
 
 // Name withdraw sign
 export default function ReturnSolde() {
@@ -34,7 +36,7 @@ export const ScreenSmall = () => (
 );
 export const ViewLogo = () => {
 
- let prix = JSON.parse(window.localStorage.getItem('@solde!#!'));
+ let prix = secureLocalStorage.getItem("@solde!#!");
 
  return (
   <>

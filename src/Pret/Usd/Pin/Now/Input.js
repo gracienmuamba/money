@@ -24,6 +24,9 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import moment from 'moment';
 import secureLocalStorage from "react-secure-storage";
 
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 
 // View Form Update view
@@ -64,6 +67,7 @@ export const FormInputField = () => {
  const navigation = useNavigate();
  const { handleSubmit, reset, control } = useForm();
  const [pin, setPin] = React.useState(null);
+ const [load, setLoad] = React.useState(false);
 
  const [fullWidth, setFullWidth] = React.useState(true);
  const [maxWidth, setMaxWidth] = React.useState('sm');
@@ -92,23 +96,27 @@ export const FormInputField = () => {
 
  }, []);
 
-
  const onSubmit = async (data) => {
+
+  setLoad(true);
 
   if (data.code === undefined) {
    setOpen(true);
+   setLoad(false);
    reset();
 
   } else {
 
    if (data.code.length != 6 || regular.test(data.code)) {
     setOpen(true);
+    setLoad(false);
     reset();
 
    } else {
 
     if (pin != data.code) {
      setOpen(true);
+     setLoad(false);
      reset();
     } else {
 
@@ -117,24 +125,34 @@ export const FormInputField = () => {
      let countpret = secureLocalStorage.getItem("&&money::pret__");
      let datacount = secureLocalStorage.getItem("^^pret->count");
 
-     if (secureLocalStorage.getItem("^^pret->ok")) {
 
-      asKedpretActive();
-      asKedpret(secureLocalStorage.getItem("^^pret->value"));
-      asKedDecrimentpret(secureLocalStorage.getItem("^^pret->count"));
-      secureLocalStorage.getItem("^^pret->part") && asKedpretpart(valuepret);
+     asKedpret(secureLocalStorage.getItem("^^pret->value"));
+     asKedDecrimentpret(secureLocalStorage.getItem("^^pret->count"));
 
-     } else {
-
-      asKedpret(secureLocalStorage.getItem("^^pret->value"));
-      asKedDecrimentpret(secureLocalStorage.getItem("^^pret->count"));
-
-      let pretInfo = 'pret' + secureLocalStorage.getItem("USER");
-      collectionPret(pretInfo, moment().format(), Number(valuepret), Number(countpret), datacount);
-      secureLocalStorage.getItem("^^pret->part") && asKedpretpart(valuepret);
+     let pretInfo = 'pret' + secureLocalStorage.getItem("USER");
+     collectionPret(pretInfo, moment().format(), Number(valuepret), Number(countpret), datacount);
+     secureLocalStorage.getItem("^^pret->part") && asKedpretpart(valuepret);
 
 
-     }
+
+     // if (secureLocalStorage.getItem("^^pret->ok")) {
+
+     //  asKedpretActive();
+     //  asKedpret(secureLocalStorage.getItem("^^pret->value"));
+     //  asKedDecrimentpret(secureLocalStorage.getItem("^^pret->count"));
+     //  secureLocalStorage.getItem("^^pret->part") && asKedpretpart(valuepret);
+
+     // } else {
+
+     //  asKedpret(secureLocalStorage.getItem("^^pret->value"));
+     //  asKedDecrimentpret(secureLocalStorage.getItem("^^pret->count"));
+
+     //  let pretInfo = 'pret' + secureLocalStorage.getItem("USER");
+     //  collectionPret(pretInfo, moment().format(), Number(valuepret), Number(countpret), datacount);
+     //  secureLocalStorage.getItem("^^pret->part") && asKedpretpart(valuepret);
+
+
+     // }
 
 
      secureLocalStorage.setItem("^^pret->", false);
@@ -144,7 +162,7 @@ export const FormInputField = () => {
 
      window.setTimeout(() => {
       navigation('/pret/dash');
-     }, 500);
+     }, 2500);
 
 
     }
@@ -156,69 +174,81 @@ export const FormInputField = () => {
  };
 
  return (
-  <form onSubmit={handleSubmit(onSubmit)}>
+  <>
+   <div className='zindex-theme'>
+    <Backdrop
+     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+     open={load}>
 
-   <FormControl
-    sx={{ width: '100%' }}
+     <CircularProgress color="inherit" />
+    </Backdrop>
+   </div>
 
-    variant="standard">
-    <InputLabel htmlFor="standard-adornment-password"><span className='pop-up'>Pin actuel</span></InputLabel>
+   <form onSubmit={handleSubmit(onSubmit)}>
 
-    <Controller
-     name="code"
-     control={control}
-     render={({ field }) =>
+    <FormControl
+     sx={{ width: '100%' }}
 
-      <Input
-       id="standard-adornment-password"
-       {...field}
-       type={showPassword ? 'numeric' : 'password'}
-       inputProps={{
-        autoComplete: "off", inputMode: 'numeric'
-       }}
+     variant="standard">
+     <InputLabel htmlFor="standard-adornment-password"><span className='pop-up'>Pin actuel</span></InputLabel>
 
-       endAdornment={
-        <InputAdornment position="end">
+     <Controller
+      name="code"
+      control={control}
+      render={({ field }) =>
 
-         <IconButton
-          aria-label="toggle password visibility"
-          onClick={handleClickShowPassword}
-          onMouseDown={handleMouseDownPassword}
-         >
-          {showPassword ? <VisibilityOff /> : <Visibility />}
-         </IconButton>
+       <Input
+        id="standard-adornment-password"
+        {...field}
+        type={showPassword ? 'numeric' : 'password'}
+        inputProps={{
+         autoComplete: "off", inputMode: 'numeric'
+        }}
 
-        </InputAdornment>
-       }
+        endAdornment={
+         <InputAdornment position="end">
 
-      />}
-    />
+          <IconButton
+           aria-label="toggle password visibility"
+           onClick={handleClickShowPassword}
+           onMouseDown={handleMouseDownPassword}
+          >
+           {showPassword ? <VisibilityOff /> : <Visibility />}
+          </IconButton>
 
-   </FormControl>
+         </InputAdornment>
+        }
 
-   <Dialog
-    fullWidth={fullWidth}
-    maxWidth={maxWidth}
-    open={open}
-    onClose={handleClose}>
+       />}
+     />
 
-    <DialogTitle><h1 className='pop-up'>MuunganoMoney</h1></DialogTitle>
-    <DialogContent>
+    </FormControl>
 
-     <DialogContentText>
-      <p className='pop-up'>
-       Code pin Incorrect
+    <Dialog
+     fullWidth={fullWidth}
+     maxWidth={maxWidth}
+     open={open}
+     onClose={handleClose}>
+
+     <DialogTitle><h1 className='pop-up'>MuunganoMoney</h1></DialogTitle>
+     <DialogContent>
+
+      <DialogContentText>
+       <p className='pop-up'>
+        Code pin Incorrect
      </p>
-     </DialogContentText>
+      </DialogContentText>
 
-    </DialogContent>
-    <DialogActions>
-     <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
-    </DialogActions>
-   </Dialog>
+     </DialogContent>
+     <DialogActions>
+      <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
+     </DialogActions>
+    </Dialog>
 
-   <button className='Btn-Broker'>Envoi</button>
-  </form>
+    <button className='Btn-Broker'>Envoi</button>
+   </form>
+
+  </>
  );
 };
 
@@ -246,6 +276,7 @@ export async function asKedpretpart(prix) {
  });
 
 };
+
 export async function asKedDecrimentpret(prix) {
 
  const washingtonRef = doc(db, "client", secureLocalStorage.getItem("USER"));

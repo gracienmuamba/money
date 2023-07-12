@@ -2,6 +2,9 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { HiArrowLeft } from 'react-icons/hi';
 
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+
 
 export function BacK() {
 
@@ -9,11 +12,18 @@ export function BacK() {
  return (
   <div className='wrp-back-brokers'>
    <div onClick={() => navigation(-1)} className='wrp-back-box-brokers'>
-    <HiArrowLeft size={'1.6em'} color={'grey'} />
+
+    <Tooltip title="Retour">
+     <IconButton>
+      <HiArrowLeft size={'1.3em'} color={'grey'} />
+     </IconButton>
+    </Tooltip>
+
    </div>
   </div>
  );
-}
+};
+
 // NavBar component view 
 export default function ReturnNavBaR() {
  return (

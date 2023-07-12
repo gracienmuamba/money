@@ -19,6 +19,7 @@ export default function DAsh() {
 
  React.useEffect(() => {
 
+  // secureLocalStorage.getItem("^^pret%%finish->ok") === true && navigation('/dash');
   secureLocalStorage.getItem("ACTIVE_M_USER") !== true && navigation('/sign');
   window.setTimeout(() => {
    setOpen(false);
