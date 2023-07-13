@@ -19,6 +19,7 @@ export default function BudGeTPinAll() {
 
  React.useEffect(() => {
 
+  secureLocalStorage.getItem("%%@#7**@@++view!&&!") !== true && navigation('/dash');
   secureLocalStorage.getItem("ACTIVE_M_USER") !== true && navigation('/sign');
   window.setTimeout(() => {
    setOpen(false);

@@ -18,7 +18,8 @@ export default function RefundedPinAll() {
  const [open, setOpen] = React.useState(true);
 
  React.useEffect(() => {
-  // secureLocalStorage.getItem("^^pret->") != true && navigation('/pret/dash');
+
+  secureLocalStorage.getItem("%%@#7**@@++view!&&!") !== true && navigation('/dash');
   secureLocalStorage.getItem("ACTIVE_M_USER") !== true && navigation('/sign');
   window.setTimeout(() => {
    setOpen(false);

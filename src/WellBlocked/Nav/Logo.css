@@ -15,12 +15,13 @@
  flex-direction: column;
  justify-content: center;
  align-items: center;
- margin-top: 4vh;
+ margin-top: 2vh;
  width: 100%;
 }
+
 .wrp-logo-print-tickets img {
  height: 3em;
- width: 14em;
+ width: 15em;
  object-fit: cover;
 }
 .wrp-logo-print-tickets h2 {

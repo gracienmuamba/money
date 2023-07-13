@@ -109,6 +109,7 @@ export default function ReturnBtnPreT() {
    if (pretDocs.includes(secureLocalStorage.getItem("A@@ph$$&-@#"))) {
 
     if (price >= 1) {
+     secureLocalStorage.setItem("%%@#7**@@++view!&&!", true);
      navigation('/exchange/refunded/dollar');
     } else {
      setRoll(true);

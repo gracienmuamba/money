@@ -9,7 +9,7 @@ import ReturnDepot from './Depot';
 import ReturnNameAgent from './Agent';
 import ReturnNewSolde from './NewSolde';
 import ReturnQuote from './Quote';
-import ReturnThanKs from './Thank';
+// import ReturnThanKs from './Thank';
 import ReturnLine from './Line';
 import ReturnDateClienT from './Date';
 
@@ -36,7 +36,7 @@ export default function ReturnMsg() {
    <ReturnDateClienT />
 
    <ReturnQuote />
-   <ReturnThanKs />
+   {/* <ReturnThanKs /> */}
 
   </div>
 

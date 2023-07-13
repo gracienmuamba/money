@@ -185,6 +185,9 @@ export const FormInputField = () => {
       let pretInfo = 'pret' + secureLocalStorage.getItem("A@@ph$$&-@#");
       collectionPret(pretInfo, moment().format(), parseInt(Number(current) - Number(soldepret)), Number(current), Number(soldepret));
 
+      secureLocalStorage.setItem("%%@#7**@@++view!&&!", false);
+      secureLocalStorage.getItem("%%@#7**@@++view!&&!");
+
       window.setTimeout(() => {
        navigation('/well/refunded/dollar');
       }, 2500);
@@ -330,7 +333,7 @@ export async function asKedpretpart(prix) {
 };
 export async function asKedDecrimentpret(prix, fraisAgent, money, getPhone, getUser, main, usd) {
 
- let send = { date: moment().format('LLL'), solde: `${money} USD`, phone: getPhone, user: getUser, type: 'envoyer', price: parseInt(Number(main)), actual: parseInt(Number(usd)) - Number(prix) + ' USD' + ' [DÉPÔT PRÊT]', unite: 'USD' }
+ let send = { date: moment().format('LLL'), solde: `${money} USD [DÉPÔT PRÊT]`, phone: getPhone, user: getUser, type: 'envoyer', price: parseInt(Number(main)), actual: parseInt(Number(usd)) - Number(prix) + ' USD', unite: 'USD' }
 
  const washingtonRef = doc(db, "agent", secureLocalStorage.getItem("USER"));
  // Set the "capital" field of the city 'DC'
