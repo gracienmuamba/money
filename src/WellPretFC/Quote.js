@@ -37,7 +37,7 @@ export const ScreenSmall = () => (
 export const ViewText = () => {
   return (
     <p>
-      Remboursement du prêt client effectué par un mandataire
+      Remboursement du prêt effectué par un mandataire
     </p>
   );
 };

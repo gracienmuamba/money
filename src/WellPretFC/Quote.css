@@ -7,10 +7,27 @@
  justify-content: center;
  align-items: center;
 }
-
 .wrp-quote-withdraw-pret-success p {
  display: flex;
  font-size: 1.144em;
+ font-weight: 300;
+ font-family: var(--text-family);
+ line-height: 1;
+ text-align: center;
+ letter-spacing: 0px;
+ color: #0096c7;
+}
+
+.wrp-quote-withdraw-pret-success-sm {
+ display: flex;
+ width: 100%;
+
+ justify-content: center;
+ align-items: center;
+}
+.wrp-quote-withdraw-pret-success-sm p {
+ display: flex;
+ font-size: 0.9em;
  font-weight: 300;
  font-family: var(--text-family);
  line-height: 1;

@@ -8,13 +8,10 @@ export default function ReturnContry() {
   <div className='wrp-contry-print-overview'>
 
    <h1>COPIE</h1>
-   <p>
-    25 Route Matadi/ Kinshasa / Commune de
-    Mont-Ngafula/kimvula Rf Joli Site
-   </p>
-
-   <span>Contact : 0858974375</span>
-   <span>E-mail : gilbertmwz@gmail.com</span>
+   <p>Kinshasa 25 Route Matadi/Commune de Mont- Ngafula/Mbesenke immatriculée au Registre de Commerce</p>
+   <p>et du Crédit Mobilier de sous le numéro CD/KNG/RCCM/23-A-08667 et à l’Identification Nationale sous le numéro 01-G4701-N38616Y,</p>
+   <p>Contact : 0858974375
+    E-mail : gilbertmwz@gmail.com</p>
 
    <ReturnLine />
   </div>
