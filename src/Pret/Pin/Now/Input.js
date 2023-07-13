@@ -14,6 +14,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContentText from '@mui/material/DialogContentText';
 
+
 import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
@@ -71,9 +72,10 @@ export const FormInputField = () => {
  const [pin, setPin] = React.useState(null);
  const [load, setLoad] = React.useState(false);
 
+ const [open, setOpen] = React.useState(false);
  const [fullWidth, setFullWidth] = React.useState(true);
  const [maxWidth, setMaxWidth] = React.useState('sm');
- const [open, setOpen] = React.useState(false);
+
  const [showPassword, setShowPassword] = React.useState(false);
 
  const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -224,6 +226,7 @@ export const FormInputField = () => {
       <Button onClick={handleClose}><span className='pop-up'>Fermer</span></Button>
      </DialogActions>
     </Dialog>
+
 
     <button className='Btn-Broker'>Envoi</button>
    </form>

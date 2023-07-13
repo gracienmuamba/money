@@ -9,6 +9,7 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../../firebase';
 import moment from 'moment';
 import secureLocalStorage from "react-secure-storage";
+import ReturnBacK from './Back';
 
 
 // Return Now Component 
@@ -25,7 +26,6 @@ export default function PinStocK() {
   }, 50);
 
  }, []);
-
 
  React.useEffect(() => {
 
@@ -97,6 +97,7 @@ export default function PinStocK() {
 
  return (
   <>
+   <ReturnBacK />
    <div className='App-loading-blank'></div>
    <div className='zindex-theme'>
     <Backdrop

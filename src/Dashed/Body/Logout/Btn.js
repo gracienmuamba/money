@@ -12,7 +12,9 @@ import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import secureLocalStorage from "react-secure-storage";
 
+
 let pushArray = new Array();
+
 
 // Quote COmpoent Component 
 export default function ReturnLogouTButton() {
@@ -56,10 +58,8 @@ export default function ReturnLogouTButton() {
 
   window.setTimeout(() => {
 
-
    reactLocalStorage.remove('@expire˚˚ø');
    reactLocalStorage.remove('expireTime');
-
 
    reactLocalStorage.remove('A@@ph$$&-@#');
    reactLocalStorage.remove('@money!#!');

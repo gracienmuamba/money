@@ -24,6 +24,8 @@ import secureLocalStorage from "react-secure-storage";
 
 import moment from 'moment';
 
+
+
 // Money Africell
 let africount = 1;
 let afriprice = 0.00955;
@@ -169,14 +171,14 @@ export default function ReturnStocKInput() {
 
   dialogAfricell = true;
 
-  if (Number(afriprice) > 0.00955) {
+  if (Number(afriprice) > 0.00957) {
 
-   africount = watch('afriprice', true) / 0.00955;
+   africount = watch('afriprice', true) / 0.00957;
    africount = parseInt(africount, 10);
-   afriprice = watch('africount', true) * 0.00955;
+   afriprice = watch('africount', true) * 0.00957;
 
   } else {
-   afriprice = 0.00955;
+   afriprice = 0.00957;
    africount = 1;
 
   }
@@ -188,14 +190,14 @@ export default function ReturnStocKInput() {
 
   dialogAfricell = false;
 
-  if (Number(afriprice) > 22) {
+  if (Number(afriprice) > 23.95) {
 
-   africount = watch('afriprice', true) / 22.47;
+   africount = watch('afriprice', true) / 23.95;
    africount = parseInt(africount, 10);
-   afriprice = watch('africount', true) * 22.47;
+   afriprice = watch('africount', true) * 23.95;
 
   } else {
-   afriprice = 22.47;
+   afriprice = 23.95;
    africount = 1;
 
   }
@@ -211,14 +213,14 @@ export default function ReturnStocKInput() {
   dialogOrange = true;
 
 
-  if (Number(orangeprice) > 0.0096) {
+  if (Number(orangeprice) > 0.00957) {
 
-   orangecount = watch('orangeprice', true) / 0.0096;
+   orangecount = watch('orangeprice', true) / 0.00957;
    orangecount = parseInt(orangecount, 10);
-   orangeprice = watch('orangecount', true) * 0.0096;
+   orangeprice = watch('orangecount', true) * 0.00957;
 
   } else {
-   orangeprice = 0.0096;
+   orangeprice = 0.00957;
    orangecount = 1;
 
   }
@@ -230,14 +232,14 @@ export default function ReturnStocKInput() {
 
   dialogOrange = false;
 
-  if (Number(orangeprice) > 22.1) {
+  if (Number(orangeprice) > 24) {
 
-   orangecount = watch('orangeprice', true) / 22.58;
+   orangecount = watch('orangeprice', true) / 24;
    orangecount = parseInt(orangecount, 10);
-   orangeprice = watch('orangecount', true) * 22.58;
+   orangeprice = watch('orangecount', true) * 24;
 
   } else {
-   orangeprice = 22.58;
+   orangeprice = 24;
    orangecount = 1;
 
   }
@@ -252,14 +254,14 @@ export default function ReturnStocKInput() {
 
   dialogAirtel = true;
 
-  if (Number(airtelprice) > 0.00955) {
+  if (Number(airtelprice) > 0.00957) {
 
-   airtelcount = watch('airtelprice', true) / 0.00955;
+   airtelcount = watch('airtelprice', true) / 0.00957;
    airtelcount = parseInt(airtelcount, 10);
-   airtelprice = watch('airtelcount', true) * 0.00955;
+   airtelprice = watch('airtelcount', true) * 0.00957;
 
   } else {
-   airtelprice = 0.00955;
+   airtelprice = 0.00957;
    airtelcount = 1;
 
   }
@@ -269,18 +271,16 @@ export default function ReturnStocKInput() {
   cdfvalue -= watch('airtelprice');
   airtelprice = watch('airtelprice');
 
-
   dialogAirtel = false;
 
+  if (Number(airtelprice) > 23.95) {
 
-  if (Number(airtelprice) > 22) {
-
-   airtelcount = watch('airtelprice', true) / 22.47;
+   airtelcount = watch('airtelprice', true) / 23.95;
    airtelcount = parseInt(airtelcount, 10);
-   airtelprice = watch('airtelcount', true) * 22.47;
+   airtelprice = watch('airtelcount', true) * 23.95;
 
   } else {
-   airtelprice = 22.47;
+   airtelprice = 23.95;
    airtelcount = 1;
 
   }
@@ -295,14 +295,14 @@ export default function ReturnStocKInput() {
 
   dialogVoda = true;
 
-  if (Number(vodaprice) > 0.0096) {
+  if (Number(vodaprice) > 0.00957) {
 
-   vodacount = watch('vodaprice', true) / 0.0096;
+   vodacount = watch('vodaprice', true) / 0.00957;
    vodacount = parseInt(vodacount, 10);
-   vodaprice = watch('vodacount', true) * 0.0096;
+   vodaprice = watch('vodacount', true) * 0.00957;
 
   } else {
-   vodaprice = 0.0096;
+   vodaprice = 0.00957;
    vodacount = 1;
 
   }
@@ -314,20 +314,19 @@ export default function ReturnStocKInput() {
 
   dialogVoda = false;
 
-  if (Number(vodaprice) > 22.58) {
+  if (Number(vodaprice) > 24) {
 
-   vodacount = watch('vodaprice', true) / 22.58;
+   vodacount = watch('vodaprice', true) / 24;
    vodacount = parseInt(vodacount, 10);
-   vodaprice = watch('vodacount', true) * 22.58;
+   vodaprice = watch('vodacount', true) * 24;
 
   } else {
-   vodaprice = 22.58;
+   vodaprice = 24;
    vodacount = 1;
 
   }
 
  }
-
 
  const [filled, setFilled] = useState(0);
  const [isRunning, setIsRunning] = useState(false);

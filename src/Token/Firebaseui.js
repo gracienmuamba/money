@@ -3,6 +3,7 @@ import firebase from 'firebase/compat/app';
 import PhoneAuth from './PhoneAuth';
 import { onAuthStateChanged } from 'firebase/auth';
 import './Firebaseui.css';
+import NavBar from './Nav/Main';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -30,17 +31,21 @@ export default function AuthFirebaseToken() {
  });
 
  return (
-  <div className='container-firebaseui'>
+  <>
+   <NavBar />
 
-   <h4>Authentification avec un numéro de téléphone</h4>
+   <div className='container-firebaseui'>
 
-   <p>
-    Pour accéder à votre compte avec un autre
-    appareil, vous devez valider
-    le code envoyé par SMS à votre numéro.
+    <h4>Authentification avec un numéro de téléphone</h4>
+
+    <p>
+     Pour accéder à votre compte avec un autre
+     appareil, vous devez valider
+     le code envoyé par SMS à votre numéro.
    </p>
 
-   <PhoneAuth />
-  </div>
+    <PhoneAuth />
+   </div>
+  </>
  );
 };

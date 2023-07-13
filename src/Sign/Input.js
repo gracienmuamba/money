@@ -35,10 +35,14 @@ import REturnlogo from './Logo';
 import ls from 'localstorage-slim';
 import secureLocalStorage from "react-secure-storage";
 
+
+
 ls.config.encrypt = true;
+
 
 let expireNum = 2;
 let bluecolor = '#0467a0';
+
 
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
  const { onChange, ...other } = props;
@@ -444,7 +448,6 @@ export const InputCodeRecaptcha = (props) => {
      }, 999);
 
     } else {
-
      if (props.pin == data.code) {
 
       // secureLocalStorage.setItem("ACTIVE_M_USER", true);
@@ -474,7 +477,8 @@ export const InputCodeRecaptcha = (props) => {
        } else {
 
         secureLocalStorage.setItem("ip^^valid-&&access++dash", uid);
-        navigation('/auth/redirect/token');
+        window.location.href = "/auth/redirect/token";
+        // navigation('/auth/redirect/token');
        }
       }, 750);
 
